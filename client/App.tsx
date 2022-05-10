@@ -1,11 +1,7 @@
-import './App.css'
+import React from 'react'
 
-function App() {
+export default function App() {
   return (
-    <div id="app">
-      Mellow
-    </div>
+    <div>Mellow</div>
   )
 }
-
-export default App
