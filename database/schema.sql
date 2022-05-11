@@ -21,7 +21,7 @@ CREATE TABLE tickets (
    id          SERIAL        PRIMARY KEY,
    user        INT           NOT NULL,
    title       VARCHAR(255)  NOT NULL,
-   desc        VARCHAR(255)  NOT NULL,
+   body        VARCHAR(255)  NOT NULL,
    due_at      TIMESTAMP     NOT NULL,
    notif       BOOLEAN       TRUE,
 );
