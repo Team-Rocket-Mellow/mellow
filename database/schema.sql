@@ -15,6 +15,7 @@ CREATE TABLE users (
    created_at  TIMESTAMP     NOT NULL,
    updated_at  TIMESTAMP     NOT NULL,
    notif       BOOLEAN       TRUE,
+   sid         VARCHAR(32)   UNIQUE NOT NULL,
 );
 
 CREATE TABLE tickets (
@@ -24,6 +25,7 @@ CREATE TABLE tickets (
    body        TEXT          NOT NULL,
    due_at      TIMESTAMP     NOT NULL,
    notif       BOOLEAN       TRUE,
+   sid         VARCHAR(32)   NOT NULL,
 );
 
 CREATE TABLE notifications (
@@ -37,7 +39,7 @@ CREATE TABLE notifications (
 
 CREATE TABLE sessions (
   id           SERIAL        PRIMARY KEY,
-  sid          VARCHAR(32)   UNIQUE NOT NULL,
+  sid          VARCHAR(32)   NOT NULL,
   expire       TIMESTAMP     NOT NULL,
   sess         VARCHAR(255)  NOT NULL,
 );
@@ -47,7 +49,7 @@ CREATE TABLE sessions (
 
 ALTER TABLE tickets ADD FOREIGN KEY (user) REFERENCES users (id);
 ALTER TABLE notifications ADD FOREIGN KEY (ticket) REFERENCES tickets (id);
-
+ALTER TABLE sessions ADD FOREIGN KEY (sid) REFERENCES users (sid);
 
 -- —————————————————————————————————————————————————————————————————————————————
 -- Indices
