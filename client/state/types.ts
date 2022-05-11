@@ -2,16 +2,16 @@
 // Types
 
 export type Todo = {
-  done: boolean,
-  text: string,
+   done: boolean,
+   text: string,
 }
 
 export type State = {
-  todos: Todo[],
-  view: "all" | "done" | "active",
+   todos: Todo[],
+   view: "all" | "done" | "active",
 }
 
 export type Action = {
-  type: "ADD" | "DELETE" | "TOGGLE",
-  payload: any,
+   type: "ADD" | "DELETE" | "TOGGLE",
+   payload: any,
 }
