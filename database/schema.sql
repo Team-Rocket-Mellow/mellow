@@ -25,7 +25,6 @@ CREATE TABLE tickets (
    body        TEXT          NOT NULL,
    due_at      TIMESTAMP     NOT NULL,
    notif       BOOLEAN       TRUE,
-   sid         VARCHAR(32)   NOT NULL,
 );
 
 CREATE TABLE notifications (
