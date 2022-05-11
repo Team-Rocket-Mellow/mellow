@@ -54,8 +54,8 @@ ALTER TABLE sessions ADD FOREIGN KEY (sid) REFERENCES users (sid);
 -- —————————————————————————————————————————————————————————————————————————————
 -- Indices
 
-CREATE INDEX i1 ON users(id);
-CREATE INDEX i2 ON tickets(id);
-CREATE INDEX i3 ON tickets(user);
-CREATE INDEX i4 ON notifications(id);
-CREATE INDEX i5 ON notifications(ticket);
+CREATE INDEX i1 ON users (id);
+CREATE INDEX i2 ON tickets (id);
+CREATE INDEX i3 ON tickets (user);
+CREATE INDEX i4 ON notifications (id);
+CREATE INDEX i5 ON notifications (ticket);
