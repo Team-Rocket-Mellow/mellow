@@ -5,7 +5,7 @@
 
 ## Installation
 
-  Use the package manager 'npm' to install dependencies and run scripts to start server and webpack.
+  Use the package manager 'npm' to install dependencies and run scripts to start server and Vite.
 
 ```bash
 npm install
