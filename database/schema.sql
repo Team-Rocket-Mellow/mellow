@@ -2,6 +2,8 @@ DROP SCHEMA IF EXISTS mellow CASCADE;
 CREATE SCHEMA mellow;
 SET search_path TO mellow;
 
+CREATE EXTENSION pgcrypto;
+
 -- —————————————————————————————————————————————————————————————————————————————
 -- Tables
 
