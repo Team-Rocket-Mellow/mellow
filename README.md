@@ -16,7 +16,7 @@ npm run start
 ## Usage
 
   Mellow was created to help and optimize management of perosnal or business tasks for any occasion.
-  We are talking about as minute as watering plants every other week to critical business missions.
+  We are talking about as minute as watering plants every other week to handling critical business missions.
   
   After logging into the application, users can create a board/room with names they like to give, and in that room they can create tickets.
   These tickets can be specifically categorized for description (debugging/task/chore/general) and urgency (chill/important/important/critical).
