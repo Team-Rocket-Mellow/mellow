@@ -1,11 +1,11 @@
-import { useRecoilState } from 'recoil'
-import { todos_view } from '../state/atoms'
+import { useSetRecoilState } from "recoil"
+import { todos_view } from "../state/atoms"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function TodoView() {
-   const [view, setView] = useRecoilState(todos_view)
+   const setView = useSetRecoilState(todos_view)
    return (
       <nav id="TodoView">
          <button onClick={() => setView("all")}>All</button>

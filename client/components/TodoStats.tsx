@@ -1,5 +1,5 @@
-import { todos_list_stats } from "../state/selectors"
 import { useRecoilValue } from "recoil"
+import { todos_list_stats } from "../state/selectors"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
