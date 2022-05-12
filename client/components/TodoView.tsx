@@ -1,27 +1,21 @@
-import './App.css'
-import { RecoilRoot, } from 'recoil'
-import Todolist from "./components/TodoList"
-import TodoForm from "./components/TodoForm"
-import TodoView from "./components/TodoView"
-import TodoStats from "./components/TodoStats"
+import { useRecoilState } from 'recoil'
+import { todos_view } from '../state/atoms'
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function App() {
-  return (
-    <RecoilRoot>
-      <div id="App">
-        <TodoView />
-        <TodoStats />
-        <TodoForm />
-        <Todolist />
-      </div>
-    </RecoilRoot>
-  )
+function TodoView() {
+   const [view, setView] = useRecoilState(todos_view)
+   return (
+      <nav id="TodoView">
+         <button onClick={() => setView("all")}>All</button>
+         <button onClick={() => setView("active")}>Active</button>
+         <button onClick={() => setView("done")}>Done</button>
+      </nav>
+   )   
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default App
+export default TodoView
