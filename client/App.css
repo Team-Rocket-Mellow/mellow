@@ -21,6 +21,11 @@ ul {
   list-style-type: none;
 }
 
+:root {
+  --green: #b4feb4;
+  --heavy: 600;
+}
+
 /* —————————————————————————————————————————————————————————————————————————————
    TodoView
 */
@@ -32,6 +37,11 @@ ul {
 
 #TodoView button {
   margin: 0.2em;
+}
+
+#TodoView .active {
+  /* background-color: var(--green); */
+  font-weight: var(--heavy);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -46,6 +56,14 @@ ul {
    TodoItem
 */
 
-.done {
+.TodoItem .done {
   text-decoration: line-through;
+}
+
+.TodoItem button {
+  margin: 0.2em;
+}
+
+.TodoItem span {
+  margin: 0.5em;
 }

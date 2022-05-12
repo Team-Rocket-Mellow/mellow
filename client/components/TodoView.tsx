@@ -1,18 +1,26 @@
-import { useSetRecoilState } from "recoil"
+import { useRecoilState } from "recoil"
 import { todos_view } from "../state/atoms"
+import { TodoView as View} from "../state/atoms"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function TodoView() {
-   const setView = useSetRecoilState(todos_view)
+   const [view, setView] = useRecoilState(todos_view)
+   const views: View[] = ["all", "active", "done"]
    return (
       <nav id="TodoView">
-         <button onClick={() => setView("all")}>All</button>
-         <button onClick={() => setView("active")}>Active</button>
-         <button onClick={() => setView("done")}>Done</button>
+         {
+            views.map((v, i) => 
+               <button 
+                  onClick={() => setView(v)} 
+                  key={i}
+                  className={v === view ? "active" : ""}
+               >{v}</button>
+            )
+         }
       </nav>
-   )   
+   )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
