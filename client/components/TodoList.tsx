@@ -1,5 +1,5 @@
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { todos_list, todos_view, Todo } from "../state/atoms"
+import { todos_list, Todo } from "../state/atoms"
 import { todos_list_filtered } from '../state/selectors'
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -23,7 +23,7 @@ function TodoList() {
   return (
     <ul id="TodoList">
       {
-        todos.map(({ id, text, done }) => <TodoItem key={id} id={id} text={text} done={done} />)
+        todos.map(todo => <TodoItem key={todo.id} {...todo} />)
       }
     </ul>
   )
