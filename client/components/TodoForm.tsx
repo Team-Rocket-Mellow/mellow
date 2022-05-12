@@ -15,19 +15,19 @@ function TodoForm() {
    const [input, setInput] = useState("")
    const setTodos = useSetRecoilState(todos_list)
 
-   const onClick = () => setTodos(state => {
+   const onClick = () => input.length ? setTodos(state => {
       setInput("")
       return state.concat({
          id: ids.next().value as number,
          text: input,
          done: false,
       })
-   })
+   }) : null
 
    return (
       <div id="TodoForm">
          <input value={input} onChange={e => setInput(e.target.value)} />
-         <button onClick={onClick}>Add</button>
+         <button onClick={onClick}>add</button>
       </div>
    )
 }

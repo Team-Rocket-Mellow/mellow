@@ -8,9 +8,9 @@ function TodoStats() {
    const { done, remaining, total } = useRecoilValue(todos_list_stats)
    return (
       <ul id="TodoStats">
-         <li>All: {total}</li>
-         <li>Active: {remaining}</li>
-         <li>Done: {done}</li>
+         <li>all: {total}</li>
+         <li>active: {remaining}</li>
+         <li>done: {done}</li>
       </ul>
    )
 }
