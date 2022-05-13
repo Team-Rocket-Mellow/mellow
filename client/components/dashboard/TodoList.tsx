@@ -1,6 +1,6 @@
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { todos_list, Todo } from "../state/atoms"
-import { todos_list_filtered } from '../state/selectors'
+import { todos_list, Todo } from "../../state/atoms"
+import { todos_list_filtered } from '../../state/selectors'
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -23,7 +23,6 @@ function TodoItem({ id, text, done }: Todo) {
   return (
     <div className="TodoItem">
       <span className={done ? "done" : "active"} onClick={() => setTodos(toggleDone(id))} >{text}</span>
-      {/* <button onClick={() => setTodos(toggleDone(id))}>Toggle</button> */}
       <button onClick={() => setTodos(deleteTodo(id))}>Delete</button>
     </div>
   )

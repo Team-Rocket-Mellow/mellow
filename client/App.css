@@ -90,6 +90,57 @@ ul {
   
 
 /* —————————————————————————————————————————————————————————————————————————————
+   Navbar
+*/
+
+.navbar {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  background: white;
+  color: black;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 900;
+}
+
+.navbar__title {
+  margin-right: 30px;
+  font-size: 150%;
+  padding: 12px 16px;
+}
+
+.navbar_search {
+  margin-right: auto;
+  padding: 2px 10px;
+}
+
+.navbar__item {
+  padding: 16px 16px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Sign In
+*/
+
+#SignIn {
+  background-color: #F2F2EE;
+  height: 92vh;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: small;
+}
+
+#intro_1 {
+
+}
+
+#intro_2 {
+
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
    TodoView
 */
 

@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil"
-import { todos_view } from "../state/atoms"
-import { TodoView as View} from "../state/atoms"
+import { todos_view } from "../../state/atoms"
+import { TodoView as View} from "../../state/atoms"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component

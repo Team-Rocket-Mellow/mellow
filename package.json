@@ -8,9 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.1",
+    "@heroicons/react": "^1.0.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "recoil": "github:facebookexperimental/Recoil#nightly"
+    "react-hook-form": "^7.31.1",
+    "recoil": "github:facebookexperimental/Recoil#nightly",
+    "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
     "@fastify/static": "^6.0.0",
