@@ -29,11 +29,11 @@ export const todos_list_stats = selector({
    key: "todos_list_stats",
    get: ({ get }) => {
       const todos = get(todos_list)
-      const Inbox = todos.length
-      const Done = todos.filter(todo => todo.done).length
-      const Today = Inbox - Done
-      const Upcoming = todos.filter(todo => todo.upcoming).length;
-      const Trash = todos.filter(todo => todo.trash).length;
-      return { Inbox, Done, Today, Upcoming, Trash }
+      const inbox = todos.length
+      const done = todos.filter(todo => todo.done).length
+      const today = inbox - done
+      const upcoming = todos.filter(todo => todo.upcoming).length;
+      const trash = todos.filter(todo => todo.trash).length;
+      return { inbox, done, today, upcoming, trash }
    }
 })

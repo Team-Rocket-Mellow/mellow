@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSetRecoilState } from "recoil"
-import { todos_list } from "../state/atoms"
+import { todos_list } from "../../state/atoms"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Environment
@@ -22,6 +22,8 @@ function TodoForm() {
          id: ids.next().value as number,
          text: input,
          done: false,
+         upcoming: false,
+         trash: false
       })
    }) : null
 
