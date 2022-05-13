@@ -7,9 +7,11 @@ export type Todo = {
    id: number
    text: string
    done: boolean
+   upcoming: boolean
+   trash: boolean
 }
 
-export type TodoView = "all" | "active" | "done"
+export type TodoView = "Inbox" | "Today" | "Upcoming" | "Done" | "Trash" 
 
 // —————————————————————————————————————————————————————————————————————————————
 // Atom
@@ -21,5 +23,5 @@ export const todos_list = atom({
 
 export const todos_view = atom({
    key: "todos_view",
-   default: "all" as TodoView,
+   default: "Inbox" as TodoView,
 })

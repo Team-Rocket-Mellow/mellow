@@ -10,8 +10,8 @@ export const todos_list_filtered = selector({
       const view = get(todos_view)
       const todos = get(todos_list)
       switch (view) {
-         case "active": return todos.filter(todo => !todo.done)
-         case "done": return todos.filter(todo => todo.done)
+         case "Today": return todos.filter(todo => !todo.done)
+         case "Done": return todos.filter(todo => todo.done)
          default: return todos
       }
    },
@@ -29,9 +29,11 @@ export const todos_list_stats = selector({
    key: "todos_list_stats",
    get: ({ get }) => {
       const todos = get(todos_list)
-      const total = todos.length
-      const done = todos.filter(todo => todo.done).length
-      const remaining = total - done
-      return { total, done, remaining }
+      const Inbox = todos.length
+      const Done = todos.filter(todo => todo.done).length
+      const Today = Inbox - Done
+      const Upcoming = todos.filter(todo => todo.upcoming).length;
+      const Trash = todos.filter(todo => todo.trash).length;
+      return { Inbox, Done, Today, Upcoming, Trash }
    }
 })

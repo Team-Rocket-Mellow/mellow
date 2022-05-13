@@ -7,7 +7,7 @@ import { TodoView as View} from "../state/atoms"
 
 function TodoView() {
   const [view, setView] = useRecoilState(todos_view)
-  const views: View[] = ["all", "active", "done"]
+  const views: View[] = [ "Inbox", "Today", "Upcoming", "Done", "Trash" ]
   return (
     <nav id="TodoView">
       {
