@@ -9,22 +9,23 @@ CREATE EXTENSION pgcrypto;
 -- Tables
 
 CREATE TABLE users (
-   id          SERIAL        PRIMARY KEY,
-   email       VARCHAR(255)  UNIQUE NOT NULL,
-   password    VARCHAR(255)  NOT NULL,
-   created_at  TIMESTAMP     NOT NULL,
-   updated_at  TIMESTAMP     NOT NULL,
-   notif       BOOLEAN       TRUE,
-   sid         VARCHAR(32)   UNIQUE NOT NULL,
+  id          SERIAL        PRIMARY KEY,
+  email       VARCHAR(255)  UNIQUE NOT NULL,
+  password    VARCHAR(255)  NOT NULL,
+  created_at  TIMESTAMP     NOT NULL,
+  updated_at  TIMESTAMP     NOT NULL,
+  notif       BOOLEAN       TRUE,
+  sid         VARCHAR(32)   UNIQUE NOT NULL,
+  photo       URL           
 );
 
 CREATE TABLE tickets (
-   id          SERIAL        PRIMARY KEY,
-   user        INT           NOT NULL,
-   title       VARCHAR(255)  NOT NULL,
-   body        TEXT          NOT NULL,
-   due_at      TIMESTAMP     NOT NULL,
-   notif       BOOLEAN       TRUE,
+  id          SERIAL        PRIMARY KEY,
+  user        INT           NOT NULL,
+  title       VARCHAR(255)  NOT NULL,
+  body        TEXT          NOT NULL,
+  due_at      TIMESTAMP     NOT NULL,
+  notif       BOOLEAN       TRUE,
 );
 
 CREATE TABLE notifications (
