@@ -5,12 +5,14 @@ import { todos_list_stats } from "../state/selectors"
 // Component
 
 function TodoStats() {
-   const { done, remaining, total } = useRecoilValue(todos_list_stats)
+   const { Done, Today, Upcoming, Inbox, Trash } = useRecoilValue(todos_list_stats)
    return (
       <ul id="TodoStats">
-         <li>all: {total}</li>
-         <li>active: {remaining}</li>
-         <li>done: {done}</li>
+         <li>Inbox: {Inbox}</li>
+         <li>Today: {Today}</li>
+         <li>Upcoming: {Upcoming}</li>
+         <li>Done: {Done}</li>
+         <li>Trash: {Trash}</li>
       </ul>
    )
 }
