@@ -15,12 +15,13 @@ import Navbar from './components/navbar/Navbar'
 function App() {
   const [auth, setAuth] = useState(false);
 
-  return (
+  return ( 
     !auth
-      ? ( <>
+      ? ( <div id="SignIn">
+            <Navbar />
             <SignIn />
-            <SignUp />
-          </>
+            {/* <SignUp /> */}
+          </div>
         )
       : (
           <>
