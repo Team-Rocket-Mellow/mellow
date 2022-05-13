@@ -13,6 +13,7 @@ const ids = generate_ids()
 
 function TodoForm() {
    const [input, setInput] = useState("")
+   const [textbox, setTextbox] = useState(true)
    const setTodos = useSetRecoilState(todos_list)
 
    const onClick = () => input.length ? setTodos(state => {
@@ -24,10 +25,22 @@ function TodoForm() {
       })
    }) : null
 
+   const showTextbox = () => {
+      setTextbox(textbox => !textbox)
+   }
+
    return (
       <div id="TodoForm">
-         <input value={input} onChange={e => setInput(e.target.value)} />
-         <button onClick={onClick}>add</button>
+         { textbox
+            ? <button onClick={showTextbox}>+ Add Task</button>
+            : (
+                  <>
+                     <input value={input} onChange={e => setInput(e.target.value)} />
+                     <button onClick={onClick}>add</button>
+                     <button onClick={showTextbox}>close</button>
+                  </>
+               )
+         }
       </div>
    )
 }
