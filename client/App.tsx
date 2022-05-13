@@ -1,31 +1,40 @@
 import './App.css'
+import { useState } from 'react'
 import { RecoilRoot, } from 'recoil'
+import SignUp from './components/login/SignUp'
+import SignIn from './components/login/SignIn'
 import Todolist from './components/dashboard/TodoList'
 import TodoForm from './components/dashboard/TodoForm'
 import TodoView from './components/dashboard/TodoView'
 import TodoStats from './components/dashboard/TodoStats'
 import Navbar from './components/navbar/Navbar'
-import SignUp from './components/login/SignUp'
-import SignIn from './components/login/SignIn'
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function App() {
+  const [auth, setAuth] = useState(false);
+
   return (
-    <>
-      <Navbar />
-      <RecoilRoot>
-        <div id="App">
-          <TodoView />
-          <TodoStats />
-          <TodoForm />
-          <Todolist />
-        </div>
-      </RecoilRoot>
-      <SignUp />
-      <SignIn />
-    </>
+    !auth
+      ? ( <>
+            <SignIn />
+            <SignUp />
+          </>
+        )
+      : (
+          <>
+            <Navbar />
+            <RecoilRoot>
+              <div id="App">
+                <TodoView />
+                <TodoStats />
+                <TodoForm />
+                <Todolist />
+              </div>
+            </RecoilRoot>
+          </>
+        )
   )
 }
 
