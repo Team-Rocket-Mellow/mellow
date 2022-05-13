@@ -104,9 +104,14 @@ ul {
 }
 
 .navbar__title {
-  margin-right: auto;
+  margin-right: 30px;
   font-size: 150%;
   padding: 12px 16px;
+}
+
+.navbar_search {
+  margin-right: auto;
+  padding: 2px 10px;
 }
 
 .navbar__item {
