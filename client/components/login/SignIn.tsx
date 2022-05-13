@@ -19,7 +19,7 @@ function SignIn() {
       </div>
 
       <div id='intro_2'>
-        <h4>Already our user?</h4>
+        <h4>Already a user?</h4>
         <form>
           <input {...register('email')} placeholder='email' />
           <input {...register('password')} placeholder='password' />

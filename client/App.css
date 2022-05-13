@@ -99,8 +99,8 @@ ul {
   align-items: center;
   background: white;
   color: black;
-  font-family: Helvetica;
-  font-weight: 500;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 900;
 }
 
 .navbar__title {
@@ -126,7 +126,7 @@ ul {
 */
 
 #SignIn {
-  background-image: linear-gradient(to right bottom, #eef6f6, #e7f0f2, #e1eaed, #dbe4e9, #d6dee5, #d1d9e0, #cdd4db, #c8cfd6, #c2cad0, #bdc6c9, #b9c1c2, #b5bcbc);
+  background-color: #F2F2EE;
   height: 92vh;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: small;
