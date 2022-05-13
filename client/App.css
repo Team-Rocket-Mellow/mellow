@@ -1,4 +1,11 @@
 /* —————————————————————————————————————————————————————————————————————————————
+   Global
+*/
+
+#App {
+  margin-top: 5em;
+  text-align: center;
+
   Reset 
 */
 
@@ -57,4 +64,67 @@ input, button, textarea, select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+}
+
+nav li {
+  list-style-type: none;
+}
+
+button {
+  font-size: 1em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+:root {
+  --green: #b4feb4;
+  --heavy: 600;
+}
+  
+
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoView
+*/
+
+#TodoView {
+  display: flex;
+  justify-content: center;
+}
+
+#TodoView button {
+  margin: 0.2em;
+}
+
+#TodoView .active {
+  /* background-color: var(--green); */
+  font-weight: var(--heavy);
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoForm
+*/
+
+#TodoForm button {
+  margin: 0.5em;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoItem
+*/
+
+.TodoItem .done {
+  text-decoration: line-through;
+}
+
+.TodoItem button {
+  margin: 0.2em;
+}
+
+.TodoItem span {
+  margin: 0.5em;
 }

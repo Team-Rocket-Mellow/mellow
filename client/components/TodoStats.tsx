@@ -1,27 +1,21 @@
-import './App.css'
-import { RecoilRoot, } from 'recoil'
-import Todolist from "./components/TodoList"
-import TodoForm from "./components/TodoForm"
-import TodoView from "./components/TodoView"
-import TodoStats from "./components/TodoStats"
+import { useRecoilValue } from "recoil"
+import { todos_list_stats } from "../state/selectors"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function App() {
-  return (
-    <RecoilRoot>
-      <div id="App">
-        <TodoView />
-        <TodoStats />
-        <TodoForm />
-        <Todolist />
-      </div>
-    </RecoilRoot>
-  )
+function TodoStats() {
+   const { done, remaining, total } = useRecoilValue(todos_list_stats)
+   return (
+      <ul id="TodoStats">
+         <li>all: {total}</li>
+         <li>active: {remaining}</li>
+         <li>done: {done}</li>
+      </ul>
+   )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default App
+export default TodoStats
