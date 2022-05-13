@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
@@ -17,6 +17,9 @@
     "strict": false,           // let's see if this is too annoying
     // "outDir": "dist",         // output folder location; see if conflicts with vite
     "inlineSourceMap": true,  // sourcemaps included in bundle
+  },
+  "ts-node": {
+    "esm": true
   },
   "include": ["client"],
   "references": [{ "path": "./tsconfig.node.json" }]
