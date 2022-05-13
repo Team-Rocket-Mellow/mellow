@@ -5,6 +5,8 @@ import TodoForm from './components/dashboard/TodoForm'
 import TodoView from './components/dashboard/TodoView'
 import TodoStats from './components/dashboard/TodoStats'
 import Navbar from './components/navbar/Navbar'
+import SignUp from './components/login/SignUp'
+import SignIn from './components/login/SignIn'
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -21,6 +23,8 @@ function App() {
           <Todolist />
         </div>
       </RecoilRoot>
+      <SignUp />
+      <SignIn />
     </>
   )
 }

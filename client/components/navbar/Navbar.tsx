@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 function Navbar() {
     const [ text, setText ] = useState('');
 
@@ -12,7 +11,7 @@ function Navbar() {
             value={text}
             onChange={e => setText(e.target.value)}
           />
-          <div className='navbar__item'>profile</div>
+          <div className='navbar__item'>Sign Up</div>
       </header>
   );
 }
