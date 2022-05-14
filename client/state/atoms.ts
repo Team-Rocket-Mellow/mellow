@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom } from 'recoil'
 
 // —————————————————————————————————————————————————————————————————————————————
 // Type
@@ -7,11 +7,19 @@ export type Todo = {
    id: number
    text: string
    done: boolean
-   upcoming: boolean
    trash: boolean
+   date_start: Date
+   date_due: Date    // used to determine "Today" or "Upcoming" status
+   pending: boolean  // pending change yet persisted on server
 }
 
-export type TodoView = "Inbox" | "Today" | "Upcoming" | "Done" | "Trash" 
+export type TodoView = "inbox"
+   | "all"
+   | "active"
+   | "done"
+   | "today"
+   | "upcoming"
+   | "trash"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Atom
@@ -23,5 +31,5 @@ export const todos_list = atom({
 
 export const todos_view = atom({
    key: "todos_view",
-   default: "Inbox" as TodoView,
+   default: "inbox" as TodoView,
 })
