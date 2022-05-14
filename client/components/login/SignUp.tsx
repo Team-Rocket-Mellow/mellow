@@ -12,16 +12,16 @@ function SignUp() {
   const onSubmit = (data: FormValues) => alert(JSON.stringify(data))
 
   return ( 
-    <>
-      <h4>Welcome to Mellow</h4>
-      <form>
-        <input {...register('name')} placeholder='name' />
-        <input {...register('email')} placeholder='email' />
-        <input {...register('password')} placeholder='password' />
-        <input {...register('re_password')} placeholder='re-enter password ' />
-        <button onClick={handleSubmit(onSubmit)}>Register</button>
+    <div id="SignUp">
+      <h3 className="welcome-intro" >Welcome to Mellow</h3>
+      <form className="sign-up-form">
+        <input className="sign-up-name" {...register('name')} placeholder='name' />
+        <input className="sign-up-email" {...register('email')} placeholder='email' />
+        <input className="sign-up-password" {...register('password')} placeholder='password' />
+        <input className="sign-up-reenter" {...register('re_password')} placeholder='re-enter password ' />
+        <button className="register-button" onClick={handleSubmit(onSubmit)}>Register</button>
       </form>
-    </>
+    </div>
   )
 }
 

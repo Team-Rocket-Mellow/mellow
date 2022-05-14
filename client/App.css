@@ -3,8 +3,8 @@
 */
 
 #App {
-  margin-top: 5em;
-  text-align: center;
+  /* margin-top: 5em; */
+  /* text-align: center; */
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -145,6 +145,26 @@ ul {
   font-weight: 200;
 }
 
+.outer-container-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 5px;
+  margin-right: 30px;
+  height: 35px;
+  width: 8.5%;
+}
+
+.navbar-sign-up {
+  line-height: 20px;
+}
+
+.navbar-sign-up h4 {
+  cursor: pointer;
+  font-weight: 200;
+}
+
 
 /* —————————————————————————————————————————————————————————————————————————————
    Sign In
@@ -171,6 +191,9 @@ ul {
 
 #intro_1 div h3 {
   margin-bottom: 30px;
+  font-weight: var(--heavy);
+  font-style: normal;
+  font-size: 18px;
 }
 
 #intro_1 div p {
@@ -236,29 +259,130 @@ ul {
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
+   Sign Up
+*/
+
+.welcome-intro {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 80px;
+  font-weight: 200;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 125px;
+}
+
+.sign-up-name {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.sign-up-email {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.sign-up-password {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.sign-up-reenter {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.register-button {
+  background-color: var(--black);
+  color: var(--white);
+  width: 20%;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
    TodoView
 */
 
 #TodoView {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 650px;
+  margin-right: 75em;
+  box-sizing: border-box;
+  background-color: var(--sidebar);
 }
 
-#TodoView button {
-  margin: 0.2em;
+#TodoView div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 300;
+  font-size: 15px;
 }
 
 #TodoView .active {
   /* background-color: var(--green); */
   font-weight: var(--heavy);
+  /* border: 1px red solid; */
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoStats
+*/
+
+#TodoStats {
+  text-align: center;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
    TodoForm
 */
 
+#TodoForm {
+  text-align: center;
+}
+
 #TodoForm button {
   margin: 0.5em;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoList
+*/
+
+#TodoList {
+  text-align: center;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
