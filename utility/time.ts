@@ -22,3 +22,14 @@ function nextMidnight() {
 function happensTomorrow(event:Date) {
    return event > nextMidnight()
 }
+
+function treatAsUTC(date:Date) {
+   var result = new Date(date);
+   result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+   return result;
+}
+
+export function daysBetween(start:Date, end:Date) {
+   const millisecondsPerDay = 24 * 60 * 60 * 1000
+   return (+treatAsUTC(end) - +treatAsUTC(start)) / millisecondsPerDay
+}

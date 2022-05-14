@@ -1,6 +1,6 @@
 import { selector } from "recoil"
 import { todos_list, todos_view } from "./atoms"
-import { isSameDay } from "../../utility/time"
+import { isSameDay, daysBetween } from "../../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Selector
@@ -16,21 +16,23 @@ export const todos_list_filtered = selector({
          case "inbox": return todos.filter(todo => !todo.trash && !todo.due)
          case "trash": return todos.filter(todo => todo.trash)
          case "today": return todos.filter(todo => isSameDay(todo.due))
-         // todo: still need upcoming
+         case "upcoming": return todos.filter(todo => todo.due 
+            && 0 < daysBetween(new Date(), todo.due)
+         )
          default: return todos
+         // todo: deal with overdue tasks
       }
    },
 })
 
-// export const todos_list_stats = selector({
-//    key: "todos_list_stats",
-//    get: ({ get }) => {
-//       const todos = get(todos_list)
-//       const inbox = todos.length
-//       const done = todos.filter(todo => todo.done).length
-//       const today = inbox - done
-//       const upcoming = todos.filter(todo => todo.upcoming).length;
-//       const trash = todos.filter(todo => todo.trash).length;
-//       return { inbox, done, today, upcoming, trash }
-//    }
-// })
+export const todos_list_stats = selector({
+   key: "todos_list_stats",
+   get: ({ get }) => {
+      const todos = get(todos_list)
+      const inbox = todos.length
+      const done = todos.filter(todo => todo.done).length
+      const today = inbox - done
+      const trash = todos.filter(todo => todo.trash).length;
+      return { inbox, done, today, trash }
+   }
+})
