@@ -22,8 +22,10 @@ function TodoForm() {
          id: ids.next().value as number,
          text: input,
          done: false,
-         upcoming: false,
-         trash: false
+         trash: false,
+         start: new Date(),
+         due: null,
+         pending: false,
       })
    }) : null
 
