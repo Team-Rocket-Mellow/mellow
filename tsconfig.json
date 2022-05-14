@@ -14,9 +14,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    "strict": true,           // let's see if this is too annoying
-    // "outDir": "dist",         // output folder location; see if conflicts with vite
-    "inlineSourceMap": true,  // sourcemaps included in bundle
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
+    "inlineSourceMap": true,
   },
   "ts-node": {
     "esm": true
