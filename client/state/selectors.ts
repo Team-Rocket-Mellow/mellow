@@ -12,7 +12,6 @@ export const todos_list_filtered = selector({
       switch (view) {
          case "active": return todos.filter(todo => !todo.done)
          case "done": return todos.filter(todo => todo.done)
-         
          default: return todos
       }
    },
