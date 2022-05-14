@@ -12,41 +12,43 @@ const ids = generate_ids()
 // Component
 
 function TodoForm() {
-   const [input, setInput] = useState("")
-   const [textbox, setTextbox] = useState(true)
-   const setTodos = useSetRecoilState(todos_list)
+  const [input, setInput] = useState("")
+  const [due, setDue] = useState(new Date().toISOString())
+  const [textbox, setTextbox] = useState(true)
+  const setTodos = useSetRecoilState(todos_list)
 
-   const onClick = () => input.length ? setTodos(state => {
-      setInput("")
-      return state.concat({
-         id: ids.next().value as number,
-         text: input,
-         done: false,
-         trash: false,
-         start: new Date(),
-         due: null,
-         pending: false,
-      })
-   }) : null
+  const onClick = () => input.length ? setTodos(state => {
+    setInput("")
+    return state.concat({
+      id: ids.next().value as number,
+      text: input,
+      done: false,
+      trash: false,
+      start: new Date(),
+      due: null,
+      pending: false,
+    })
+  }) : null
 
-   const showTextbox = () => {
-      setTextbox(textbox => !textbox)
-   }
+  const showTextbox = () => {
+    setTextbox(textbox => !textbox)
+  }
 
-   return (
-      <div id="TodoForm">
-         { textbox
-            ? <button onClick={showTextbox}>+ Add Task</button>
-            : (
-                  <>
-                     <input value={input} onChange={e => setInput(e.target.value)} />
-                     <button onClick={onClick}>add</button>
-                     <button onClick={showTextbox}>close</button>
-                  </>
-               )
-         }
-      </div>
-   )
+  return (
+    <div id="TodoForm">
+      { textbox
+        ? <button onClick={showTextbox}>+ Add Task</button>
+        : (
+            <>
+              <input type="date" id="due" value={due} onChange={e => setDue(e.target.value)} />
+              <input value={input} onChange={e => setInput(e.target.value)} />
+              <button onClick={onClick}>add</button>
+              <button onClick={showTextbox}>close</button>
+            </>
+          )
+      }
+    </div>
+  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
