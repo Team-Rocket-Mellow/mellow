@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "reset": "psql --dbname postgres --username postgres -f ./database/schema.sql",
-    "start": "nodemon tsc server/index.js"
+    "start": "nodemon tsc server/index.ts"
   },
   "type": "module",
   "dependencies": {
