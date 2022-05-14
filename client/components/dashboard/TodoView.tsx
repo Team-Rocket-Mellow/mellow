@@ -12,11 +12,11 @@ function TodoView() {
     <nav id="TodoView">
       {
         views.map((v, i) => 
-          <button 
+          <div 
             onClick={() => setView(v)} 
             className={v === view ? "active" : ""}
             key={i}
-          >{v}</button>
+          >{v}</div>
         )
       }
     </nav>

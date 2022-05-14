@@ -11,7 +11,9 @@ function Navbar() {
             value={text}
             onChange={e => setText(e.target.value)}
           />
-          <div className='navbar__item'>Sign Up</div>
+          <div className="outer-container-navbar">
+            <div className='navbar-sign-up'><h4>Sign Up</h4></div>
+          </div>
       </header>
   );
 }
