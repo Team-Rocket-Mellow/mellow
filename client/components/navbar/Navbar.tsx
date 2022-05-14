@@ -5,7 +5,7 @@ function Navbar() {
 
    return (
       <header className='navbar'>
-          <div className='navbar__title navbar__item'>Mellow</div>
+          <div className='navbar__title navbar__item'>MELLOW</div>
           <input className='navbar_search' 
             placeholder="Search..."
             value={text}
