@@ -6,6 +6,6 @@
       "moduleResolution": "Node",
       "esModuleInterop": true,
       "outDir": "dist",
-      "inlineSourceMap": true,
+      "sourceMap": true
    },
 }

@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "reset": "psql --dbname postgres --username postgres -f ./database/schema.sql",
-    "start": "nodemon tsc server/index.ts"
+    "serve": "tsc --project ./server/tsconfig.json && nodemon ./server/dist/index.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.1",
