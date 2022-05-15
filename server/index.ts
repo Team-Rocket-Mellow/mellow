@@ -4,7 +4,7 @@
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
 import { fastify } from 'fastify'
-import { fastifyStatic } from "@fastify/static"
+import fastifyStatic from "@fastify/static"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Configuration
@@ -25,16 +25,16 @@ app.register(fastifyStatic, { root, })
 // Serve
 
 const start = async () => {
-   try {
-     await app.listen({
-       host,
-       port,
-     })
-   }
-   catch (err) {
-     app.log.error(err)
-     process.exit(1)
-   }
- }
- 
- start()
+  try {
+    await app.listen({
+      host,
+      port,
+    })
+  }
+  catch (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+}
+
+start()
