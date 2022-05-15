@@ -1,0 +1,71 @@
+/* —————————————————————————————————————————————————————————————————————————————
+   Sign Up
+*/
+
+.welcome-intro {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 80px;
+  font-weight: 200;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 125px;
+}
+
+.sign-up-name {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.sign-up-email {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.sign-up-password {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.sign-up-reenter {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-align: left;
+  text-indent: 15px;
+  width: 20%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.register-button {
+  background-color: var(--black);
+  color: var(--white);
+  width: 20%;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+}
