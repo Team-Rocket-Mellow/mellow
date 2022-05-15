@@ -15,28 +15,23 @@ import Navbar from './components/navbar/Navbar'
 function App() {
   const [auth, setAuth] = useState(false);
 
-  return ( 
-    !auth
-      ? ( <div id="SignIn">
-            <Navbar />
-            <SignIn />
-            <SignUp />
+  return !auth
+    ? <div id="SignIn">
+        <Navbar />
+        <SignIn />
+        <SignUp />
+      </div>
+    : <>
+        <RecoilRoot>
+          <Navbar />
+          <div id="App">
+            <TodoView />
+            <TodoStats />
+            <TodoForm />
+            <Todolist />
           </div>
-        )
-      : (
-          <>
-            <Navbar />
-            <RecoilRoot>
-              <div id="App">
-                <TodoView />
-                <TodoStats />
-                <TodoForm />
-                <Todolist />
-              </div>
-            </RecoilRoot>
-          </>
-        )
-  )
+        </RecoilRoot>
+      </>
 }
 
 // —————————————————————————————————————————————————————————————————————————————

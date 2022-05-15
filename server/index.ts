@@ -19,7 +19,7 @@ const app = fastify({
 })
 
 const root = path.join(__dirname, "..", "dist")
-app.register(fastifyStatic, { root, })
+app.register(fastifyStatic, { root })
 
 // —————————————————————————————————————————————————————————————————————————————
 // Serve
