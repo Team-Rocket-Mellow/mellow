@@ -14,30 +14,31 @@ const ids = generate_ids()
 function TodoForm() {
   const [input, setInput] = useState("")
   const [due, setDue] = useState(new Date().toISOString())
-  const [textbox, setTextbox] = useState(true)
+  const [isFormVisible, toggleFormVisible] = useState(true)
   const setTodos = useSetRecoilState(todos_list)
 
-  const onClick = () => input.length ? setTodos(state => {
-    setInput("")
-    return state.concat({
-      id: ids.next().value as number,
-      text: input,
-      done: false,
-      trash: false,
-      start: new Date(),
-      due: null,
-      pending: false,
-    })
-  }) : null
+  const onClick = () => input.length
+    ? setTodos(state => {
+        setInput("")
+        setDue("")
+        return state.concat({
+          id: ids.next().value as number,
+          text: input,
+          done: false,
+          trash: false,
+          start: new Date(),
+          due: null,
+          pending: false,
+        })
+      })
+    : null
 
-  const showTextbox = () => {
-    setTextbox(textbox => !textbox)
-  }
+  const showTextbox = () => toggleFormVisible(textbox => !textbox)
 
   return (
     <div id="TodoForm">
-      { textbox
-        ? <button onClick={showTextbox}>+ Add Task</button>
+      { isFormVisible
+        ? <button onClick={showTextbox}>+ add task</button>
         : (
             <>
               <input type="date" id="due" value={due} onChange={e => setDue(e.target.value)} />

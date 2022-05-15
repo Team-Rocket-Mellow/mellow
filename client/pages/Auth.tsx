@@ -1,22 +1,21 @@
-import { useRecoilValue } from "recoil"
-import { todos_list_stats } from "../../state/selectors"
+import SignUp from "../components/login/SignUp"
+import SignIn from "../components/login/SignIn"
+import Navbar from "../components/navbar/Navbar"
 
 // —————————————————————————————————————————————————————————————————————————————
-// Component
+// Page
 
-function TodoStats() {
-  const { done, today, inbox, trash } = useRecoilValue(todos_list_stats)
+function Auth() {
   return (
-    <ul id="TodoStats">
-      <li>inbox: {inbox}</li>
-      <li>today: {today}</li>
-      <li>done: {done}</li>
-      <li>trash: {trash}</li>
-    </ul>
+    <div id="SignIn">
+      <Navbar />
+      <SignIn />
+      <SignUp />
+    </div>
   )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default TodoStats
+export default Auth

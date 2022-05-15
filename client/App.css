@@ -2,9 +2,8 @@
    Global
 */
 
-#App {
-  /* margin-top: 5em; */
-  /* text-align: center; */
+#App main {
+  display: flex;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -39,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   height: 650px;
-  margin-right: 75em;
+  padding: 2em;
   box-sizing: border-box;
   background-color: var(--sidebar);
 }
