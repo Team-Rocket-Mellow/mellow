@@ -3,7 +3,7 @@
 
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
-import fastify from 'fastify'
+import { fastify } from 'fastify'
 import { fastifyStatic } from "@fastify/static"
 
 // —————————————————————————————————————————————————————————————————————————————
