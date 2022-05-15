@@ -1,3 +1,4 @@
+import "./SignUp.css"
 import { useForm } from 'react-hook-form'
 
 type FormValues = {

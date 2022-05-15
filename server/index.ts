@@ -25,16 +25,16 @@ app.register(fastifyStatic, { root })
 // Serve
 
 const start = async () => {
-   try {
-     await app.listen({
-       host,
-       port,
-     })
-   }
-   catch (err) {
-     app.log.error(err)
-     process.exit(1)
-   }
- }
+  try {
+    await app.listen({
+      host,
+      port,
+    })
+  }
+  catch (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+}
  
- start()
+start()
