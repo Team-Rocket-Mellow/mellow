@@ -46,7 +46,7 @@
   min-width: 11em;
 }
 
-#TodoView div {
+#TodoView .item {
   margin-top: 5px;
   margin-bottom: 5px;
   font-weight: 300;
