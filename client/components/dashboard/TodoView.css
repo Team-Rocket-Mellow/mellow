@@ -5,41 +5,63 @@
 #TodoView {
    display: flex;
    flex-direction: column;
-   height: 650px;
-   padding: 1.3em;
    background-color: var(--sidebar);
    min-width: 13.5em;
+   height: 100vh;
+   padding-left: 5px;
+   padding-top: 30px;
+   padding-right: 10px;
  }
- 
+
+ #TodoView .flex {
+   display: flex;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Menu Items
+*/
+
 #TodoView .item {
-   margin-top: 5px;
-   margin-bottom: 5px;
-   font-weight: 300;
-   font-size: 15px;
    display: flex;
    justify-content: space-between;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   padding-left: 10px;
+   font-size: 14px;
+   border-radius: 4px;
+}
+
+#TodoView .item:hover {
+   background-color: rgb(238, 238, 238);
 }
 
 #TodoView .active {
-   font-weight: var(--heavy);
+   font-weight: 600;
+   background-color: rgb(238, 238, 238);
 }
 
-#TodoView .flex {
-   display: flex;
+.statistic {
+   padding-right: 1em;
+   font-size: 0.8em;
+   color: rgb(147, 142, 142);
 }
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Icons
+*/
 
 #TodoView i {
    margin-right: 0.3em;
 }
 
-#TodoView .inbox {
+i.inbox {
+   color: #4765e6;
+}
+
+i.today {
    color: green;
 }
 
-#TodoView .trash {
+i.trash {
    color: rgb(176, 8, 8);
-}
-
-#TodoView .statistic {
-   color: rgb(147, 142, 142);
 }
