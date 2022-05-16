@@ -17,15 +17,16 @@
 :root {
   /* colors */
   --white: #FFFFFF;
-  --grey-background: #F2F2F2;
-  --black: #000000;
+  --grey-background: #FAFAFA;
+  --grey-hover: rgba(0, 0, 0, 0.4)
+  --black: #202020;
   --blue: #37C1FF;
   --purple: #B43BDF;
   --orange: #E49217;
   --green: #40DE3D;
   --yellow: #E5DE1F;
   --red: #EA3D32;
-  --sidebar: #FAFAFA;
+  --sidebar: rgb(250, 250, 250);
   /* fonts */
   --roboto: 'Roboto';
   /* font weights */

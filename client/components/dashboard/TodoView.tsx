@@ -13,9 +13,9 @@ function TodoView() {
   const icons = {
     all: <i className="material-symbols-rounded">apps</i>,
     inbox: <i className="material-symbols-rounded inbox">inbox</i>,
-    today: <i className="material-symbols-rounded">today</i>,
-    upcoming: <i className="material-symbols-rounded">event_upcoming</i>,
-    done: <i className="material-symbols-rounded">event_available</i>,
+    today: <i className="material-symbols-rounded today">today</i>,
+    upcoming: <i className="material-symbols-rounded upcoming">event_upcoming</i>,
+    done: <i className="material-symbols-rounded done">event_available</i>,
     trash: <i className="material-symbols-rounded trash">delete</i>,
   }
   return (
