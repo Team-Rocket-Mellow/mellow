@@ -7,7 +7,6 @@ import { todos_list_filtered } from '../../state/selectors'
 
 function TodoList() {
   const todos = useRecoilValue(todos_list_filtered)
-  const view = useRecoilValue(todos_view)
   return (
     <ul id="TodoList">
       {
