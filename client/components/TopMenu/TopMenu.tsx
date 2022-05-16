@@ -1,10 +1,10 @@
-import "./NavBar.css"
+import "./TopMenu.css"
 import { useState } from 'react';
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function NavBar() {
+function TopMenu() {
   const [ text, setText ] = useState('');
 
   return (
@@ -26,4 +26,4 @@ function NavBar() {
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default NavBar
+export default TopMenu

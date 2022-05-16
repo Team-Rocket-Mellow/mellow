@@ -11,7 +11,7 @@
    padding-left: 5px;
    padding-top: 30px;
    padding-right: 10px;
- }
+}
 
  #TodoView .flex {
    display: flex;
@@ -44,6 +44,8 @@
    padding-right: 1em;
    font-size: 0.8em;
    color: rgb(147, 142, 142);
+   display: flex;
+   align-items: center;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

@@ -1,6 +1,6 @@
 import SignUp from "../components/login/SignUp"
 import SignIn from "../components/login/SignIn"
-import NavBar from "../components/navbar/NavBar"
+import TopMenu from "../components/TopMenu/TopMenu"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Page
@@ -8,7 +8,7 @@ import NavBar from "../components/navbar/NavBar"
 function Auth() {
   return (
     <div id="SignIn">
-      <NavBar />
+      <TopMenu />
       <SignIn />
       <SignUp />
     </div>
