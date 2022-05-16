@@ -9,24 +9,20 @@ export function isSameDay(maybe:Date|null, now = new Date()) {
    return now.toJSON().slice(0, 10) === maybe?.toJSON().slice(0, 10)
 }
 
-function nextMidnight() {
-   const oneDayMillis = 24 * 60 * 60 * 1000
-   const someTimeTomorrow = new Date(Date.now() + oneDayMillis)
-   someTimeTomorrow.setHours(0)
-   someTimeTomorrow.setMinutes(0)
-   someTimeTomorrow.setSeconds(0)
-   someTimeTomorrow.setMilliseconds(0)
-   return someTimeTomorrow
-}
- 
-function happensTomorrow(event:Date) {
-   return event > nextMidnight()
-}
-
 function treatAsUTC(date:Date) {
    var result = new Date(date);
    result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
    return result;
+}
+
+/**
+ * Maps `date` object into UTC string `YYYY-MM-DD`.
+ * @example
+ * const date = new Date()
+ * dateToString(date) // "2020-01-01"
+ */
+export function dateToString(date:Date) {
+   return date.toJSON().slice(0, 10)
 }
 
 export function daysBetween(start:Date, end:Date) {
