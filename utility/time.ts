@@ -25,6 +25,16 @@ export function dateToString(date:Date) {
    return date.toJSON().slice(0, 10)
 }
 
+/**
+ * Maps `start` and `end` Date objects into a difference of decimal days.
+ * @example
+ * let d1 = new Date("June 2, 2020")
+ * let d2 = new Date("June 20, 2020")
+ * let d3 = new Date("June 20, 2020 12:00:00")
+ * daysBetween(d1, d2) // => 18
+ * daysBetween(d2, d1) // => -18
+ * daysBetween(d1, d3) // => 18.5
+ */
 export function daysBetween(start:Date, end:Date) {
    const millisecondsPerDay = 24 * 60 * 60 * 1000
    return (+treatAsUTC(end) - +treatAsUTC(start)) / millisecondsPerDay
