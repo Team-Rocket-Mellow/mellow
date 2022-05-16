@@ -1,5 +1,5 @@
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { todos_list, Todo } from "../../state/atoms"
+import { todos_list, todos_view, Todo } from "../../state/atoms"
 import { todos_list_filtered } from '../../state/selectors'
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -7,6 +7,7 @@ import { todos_list_filtered } from '../../state/selectors'
 
 function TodoList() {
   const todos = useRecoilValue(todos_list_filtered)
+  const view = useRecoilValue(todos_view)
   return (
     <ul id="TodoList">
       {
@@ -18,12 +19,23 @@ function TodoList() {
 
 function TodoItem({ id, text, done, due }: Todo) {
   const [todos, setTodos] = useRecoilState(todos_list)
-  const trashTodo = () => setTodos(todos.map(todo => todo.id === id ? { ...todo, trash: true } : todo))
+  const view = useRecoilValue(todos_view)
+  const toggleTrash = () => setTodos(todos.map(todo => todo.id === id ? { ...todo, trash: !todo.trash } : todo))
+  const deleteTodo = () => setTodos(todos.filter(todo => todo.id !== id))
   const toggleDone = () => setTodos(todos.map(todo => todo.id === id ? { ...todo, done: !todo.done } : todo))
   return (
     <div className="TodoItem">
-      <span className={done ? "done" : "active"} onClick={toggleDone}>{text} ({ due?.toJSON()?.slice(0, 10) ?? "∞"})</span>
-      <button onClick={trashTodo}>trash</button>
+      <span className={done ? "done" : "active"} onClick={toggleDone}>
+        {text} ({ due?.toJSON()?.slice(0, 10) ?? "∞"})
+      </span>
+      {
+        view === "trash"
+        ? <>
+            <button onClick={toggleTrash}>untrash</button>
+            <button onClick={deleteTodo}>delete</button>
+          </>
+        : <button onClick={toggleTrash}>trash</button>
+      }
     </div>
   )
 }

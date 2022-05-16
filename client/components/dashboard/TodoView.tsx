@@ -1,22 +1,23 @@
-import { useRecoilState } from "recoil"
-import { todos_view } from "../../state/atoms"
-import { TodoView as View } from "../../state/atoms"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { todos_view, TodoView as View } from "../../state/atoms"
+import { todos_list_stats } from "../../state/selectors"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function TodoView() {
   const [view, setView] = useRecoilState(todos_view)
-  const views: View[] = [ "inbox", "all", "today", "upcoming", "done", "trash" ]
+  const views: View[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
+  const stats = useRecoilValue(todos_list_stats)
   return (
     <nav id="TodoView">
       {
         views.map((v, i) => (
-          <div 
-            onClick={() => setView(v)} 
+          <div
+            onClick={() => setView(v)}
             className={v === view ? "active" : ""}
             key={i}
-          >{v}</div>
+          >{v} ({stats[v]})</div>
         ))
       }
     </nav>

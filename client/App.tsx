@@ -3,7 +3,6 @@ import { RecoilRoot, } from "recoil"
 import TodoList from "./components/dashboard/TodoList"
 import TodoForm from "./components/dashboard/TodoForm"
 import TodoView from "./components/dashboard/TodoView"
-import TodoStats from "./components/dashboard/TodoStats"
 import Navbar from "./components/navbar/Navbar"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -18,7 +17,6 @@ function App() {
           <TodoView />
         </nav>
         <section>
-          <TodoStats />
           <TodoForm />
           <TodoList />
         </section>

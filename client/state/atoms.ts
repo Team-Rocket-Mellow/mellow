@@ -13,11 +13,11 @@ export type Todo = {
    pending : boolean      // pending change yet persisted on server
 }
 
-export type TodoView = "inbox"
-   | "trash"
-   | "all"
+export type TodoView = "all"
    | "active"
    | "done"
+   | "inbox"
+   | "trash"
    | "today"
    | "upcoming"
 
