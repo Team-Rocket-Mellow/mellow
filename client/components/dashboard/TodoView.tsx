@@ -1,3 +1,4 @@
+import "./TodoView.css"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { todos_view, TodoView as View } from "../../state/atoms"
 import { todos_list_stats } from "../../state/selectors"
@@ -11,11 +12,11 @@ function TodoView() {
   const stats = useRecoilValue(todos_list_stats)
   const icons = {
     all: <i className="material-symbols-rounded">apps</i>,
-    inbox: <i className="material-symbols-rounded">inbox</i>,
+    inbox: <i className="material-symbols-rounded inbox">inbox</i>,
     today: <i className="material-symbols-rounded">today</i>,
     upcoming: <i className="material-symbols-rounded">event_upcoming</i>,
     done: <i className="material-symbols-rounded">event_available</i>,
-    trash: <i className="material-symbols-rounded">delete</i>,
+    trash: <i className="material-symbols-rounded trash">delete</i>,
   }
   return (
     <nav id="TodoView">
