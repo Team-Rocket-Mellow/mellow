@@ -1,24 +1,7 @@
 import { useState } from "react"
 import { useSetRecoilState } from "recoil"
 import { todos_list, Todo } from "../../state/atoms"
-
-// —————————————————————————————————————————————————————————————————————————————
-// Environment
-
-function * generate_ids() { for (let i=0; true; i++) yield i }
-const ids = generate_ids()
-
-function createTodo(text:string, due=""): Todo {
-  return {
-    id: ids.next().value as number,
-    text,
-    start: new Date(),
-    due: due.length ? new Date(due) : null,
-    done: false,
-    trash: false,
-    pending: false,
-  }
-}
+import { createTodo } from "../../state/actions"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
