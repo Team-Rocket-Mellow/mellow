@@ -25,7 +25,7 @@
   --green: #40DE3D;
   --yellow: #E5DE1F;
   --red: #EA3D32;
-  --sidebar: #ECE6E6;
+  --sidebar: #FAFAFA;
   /* fonts */
   --roboto: 'Roboto';
   /* font weights */
@@ -41,9 +41,9 @@
   display: flex;
   flex-direction: column;
   height: 650px;
-  padding: 2em;
+  padding: 1.3em;
   background-color: var(--sidebar);
-  min-width: 11em;
+  min-width: 13.5em;
 }
 
 #TodoView .item {
@@ -51,10 +51,24 @@
   margin-bottom: 5px;
   font-weight: 300;
   font-size: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #TodoView .active {
   font-weight: var(--heavy);
+}
+
+#TodoView .flex {
+  display: flex;
+}
+
+#TodoView i {
+  margin-right: 0.3em;
+}
+
+#TodoView .statistic {
+  color: rgb(147, 142, 142);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -74,7 +88,11 @@
 }
 
 #TodoForm button {
-  margin: 0.5em;
+  margin: 0.3em;
+}
+
+#TodoForm input {
+  margin: 0.3em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

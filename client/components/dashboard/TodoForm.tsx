@@ -23,17 +23,10 @@ function TodoForm() {
   const showTextbox = () => toggleFormVisible(textbox => !textbox)
 
   return (
-    <div id="TodoForm">
-      {
-        isFormVisible
-          ? <button onClick={showTextbox}>add task</button>
-          : <>
-              <input type="date" id="due" value={due} onChange={e => setDue(e.target.value)} />
-              <input value={input} onChange={e => setInput(e.target.value)} />
-              <button onClick={onClick}>add</button>
-              <button onClick={showTextbox}>close</button>
-            </>
-      }
+    <div id="TodoForm">            
+      <input type="date" id="due" value={due} onChange={e => setDue(e.target.value)} />
+      <input value={input} onChange={e => setInput(e.target.value)} />
+      <button onClick={onClick}>add</button>
     </div>
   )
 }
