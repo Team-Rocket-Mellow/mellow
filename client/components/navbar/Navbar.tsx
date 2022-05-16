@@ -1,11 +1,14 @@
-import "./Navbar.css"
+import "./NavBar.css"
 import { useState } from 'react';
 
-function Navbar() {
+// —————————————————————————————————————————————————————————————————————————————
+// Component
+
+function NavBar() {
   const [ text, setText ] = useState('');
 
   return (
-    <header id='Navbar'>
+    <header id='NavBar'>
       <i className="material-symbols-rounded">menu</i>
       <i className="material-symbols-rounded">home</i>
       <input
@@ -20,4 +23,7 @@ function Navbar() {
   )
 }
 
-export default Navbar
+// —————————————————————————————————————————————————————————————————————————————
+// Export
+
+export default NavBar

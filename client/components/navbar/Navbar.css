@@ -1,8 +1,8 @@
 /* —————————————————————————————————————————————————————————————————————————————
-   Navbar
+   NavBar
 */
 
-#Navbar {
+#NavBar {
    height: 7vh;
    display: flex;
    align-items: center;
@@ -12,13 +12,13 @@
    padding-left: 15px;
 }
 
-#Navbar i {
+#NavBar i {
    margin-right: 0.2em;
    padding: 5px;
    border-radius: 3px;
 }
 
-#Navbar i:hover {
+#NavBar i:hover {
    background-color: rgb(222, 222, 222);
 }
 
