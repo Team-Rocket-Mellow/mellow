@@ -40,11 +40,10 @@
 #TodoView {
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 650px;
   padding: 2em;
-  box-sizing: border-box;
   background-color: var(--sidebar);
+  min-width: 11em;
 }
 
 #TodoView div {
