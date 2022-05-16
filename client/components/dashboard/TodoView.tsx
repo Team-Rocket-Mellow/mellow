@@ -24,7 +24,7 @@ function TodoView() {
         views.map((v, i) => (
           <div onClick={() => setView(v)} className={v === view ? "item active" : "item"} key={i}>
             <span className="flex">{icons[v]}<p>{v}</p></span> 
-            <span className="statistic">{stats[v]}</span>
+            <span className="statistic">{stats[v] ? stats[v] : null}</span>
           </div>
         ))
       }
