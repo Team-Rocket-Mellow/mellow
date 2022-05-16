@@ -1,4 +1,5 @@
 import { atom } from 'recoil'
+import data from "./data"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Type
@@ -31,7 +32,7 @@ export type Auth = {
 
 export const todos_list = atom({
    key: "todos_state",
-   default: [] as Todo[],
+   default: data as Todo[],
 })
 
 export const todos_view = atom({
