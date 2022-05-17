@@ -27,7 +27,9 @@ function Modal() {
   function keyHandler(e) {
     switch (e.code) {
       case "Enter": return onClick()
-      case "Escape": return setOpen(false)
+      case "Escape":
+        setInput("")
+        return setOpen(false)
     }
   }
 
@@ -44,7 +46,7 @@ function Modal() {
     <>
       <dialog open={isOpen}>
         <input type="date" value="" onChange={e => setDue(e.target.value)} />
-        <input value={input} onChange={e => setInput(e.target.value)} />
+        <input value={input} onChange={e => setInput(e.target.value)} autoFocus />
         <button onClick={onClick}>add</button>
       </dialog>
     </>
