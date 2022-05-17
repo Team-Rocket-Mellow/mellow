@@ -2,6 +2,7 @@ import TodoForm from "../components/dashboard/TodoForm"
 import TodoList from "../components/dashboard/TodoList"
 import TodoView from "../components/dashboard/TodoView"
 import TopMenu from "../components/TopMenu/TopMenu"
+import Modal from "../components/modal/Modal"
 
 function HomePage() {
   return (
@@ -12,7 +13,8 @@ function HomePage() {
           <TodoView />
         </nav>
         <section>
-          <TodoForm />
+          <Modal />
+          {/* <TodoForm /> */}
           <TodoList />
         </section>
       </main>

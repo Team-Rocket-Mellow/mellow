@@ -1,0 +1,40 @@
+dialog {
+   pointer-events: none;
+   opacity: 0;
+   transition: opacity 0.5s;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+dialog input {
+   margin-right: 0.5em;
+}
+
+dialog[open] {
+   opacity: 1;
+   pointer-events: inherit;
+}
+
+dialog::backdrop {
+   background-color: rgba(0,0,255, 0.2);
+   transition: visibility 0.5s linear 0.5s opacity 0.5s linear;
+}
+
+/* dialog,
+dialog[open]::backdrop {
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear .5s,opacity .5s linear;
+}
+
+dialog[open].in,
+dialog[open].in::backdrop {   
+    transition-delay:0s;
+}
+
+dialog[open].in,
+dialog[open].in::backdrop {
+    opacity: 1;
+    visibility: visible;
+} */
