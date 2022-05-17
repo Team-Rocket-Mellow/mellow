@@ -1,20 +1,20 @@
-import TodoList from "../components/dashboard/TodoList"
-import TodoView from "../components/dashboard/TodoView"
-import TopMenu from "../components/TopMenu/TopMenu"
-import Modal from "../components/modal/Modal"
+import TodoList from "../components/TodoList/TodoList"
+import LeftMenu from "../components/LeftMenu/LeftMenu"
+import TopMenu  from "../components/TopMenu/TopMenu"
+import Modal    from "../components/Modal/Modal"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function HomePage() {
+function Home() {
   return (
-    <div id="HomePage">
+    <div id="Home">
       <TopMenu />
       <main>
         <nav>
-          <TodoView />
+          <LeftMenu />
         </nav>
-        <section>
+        <section id="TodoView">
           <Modal />
           <TodoList />
         </section>
@@ -26,4 +26,4 @@ function HomePage() {
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default HomePage
+export default Home

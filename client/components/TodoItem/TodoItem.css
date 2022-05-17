@@ -1,0 +1,22 @@
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoItem
+*/
+.TodoItem {
+   display: flex;
+   justify-content: space-between;
+   padding: 0.5rem;
+   border-bottom: 1px solid #ccc;
+   cursor: pointer;
+}
+
+.TodoItem .done {
+   text-decoration: line-through;
+}
+
+.TodoItem button {
+   margin: 0.2em;
+}
+
+.TodoItem span {
+   margin: 0.5em;
+}

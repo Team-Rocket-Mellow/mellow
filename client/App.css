@@ -8,6 +8,7 @@
 
 #App section {
   padding: 1em;
+  width: 75%;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -56,20 +57,4 @@
 
 #TodoList {
   text-align: center;
-}
-
-/* —————————————————————————————————————————————————————————————————————————————
-   TodoItem
-*/
-
-.TodoItem .done {
-  text-decoration: line-through;
-}
-
-.TodoItem button {
-  margin: 0.2em;
-}
-
-.TodoItem span {
-  margin: 0.5em;
 }

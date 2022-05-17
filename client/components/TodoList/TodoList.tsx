@@ -1,21 +1,24 @@
-import SignUp from "../components/Auth/SignUp"
-import SignIn from "../components/Auth/SignIn"
-import TopMenu from "../components/TopMenu/TopMenu"
+import "./TodoList.css"
+import { useRecoilValue } from "recoil"
+import { todos_list_filtered } from "../../state/selectors"
+import TodoItem from "../TodoItem/TodoItem"
 
 // —————————————————————————————————————————————————————————————————————————————
-// Page
+// Component
 
-function Auth() {
+function TodoList() {
+  const todos = useRecoilValue(todos_list_filtered)
+
   return (
-    <div id="SignIn">
-      <TopMenu />
-      <SignIn />
-      <SignUp />
-    </div>
+    <ul id="TodoList">
+      {
+        todos.map((todo, i) => <TodoItem key={i} {...todo} />)
+      }
+    </ul>
   )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default Auth
+export default TodoList

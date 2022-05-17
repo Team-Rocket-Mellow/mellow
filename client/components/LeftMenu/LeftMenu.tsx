@@ -1,4 +1,4 @@
-import "./TodoView.css"
+import "./LeftMenu.css"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { todos_view, TodoView as View } from "../../state/atoms"
 import { todos_list_stats } from "../../state/selectors"
@@ -6,7 +6,7 @@ import { todos_list_stats } from "../../state/selectors"
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function TodoView() {
+function LeftMenu() {
   const [view, setView] = useRecoilState(todos_view)
   const views: View[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
@@ -18,8 +18,9 @@ function TodoView() {
     done: <i className="material-symbols-rounded done">event_available</i>,
     trash: <i className="material-symbols-rounded trash">delete</i>,
   }
+
   return (
-    <nav id="TodoView">
+    <nav id="LeftMenu">
       {
         views.map((v, i) => (
           <div onClick={() => setView(v)} className={v === view ? "item active" : "item"} key={i}>
@@ -35,4 +36,4 @@ function TodoView() {
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default TodoView
+export default LeftMenu
