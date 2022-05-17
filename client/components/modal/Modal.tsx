@@ -49,13 +49,13 @@ function Modal() {
     })
   }, [])
 
-  return isOpen 
+  return true
     ? (
-      <div>
+      <dialog open={isOpen}>
         <input type="date" value="" onChange={e => setDue(e.target.value)} />
         <input value={input} onChange={e => setInput(e.target.value)} autoFocus />
         <button onClick={submit}>add</button>
-      </div>
+      </dialog>
     ) 
     : null
 }
