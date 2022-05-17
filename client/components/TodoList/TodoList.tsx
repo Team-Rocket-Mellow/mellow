@@ -1,6 +1,7 @@
+import "./TodoList.css"
 import { useRecoilValue } from "recoil"
-import { todos_list_filtered } from "../state/selectors"
-import TodoItem from "./TodoItem/TodoItem"
+import { todos_list_filtered } from "../../state/selectors"
+import TodoItem from "../TodoItem/TodoItem"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component

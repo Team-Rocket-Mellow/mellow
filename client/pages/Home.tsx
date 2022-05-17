@@ -1,7 +1,7 @@
-import TodoList from "../components/TodoList"
+import TodoList from "../components/TodoList/TodoList"
 import TodoView from "../components/TodoView/TodoView"
-import TopMenu from "../components/TopMenu/TopMenu"
-import Modal from "../components/Modal/Modal"
+import TopMenu  from "../components/TopMenu/TopMenu"
+import Modal    from "../components/Modal/Modal"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
