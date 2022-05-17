@@ -1,12 +1,12 @@
 /* —————————————————————————————————————————————————————————————————————————————
    TodoItem
 */
+
 .TodoItem {
-   display: flex;
-   justify-content: space-between;
-   padding: 0.5rem;
-   border-bottom: 1px solid #ccc;
-   cursor: pointer;
+   display         : flex;
+   justify-content : space-between;
+   border-bottom   : 1px solid #ccc;
+   font-size       : 0.85em;
 }
 
 .TodoItem .done {
