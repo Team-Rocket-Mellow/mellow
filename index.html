@@ -16,3 +16,23 @@
 
 <div id="root"></div>
 <script type="module" src="/client/main.tsx"></script>
+<script>
+function runOnKeys(λ, ...codes) {
+   const history = new Set();
+
+   document.addEventListener('keydown', event => {
+      history.add(event.code);
+      for (const code of codes) if (!history.has(code)) return
+      history.clear()
+      λ()
+   })
+
+   document.addEventListener('keyup', event => history.delete(event.code))
+}
+
+runOnKeys(
+   () => alert("Hello!"),
+   "KeyQ",
+   "KeyW",
+)
+</script>

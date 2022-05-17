@@ -17,6 +17,7 @@ function TopMenu() {
         value={text}
         onChange={e => setText(e.target.value)}
       />
+      <i className="material-symbols-rounded">add</i>
       <i className="material-symbols-rounded">settings</i>
       <i className="material-symbols-rounded">account_circle</i>
     </header>
