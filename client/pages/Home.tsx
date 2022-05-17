@@ -1,8 +1,10 @@
-import TodoForm from "../components/dashboard/TodoForm"
 import TodoList from "../components/dashboard/TodoList"
 import TodoView from "../components/dashboard/TodoView"
 import TopMenu from "../components/TopMenu/TopMenu"
 import Modal from "../components/modal/Modal"
+
+// —————————————————————————————————————————————————————————————————————————————
+// Component
 
 function HomePage() {
   return (
@@ -14,12 +16,14 @@ function HomePage() {
         </nav>
         <section>
           <Modal />
-          {/* <TodoForm /> */}
           <TodoList />
         </section>
       </main>
     </div>
   )
 }
+
+// —————————————————————————————————————————————————————————————————————————————
+// Export
 
 export default HomePage
