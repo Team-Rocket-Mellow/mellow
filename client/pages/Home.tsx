@@ -1,5 +1,5 @@
 import TodoList from "../components/TodoList/TodoList"
-import TodoView from "../components/TodoView/TodoView"
+import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TopMenu  from "../components/TopMenu/TopMenu"
 import Modal    from "../components/Modal/Modal"
 
@@ -12,7 +12,7 @@ function Home() {
       <TopMenu />
       <main>
         <nav>
-          <TodoView />
+          <LeftMenu />
         </nav>
         <section>
           <Modal />
