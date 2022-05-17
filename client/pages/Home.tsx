@@ -14,7 +14,7 @@ function Home() {
         <nav>
           <LeftMenu />
         </nav>
-        <section>
+        <section id="TodoView">
           <Modal />
           <TodoList />
         </section>

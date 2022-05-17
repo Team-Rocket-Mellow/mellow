@@ -15,16 +15,11 @@ function TodoItem({ id, text, done, due }: Todo) {
   return (
     <div className="TodoItem">
       <span className={done ? "done" : "active"} onClick={toggleDone}>
-        {text} ({ due?.toJSON()?.slice(0, 10) ?? "∞"})
+        {text}
       </span>
-      {
-        view === "trash"
-          ? <>
-              <button onClick={toggleTrash}>untrash</button>
-              <button onClick={deleteTodo}>delete</button>
-            </>
-          : <button onClick={toggleTrash}>trash</button>
-      }
+      <span>
+        ({ due?.toJSON()?.slice(0, 10) ?? "∞"})
+      </span>
     </div>
   )
 }
