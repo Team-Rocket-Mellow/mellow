@@ -18,6 +18,7 @@ function TodoView() {
     done: <i className="material-symbols-rounded done">event_available</i>,
     trash: <i className="material-symbols-rounded trash">delete</i>,
   }
+
   return (
     <nav id="TodoView">
       {

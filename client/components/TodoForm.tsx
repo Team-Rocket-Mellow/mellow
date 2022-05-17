@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSetRecoilState } from "recoil"
-import { todos_list } from "../../state/atoms"
-import { createTodo } from "../../state/actions"
+import { todos_list } from "../state/atoms"
+import { createTodo } from "../state/actions"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component

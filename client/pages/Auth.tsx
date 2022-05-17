@@ -1,5 +1,5 @@
-import SignUp from "../components/login/SignUp"
-import SignIn from "../components/login/SignIn"
+import SignUp from "../components/Auth/SignUp"
+import SignIn from "../components/Auth/SignIn"
 import TopMenu from "../components/TopMenu/TopMenu"
 
 // —————————————————————————————————————————————————————————————————————————————

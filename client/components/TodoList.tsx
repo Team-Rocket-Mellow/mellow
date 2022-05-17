@@ -1,12 +1,13 @@
 import { useRecoilValue } from "recoil"
-import { todos_list_filtered } from "../../state/selectors"
-import TodoItem from "./TodoItem"
+import { todos_list_filtered } from "../state/selectors"
+import TodoItem from "./TodoItem/TodoItem"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function TodoList() {
   const todos = useRecoilValue(todos_list_filtered)
+
   return (
     <ul id="TodoList">
       {
