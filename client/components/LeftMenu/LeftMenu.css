@@ -2,7 +2,7 @@
    LeftMenu
 */
 
-#TodoView {
+#LeftMenu {
    display: flex;
    flex-direction: column;
    background-color: var(--sidebar);
@@ -35,7 +35,7 @@
    background-color: rgb(238, 238, 238);
 }
 
-#TodoView .active {
+#LeftMenu .active {
    font-weight: 600;
    background-color: rgb(238, 238, 238);
 }

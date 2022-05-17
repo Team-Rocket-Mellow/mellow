@@ -20,7 +20,7 @@ function LeftMenu() {
   }
 
   return (
-    <nav id="TodoView">
+    <nav id="LeftMenu">
       {
         views.map((v, i) => (
           <div onClick={() => setView(v)} className={v === view ? "item active" : "item"} key={i}>
