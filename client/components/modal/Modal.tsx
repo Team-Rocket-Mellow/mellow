@@ -13,44 +13,51 @@ function Modal() {
   const [isOpen, setOpen] = useState(false)
   const setTodos = useSetRecoilState(todos_list)
 
-  function onClick() {
+  function closeModal() {
+    setOpen(false)
+    setInput("")
+    setDue("")
+  }
+
+  function submit() {
     return input.length
       ? setTodos(state => {
-        setInput("")
-        setDue("")
-        setOpen(false)
+        closeModal()
         return state.concat(createTodo(input, due))
       })
       : null
   }
 
-  function keyHandler(e) {
+  function hotkey(e) {
     switch (e.code) {
-      case "Enter": return onClick()
+      case "Enter":
+        submit()
+        break
       case "Escape":
-        setInput("")
-        return setOpen(false)
+        closeModal()
     }
   }
 
   useEffect(() => {
-    document.addEventListener("keydown", keyHandler)
-    return () => document.removeEventListener("keydown", keyHandler)
-  })
+    document.addEventListener("keydown", hotkey)
+    return () => document.removeEventListener("keydown", hotkey)
+  }, [])
 
   useEffect(() => {
-    document.addEventListener("keydown", e => e.code === "KeyQ" && setOpen(true))
-  })
+    document.addEventListener("keydown", e => {
+      if (e.code === "KeyQ") setOpen(true)
+    })
+  }, [])
 
-  return (
-    <>
-      <dialog open={isOpen}>
+  return isOpen 
+    ? (
+      <div>
         <input type="date" value="" onChange={e => setDue(e.target.value)} />
         <input value={input} onChange={e => setInput(e.target.value)} autoFocus />
-        <button onClick={onClick}>add</button>
-      </dialog>
-    </>
-  )
+        <button onClick={submit}>add</button>
+      </div>
+    ) 
+    : null
 }
 
 // —————————————————————————————————————————————————————————————————————————————
