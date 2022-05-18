@@ -21,7 +21,7 @@
    Menu Items
 */
 
-.item {
+#LeftMenu .item {
    display: flex;
    justify-content: space-between;
    padding-top: 5px;
@@ -31,7 +31,7 @@
    border-radius: 4px;
 }
 
-.item:hover {
+#LeftMenu .item:hover {
    background-color: rgb(238, 238, 238);
 }
 
@@ -40,7 +40,7 @@
    background-color: rgb(238, 238, 238);
 }
 
-.statistic {
+#LeftMenu .statistic {
    padding-right: 1em;
    font-size: 0.8em;
    color: rgb(147, 142, 142);
@@ -52,18 +52,18 @@
    Icons
 */
 
-i {
+#LeftMenu i {
    margin-right: 0.3em;
 }
 
-i.inbox {
+#LeftMenu i.inbox {
    color: #4765e6;
 }
 
-i.today {
+#LeftMenu i.today {
    color: green;
 }
 
-i.trash {
+#LeftMenu i.trash {
    color: rgb(176, 8, 8);
 }

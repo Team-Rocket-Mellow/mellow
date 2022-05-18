@@ -7,9 +7,11 @@
    justify-content : space-between;
    border-bottom   : 1px solid #ccc;
    font-size       : 0.85em;
+   align-items     : center;
+   padding         : 0.5em;
 }
 
-.TodoItem .done {
+.TodoItem .done .text {
    text-decoration: line-through;
 }
 
@@ -17,6 +19,19 @@
    margin: 0.2em;
 }
 
-.TodoItem span {
-   margin: 0.5em;
+.TodoItem .left {
+   display: flex;
+   align-items: center;
+}
+
+.TodoItem i {
+   margin-right: 0.3em;
+}
+
+.TodoItem i::before {
+   content: "check_box_outline_blank";
+}
+
+.TodoItem i:hover::before {
+   content: "check_box";
 }
