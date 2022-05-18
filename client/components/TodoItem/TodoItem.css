@@ -35,3 +35,7 @@
 .TodoItem i:hover::before {
    content: "check_box";
 }
+
+.TodoItem .done i {
+   content: "check_box";
+}
