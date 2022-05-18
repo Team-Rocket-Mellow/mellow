@@ -19,4 +19,5 @@
 
 .TodoItem span {
    margin: 0.5em;
+   vertical-align: super;
 }
