@@ -14,8 +14,8 @@ function TodoItem({ id, text, done, due }: Todo) {
 
   return (
     <div className="TodoItem">
-      <span className={done ? "done" : "active"} onClick={toggleDone}>
-        <i className="material-symbols-rounded">check_box_outline_blank</i>
+      <span className={done ? "done left" : "active left"} onClick={toggleDone}>
+        <i className="material-symbols-rounded"></i>
         <span className="text">{text}</span>
       </span>
       <span>
