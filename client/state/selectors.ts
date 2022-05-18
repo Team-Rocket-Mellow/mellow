@@ -5,6 +5,15 @@ import { daysBetween } from "../../utility/time"
 // —————————————————————————————————————————————————————————————————————————————
 // Small Selectors
 
+const todos_with_overdue = selector({
+   key: "todos_with_overdue",
+   get: ({ get }) => get(todos_list)
+      .map(todo => ({
+         ...todo,
+         overdue: todo.due && daysBetween(new Date(), todo.due) < 0,
+      }))
+})
+
 const todos_active = selector({
    key: "todos_active",
    get: ({ get }) => get(todos_list).filter(todo => !todo.done && !todo.trash),
