@@ -19,7 +19,7 @@
    margin: 0.2em;
 }
 
-.TodoItem .left {
+.TodoItem span {
    display: flex;
    align-items: center;
 }
@@ -33,9 +33,5 @@
 }
 
 .TodoItem i:hover::before {
-   content: "check_box";
-}
-
-.TodoItem .done i {
    content: "check_box";
 }
