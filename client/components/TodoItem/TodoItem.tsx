@@ -15,11 +15,13 @@ function TodoItem({ id, text, done, due }: Todo) {
   return (
     <div className="TodoItem">
       <span className={done ? "done left" : "active left"} onClick={toggleDone}>
-        <i className="material-symbols-rounded"></i>
+        <i className="material-symbols-rounded">
+          { done ? "check_box" : "check_box_outline_blank" }
+        </i>
         <span className="text">{text}</span>
       </span>
       <span>
-        { due?.toJSON()?.slice(0, 10) ?? "∞"}
+        { due?.toJSON()?.slice(0, 10) ?? "∞" }
       </span>
     </div>
   )

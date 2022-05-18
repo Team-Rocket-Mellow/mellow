@@ -28,10 +28,10 @@
    margin-right: 0.3em;
 }
 
-.TodoItem i::before {
+/* .TodoItem i::before {
    content: "check_box_outline_blank";
 }
 
 .TodoItem i:hover::before {
    content: "check_box";
-}
+} */

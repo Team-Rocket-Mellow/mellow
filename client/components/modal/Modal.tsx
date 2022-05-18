@@ -42,7 +42,7 @@ function Modal() {
   return true
     ? (
       <dialog open={isOpen} id="Modal">
-        <input type="date" value="" onChange={e => setDue(e.target.value)} />
+        <input type="date" value={due} onChange={e => setDue(e.target.value)} />
         <input value={input} onChange={e => setInput(e.target.value)} autoFocus />
         <button onClick={submit}>add</button>
       </dialog>
