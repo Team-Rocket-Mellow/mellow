@@ -3,8 +3,8 @@
 
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
-import fastify from 'fastify'
-import { fastifyStatic } from "@fastify/static"
+import { fastify } from 'fastify'
+import fastifyStatic from "@fastify/static"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Configuration
@@ -19,22 +19,22 @@ const app = fastify({
 })
 
 const root = path.join(__dirname, "..", "dist")
-app.register(fastifyStatic, { root, })
+app.register(fastifyStatic, { root })
 
 // —————————————————————————————————————————————————————————————————————————————
 // Serve
 
 const start = async () => {
-   try {
-     await app.listen({
-       host,
-       port,
-     })
-   }
-   catch (err) {
-     app.log.error(err)
-     process.exit(1)
-   }
- }
+  try {
+    await app.listen({
+      host,
+      port,
+    })
+  }
+  catch (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+}
  
- start()
+start()

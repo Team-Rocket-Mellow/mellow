@@ -1,0 +1,25 @@
+dialog {
+   pointer-events: none;
+   opacity: 0;
+   transition: opacity 0.4s;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-color: white;
+   border-radius: 5px;
+}
+
+dialog input {
+   margin-right: 0.5em;
+}
+
+dialog[open] {
+   opacity: 1;
+   pointer-events: inherit;
+   box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop {
+   background-color: rgba(120, 120, 127, 0.2);
+   transition: visibility 0.5s linear 0.5s opacity 0.5s linear;
+}

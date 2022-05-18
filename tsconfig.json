@@ -3,20 +3,19 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "checkJs": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    "strict": false,           // let's see if this is too annoying
-    // "outDir": "dist",         // output folder location; see if conflicts with vite
-    "inlineSourceMap": true,  // sourcemaps included in bundle
   },
   "include": ["client"],
   "references": [{ "path": "./tsconfig.node.json" }]

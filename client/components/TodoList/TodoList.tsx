@@ -1,23 +1,24 @@
+import "./TodoList.css"
 import { useRecoilValue } from "recoil"
-import { todos_list_stats } from "../../state/selectors"
+import { todos_list_filtered } from "../../state/selectors"
+import TodoItem from "../TodoItem/TodoItem"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function TodoStats() {
-   const { done, today, upcoming, inbox, trash } = useRecoilValue(todos_list_stats)
-   return (
-      <ul id="TodoStats">
-         <li>Inbox: {inbox}</li>
-         <li>Today: {today}</li>
-         <li>Upcoming: {upcoming}</li>
-         <li>Done: {done}</li>
-         <li>Trash: {trash}</li>
-      </ul>
-   )
+function TodoList() {
+  const todos = useRecoilValue(todos_list_filtered)
+
+  return (
+    <ul id="TodoList">
+      {
+        todos.map((todo, i) => <TodoItem key={i} {...todo} />)
+      }
+    </ul>
+  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default TodoStats
+export default TodoList

@@ -1,19 +1,21 @@
-import "./App.css"
-import { RecoilRoot, } from "recoil"
-import Home from "./pages/Home"
+import SignUp from "../components/Auth/SignUp"
+import SignIn from "../components/Auth/SignIn"
+import TopMenu from "../components/TopMenu/TopMenu"
 
 // —————————————————————————————————————————————————————————————————————————————
-// Component
+// Page
 
-function App() {
-  return <div id="App">
-    <RecoilRoot>
-      <Home />
-    </RecoilRoot>
-  </div>
+function Auth() {
+  return (
+    <div id="SignIn">
+      <TopMenu />
+      <SignIn />
+      <SignUp />
+    </div>
+  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default App
+export default Auth
