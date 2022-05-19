@@ -12,7 +12,8 @@ function TopMenu() {
       <i className='material-symbols-rounded'>menu</i>
       <i className='material-symbols-rounded'>home</i>
       <input
-        className='navbar_search'
+        type='search'
+        tabIndex={-1}
         placeholder='/ to search...'
         value={text}
         onChange={e => setText(e.target.value)}
