@@ -23,19 +23,11 @@
    background-color: rgb(222, 222, 222);
 }
 
-.navbar__title {
-   margin-right: 30px;
-   font-size: 1.5em;
-   padding: 12px 16px;
-   text-transform: uppercase;
-}
-
-.navbar_search {
+#NavBar input {
    margin-right: auto;
    padding: 2px 10px;
    font-size: 1em;
    line-height: 1.5em;
-   font-weight: 500;
    border: none;
 }
 

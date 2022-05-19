@@ -15,11 +15,9 @@ function Modal() {
   const setTodos = useSetRecoilState(todos_list)
 
   function handleTab(e: KeyboardEvent) {
-    console.log("tab")
     const group = ref.current?.querySelectorAll(
       "input[type=text], button"
     ) as NonNullable<NodeListOf<HTMLInputElement>>
-    console.log(group)
     if (!e.shiftKey && document.activeElement !== group[0]) {
       group[0].focus()
       return e.preventDefault()

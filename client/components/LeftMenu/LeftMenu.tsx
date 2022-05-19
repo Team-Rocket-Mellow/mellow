@@ -23,7 +23,12 @@ function LeftMenu() {
     <nav id="LeftMenu">
       {
         views.map((v, i) => (
-          <div onClick={() => setView(v)} className={v === view ? "item active" : "item"} key={i}>
+          <div 
+            onClick={() => setView(v)} 
+            className={v === view ? "item active" : "item"} 
+            key={i}
+            tabIndex={1}
+          >
             <span className="flex">{icons[v]}<p>{v}</p></span> 
             <span className="statistic">{stats[v] ? stats[v] : null}</span>
           </div>
