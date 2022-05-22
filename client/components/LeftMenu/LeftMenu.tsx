@@ -11,12 +11,12 @@ function LeftMenu() {
   const views: View[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
   const icons = {
-    all: <i className="material-symbols-rounded">apps</i>,
-    inbox: <i className="material-symbols-rounded inbox">inbox</i>,
-    today: <i className="material-symbols-rounded today">today</i>,
+    all:      <i className="material-symbols-rounded">apps</i>,
+    inbox:    <i className="material-symbols-rounded inbox">inbox</i>,
+    today:    <i className="material-symbols-rounded today">today</i>,
     upcoming: <i className="material-symbols-rounded upcoming">event_upcoming</i>,
-    done: <i className="material-symbols-rounded done">event_available</i>,
-    trash: <i className="material-symbols-rounded trash">delete</i>,
+    done:     <i className="material-symbols-rounded done">event_available</i>,
+    trash:    <i className="material-symbols-rounded trash">delete</i>,
   }
 
   return (
