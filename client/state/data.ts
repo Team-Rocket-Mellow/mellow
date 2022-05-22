@@ -47,22 +47,13 @@ const undated: Todo[] = [
       text: "Undated 1",
       done: false,
       trash: false,
-      start: new Date(),
-      due: null,
-      pending: false,
-   },
-   {
-      id: nanoid(),
-      text: "Undated 2",
-      done: false,
-      trash: false,
       start: new Date("2020-01-01"),
       due: null,
       pending: false,
    },
    {
       id: nanoid(),
-      text: "Undated 3",
+      text: "Undated 2",
       done: true,
       trash: false,
       start: new Date("2020-01-01"),
@@ -71,7 +62,7 @@ const undated: Todo[] = [
    },
    {
       id: nanoid(),
-      text: "Undated 4",
+      text: "Undated 3",
       done: true,
       trash: false,
       start: new Date("2020-01-01"),
@@ -119,6 +110,37 @@ const future: Todo[] = [
    },
 ]
 
+const today: Todo[] = [
+   {
+      id: nanoid(),
+      text: "Today 1",
+      done: false,
+      trash: false,
+      start: new Date(),
+      due: new Date(),
+      pending: false,
+   },
+   {
+      id: nanoid(),
+      text: "Today 2",
+      done: false,
+      trash: false,
+      start: new Date(),
+      due: new Date(),
+      pending: false,
+   },
+   {
+      id: nanoid(),
+      text: "Today 3",
+      done: true,
+      trash: false,
+      start: new Date(),
+      due: new Date(),
+      pending: false,
+   },
+]
+
 export default undated
    .concat(past)
+   .concat(today)
    .concat(future)

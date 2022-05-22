@@ -14,6 +14,17 @@ export type Todo = {
    pending : boolean      // pending change yet persisted on server
 }
 
+export type TodoElement = {
+   id      : string
+   text    : string
+   done    : boolean
+   trash   : boolean
+   start   : Date         // UTC
+   due     : Date | null  // UTC
+   pending : boolean      // pending change yet persisted on server
+   overdue : boolean      // due date is in the past
+}
+
 export type TodoView = "all"
    | "active"
    | "done"

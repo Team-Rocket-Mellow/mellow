@@ -37,5 +37,6 @@ export function dateToString(date:Date) {
  */
 export function daysBetween(start:Date, end:Date) {
    const millisecondsPerDay = 24 * 60 * 60 * 1000
-   return (+treatAsUTC(end) - +treatAsUTC(start)) / millisecondsPerDay
+   const difference = (+treatAsUTC(end) - +treatAsUTC(start)) / millisecondsPerDay
+   return difference
 }
