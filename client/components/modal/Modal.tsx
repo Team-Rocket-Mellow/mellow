@@ -16,11 +16,7 @@ function ModalPortal() {
   const [isOpen, setOpen] = useState(false)
 
   useEffect(() => {
-    function triggerModal(event:KeyboardEvent) {
-      if (!isOpen && event.code === "KeyQ") {
-        setOpen(true)
-      }
-    }
+    const triggerModal = (Δ:KeyboardEvent) => !isOpen && Δ.code === "KeyQ" && setOpen(true)
     document.addEventListener("keydown", triggerModal)
     console.log("+ [q]")
   }, [])
@@ -40,32 +36,33 @@ function ModalPortal() {
 
 function Modal({ setOpen }) {
   const [input, setInput] = useState("")
+  const [due, setDue] = useState("")
   const setTodos = useSetRecoilState(todos_list)
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleTyping = (event) => {
-    event.preventDefault()
-    setInput(event.target.value)
+  const handleTyping = (Δ) => {
+    Δ.preventDefault()
+    setInput(Δ.target.value)
   }
-  const submit = (event) => {
-    event.preventDefault()
-    console.log("submit event: ", input)
-    input.length && setTodos(todos => todos.concat(createTodo(input)))
+  const submit = (Δ) => {
+    Δ.preventDefault()
+    console.log("submit Δ: ", input)
+    input.length && setTodos(todos => todos.concat(createTodo(input, due)))
     setOpen(false)
   }
 
   useEffect(() => {
-    const click = (event) => formRef.current && !formRef.current.contains(event.target) && setOpen(false)
-    const keydown = (event: KeyboardEvent) => {
-      switch (event.key) {
+    const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
+    const keydown = (Δ: KeyboardEvent) => {
+      switch (Δ.key) {
         case "Escape": setOpen(false); break
         case "Tab":
           const group = formRef.current?.querySelectorAll("input[type=text], button") as NonNullable<NodeListOf<HTMLInputElement>>
           const first = group[0]
           const last = group[group.length - 1]
-          if (!event.shiftKey && document.activeElement !== first) first.focus(), event.preventDefault()
-          else if (event.shiftKey && document.activeElement !== last) last.focus(), event.preventDefault()
+          if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
+          else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
       }
     }
 
@@ -86,6 +83,7 @@ function Modal({ setOpen }) {
 
   return (
     <form onSubmit={submit} id="Modal" ref={formRef}>
+      <input type="date" value={due} onChange={e => setDue(e.target.value)} />
       <input type="text" value={input} onChange={handleTyping} ref={inputRef} />
       <button type="submit">submit</button>
     </form>
