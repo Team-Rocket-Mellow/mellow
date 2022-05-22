@@ -1,5 +1,5 @@
 import "./Modal.css"
-import { useState, useEffect, useRef, createRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
@@ -39,32 +39,49 @@ function Modal() {
   function hotkey(e: KeyboardEvent) {
     switch (e.code) {
       case "KeyQ": setOpen(true); break
-      case "Enter": submit(); break
+      // case "Enter": submit(); break
       case "Escape": closeModal(); break
       case "Tab": handleTab(e); break
     }
   }
 
   function outsideClick(e) { if (ref.current && !ref.current.contains(e.target)) closeModal() }
+  // function onEnter(e: KeyboardEvent) { if (e.key === "Enter") submit() }
 
   useEffect(() => {
     document.addEventListener("keydown", hotkey)
-    return () => document.removeEventListener("keydown", hotkey)
+    console.log("hotkey added")
+    return () => {
+      document.removeEventListener("keydown", hotkey)
+      console.log("hotkey removed")
+    }
+  }, [isOpen])
+
+  function onEnter(e: KeyboardEvent) { if (e.key === "Enter") submit() }
+  useEffect(() => {
+    document.addEventListener("keydown", onEnter)
+    console.log("enter added")
+    return () => {
+      document.removeEventListener("keydown", onEnter)
+      console.log("enter removed")
+    }
   }, [input])
 
   useEffect(() => {
     document.addEventListener("click", outsideClick)
-    return () => document.removeEventListener("click", outsideClick)
+    console.log("click added")
+    return () => {
+      document.removeEventListener("click", outsideClick)
+      console.log("click removed")
+    }
   }, [ref])
 
   return isOpen
-    ? (
-      <dialog open={isOpen} id="Modal" ref={ref}>
+    ? <dialog open={isOpen} id="Modal" ref={ref}>
         <input type="date" value={due} onChange={e => setDue(e.target.value)} />
         <input type="text" value={input} onChange={e => setInput(e.target.value)} autoFocus />
         <button onClick={submit}>add</button>
       </dialog>
-    )
     : null
 }
 
