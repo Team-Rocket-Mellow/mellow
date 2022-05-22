@@ -1,6 +1,6 @@
 <!doctype html>
 
-<meta charset="UTF-8" />
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
@@ -15,24 +15,6 @@
 <title>Mellow</title>
 
 <div id="root"></div>
+<div id="portal"></div>
+
 <script type="module" src="/client/main.tsx"></script>
-<script>
-function runOnKeys(λ, ...codes) {
-   const history = new Set();
-
-   document.addEventListener('keydown', event => {
-      history.add(event.code);
-      for (const code of codes) if (!history.has(code)) return
-      history.clear()
-      λ()
-   })
-
-   document.addEventListener('keyup', event => history.delete(event.code))
-}
-
-runOnKeys(
-   () => alert("Hello!"),
-   "KeyQ",
-   "KeyW",
-)
-</script>
