@@ -15,10 +15,10 @@ function Home() {
           <LeftMenu />
         </nav>
         <section id="TodoView">
-          <Modal />
           <TodoList />
         </section>
       </main>
+      <Modal />
     </div>
   )
 }

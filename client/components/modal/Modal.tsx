@@ -8,70 +8,89 @@ import { createTodo } from "../../state/actions"
 // —————————————————————————————————————————————————————————————————————————————
 // Wrapper
 
-function ModalWrapper() {
-   const [isOpen, setOpen] = useState(false)
+/**
+ * - sets hotkey `q` to open a modal
+ * - creates a portal to render modal outside app hierarchy
+ */
+function ModalPortal() {
+  const [isOpen, setOpen] = useState(false)
 
-   useEffect(() => {
-      const triggerModal = (e) => !isOpen && e.code === "KeyQ" && setOpen(true)
-      document.addEventListener("keydown", triggerModal)
-      console.log("+ [q]")
-   }, [])
+  useEffect(() => {
+    const triggerModal = (Δ:KeyboardEvent) => !isOpen && Δ.code === "KeyQ" && setOpen(true)
+    document.addEventListener("keydown", triggerModal)
+    console.log("+ [q]")
+  }, [])
 
-   return (
-      <div className="ModalWrapper">
-         { isOpen && <Modal setOpen={setOpen} /> }
-      </div>
-   )
+  return <>
+    { 
+      isOpen && createPortal(
+        <Modal setOpen={setOpen} />,  
+        document.getElementById("portal") as HTMLElement
+      ) 
+    }
+  </>
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
 function Modal({ setOpen }) {
-   const [input, setInput] = useState("")
-   const setTodos = useSetRecoilState(todos_list)
-   const ref = useRef<HTMLFormElement>(null)
+  const [input, setInput] = useState("")
+  const [due, setDue] = useState("")
+  const setTodos = useSetRecoilState(todos_list)
+  const formRef = useRef<HTMLFormElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
-   const handleTyping = Δ => setInput(Δ.target.value)
-   const submit = Δ => {
-      Δ.preventDefault()
-      console.log("submit event: ", input)
-      input.length && setTodos(todos => todos.concat(createTodo(input)))
-      setOpen(false)
-   }
-   useEffect(() => {
-      const click = Δ => ref.current && !ref.current.contains(Δ.target) && setOpen(false)
-      function keydown(Δ: KeyboardEvent) {
-         switch (Δ.key) {
-            case "Escape": setOpen(false); break
-            case "Tab":
-               const group = ref.current?.querySelectorAll("input[type=text], button") as NonNullable<NodeListOf<HTMLInputElement>>
-               const first = group[0]
-               const last = group[group.length - 1]
-               if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
-               else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
-         }
-      }
-      document.addEventListener("click", click)
-      document.addEventListener("keydown", keydown)
-      console.log("+ [click, escape, tab]")
-      return () => {
-         document.removeEventListener("click", click)
-         document.removeEventListener("keydown", keydown)
-         console.log("- [click, escape, tab]")
-      }
-   }, [ref])
+  const handleTyping = (Δ) => {
+    Δ.preventDefault()
+    setInput(Δ.target.value)
+  }
+  const submit = (Δ) => {
+    Δ.preventDefault()
+    console.log("submit Δ: ", input)
+    input.length && setTodos(todos => todos.concat(createTodo(input, due)))
+    setOpen(false)
+  }
 
-   return createPortal(
-      <form onSubmit={submit} id="Modal" ref={ref}>
-         <input type="text" value={input} onChange={handleTyping} autoFocus />
-         <button type="submit">submit</button>
-      </form>,
-      document.getElementById("portal") as HTMLElement
-   )
+  useEffect(() => {
+    const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
+    const keydown = (Δ: KeyboardEvent) => {
+      switch (Δ.key) {
+        case "Escape": setOpen(false); break
+        case "Tab":
+          const group = formRef.current?.querySelectorAll("input[type=text], button") as NonNullable<NodeListOf<HTMLInputElement>>
+          const first = group[0]
+          const last = group[group.length - 1]
+          if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
+          else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
+      }
+    }
+
+    document.addEventListener("click", click)
+    document.addEventListener("keydown", keydown)
+    console.log("+ [click, escape, tab]")
+    return () => {
+      document.removeEventListener("click", click)
+      document.removeEventListener("keydown", keydown)
+      console.log("- [click, escape, tab]")
+    }
+  }, [formRef])
+  
+  useEffect(() => {
+    setTimeout(() => inputRef.current?.focus(), 1)
+    console.log("input focus effect")
+  }, [])
+
+  return (
+    <form onSubmit={submit} id="Modal" ref={formRef}>
+      <input type="date" value={due} onChange={e => setDue(e.target.value)} />
+      <input type="text" value={input} onChange={handleTyping} ref={inputRef} />
+      <button type="submit">submit</button>
+    </form>
+  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default ModalWrapper
+export default ModalPortal
