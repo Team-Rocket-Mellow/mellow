@@ -41,10 +41,7 @@ function Modal({ setOpen }) {
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleTyping = (Δ) => {
-    Δ.preventDefault()
-    setInput(Δ.target.value)
-  }
+  const handleTyping = (Δ) => setInput(Δ.target.value)
   const submit = (Δ) => {
     Δ.preventDefault()
     console.log("submit Δ: ", input)
