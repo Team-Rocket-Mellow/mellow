@@ -1,12 +1,12 @@
 import "./TodoItem.css"
 import { useState } from "react"
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { todos_list, todos_view, Todo } from "../../state/atoms"
+import { todos_list, todos_view, TodoElement } from "../../state/atoms"
 
 // —————————————————————————————————————————————————————————————————————————————
 // TodoItem
 
-function TodoItem({ id, text, done, due }: Todo) {
+function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const [todos, setTodos] = useRecoilState(todos_list)
   const [isHover, setHover] = useState(false)
   const view = useRecoilValue(todos_view)
@@ -26,7 +26,7 @@ function TodoItem({ id, text, done, due }: Todo) {
         </i>
         <span className="text">{text}</span>
       </span>
-      <span>
+      <span className={overdue ? "overdue" : ""}>
         { due?.toJSON()?.slice(0, 10) ?? "∞" }
       </span>
     </div>

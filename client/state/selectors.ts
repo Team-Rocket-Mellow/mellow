@@ -10,38 +10,39 @@ const todos_with_overdue = selector({
    get: ({ get }) => get(todos_list)
       .map(todo => ({
          ...todo,
-         overdue: todo.due && daysBetween(new Date(), todo.due) < 0,
+         overdue: todo.due && daysBetween(new Date(), todo.due) <= -1,
       }))
+      .sort((a, b) => Number(a.due) - Number(b.due)),
 })
 
 const todos_active = selector({
    key: "todos_active",
-   get: ({ get }) => get(todos_list).filter(todo => !todo.done && !todo.trash),
+   get: ({ get }) => get(todos_with_overdue).filter(todo => !todo.done && !todo.trash),
 })
 
 const todos_done = selector({
    key: "todos_done",
-   get: ({ get }) => get(todos_list).filter(todo => todo.done && !todo.trash),
+   get: ({ get }) => get(todos_with_overdue).filter(todo => todo.done && !todo.trash),
 })
 
 const todos_inbox = selector({
    key: "todos_inbox",
-   get: ({ get }) => get(todos_list).filter(todo => !todo.trash && !todo.due && !todo.done),
+   get: ({ get }) => get(todos_with_overdue).filter(todo => !todo.trash && !todo.due && !todo.done),
 })
 
 const todos_trash = selector({
    key: "todos_trash",
-   get: ({ get }) => get(todos_list).filter(todo => todo.trash),
+   get: ({ get }) => get(todos_with_overdue).filter(todo => todo.trash),
 })
 
 const todos_today = selector({
    key: "todos_today",
-   get: ({ get }) => get(todos_list).filter(todo => !todo.trash && todo.due && daysBetween(new Date(), todo.due) <= 0),
+   get: ({ get }) => get(todos_with_overdue).filter(todo => !todo.trash && todo.due && daysBetween(new Date(), todo.due) <= 0),
 })
 
 const todos_upcoming = selector({
    key: "todos_upcoming",
-   get: ({ get }) => get(todos_list).filter(todo => todo.due && daysBetween(new Date(), todo.due) > 0),
+   get: ({ get }) => get(todos_with_overdue).filter(todo => todo.due && daysBetween(new Date(), todo.due) > 0),
 })
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -52,7 +53,7 @@ export const todos_list_filtered = selector({
    get: ({ get }) => {
       const view = get(todos_view)
       switch (view) {
-         case "all": return get(todos_list)
+         case "all": return get(todos_with_overdue)
          case "active": return get(todos_active)
          case "done": return get(todos_done)
          case "inbox": return get(todos_inbox)
@@ -67,7 +68,7 @@ export const todos_list_filtered = selector({
 export const todos_list_stats = selector({
    key: "todos_list_stats",
    get: ({ get }) => {
-      const all = get(todos_list).length
+      const all = get(todos_with_overdue).length
       const active = get(todos_active).length
       const done = get(todos_done).length
       const inbox = get(todos_inbox).length
