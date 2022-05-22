@@ -1,12 +1,12 @@
 import "./Modal.css"
 import { createPortal } from "react-dom"
-import { useState, useEffect, useRef, ReactPortal } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
 
 // —————————————————————————————————————————————————————————————————————————————
-// Component
+// Wrapper
 
 function ModalWrapper() {
    const [isOpen, setOpen] = useState(false)
@@ -23,6 +23,9 @@ function ModalWrapper() {
       </div>
    )
 }
+
+// —————————————————————————————————————————————————————————————————————————————
+// Modal
 
 function Modal({ setOpen }) {
    const [input, setInput] = useState("")
@@ -67,5 +70,8 @@ function Modal({ setOpen }) {
       document.getElementById("portal") as HTMLElement
    )
 }
+
+// —————————————————————————————————————————————————————————————————————————————
+// Export
 
 export default ModalWrapper
