@@ -11,6 +11,7 @@
     "serve": "tsc --project ./server/tsconfig.json && nodemon ./server/dist/index.js"
   },
   "dependencies": {
+    "@fastify/websocket": "^5.0.0",
     "@headlessui/react": "^1.6.1",
     "@heroicons/react": "^1.0.6",
     "nanoid": "^3.3.4",
