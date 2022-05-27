@@ -32,9 +32,16 @@ async function fastify_ws(app) {
 
 async function handle_ws(connection, request) {
    connection.socket.on("message", message => {
-      console.log(JSON.parse(message))
-      connection.socket.send("Hello: " + message)
+      const { msg, date } = JSON.parse(message)
+      const outgoing = { msg, date: new Date(), }
+      console.log("Receiving: ", JSON.parse(message))
+      console.log("Sending: ", outgoing)
+      connection.socket.send(JSON.stringify(outgoing))
    })
+
+   setInterval(() => {
+      connection.socket.send(JSON.stringify({ msg: "ping", date: new Date(), }))
+   }, 5000)
 }
 
 // —————————————————————————————————————————————————————————————————————————————

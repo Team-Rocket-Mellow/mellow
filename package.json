@@ -21,7 +21,8 @@
     "react-transition-group": "^4.4.2",
     "recoil": "github:facebookexperimental/Recoil#nightly",
     "socket.io-client": "^4.5.1",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "ws": "^8.7.0"
   },
   "devDependencies": {
     "@fastify/static": "^6.0.0",
