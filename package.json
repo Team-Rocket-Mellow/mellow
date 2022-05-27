@@ -3,5 +3,9 @@
    "workspaces": [
       "server",
       "client"
-   ]
+   ],
+   "scripts": {
+      "client:dev": "npm run dev --workspace=client",
+      "dev": "npm run client:dev"
+   }
 }
