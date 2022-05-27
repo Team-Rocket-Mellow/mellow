@@ -1,6 +1,6 @@
 import { selector } from "recoil"
 import { todos_list, todos_view } from "./atoms"
-import { daysBetween } from "../../utility/time"
+import { daysBetween } from "../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Small Selectors
