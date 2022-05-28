@@ -21,17 +21,12 @@ function ModalPortal() {
       && Δ.code === "KeyQ"
       && setOpen(true)
     document.addEventListener("keydown", triggerModal)
-    console.log("+ [q]")
   }, [])
 
-  return <>
-    {
-      isOpen && createPortal(
-        <Modal setOpen={setOpen} />,
-        document.getElementById("portal")!
-      )
-    }
-  </>
+  return isOpen && createPortal(
+    <Modal setOpen={setOpen} />,
+    document.getElementById("portal")!
+  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -48,8 +43,7 @@ function Modal({ setOpen }) {
   const handleDate = (Δ) => setDate(Δ.target.value)
   const submit = (Δ) => {
     Δ.preventDefault()
-    console.log("submit Δ: ", text)
-    text.length && setTodos(todos => todos.concat(createTodo(text, date)))
+    text.length && setTodos(todos => [...todos, createTodo(text, date)])
     setOpen(false)
   }
 
@@ -68,18 +62,13 @@ function Modal({ setOpen }) {
     }
     document.addEventListener("click", click)
     document.addEventListener("keydown", keydown)
-    console.log("+ [click, escape, tab]")
     return () => {
       document.removeEventListener("click", click)
       document.removeEventListener("keydown", keydown)
-      console.log("- [click, escape, tab]")
     }
   }, [formRef])
 
-  useEffect(() => {
-    setTimeout(() => inputRef.current?.focus(), 1)
-    console.log("input focus effect")
-  }, [])
+  useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
     <form onSubmit={submit} id="Modal" ref={formRef}>
