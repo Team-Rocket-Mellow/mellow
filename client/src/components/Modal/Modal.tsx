@@ -39,17 +39,17 @@ function ModalPortal() {
 
 function Modal({ setOpen }) {
   const [text, setText] = useState("")
-  const [due, setDue] = useState("")
+  const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleText = (Δ) => setText(Δ.target.value)
-  const handleDate = (Δ) => setDue(Δ.target.value)
+  const handleDate = (Δ) => setDate(Δ.target.value)
   const submit = (Δ) => {
     Δ.preventDefault()
     console.log("submit Δ: ", text)
-    text.length && setTodos(todos => todos.concat(createTodo(text, due)))
+    text.length && setTodos(todos => todos.concat(createTodo(text, date)))
     setOpen(false)
   }
 
@@ -83,7 +83,7 @@ function Modal({ setOpen }) {
 
   return (
     <form onSubmit={submit} id="Modal" ref={formRef}>
-      <input type="date" value={due} onChange={handleDate} />
+      <input type="date" value={date} onChange={handleDate} />
       <input type="text" value={text} onChange={handleText} ref={inputRef} />
       <button type="submit">submit</button>
     </form>
