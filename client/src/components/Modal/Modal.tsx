@@ -28,7 +28,7 @@ function ModalPortal() {
     {
       isOpen && createPortal(
         <Modal setOpen={setOpen} />,
-        document.getElementById("portal") as HTMLElement
+        document.getElementById("portal")!
       )
     }
   </>
