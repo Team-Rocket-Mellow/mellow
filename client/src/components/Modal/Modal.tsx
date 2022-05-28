@@ -22,11 +22,11 @@ function ModalPortal() {
   }, [])
 
   return <>
-    { 
+    {
       isOpen && createPortal(
-        <Modal setOpen={setOpen} />,  
+        <Modal setOpen={setOpen} />,
         document.getElementById("portal") as HTMLElement
-      ) 
+      )
     }
   </>
 }
@@ -35,34 +35,34 @@ function ModalPortal() {
 // Modal
 
 function Modal({ setOpen }) {
-  const [input, setInput] = useState("")
+  const [text, setText] = useState("")
   const [due, setDue] = useState("")
   const setTodos = useSetRecoilState(todos_list)
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleTyping = (Δ) => setInput(Δ.target.value)
+  const handleText = (Δ) => setText(Δ.target.value)
+  const handleDate = (Δ) => setDue(Δ.target.value)
   const submit = (Δ) => {
     Δ.preventDefault()
-    console.log("submit Δ: ", input)
-    input.length && setTodos(todos => todos.concat(createTodo(input, due)))
+    console.log("submit Δ: ", text)
+    text.length && setTodos(todos => todos.concat(createTodo(text, due)))
     setOpen(false)
   }
 
   useEffect(() => {
     const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
-    const keydown = (Δ: KeyboardEvent) => {
+    const keydown = (Δ:KeyboardEvent) => {
       switch (Δ.key) {
         case "Escape": setOpen(false); break
         case "Tab":
-          const group = formRef.current?.querySelectorAll("input[type=text], button") as NonNullable<NodeListOf<HTMLInputElement>>
+          const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLInputElement>
           const first = group[0]
           const last = group[group.length - 1]
           if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
           else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
       }
     }
-
     document.addEventListener("click", click)
     document.addEventListener("keydown", keydown)
     console.log("+ [click, escape, tab]")
@@ -72,7 +72,7 @@ function Modal({ setOpen }) {
       console.log("- [click, escape, tab]")
     }
   }, [formRef])
-  
+
   useEffect(() => {
     setTimeout(() => inputRef.current?.focus(), 1)
     console.log("input focus effect")
@@ -80,8 +80,8 @@ function Modal({ setOpen }) {
 
   return (
     <form onSubmit={submit} id="Modal" ref={formRef}>
-      <input type="date" value={due} onChange={e => setDue(e.target.value)} />
-      <input type="text" value={input} onChange={handleTyping} ref={inputRef} />
+      <input type="date" value={due} onChange={handleDate} />
+      <input type="text" value={text} onChange={handleText} ref={inputRef} />
       <button type="submit">submit</button>
     </form>
   )
