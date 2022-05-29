@@ -1,7 +1,8 @@
 import "./TodoItem.css"
 import { useState } from "react"
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { todos_list, todos_view, TodoElement } from "../../state/atoms"
+import { todos_list, todos_view } from "../../state/atoms"
+import { TodoElement } from "../../state/types"
 
 // —————————————————————————————————————————————————————————————————————————————
 // TodoItem

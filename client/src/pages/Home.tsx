@@ -1,3 +1,4 @@
+import "./Home.css"
 import TodoList from "../components/TodoList/TodoList"
 import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TopMenu  from "../components/TopMenu/TopMenu"
@@ -7,20 +8,18 @@ import Modal    from "../components/Modal/Modal"
 // Component
 
 function Home() {
-  return (
+  return <>
     <div id="Home">
       <TopMenu />
       <main>
-        <nav>
-          <LeftMenu />
-        </nav>
+        <LeftMenu />
         <section id="TodoView">
           <TodoList />
         </section>
       </main>
-      <Modal />
     </div>
-  )
+    <Modal />
+  </>
 }
 
 // —————————————————————————————————————————————————————————————————————————————

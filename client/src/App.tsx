@@ -6,11 +6,11 @@ import Home from "./pages/Home"
 // Component
 
 function App() {
-  return <div id="App">
+  return <>
     <RecoilRoot>
       <Home />
     </RecoilRoot>
-  </div>
+  </>
 }
 
 // —————————————————————————————————————————————————————————————————————————————

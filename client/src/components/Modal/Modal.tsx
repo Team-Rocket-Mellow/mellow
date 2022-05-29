@@ -1,7 +1,9 @@
 import "./Modal.css"
+
 import { createPortal } from "react-dom"
 import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
+import { CSSTransition } from "react-transition-group"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
 
@@ -23,16 +25,16 @@ function ModalPortal() {
     document.addEventListener("keydown", triggerModal)
   }, [])
 
-  return isOpen && createPortal(
-    <Modal setOpen={setOpen} />,
+  return isOpen ? createPortal(
+    <Modal setOpen={setOpen} isOpen={isOpen} />, 
     document.getElementById("portal")!
-  )
+  ) : null
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
-function Modal({ setOpen }) {
+function Modal({ setOpen, isOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
@@ -41,9 +43,8 @@ function Modal({ setOpen }) {
 
   const handleText = (Δ) => setText(Δ.target.value)
   const handleDate = (Δ) => setDate(Δ.target.value)
-  const submit = (Δ) => {
-    Δ.preventDefault()
-    text.length && setTodos(todos => [...todos, createTodo(text, date)])
+  const submit = () => {
+    text && setTodos(todos => [...todos, createTodo(text, date)])
     setOpen(false)
   }
 
@@ -71,11 +72,13 @@ function Modal({ setOpen }) {
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
-    <form onSubmit={submit} id="Modal" ref={formRef}>
-      <input type="date" value={date} onChange={handleDate} />
-      <input type="text" value={text} onChange={handleText} ref={inputRef} />
-      <button type="submit">submit</button>
-    </form>
+    <CSSTransition in={isOpen} timeout={800}>
+      <form id="Modal" onSubmit={submit} ref={formRef}>
+        <input type="date" value={date} onChange={handleDate} />
+        <input type="text" value={text} onChange={handleText} ref={inputRef} />
+        <button type="submit">submit</button>
+      </form>
+    </CSSTransition>
   )
 }
 
