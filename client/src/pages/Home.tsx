@@ -1,3 +1,4 @@
+import "./Home.css"
 import TodoList from "../components/TodoList/TodoList"
 import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TopMenu  from "../components/TopMenu/TopMenu"

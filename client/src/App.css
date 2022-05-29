@@ -2,15 +2,6 @@
    Global
 */
 
-#App main {
-  display: flex;
-}
-
-#App section {
-  padding: 1em;
-  width: 75%;
-}
-
 /* —————————————————————————————————————————————————————————————————————————————
    CSS Variables
 */

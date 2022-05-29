@@ -1,14 +1,15 @@
 import "./LeftMenu.css"
 import { useRecoilState, useRecoilValue } from "recoil"
-import { todos_view, TodoView as View } from "../../state/atoms"
+import { todos_view } from "../../state/atoms"
 import { todos_list_stats } from "../../state/selectors"
+import { TodoView } from "../../state/types"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function LeftMenu() {
   const [view, setView] = useRecoilState(todos_view)
-  const views: View[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
+  const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
   const icons = {
     all:      <i className="material-symbols-rounded">apps</i>,
