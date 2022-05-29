@@ -25,10 +25,10 @@ function ModalPortal() {
     document.addEventListener("keydown", triggerModal)
   }, [])
 
-  return isOpen && createPortal(
-    <Modal setOpen={setOpen} isOpen={isOpen} />,
+  return isOpen ? createPortal(
+    <Modal setOpen={setOpen} isOpen={isOpen} />, 
     document.getElementById("portal")!
-  )
+  ) : null
 }
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -72,7 +72,7 @@ function Modal({ setOpen, isOpen }) {
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
-    <CSSTransition in={isOpen} timeout={800} classNames="modal">
+    <CSSTransition in={isOpen} timeout={800}>
       <form id="Modal" onSubmit={submit} ref={formRef}>
         <input type="date" value={date} onChange={handleDate} />
         <input type="text" value={text} onChange={handleText} ref={inputRef} />

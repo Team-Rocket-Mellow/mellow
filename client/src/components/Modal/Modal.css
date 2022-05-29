@@ -20,18 +20,21 @@
    margin-right: 0.6em;
 }
 
-.modal-enter {
+#Modal-enter {
    opacity: 0;
    transform: scale(0.9);
 }
-.modal-enter-active {
+
+#Modal-enter-active {
    opacity: 1;
    transition: opacity 600ms;
 }
-.modal-exit {
+
+#Modal-exit {
    opacity: 1;
 }
-.modal-exit-active {
+
+#Modal-exit-active {
    opacity: 0;
    transition: opacity 600ms;
 }

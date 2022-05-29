@@ -7,20 +7,18 @@ import Modal    from "../components/Modal/Modal"
 // Component
 
 function Home() {
-  return (
+  return <>
     <div id="Home">
       <TopMenu />
       <main>
-        <nav>
-          <LeftMenu />
-        </nav>
+        <LeftMenu />
         <section id="TodoView">
           <TodoList />
         </section>
       </main>
-      <Modal />
     </div>
-  )
+    <Modal />
+  </>
 }
 
 // —————————————————————————————————————————————————————————————————————————————
