@@ -26,15 +26,7 @@ function ModalPortal() {
   }, [])
 
   return isOpen && createPortal(
-    <CSSTransition
-      in={isOpen}
-      timeout={500}
-      classNames="modal"
-      unmountOnExit
-      appear
-    >
-      <Modal setOpen={setOpen} />
-    </CSSTransition>,
+    <Modal setOpen={setOpen} isOpen={isOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -42,7 +34,7 @@ function ModalPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
-function Modal({ setOpen }) {
+function Modal({ setOpen, isOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
@@ -81,11 +73,19 @@ function Modal({ setOpen }) {
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
-    <form onSubmit={submit} id="Modal" ref={formRef}>
-      <input type="date" value={date} onChange={handleDate} />
-      <input type="text" value={text} onChange={handleText} ref={inputRef} />
-      <button type="submit">submit</button>
-    </form>
+    <CSSTransition
+      in={isOpen}
+      timeout={500}
+      classNames="modal"
+      unmountOnExit
+      appear
+    >
+      <form onSubmit={submit} id="Modal" ref={formRef}>
+        <input type="date" value={date} onChange={handleDate} />
+        <input type="text" value={text} onChange={handleText} ref={inputRef} />
+        <button type="submit">submit</button>
+      </form>
+    </CSSTransition>
   )
 }
 
