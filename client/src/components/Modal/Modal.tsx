@@ -43,9 +43,8 @@ function Modal({ setOpen, isOpen }) {
 
   const handleText = (Δ) => setText(Δ.target.value)
   const handleDate = (Δ) => setDate(Δ.target.value)
-  const submit = (Δ) => {
-    Δ.preventDefault()
-    text.length && setTodos(todos => [...todos, createTodo(text, date)])
+  const submit = () => {
+    text && setTodos(todos => [...todos, createTodo(text, date)])
     setOpen(false)
   }
 
@@ -73,14 +72,8 @@ function Modal({ setOpen, isOpen }) {
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
-    <CSSTransition
-      in={isOpen}
-      timeout={500}
-      classNames="modal"
-      unmountOnExit
-      appear
-    >
-      <form onSubmit={submit} id="Modal" ref={formRef}>
+    <CSSTransition in={isOpen} timeout={800} classNames="modal">
+      <form id="Modal" onSubmit={submit} ref={formRef}>
         <input type="date" value={date} onChange={handleDate} />
         <input type="text" value={text} onChange={handleText} ref={inputRef} />
         <button type="submit">submit</button>
