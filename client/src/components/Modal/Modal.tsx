@@ -1,7 +1,9 @@
 import "./Modal.css"
+
 import { createPortal } from "react-dom"
 import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
+import { CSSTransition } from "react-transition-group"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
 
@@ -24,7 +26,15 @@ function ModalPortal() {
   }, [])
 
   return isOpen && createPortal(
-    <Modal setOpen={setOpen} />,
+    <CSSTransition
+      in={isOpen}
+      timeout={500}
+      classNames="modal"
+      unmountOnExit
+      appear
+    >
+      <Modal setOpen={setOpen} />
+    </CSSTransition>,
     document.getElementById("portal")!
   )
 }

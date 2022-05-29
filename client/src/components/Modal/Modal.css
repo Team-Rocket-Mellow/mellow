@@ -19,3 +19,19 @@
    margin-left: 0.6em;
    margin-right: 0.6em;
 }
+
+.modal-enter {
+   opacity: 0;
+   transform: scale(0.9);
+}
+.modal-enter-active {
+   opacity: 1;
+   transition: opacity 600ms;
+}
+.modal-exit {
+   opacity: 1;
+}
+.modal-exit-active {
+   opacity: 0;
+   transition: opacity 600ms;
+}
