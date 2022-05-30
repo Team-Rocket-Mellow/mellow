@@ -1,18 +1,20 @@
 #Modal {
+   /* positioning */
    position: absolute;
    float: left;
    left: 50%;
    top: 30%;
    transform: translate(-50%, -50%);
-   transition: all 0.5s ease-in-out;
-   opacity: 1;
-   background-color: white;
-
+   
+   /* dimensions */
    padding: 1em;
    z-index: 1000;
-   border: 1px solid rgb(234, 234, 234);
-   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
    border-radius: 6px;
+   border: 1px solid rgb(234, 234, 234);
+
+   animation: entry 0.4s;
+   background-color: white;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 #Modal input[type="text"] {
@@ -20,21 +22,14 @@
    margin-right: 0.6em;
 }
 
-#Modal-enter {
-   opacity: 0;
-   transform: scale(0.9);
-}
-
-#Modal-enter-active {
-   opacity: 1;
-   transition: opacity 600ms;
-}
-
-#Modal-exit {
-   opacity: 1;
-}
-
-#Modal-exit-active {
-   opacity: 0;
-   transition: opacity 600ms;
+/* move up + fade in */
+@keyframes entry {
+   from {
+      opacity: 0;
+      transform: translate(-50%, -20%);
+   }
+   to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+   }
 }

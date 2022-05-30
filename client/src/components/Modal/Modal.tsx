@@ -3,7 +3,6 @@ import "./Modal.css"
 import { createPortal } from "react-dom"
 import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
-import { CSSTransition } from "react-transition-group"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
 
@@ -72,13 +71,11 @@ function Modal({ setOpen, isOpen }) {
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
-    <CSSTransition in={isOpen} timeout={800}>
-      <form id="Modal" onSubmit={submit} ref={formRef}>
-        <input type="date" value={date} onChange={handleDate} />
-        <input type="text" value={text} onChange={handleText} ref={inputRef} />
-        <button type="submit">submit</button>
-      </form>
-    </CSSTransition>
+    <form id="Modal" onSubmit={submit} ref={formRef}>
+      <input type="date" value={date} onChange={handleDate} />
+      <input type="text" value={text} onChange={handleText} ref={inputRef} />
+      <button type="submit">submit</button>
+    </form>
   )
 }
 
