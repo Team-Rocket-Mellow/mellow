@@ -1,5 +1,4 @@
 import "./Modal.css"
-
 import { createPortal } from "react-dom"
 import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
@@ -24,16 +23,16 @@ function ModalPortal() {
     document.addEventListener("keydown", triggerModal)
   }, [])
 
-  return isOpen ? createPortal(
-    <Modal setOpen={setOpen} isOpen={isOpen} />, 
+  return isOpen && createPortal(
+    <Modal setOpen={setOpen} />,
     document.getElementById("portal")!
-  ) : null
+  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
-function Modal({ setOpen, isOpen }) {
+function Modal({ setOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
@@ -53,7 +52,7 @@ function Modal({ setOpen, isOpen }) {
       switch (Δ.key) {
         case "Escape": setOpen(false); break
         case "Tab":
-          const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLInputElement>
+          const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
           const first = group[0]
           const last = group[group.length - 1]
           if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()

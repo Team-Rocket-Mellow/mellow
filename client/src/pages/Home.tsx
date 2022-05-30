@@ -18,6 +18,7 @@ function Home() {
         </section>
       </main>
     </div>
+    {/* @ts-ignore */}
     <Modal />
   </>
 }
