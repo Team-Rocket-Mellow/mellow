@@ -64,6 +64,11 @@ export function numberToMonth(n:number) {
    ][n + 1]
 }
 
+/**
+ * Given a `date` object, return a string such as `June 23`.
+ * @example
+ * reportMonthAndDay(new Date()) // "May 15"
+ */
 export function reportMonthAndDay(date: Date) {
    return `${numberToMonth(date.getMonth())} ${date.getDate()}`
 }

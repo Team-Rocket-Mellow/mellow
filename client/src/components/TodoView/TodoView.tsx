@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil"
 import { todos_list_filtered } from "../../state/selectors"
 import { todos_view } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"
-import { numberToMonth } from "../../utility/time"
+import { reportMonthAndDay } from "../../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -11,10 +11,6 @@ import { numberToMonth } from "../../utility/time"
 function TodoView() {
   const todos = useRecoilValue(todos_list_filtered)
   const view = useRecoilValue(todos_view)
-
-  function reportMonthAndDay(date: Date) {
-    return `${numberToMonth(date.getMonth())} ${date.getDate()}`
-  }
 
   return (
     <main id="TodoView">
