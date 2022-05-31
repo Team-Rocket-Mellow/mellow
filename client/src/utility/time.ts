@@ -40,3 +40,30 @@ export function daysBetween(start:Date, end:Date) {
    const difference = (+treatAsUTC(end) - +treatAsUTC(start)) / millisecondsPerDay
    return difference
 }
+
+/**
+ * Maps `1 ⋯ 12` into a month name.
+ * @example
+ * monthToString(1)  // "January"
+ * monthToString(12) // "December"
+ */
+export function numberToMonth(n:number) {
+   return [
+      "January", 
+      "February", 
+      "March", 
+      "April", 
+      "May", 
+      "June", 
+      "July", 
+      "August", 
+      "September", 
+      "October", 
+      "November", 
+      "December",
+   ][n + 1]
+}
+
+export function reportMonthAndDay(date: Date) {
+   return `${numberToMonth(date.getMonth())} ${date.getDate()}`
+}
