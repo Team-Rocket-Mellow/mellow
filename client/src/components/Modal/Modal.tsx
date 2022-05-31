@@ -49,7 +49,7 @@ function Modal({ setOpen }) {
 
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
-      case "Escape": setOpen(false); break
+      case "Escape": setOpen(false), Δ.preventDefault(); break
       case "Tab":
         const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
         const first = group[0]
