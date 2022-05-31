@@ -42,7 +42,7 @@ export function daysBetween(start:Date, end:Date) {
 }
 
 /**
- * Maps `1 ⋯ 12` into a month name.
+ * Maps `1...12` into a month name.
  * @example
  * monthToString(1)  // "January"
  * monthToString(12) // "December"
