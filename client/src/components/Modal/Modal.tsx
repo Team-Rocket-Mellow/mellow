@@ -74,7 +74,7 @@ function Modal({ setOpen }) {
     <form id="Modal" onSubmit={submit} ref={formRef}>
       <input type="date" value={date} onChange={handleDate} />
       <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
-      <Button type="submit">submit</Button>
+      <button type="submit">submit</button>
     </form>
   )
 }
