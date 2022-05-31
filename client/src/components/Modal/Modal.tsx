@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
+import { Button } from "../assets/Button"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Wrapper
@@ -72,8 +73,8 @@ function Modal({ setOpen }) {
   return (
     <form id="Modal" onSubmit={submit} ref={formRef}>
       <input type="date" value={date} onChange={handleDate} />
-      <input type="text" value={text} onChange={handleText} ref={inputRef} />
-      <button type="submit">submit</button>
+      <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
+      <Button type="submit">submit</Button>
     </form>
   )
 }

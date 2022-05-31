@@ -1,0 +1,31 @@
+:root {
+   --red_darker: rgb(163, 69, 56);
+   --red_dark: rgb(203, 87, 72);
+   --gray_light: rgb(245, 245, 245);
+   --gray_darker: rgb(229, 229, 229);
+   --text_gray: rgb(71, 71, 71);
+}
+
+.Button—gray {
+   /* dimensions */
+   border: none;
+   padding: 0.4em 1em;
+   
+   /* style */
+   font-size: 0.9em;
+   font-weight: 600;
+   border-radius: 5px;
+   line-height: 1.6em;
+
+   /* colors */
+   background-color: var(--red_dark);
+   color: white;
+}
+
+.Button—gray:hover {
+   background-color: var(--red_darker);
+}
+
+.Button—gray:active {
+   transform: scale(0.95);
+}
