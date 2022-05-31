@@ -3,14 +3,47 @@
    --red_dark: rgb(203, 87, 72);
    --gray_light: rgb(245, 245, 245);
    --gray_darker: rgb(229, 229, 229);
-   --text_gray: rgb(71, 71, 71);
+   --text_gray_light: rgb(71, 71, 71);
+   --text_gray_dark: black;
 }
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Button :: Gray
+*/
 
 .Button—gray {
    /* dimensions */
    border: none;
    padding: 0.4em 1em;
-   
+
+   /* style */
+   font-size: 0.9em;
+   font-weight: 600;
+   border-radius: 5px;
+   line-height: 1.6em;
+
+   /* colors */
+   background-color: var(--gray_light);
+   color: var(--text_gray_dark);
+}
+
+.Button—gray:hover {
+   background-color: var(--gray_darker);
+}
+
+.Button—gray:active {
+   transform: scale(0.95);
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Button :: Red
+*/
+
+.Button—red {
+   /* dimensions */
+   border: none;
+   padding: 0.4em 1em;
+
    /* style */
    font-size: 0.9em;
    font-weight: 600;
@@ -22,10 +55,10 @@
    color: white;
 }
 
-.Button—gray:hover {
+.Button—red:hover {
    background-color: var(--red_darker);
 }
 
-.Button—gray:active {
+.Button—red:active {
    transform: scale(0.95);
 }
