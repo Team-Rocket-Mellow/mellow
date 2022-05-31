@@ -12,9 +12,9 @@
    border-radius: 6px;
    border: 1px solid rgb(234, 234, 234);
 
-   animation: entry 0.4s;
+   animation: entry 0.2s;
    background-color: white;
-   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 #Modal input[type="text"] {
@@ -27,9 +27,11 @@
    from {
       opacity: 0;
       transform: translate(-50%, -20%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);      
    }
-   to {
+   /* to {
       opacity: 1;
       transform: translate(-50%, -50%);
-   }
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);      
+   } */
 }
