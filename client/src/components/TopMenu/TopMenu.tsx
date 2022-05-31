@@ -14,7 +14,7 @@ function TopMenu() {
       <input
         type='search'
         tabIndex={-1}
-        placeholder='/ to search...'
+        placeholder='/  to search'
         value={text}
         onChange={e => setText(e.target.value)}
       />
