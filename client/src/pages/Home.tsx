@@ -1,4 +1,3 @@
-import "./Home.css"
 import TopMenu  from "../components/TopMenu/TopMenu"
 import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TodoView from "../components/TodoView/TodoView"
