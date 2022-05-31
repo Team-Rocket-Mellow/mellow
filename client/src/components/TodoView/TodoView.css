@@ -1,0 +1,22 @@
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoView
+*/
+
+#TodoView {
+   padding: 1em;
+   width: 80%;
+}
+
+#TodoView h1 {
+   font-size: 2em;
+   margin-left: 0.2em;
+   margin-bottom: 0.2em;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   TodoList
+*/
+
+#TodoList {
+   text-align: center;
+}

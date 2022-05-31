@@ -1,7 +1,7 @@
 import "./Home.css"
-import TodoList from "../components/TodoList/TodoList"
-import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TopMenu  from "../components/TopMenu/TopMenu"
+import LeftMenu from "../components/LeftMenu/LeftMenu"
+import TodoView from "../components/TodoView/TodoView"
 import Modal    from "../components/Modal/Modal"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -11,12 +11,10 @@ function Home() {
   return <>
     <div id="Home">
       <TopMenu />
-      <main>
+      <div className="flex">
         <LeftMenu />
-        <section id="TodoView">
-          <TodoList />
-        </section>
-      </main>
+        <TodoView />
+      </div>
     </div>
     {/* @ts-ignore */}
     <Modal />
