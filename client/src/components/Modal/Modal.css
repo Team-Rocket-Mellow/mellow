@@ -10,7 +10,6 @@
    padding: 1em;
    z-index: 1000;
    border-radius: 6px;
-   border: 1px solid rgb(234, 234, 234);
 
    animation: entry 0.2s;
    background-color: white;
