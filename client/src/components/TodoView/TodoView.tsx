@@ -36,8 +36,8 @@ function TodayView() {
   const timeStyle = { color: "green", }
 
   return (
-    <main id="TodoView" className="today">
-      <section>
+    <main id="TodoView">
+      <section className="today">
         <header>
           <h1 style={headerStyle}>
             <span>{view}</span>
@@ -50,7 +50,7 @@ function TodayView() {
           }
         </ul>
       </section>
-      <section>
+      <section className="today">
         <header>
           <h1 style={headerStyle}>
             <span>overdue</span>
