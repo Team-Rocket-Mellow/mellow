@@ -66,7 +66,6 @@ function Modal({ setOpen }) {
     setOpen(false)
     Δ.preventDefault()
   }
-
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
       case "Escape": setOpen(false), Δ.preventDefault(); break
@@ -78,13 +77,11 @@ function Modal({ setOpen }) {
         else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
     }
   }
-
+  
   useEffect(() => {
     const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
     document.addEventListener("click", click)
-    return () => {
-      document.removeEventListener("click", click)
-    }
+    return () => document.removeEventListener("click", click)
   }, [formRef])
 
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
