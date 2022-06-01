@@ -34,6 +34,7 @@ function useDelayUnmount(isMounted:boolean, delayTime:number) {
  */
 function ModalPortal() {
   const [isOpen, setOpen] = useState(false)
+  const shouldRenderChild = useDelayUnmount(isOpen, 500)
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
     && !(document.activeElement instanceof HTMLInputElement)
@@ -60,9 +61,10 @@ function Modal({ setOpen }) {
 
   const handleText = (Δ) => setText(Δ.target.value)
   const handleDate = (Δ) => setDate(Δ.target.value)
-  const submit = () => {
-    text && setTodos(todos => [...todos, createTodo(text, date)])
+  const submit = (Δ) => {
+    if (text) setTodos(todos => [...todos, createTodo(text, date)])
     setOpen(false)
+    Δ.preventDefault()
   }
 
   const keydown = (Δ:React.KeyboardEvent) => {
