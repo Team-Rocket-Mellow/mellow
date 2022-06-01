@@ -37,7 +37,7 @@ function useDelayUnmount(isOpen:boolean, delayTime:number) {
  */
 function ModalPortal() {
   const [isOpen, setOpen] = useState(false)
-  const shouldRenderChild = useDelayUnmount(isOpen, 200)
+  const shouldRenderChild = useDelayUnmount(isOpen, 199)
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
     && !(document.activeElement instanceof HTMLInputElement)
