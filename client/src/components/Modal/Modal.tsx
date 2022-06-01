@@ -16,13 +16,12 @@ import { Button } from "../assets/Button"
 function ModalPortal() {
   const [isOpen, setOpen] = useState(false)
 
-  useEffect(() => {
-    const triggerModal = (Δ:KeyboardEvent) => !isOpen
-      && !(document.activeElement instanceof HTMLInputElement)
-      && Δ.code === "KeyQ"
-      && setOpen(true)
-    document.addEventListener("keydown", triggerModal)
-  }, [])
+  const triggerModal = (Δ:KeyboardEvent) => !isOpen
+    && !(document.activeElement instanceof HTMLInputElement)
+    && Δ.code === "KeyQ"
+    && setOpen(true)
+
+  useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
   return isOpen && createPortal(
     <Modal setOpen={setOpen} />,
@@ -47,34 +46,33 @@ function Modal({ setOpen }) {
     setOpen(false)
   }
 
+  const keydown = (Δ:React.KeyboardEvent) => {
+    switch (Δ.key) {
+      case "Escape": setOpen(false), Δ.preventDefault(); break
+      case "Tab":
+        const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
+        const first = group[0]
+        const last = group[group.length - 1]
+        if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
+        else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
+    }
+  }
+
   useEffect(() => {
     const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
-    const keydown = (Δ:KeyboardEvent) => {
-      switch (Δ.key) {
-        case "Escape": setOpen(false); break
-        case "Tab":
-          const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
-          const first = group[0]
-          const last = group[group.length - 1]
-          if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
-          else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
-      }
-    }
     document.addEventListener("click", click)
-    document.addEventListener("keydown", keydown)
     return () => {
       document.removeEventListener("click", click)
-      document.removeEventListener("keydown", keydown)
     }
   }, [formRef])
 
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
   return (
-    <form id="Modal" onSubmit={submit} ref={formRef}>
+    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef}>
       <input type="date" value={date} onChange={handleDate} />
       <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
-      <Button type="submit">submit</Button>
+      <Button type="submit" color="gray">submit</Button>
     </form>
   )
 }

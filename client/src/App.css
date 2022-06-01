@@ -23,25 +23,11 @@
   --yellow: #E5DE1F;
   --red: #EA3D32;
   --sidebar: rgb(250, 250, 250);
+
   /* fonts */
   --roboto: 'Roboto';
+
   /* font weights */
   --heavy: 700;
   --medium: 400;
-}
-
-/* —————————————————————————————————————————————————————————————————————————————
-   TodoForm
-*/
-
-#TodoForm {
-  text-align: center;
-}
-
-#TodoForm button {
-  margin: 0.3em;
-}
-
-#TodoForm input {
-  margin: 0.3em;
 }
