@@ -17,7 +17,10 @@ function useDelayUnmount(isOpen:boolean, delayTime:number) {
 
     if (isOpen && !shouldRender) setShouldRender(true)
     else if (!isOpen && shouldRender)
-      timeoutId = setTimeout(() => setShouldRender(false), delayTime)
+      timeoutId = setTimeout(() => { 
+        setShouldRender(false) 
+        console.log("unmounted") 
+      }, delayTime)
 
     return () => clearTimeout(timeoutId)
   }, [isOpen, delayTime, shouldRender])
@@ -34,7 +37,7 @@ function useDelayUnmount(isOpen:boolean, delayTime:number) {
  */
 function ModalPortal() {
   const [isOpen, setOpen] = useState(false)
-  const shouldRenderChild = useDelayUnmount(isOpen, 500)
+  const shouldRenderChild = useDelayUnmount(isOpen, 200)
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
     && !(document.activeElement instanceof HTMLInputElement)
@@ -43,8 +46,8 @@ function ModalPortal() {
 
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
-  return isOpen && createPortal(
-    <Modal setOpen={setOpen} />,
+  return shouldRenderChild && createPortal(
+    <Modal setOpen={setOpen} isOpen={isOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -52,7 +55,7 @@ function ModalPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
-function Modal({ setOpen }) {
+function Modal({ setOpen, isOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
@@ -86,8 +89,10 @@ function Modal({ setOpen }) {
 
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
+  const exitStyle = { animation: "exit 200ms" }
+
   return (
-    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef}>
+    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef} style={isOpen ? undefined : exitStyle}>
       <input type="date" value={date} onChange={handleDate} />
       <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
       <Button type="submit" color="gray">submit</Button>
