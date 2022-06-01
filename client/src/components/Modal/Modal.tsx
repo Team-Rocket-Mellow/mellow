@@ -1,10 +1,32 @@
 import "./Modal.css"
 import { createPortal } from "react-dom"
-import { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
 import { Button } from "../assets/Button"
+
+// —————————————————————————————————————————————————————————————————————————————
+// Hook
+
+function useDelayUnmount(isOpen:boolean, delayTime:number) {
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(() => {
+    let timeoutId:ReturnType<typeof setTimeout>
+
+    if (isOpen && !shouldRender) setShouldRender(true)
+    else if (!isOpen && shouldRender)
+      timeoutId = setTimeout(() => { 
+        setShouldRender(false) 
+        console.log("unmounted") 
+      }, delayTime)
+
+    return () => clearTimeout(timeoutId)
+  }, [isOpen, delayTime, shouldRender])
+
+  return shouldRender
+}
 
 // —————————————————————————————————————————————————————————————————————————————
 // Wrapper
@@ -15,6 +37,7 @@ import { Button } from "../assets/Button"
  */
 function ModalPortal() {
   const [isOpen, setOpen] = useState(false)
+  const shouldRenderChild = useDelayUnmount(isOpen, 200)
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
     && !(document.activeElement instanceof HTMLInputElement)
@@ -23,8 +46,8 @@ function ModalPortal() {
 
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
-  return isOpen && createPortal(
-    <Modal setOpen={setOpen} />,
+  return shouldRenderChild && createPortal(
+    <Modal setOpen={setOpen} isOpen={isOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -32,7 +55,7 @@ function ModalPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
-function Modal({ setOpen }) {
+function Modal({ setOpen, isOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
@@ -41,11 +64,11 @@ function Modal({ setOpen }) {
 
   const handleText = (Δ) => setText(Δ.target.value)
   const handleDate = (Δ) => setDate(Δ.target.value)
-  const submit = () => {
-    text && setTodos(todos => [...todos, createTodo(text, date)])
+  const submit = (Δ) => {
+    if (text) setTodos(todos => [...todos, createTodo(text, date)])
     setOpen(false)
+    Δ.preventDefault()
   }
-
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
       case "Escape": setOpen(false), Δ.preventDefault(); break
@@ -61,15 +84,15 @@ function Modal({ setOpen }) {
   useEffect(() => {
     const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
     document.addEventListener("click", click)
-    return () => {
-      document.removeEventListener("click", click)
-    }
+    return () => document.removeEventListener("click", click)
   }, [formRef])
 
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
+  const exitStyle = { animation: "exit 200ms" }
+
   return (
-    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef}>
+    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef} style={isOpen ? undefined : exitStyle}>
       <input type="date" value={date} onChange={handleDate} />
       <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
       <Button type="submit" color="gray">submit</Button>
