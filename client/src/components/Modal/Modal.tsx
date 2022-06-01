@@ -9,18 +9,18 @@ import { Button } from "../assets/Button"
 // —————————————————————————————————————————————————————————————————————————————
 // Hook
 
-function useDelayUnmount(isMounted:boolean, delayTime:number) {
+function useDelayUnmount(isOpen:boolean, delayTime:number) {
   const [shouldRender, setShouldRender] = useState(false)
 
   useEffect(() => {
     let timeoutId:ReturnType<typeof setTimeout>
 
-    if (isMounted && !shouldRender) setShouldRender(true)
-    else if (!isMounted && shouldRender)
+    if (isOpen && !shouldRender) setShouldRender(true)
+    else if (!isOpen && shouldRender)
       timeoutId = setTimeout(() => setShouldRender(false), delayTime)
 
     return () => clearTimeout(timeoutId)
-  }, [isMounted, delayTime, shouldRender])
+  }, [isOpen, delayTime, shouldRender])
 
   return shouldRender
 }
