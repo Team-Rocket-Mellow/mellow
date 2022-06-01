@@ -89,10 +89,10 @@ function Modal({ setOpen, isOpen }) {
 
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
-  const exitStyle = { animation: "exit 200ms linear" }
+  const outro = isOpen ? undefined : { animation: "exit 200ms linear" }
 
   return (
-    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef} style={isOpen ? undefined : exitStyle}>
+    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef} style={outro}>
       <input type="date" value={date} onChange={handleDate} />
       <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
       <Button type="submit" color="gray">submit</Button>
