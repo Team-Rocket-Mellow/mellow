@@ -1,6 +1,6 @@
 import "./Modal.css"
 import { createPortal } from "react-dom"
-import { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState } from "recoil"
 import { todos_list } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
@@ -77,7 +77,7 @@ function Modal({ setOpen }) {
         else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
     }
   }
-  
+
   useEffect(() => {
     const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
     document.addEventListener("click", click)
