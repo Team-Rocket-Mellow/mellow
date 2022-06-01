@@ -89,7 +89,7 @@ function Modal({ setOpen, isOpen }) {
 
   useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
 
-  const exitStyle = { animation: "exit 200ms" }
+  const exitStyle = { animation: "exit 200ms linear" }
 
   return (
     <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef} style={isOpen ? undefined : exitStyle}>
