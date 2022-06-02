@@ -70,6 +70,9 @@ const todos_trash = selector({
 // —————————————————————————————————————————————————————————————————————————————
 // Big Selectors
 
+/**
+ * Todos in the current view.
+ */
 export const todos_list_filtered = selector({
    key: "todos_list_filtered",
    get: ({ get }) => {
@@ -86,6 +89,9 @@ export const todos_list_filtered = selector({
    },
 })
 
+/**
+ * Statistics for all todo views.
+ */
 export const todos_list_stats = selector({
    key: "todos_list_stats",
    get: ({ get }) => ({
