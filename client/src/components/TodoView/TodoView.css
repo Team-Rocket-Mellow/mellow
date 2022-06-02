@@ -3,18 +3,31 @@
 */
 
 #TodoView {
+   --header-font-size: 1.5em;
+}
+
+#TodoView {
    padding: 1em;
    width: 80%;
 }
 
 #TodoView h1 {
-   font-size: 2em;
+   font-size: var(--header-font-size);
    margin-left: 0.2em;
    margin-bottom: 0.2em;
 }
 
-#TodoView .today {
-   margin-bottom: 1em;
+#TodoView header h1 {
+   display: flex;
+   justify-content: space-between;
+}
+
+#TodoView header time {
+   color: green;
+}
+
+#TodoView section {
+   margin-bottom: var(--header-font-size);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

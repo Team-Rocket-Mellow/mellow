@@ -61,16 +61,14 @@ function TodayView() {
   const todos = useRecoilValue(todos_list_filtered)
   const view = useRecoilValue(todos_view)
   const now = new Date()
-  const headerStyle = { display: "flex", justifyContent: "space-between", }
-  const timeStyle = { color: "green", }
 
   return (
     <main id="TodoView">
       <section className="today">
         <header>
-          <h1 style={headerStyle}>
+          <h1>
             <span>{view}</span>
-            <time style={timeStyle}>{reportMonthAndDay(now)}</time>
+            <time>{reportMonthAndDay(now)}</time>
           </h1>
         </header>
         <ul id="TodoList">

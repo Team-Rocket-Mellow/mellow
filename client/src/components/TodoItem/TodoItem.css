@@ -29,5 +29,5 @@
 }
 
 .TodoItem .overdue {
-   color: #f00;
+   color: rgb(213, 0, 0);
 }
