@@ -20,7 +20,7 @@ const todos = selector({
 }) as RecoilValueReadOnly<TodoElement[]>
 
 /**
- * Todos not in trash.
+ * todos not in trash
  */
 const todos_active = selector({
    key: "todos_active",
@@ -28,7 +28,7 @@ const todos_active = selector({
 })
 
 /**
- * Todos without due date.
+ * todos without due date
  */
  const todos_inbox = selector({
    key: "todos_inbox",
@@ -36,7 +36,7 @@ const todos_active = selector({
 })
 
 /**
- * Todos due today or before.
+ * todos due today or before
  */
 const todos_today = selector({
    key: "todos_today",
@@ -44,7 +44,7 @@ const todos_today = selector({
 })
 
 /**
- * Todos due after today.
+ * todos due after today.
  */
 const todos_upcoming = selector({
    key: "todos_upcoming",
@@ -52,7 +52,7 @@ const todos_upcoming = selector({
 })
 
 /**
- * Todos done.
+ * todos done
  */
 const todos_done = selector({
    key: "todos_done",
@@ -60,7 +60,7 @@ const todos_done = selector({
 })
 
 /**
- * Todos trashed.
+ * todos trashed
  */
 const todos_trash = selector({
    key: "todos_trash",
