@@ -6,6 +6,9 @@ import { TodoElement } from "./types"
 // —————————————————————————————————————————————————————————————————————————————
 // Small Selectors
 
+/**
+ * todos → todos with due date
+ */
 const todos = selector({
    key: "todos_with_overdue",
    get: ({ get }) => get(todos_list)
@@ -16,34 +19,52 @@ const todos = selector({
       .sort((a, b) => Number(a.due) - Number(b.due)),
 }) as RecoilValueReadOnly<TodoElement[]>
 
+/**
+ * Todos not in trash.
+ */
 const todos_active = selector({
    key: "todos_active",
-   get: ({ get }) => get(todos).filter(todo => !todo.done && !todo.trash),
+   get: ({ get }) => get(todos).filter(todo => !todo.trash),
 })
 
+/**
+ * Todos without due date.
+ */
+ const todos_inbox = selector({
+   key: "todos_inbox",
+   get: ({ get }) => get(todos_active).filter(todo => !todo.due),
+})
+
+/**
+ * Todos due today or before.
+ */
+const todos_today = selector({
+   key: "todos_today",
+   get: ({ get }) => get(todos_active).filter(todo => todo.due && daysBetween(new Date(), todo.due) <= 0),
+})
+
+/**
+ * Todos due tomorrow or after.
+ */
+const todos_upcoming = selector({
+   key: "todos_upcoming",
+   get: ({ get }) => get(todos_active).filter(todo => todo.due && daysBetween(new Date(), todo.due) > 0),
+})
+
+/**
+ * Todos done.
+ */
 const todos_done = selector({
    key: "todos_done",
-   get: ({ get }) => get(todos).filter(todo => todo.done && !todo.trash),
+   get: ({ get }) => get(todos_active).filter(todo => todo.done),
 })
 
-const todos_inbox = selector({
-   key: "todos_inbox",
-   get: ({ get }) => get(todos).filter(todo => !todo.trash && !todo.due && !todo.done),
-})
-
+/**
+ * Todos trashed.
+ */
 const todos_trash = selector({
    key: "todos_trash",
    get: ({ get }) => get(todos).filter(todo => todo.trash),
-})
-
-const todos_today = selector({
-   key: "todos_today",
-   get: ({ get }) => get(todos).filter(todo => !todo.trash && todo.due && daysBetween(new Date(), todo.due) <= 0),
-})
-
-const todos_upcoming = selector({
-   key: "todos_upcoming",
-   get: ({ get }) => get(todos).filter(todo => todo.due && daysBetween(new Date(), todo.due) > 0),
 })
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -55,12 +76,11 @@ export const todos_list_filtered = selector({
       const view = get(todos_view)
       switch (view) {
          case "all": return get(todos)
-         case "active": return get(todos_active)
-         case "done": return get(todos_done)
          case "inbox": return get(todos_inbox)
-         case "trash": return get(todos_trash)
          case "today": return get(todos_today)
          case "upcoming": return get(todos_upcoming)
+         case "done": return get(todos_done)
+         case "trash": return get(todos_trash)
          default: throw Error(`Selector <todos_list_filtered> received invalid view: ${view}.`)
       }
    },

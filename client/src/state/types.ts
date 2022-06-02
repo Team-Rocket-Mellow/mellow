@@ -12,7 +12,6 @@ export type Todo = {
 }
 
 export type TodoView = "all"
-   | "active"
    | "done"
    | "inbox"
    | "trash"
