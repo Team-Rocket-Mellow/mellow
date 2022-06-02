@@ -44,7 +44,7 @@ const todos_today = selector({
 })
 
 /**
- * Todos due tomorrow or after.
+ * Todos due after today.
  */
 const todos_upcoming = selector({
    key: "todos_upcoming",
@@ -75,13 +75,13 @@ export const todos_list_filtered = selector({
    get: ({ get }) => {
       const view = get(todos_view)
       switch (view) {
-         case "all": return get(todos)
-         case "inbox": return get(todos_inbox)
-         case "today": return get(todos_today)
-         case "upcoming": return get(todos_upcoming)
-         case "done": return get(todos_done)
-         case "trash": return get(todos_trash)
-         default: throw Error(`Selector <todos_list_filtered> received invalid view: ${view}.`)
+         case "all"      : return get(todos)
+         case "inbox"    : return get(todos_inbox)
+         case "today"    : return get(todos_today)
+         case "upcoming" : return get(todos_upcoming)
+         case "done"     : return get(todos_done)
+         case "trash"    : return get(todos_trash)
+         default         : throw Error(`Selector <todos_list_filtered> received invalid view: ${view}.`)
       }
    },
 })
