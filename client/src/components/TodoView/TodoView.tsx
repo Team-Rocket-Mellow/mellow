@@ -6,99 +6,68 @@ import TodoItem from "../TodoItem/TodoItem"
 import { reportMonthAndDay } from "../../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
+// Constituent
+
+function TodoSection({ title, todos }) {
+  return (
+    <section>
+      <h1>{title}</h1>
+      <ul id="TodoList">
+        {
+          todos.map((todo, i) => <TodoItem key={i} {...todo} />)
+        }
+      </ul>
+    </section>
+  )
+}
+
+// —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function TodoView() {
   const todos = useRecoilValue(todos_list_filtered)
   const view = useRecoilValue(todos_view)
+  const done = todos.filter(t => t.done)
+  const undone = todos.filter(t => !t.done)
 
   switch (view) {
-    case "today": return <TodayView />
-    case "upcoming":
+    case "today": 
+      const now = new Date()
+      const overdue = undone.filter(t => t.overdue)
       return (
         <main id="TodoView">
-          <section>
-            <h1>{view}</h1>
+          <section className="today">
+            <header>
+              <h1>
+                <span>{view}</span>
+                <time>{reportMonthAndDay(now)}</time>
+              </h1>
+            </header>
             <ul id="TodoList">
               {
-                todos.map((todo, i) => !todo.done && <TodoItem key={i} {...todo} />)
+                undone.map((t, i) => !t.overdue && <TodoItem key={i} {...t} />)
               }
             </ul>
           </section>
-          {
-            todos.some(todo => todo.done) && (
-              <section>
-                <h1>done</h1>
-                <ul id="TodoList">
-                  {
-                    todos.map((todo, i) => todo.done && <TodoItem key={i} {...todo} />)
-                  }
-                </ul>
-              </section>
-            )
-          }
-        </main>
-    )
-    case "done":
-    case "inbox":
-    default:
-      return (
-        <main id="TodoView">
-          <header>
-            <h1>{view}</h1>
-          </header>
-          <ul id="TodoList">
-            {
-              todos.map((todo, i) => <TodoItem key={i} {...todo} />)
-            }
-          </ul>
+          { !!overdue.length && <TodoSection title="overdue" todos={overdue} /> }
+          { !!done.length && <TodoSection title="done" todos={done} /> }
         </main>
       )
+    case "done": return (
+      <main id="TodoView">
+        <TodoSection title={view} todos={done} />
+      </main>
+    )
+    case "all":
+    case "inbox":
+    case "upcoming":
+    default: return (
+      <main id="TodoView">
+        <TodoSection title={view} todos={undone} />
+        { !!done.length && <TodoSection title="done" todos={done} /> }
+      </main>
+    )
   }
-}
-
-function TodayView() {
-  const todos = useRecoilValue(todos_list_filtered)
-  const view = useRecoilValue(todos_view)
-  const now = new Date()
-
-  return (
-    <main id="TodoView">
-      <section className="today">
-        <header>
-          <h1>
-            <span>{view}</span>
-            <time>{reportMonthAndDay(now)}</time>
-          </h1>
-        </header>
-        <ul id="TodoList">
-          {
-            todos.map((todo, i) => !todo.overdue && !todo.done && <TodoItem key={i} {...todo} />)
-          }
-        </ul>
-      </section>
-      <section className="overdue">
-        <h1>overdue</h1>
-        <ul id="TodoList">
-          {
-            todos.map((todo, i) => todo.overdue && <TodoItem key={i} {...todo} />)
-          }
-        </ul>
-      </section>
-        {
-          todos.some(todo => todo.done) && (
-            <section>
-              <h1>done</h1>
-              <ul id="TodoList">
-                {
-                  todos.map((todo, i) => todo.done && <TodoItem key={i} {...todo} />)
-                }
-              </ul>
-            </section>
-          )
-        }
-    </main>
-  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
