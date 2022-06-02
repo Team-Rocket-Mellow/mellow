@@ -22,3 +22,8 @@ export const user = atom({
       expiry: null,
    }
 })
+
+export const modal_is_active = atom({
+   key: "modal_state",
+   default: false,
+})

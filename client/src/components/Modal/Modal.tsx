@@ -1,8 +1,8 @@
 import "./Modal.css"
 import { createPortal } from "react-dom"
 import React, { useState, useEffect, useRef } from "react"
-import { useSetRecoilState } from "recoil"
-import { todos_list } from "../../state/atoms"
+import { useSetRecoilState, useRecoilState } from "recoil"
+import { todos_list, modal_is_active } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
 import { Button } from "../assets/Button"
 
@@ -16,11 +16,10 @@ function useDelayUnmount(isOpen:boolean, delayTime:number) {
     let timeoutId:ReturnType<typeof setTimeout>
 
     if (isOpen && !shouldRender) setShouldRender(true)
-    else if (!isOpen && shouldRender)
-      timeoutId = setTimeout(() => { 
-        setShouldRender(false) 
-        console.log("unmounted") 
-      }, delayTime)
+    else if (!isOpen && shouldRender) timeoutId = setTimeout(() => {
+      setShouldRender(false)
+      console.log("unmounted")
+    }, delayTime)
 
     return () => clearTimeout(timeoutId)
   }, [isOpen, delayTime, shouldRender])
@@ -36,7 +35,7 @@ function useDelayUnmount(isOpen:boolean, delayTime:number) {
  * - creates a portal to render modal outside app hierarchy
  */
 function ModalPortal() {
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useRecoilState(modal_is_active)
   const shouldRenderChild = useDelayUnmount(isOpen, 199)
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
