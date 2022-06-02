@@ -12,7 +12,7 @@ function TodoSection({ title, todos }) {
   return (
     <section>
       <h1>{title}</h1>
-      <ul id="TodoList">
+      <ul className="TodoList">
         {
           todos.map((todo, i) => <TodoItem key={i} {...todo} />)
         }
