@@ -6,6 +6,11 @@
   display: flex;
 }
 
+nav a {
+  text-decoration: none;
+  color: #000;
+}
+
 /* —————————————————————————————————————————————————————————————————————————————
    CSS Variables
 */

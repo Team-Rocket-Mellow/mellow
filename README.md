@@ -2,18 +2,19 @@
 Mellow is a todo app with a focus on (1) "offline-first" or local persistence, 
 (2) synchronization, and (3) undo / redo.
 
-| name       | description           | location
-| ---------- | --------------------- | ---------
-| React      | DOM library           | client
-| Recoil     | state management      | client
-| Tailwind   | CSS utility           | client
-| Node       | server runtime        | server
-| Fastify    | http library          | server
-| PostgreSQL | database              | server
-| Vite       | build system & server | client & server
-| Nanoid     | unique ID generator   | client & server
-| Yjs        | CRDT                  | client & server
-| TypeScript | type verification     | client & server
+| name         | description           | location        |
+| ------------ | --------------------- | --------------- |
+| React        | DOM library           | client          |
+| Recoil       | state management      | client          |
+| React Router | browser routing       | client          |
+| Tailwind     | CSS utility           | client          |
+| Node         | server runtime        | server          |
+| Fastify      | http library          | server          |
+| PostgreSQL   | database              | server          |
+| Vite         | build system & server | client & server |
+| Nanoid       | unique ID generator   | client & server |
+| Yjs          | CRDT                  | client & server |
+| TypeScript   | type verification     | client & server |
 
 # Requirements
 - Node v18

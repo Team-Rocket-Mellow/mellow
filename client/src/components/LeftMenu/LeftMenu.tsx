@@ -3,6 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil"
 import { todos_view } from "../../state/atoms"
 import { todos_list_stats } from "../../state/selectors"
 import { TodoView } from "../../state/types"
+import { Link } from "react-router-dom"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -24,15 +25,16 @@ function LeftMenu() {
     <nav id="LeftMenu">
       {
         views.map((v, i) => (
-          <div 
-            onClick={() => setView(v)} 
-            className={v === view ? "item active" : "item"} 
+          <Link
+            to={v}
+            onClick={() => setView(v)}
+            className={v === view ? "item active" : "item"}
             key={i}
             tabIndex={1}
           >
-            <span className="flex">{icons[v]}<p>{v}</p></span> 
-            <span className="statistic">{stats[v] ? stats[v] : null}</span>
-          </div>
+            <span className="flex">{icons[v]}{v}</span>
+            <span className="statistic">{stats[v] || null}</span>
+          </Link>
         ))
       }
     </nav>
