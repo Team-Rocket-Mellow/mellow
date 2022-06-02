@@ -13,7 +13,8 @@
 
 #TodoView h1 {
    font-size: var(--header-font-size);
-   margin-left: 0.2em;
+   margin-left: 0.4em;
+   margin-right: 0.25em;
    margin-bottom: 0.2em;
 }
 
