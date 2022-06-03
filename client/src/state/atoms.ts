@@ -1,6 +1,7 @@
 import { atom } from 'recoil'
 import data from "./data"
 import { Todo, TodoView } from "./types"
+import { dayMonthYear } from "../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Atom
@@ -40,4 +41,12 @@ export const modal_is_active = atom({
 export const home = atom({
    key: "home",
    default: "inbox" as TodoView,
+})
+
+/**
+ * Set current date.
+ */
+export const current_date = atom({
+   key: "date",
+   default: dayMonthYear(new Date()),
 })

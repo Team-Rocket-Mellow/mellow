@@ -79,10 +79,11 @@ export function reportMonthAndDay(date:Date) {
  * const { day, month, year } = dayMonthYear(new Date())
  * console.log(`${month} ${day}, ${year}`) // "May 15, 2020"
  */
-export function dayMonthYear(date:Date) {
-   return {
-      day: date.getDate(),
-      month: numberToMonth(date.getMonth()),
-      year: date.getFullYear(),
-   }
+export function dayMonthYear(date:Date|null) {
+   const day = date?.getDate()
+   const month = numberToMonth(date?.getMonth()!)
+   const year = date?.getFullYear()
+   console.log(date)
+   console.log(day, month, year)
+   return date ? `${month} ${day}, ${year}` : "∞"
 }
