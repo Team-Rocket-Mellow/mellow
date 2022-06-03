@@ -4,6 +4,7 @@ import { todos_view } from "../../state/atoms"
 import { todos_list_stats } from "../../state/selectors"
 import { TodoView } from "../../state/types"
 import { Link } from "react-router-dom"
+import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -13,12 +14,12 @@ function LeftMenu() {
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
   const icons = {
-    all:      <i className="material-symbols-rounded">apps</i>,
-    inbox:    <i className="material-symbols-rounded inbox">inbox</i>,
-    today:    <i className="material-symbols-rounded today">today</i>,
-    upcoming: <i className="material-symbols-rounded upcoming">event_upcoming</i>,
-    done:     <i className="material-symbols-rounded done">event_available</i>,
-    trash:    <i className="material-symbols-rounded trash">delete</i>,
+    all:      <Icon>apps</Icon>,
+    inbox:    <Icon className="inbox">inbox</Icon>,
+    today:    <Icon className="today">today</Icon>,
+    upcoming: <Icon className="upcoming">event_upcoming</Icon>,
+    done:     <Icon className="done">check</Icon>,
+    trash:    <Icon className="trash">delete</Icon>,
   }
 
   return (

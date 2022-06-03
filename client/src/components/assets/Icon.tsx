@@ -1,5 +1,9 @@
-function Icon({ children, ...props }) {
-   return <i className='material-symbols-rounded' {...props}>{children}</i>
+function Icon({ className, children, ...props }: { children: React.ReactNode; className?:string }) {
+  return (
+    <i className={`material-symbols-rounded ${className}`} {...props}>
+      {children}
+    </i>
+  )
 }
 
 export default Icon
