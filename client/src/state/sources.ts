@@ -14,6 +14,7 @@ class Clock {
 
    tick(offset=60_000) {
       const t0 = new Date()
+      const day = t0.getDate()
       const ms_to_midnight = t0.getTime() - t0.setHours(0,0,0,0)
       const id = setTimeout(() => {
          this.tick(0)

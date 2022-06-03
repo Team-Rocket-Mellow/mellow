@@ -40,7 +40,8 @@ const todos_active = selector({
  */
 const todos_today = selector({
    key: "todos_today",
-   get: ({ get }) => get(todos_active).filter(todo => todo.due && daysBetween(new Date(), todo.due) <= 0),
+   get: ({ get }) => get(todos_active)
+      .filter(todo => todo.due && daysBetween(new Date(), todo.due) <= 0),
 })
 
 /**
@@ -48,7 +49,8 @@ const todos_today = selector({
  */
 const todos_upcoming = selector({
    key: "todos_upcoming",
-   get: ({ get }) => get(todos_active).filter(todo => todo.due && daysBetween(new Date(), todo.due) > 0),
+   get: ({ get }) => get(todos_active)
+      .filter(todo => todo.due && daysBetween(new Date(), todo.due) > 0),
 })
 
 /**
@@ -96,11 +98,10 @@ export const todos_list_stats = selector({
    key: "todos_list_stats",
    get: ({ get }) => ({
       all      : get(todos).length,
-      active   : get(todos_active).length,
+      inbox    : get(todos_inbox).filter(t => !t.done).length,
+      today    : get(todos_today).filter(t => !t.done).length,
+      upcoming : get(todos_upcoming).filter(t => !t.done).length,
       done     : get(todos_done).length,
-      inbox    : get(todos_inbox).length,
       trash    : get(todos_trash).length,
-      today    : get(todos_today).length,
-      upcoming : get(todos_upcoming).length,
    })
 })
