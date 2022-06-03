@@ -1,7 +1,7 @@
 import "./TodoItem.css"
 import { useState } from "react"
-import { useRecoilValue, useRecoilState } from 'recoil'
-import { todos_list, todos_view } from "../../state/atoms"
+import { useRecoilState } from 'recoil'
+import { todos_list } from "../../state/atoms"
 import { TodoElement } from "../../state/types"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -10,14 +10,12 @@ import { TodoElement } from "../../state/types"
 function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const [todos, setTodos] = useRecoilState(todos_list)
   const [isHover, setHover] = useState(false)
-  const view = useRecoilValue(todos_view)
-  const toggleTrash = () => setTodos(todos.map(todo => todo.id === id ? { ...todo, trash: !todo.trash } : todo))
-  const deleteTodo = () => setTodos(todos.filter(todo => todo.id !== id))
-  const toggleDone = () => setTodos(todos.map(todo => todo.id === id ? { ...todo, done: !todo.done } : todo))
+  const itemClass = done ? "done left" : "active left"
+  const flipDone = () => setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
 
   return (
     <div className="TodoItem">
-      <span className={done ? "done left" : "active left"} onClick={toggleDone}>
+      <span className={itemClass} onClick={flipDone}>
         <i
           className="material-symbols-rounded"
           onMouseEnter={() => setHover(true)}
