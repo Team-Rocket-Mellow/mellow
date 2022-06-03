@@ -67,7 +67,7 @@ function TodoView() {
     case "done": return (
       done.length 
         ? <main id="TodoView">
-            <TodoSection title={view} todos={done} />
+            <TodoSection id={view} title={view} todos={done} />
           </main>
         : <Celebration>Productivity is dangerous.</Celebration>
     )
@@ -76,7 +76,7 @@ function TodoView() {
     case "upcoming":
     default: return (
       <main id="TodoView">
-        <TodoSection title={view} todos={undone} id={view} />
+        <TodoSection id={view} title={view} todos={undone} />
         { !undone.length && <Celebration /> }
         { !!done.length && <TodoSection title="done" todos={done} /> }
       </main>

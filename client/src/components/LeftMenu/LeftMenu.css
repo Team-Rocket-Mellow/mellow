@@ -63,3 +63,11 @@
 #LeftMenu i.trash {
    color: var(--red);
 }
+
+#LeftMenu i.done {
+   color: var(--brown);
+}
+
+#LeftMenu i.upcoming {
+   color: var(--orange);
+}

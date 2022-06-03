@@ -85,5 +85,5 @@ export function dayMonthYear(date:Date|null) {
    const year = date?.getFullYear()
    console.log(date)
    console.log(day, month, year)
-   return date ? `${day} ${month} ${year}` : "∞"
+   return date ? `${day} ${month} ${year}` : ""
 }
