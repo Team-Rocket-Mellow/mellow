@@ -23,12 +23,16 @@
    background-color: rgb(222, 222, 222);
 }
 
+/* —————————————————————————————————————————————————————————————————————————————
+   Search
+*/
+
 #NavBar input {
    /* positioning */
    margin-right: auto;
 
    /* dimensions */
-   padding: 0.2em 0.8em;
+   padding: 0.2em 0.9em;
    font-size: 1em;
    line-height: 1.5em;
    border: none;
@@ -39,7 +43,7 @@
 }
 
 #NavBar input::placeholder {
-   font-size: 0.9em;
+   font-size: 0.95em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
