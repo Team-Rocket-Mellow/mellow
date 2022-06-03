@@ -95,12 +95,12 @@ export const todos_list_filtered = selector({
 export const todos_list_stats = selector({
    key: "todos_list_stats",
    get: ({ get }) => ({
-      all: get(todos).length,
-      active: get(todos_active).length,
-      done: get(todos_done).length,
-      inbox: get(todos_inbox).length,
-      trash: get(todos_trash).length,
-      today: get(todos_today).length,
-      upcoming: get(todos_upcoming).length,
+      all      : get(todos).length,
+      active   : get(todos_active).length,
+      done     : get(todos_done).length,
+      inbox    : get(todos_inbox).length,
+      trash    : get(todos_trash).length,
+      today    : get(todos_today).length,
+      upcoming : get(todos_upcoming).length,
    })
 })

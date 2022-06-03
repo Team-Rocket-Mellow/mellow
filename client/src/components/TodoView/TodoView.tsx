@@ -21,6 +21,17 @@ function TodoSection({ title, todos }) {
   )
 }
 
+function Celebration({ children }: { children?: string }) {
+  return (
+    <main id="TodoView">
+      <section className="hooray">
+        <i className="material-symbols-rounded">done_outline</i>
+        <p>{children ?? "Hooray you are done!"}</p>
+      </section>
+    </main>
+  )
+}
+
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
@@ -54,9 +65,11 @@ function TodoView() {
         </main>
       )
     case "done": return (
-      <main id="TodoView">
-        <TodoSection title={view} todos={done} />
-      </main>
+      done.length 
+        ? <main id="TodoView">
+            <TodoSection title={view} todos={done} />
+          </main>
+        : <Celebration>Productivity is dangerous.</Celebration>
     )
     case "all":
     case "inbox":
@@ -64,6 +77,7 @@ function TodoView() {
     default: return (
       <main id="TodoView">
         <TodoSection title={view} todos={undone} />
+        { !undone.length && <Celebration /> }
         { !!done.length && <TodoSection title="done" todos={done} /> }
       </main>
     )

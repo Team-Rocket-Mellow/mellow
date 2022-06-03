@@ -61,7 +61,7 @@ export function numberToMonth(n:number) {
       "October", 
       "November", 
       "December",
-   ][n + 1]
+   ][n - 1]
 }
 
 /**

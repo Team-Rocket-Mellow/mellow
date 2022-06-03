@@ -8,7 +8,7 @@
 
 #TodoView {
    padding: 1em;
-   width: 80%;
+   width: 100%;
 }
 
 #TodoView h1 {
@@ -29,6 +29,22 @@
 
 #TodoView section {
    margin-bottom: var(--header-font-size);
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Celebration
+*/
+
+#TodoView section.hooray {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 0em;
+   width: 100%;
+}
+
+#TodoView .hooray i {
+   font-size: 10em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

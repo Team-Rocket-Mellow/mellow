@@ -28,7 +28,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
         <span className="text">{text}</span>
       </span>
       <span className={overdue ? "overdue" : ""}>
-        { due?.toJSON()?.slice(0, 10) ?? "∞" }
+        { dayMonthYear(due) }
       </span>
     </div>
   )
