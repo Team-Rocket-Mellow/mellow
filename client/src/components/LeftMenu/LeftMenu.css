@@ -7,7 +7,7 @@
    flex-direction: column;
    background-color: var(--sidebar);
    min-width: 13.5em;
-   height: calc(100vh - 3.8em);
+   height: calc(100vh - 4.3em);
    padding-left: 5px;
    padding-top: 30px;
    padding-right: 10px;
@@ -53,13 +53,13 @@
 }
 
 #LeftMenu i.inbox {
-   color: #4765e6;
+   color: var(--blue);
 }
 
 #LeftMenu i.today {
-   color: green;
+   color: var(--green);
 }
 
 #LeftMenu i.trash {
-   color: rgb(176, 8, 8);
+   color: var(--red);
 }

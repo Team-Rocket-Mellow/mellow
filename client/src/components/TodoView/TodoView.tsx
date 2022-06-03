@@ -8,9 +8,9 @@ import { reportMonthAndDay } from "../../utility/time"
 // —————————————————————————————————————————————————————————————————————————————
 // Constituent
 
-function TodoSection({ title, todos }) {
+function TodoSection({ title, todos, ...props }) {
   return (
-    <section>
+    <section {...props}>
       <h1>{title}</h1>
       <ul className="TodoList">
         {
@@ -47,7 +47,7 @@ function TodoView() {
       const overdue = undone.filter(t => t.overdue)
       return (
         <main id="TodoView">
-          <section className="today">
+          <section id={view}>
             <header>
               <h1>
                 <span>{view}</span>
@@ -76,7 +76,7 @@ function TodoView() {
     case "upcoming":
     default: return (
       <main id="TodoView">
-        <TodoSection title={view} todos={undone} />
+        <TodoSection title={view} todos={undone} id={view} />
         { !undone.length && <Celebration /> }
         { !!done.length && <TodoSection title="done" todos={done} /> }
       </main>

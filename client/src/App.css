@@ -19,14 +19,14 @@ nav a {
   /* colors */
   --white: #FFFFFF;
   --grey-background: #FAFAFA;
-  --grey-hover: rgba(0, 0, 0, 0.4)
+  --grey-hover: rgba(0, 0, 0, 0.4);
   --black: #202020;
-  --blue: #37C1FF;
+  --blue: #4765e6;;
   --purple: #B43BDF;
   --orange: #E49217;
-  --green: #40DE3D;
+  --green: green;
   --yellow: #E5DE1F;
-  --red: #EA3D32;
+  --red: rgb(176, 8, 8);
   --sidebar: rgb(250, 250, 250);
 
   /* fonts */

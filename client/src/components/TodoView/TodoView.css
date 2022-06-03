@@ -3,12 +3,10 @@
 */
 
 #TodoView {
-   --header-font-size: 1.5em;
-}
-
-#TodoView {
    padding: 1em;
    width: 100%;
+
+   --header-font-size: 1.5em;
 }
 
 #TodoView h1 {
@@ -18,17 +16,30 @@
    margin-bottom: 0.2em;
 }
 
+#TodoView section {
+   margin-bottom: var(--header-font-size);
+}
+
+#inbox h1 {
+   color: var(--blue);
+}
+
+#today h1 {
+   color: var(--green);
+}
+
+#trash h1 {
+   color: var(--red);
+}
+
+/* today view */
 #TodoView header h1 {
    display: flex;
    justify-content: space-between;
 }
 
 #TodoView header time {
-   color: green;
-}
-
-#TodoView section {
-   margin-bottom: var(--header-font-size);
+   color: var(--green);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
