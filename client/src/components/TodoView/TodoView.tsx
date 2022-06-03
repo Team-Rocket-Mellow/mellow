@@ -4,6 +4,7 @@ import { todos_list_filtered } from "../../state/selectors"
 import { todos_view } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"
 import { reportMonthAndDay } from "../../utility/time"
+import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Constituent
@@ -25,7 +26,7 @@ function Celebration({ children }: { children?: string }) {
   return (
     <main id="TodoView">
       <section className="hooray">
-        <i className="material-symbols-rounded">done_outline</i>
+        <Icon>done_outline</Icon>
         <p>{children ?? "Hooray you are done!"}</p>
       </section>
     </main>
@@ -65,11 +66,10 @@ function TodoView() {
         </main>
       )
     case "done": return (
-      done.length 
-        ? <main id="TodoView">
-            <TodoSection id={view} title={view} todos={done} />
-          </main>
-        : <Celebration>Productivity is dangerous.</Celebration>
+      <main id="TodoView">
+        <TodoSection id={view} title={view} todos={done} />
+        { !done.length && <Celebration>Productivity is dangerous.</Celebration> }
+      </main>
     )
     case "all":
     case "inbox":

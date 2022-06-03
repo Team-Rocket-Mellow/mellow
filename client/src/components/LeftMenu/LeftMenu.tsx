@@ -18,7 +18,7 @@ function LeftMenu() {
     inbox:    <Icon className="inbox">inbox</Icon>,
     today:    <Icon className="today">today</Icon>,
     upcoming: <Icon className="upcoming">event_upcoming</Icon>,
-    done:     <Icon className="done">check</Icon>,
+    done:     <Icon className="done">task_alt</Icon>,
     trash:    <Icon className="trash">delete</Icon>,
   }
 
