@@ -24,12 +24,10 @@ function TodoSection({ title, todos, ...props }) {
 
 function Celebration({ children }: { children?: string }) {
   return (
-    <main id="TodoView">
-      <section className="hooray">
-        <Icon>done_outline</Icon>
-        <p>{children ?? "Hooray you are done!"}</p>
-      </section>
-    </main>
+    <section id="Celebration">
+      <Icon>done_outline</Icon>
+      <p>{children ?? "Hooray you are done!"}</p>
+    </section>
   )
 }
 

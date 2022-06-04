@@ -40,7 +40,7 @@
    Celebration
 */
 
-#TodoView section.hooray {
+#TodoView section#Celebration {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -48,7 +48,7 @@
    width: 100%;
 }
 
-#TodoView .hooray i {
+#TodoView #Celebration i {
    font-size: 10em;
 }
 

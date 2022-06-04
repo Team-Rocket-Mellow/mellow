@@ -38,7 +38,7 @@ const todos_active = selector({
 /**
  * todos due today or before
  */
-const todos_today = selector({
+export const todos_today = selector({
    key: "todos_today",
    get: ({ get }) => get(todos_active)
       .filter(todo => todo.due && daysBetween(new Date(), todo.due) <= 0),

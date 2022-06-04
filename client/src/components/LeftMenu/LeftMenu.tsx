@@ -1,7 +1,7 @@
 import "./LeftMenu.css"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { todos_view } from "../../state/atoms"
-import { todos_list_stats } from "../../state/selectors"
+import { todos_list_stats, todos_today } from "../../state/selectors"
 import { TodoView } from "../../state/types"
 import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
@@ -13,6 +13,7 @@ function LeftMenu() {
   const [view, setView] = useRecoilState(todos_view)
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
+  const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
   const icons = {
     all:      <Icon>apps</Icon>,
     inbox:    <Icon className="inbox">inbox</Icon>,
@@ -34,7 +35,9 @@ function LeftMenu() {
             tabIndex={1}
           >
             <span className="flex">{icons[v]}{v}</span>
-            <span className="statistic">{stats[v] || null}</span>
+            <span className={"statistic"} id={v === "today" && has_overdue ? "overdue" : ""}>
+              {stats[v] || null}
+            </span>
           </Link>
         ))
       }
