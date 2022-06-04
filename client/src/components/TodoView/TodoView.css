@@ -26,17 +26,13 @@
 /* #done h1     { color: var(--brown); } */
 /* #upcoming h1 { color: var(--orange); } */
 
-/* ------------------------------------------- 
+/* ----------------------------------------------------------------------------- 
    Today
 */
 
 #TodoView header h1 {
    display: flex;
    justify-content: space-between;
-}
-
-#TodoView header time {
-   /* color: var(--green); */
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
