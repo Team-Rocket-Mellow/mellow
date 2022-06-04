@@ -20,11 +20,11 @@
    margin-bottom: var(--header-font-size);
 }
 
-#inbox h1 { color: var(--blue); }
-#today h1 { color: var(--green); }
-#trash h1 { color: var(--red); }
-#done h1 { color: var(--brown); }
-#upcoming h1 { color: var(--orange); }
+/* #inbox h1    { color: var(--blue); } */
+/* #today h1    { color: var(--green); } */
+/* #trash h1    { color: var(--red); } */
+/* #done h1     { color: var(--brown); } */
+/* #upcoming h1 { color: var(--orange); } */
 
 /* today view */
 #TodoView header h1 {
@@ -33,7 +33,7 @@
 }
 
 #TodoView header time {
-   color: var(--green);
+   /* color: var(--green); */
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

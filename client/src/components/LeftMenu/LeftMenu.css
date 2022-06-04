@@ -56,22 +56,8 @@
    margin-right: 0.3em;
 }
 
-#LeftMenu i.inbox {
-   color: var(--blue);
-}
-
-#LeftMenu i.today {
-   color: var(--green);
-}
-
-#LeftMenu i.trash {
-   color: var(--red);
-}
-
-#LeftMenu i.done {
-   color: var(--brown);
-}
-
-#LeftMenu i.upcoming {
-   color: var(--orange);
-}
+#LeftMenu i.inbox    { color: var(--blue);   }
+#LeftMenu i.today    { color: var(--green);  }
+#LeftMenu i.upcoming { color: var(--orange); }
+/* #LeftMenu i.done     { color: var(--brown);  } */
+/* #LeftMenu i.trash    { color: var(--red);    } */
