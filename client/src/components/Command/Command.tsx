@@ -79,18 +79,18 @@ function MenuState() {
 // —————————————————————————————————————————————————————————————————————————————
 // Constituents
 
-function dataToSections({ section, items }) {
+function dataToMenus({ section, items }) {
   return (
     <menu key={section}>
-      <h3>{section}</h3>
+      <h1>{section}</h1>
       <ul>
-        { items.map(itemsToMenu) }
+        { items.map(menuToItems) }
       </ul>
     </menu>
   )
 }
 
-function itemsToMenu({ label, icon, action }) {
+function menuToItems({ label, icon, action }) {
   return (
     <li onClick={action} key={label}>
       {icon}
@@ -128,7 +128,7 @@ function Command({ setOpen }) {
       <input value={search} onChange={Δsearch} ref={inputRef} />
       { 
         menu_state
-          .map(dataToSections) 
+          .map(dataToMenus) 
       }
     </nav>
   )
