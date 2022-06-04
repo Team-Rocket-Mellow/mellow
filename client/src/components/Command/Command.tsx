@@ -125,10 +125,10 @@ function Command({ setOpen }) {
 
   return (
     <nav id="Command" ref={navRef} onKeyDown={keydown}>
-      <input value={search} onChange={Δsearch} ref={inputRef} />
-      { 
+      <input placeholder="search" value={search} onChange={Δsearch} ref={inputRef} />
+      {
         menu_state
-          .map(dataToMenus) 
+          .map(dataToMenus)
       }
     </nav>
   )

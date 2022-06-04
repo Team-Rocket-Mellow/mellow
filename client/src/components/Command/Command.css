@@ -12,7 +12,6 @@
 
    /* dimensions */
    min-width: 25em;
-   padding: 1em;
    z-index: 1000;
    display: flex;
    flex-direction: column;
@@ -26,6 +25,29 @@
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
+   Search
+*/
+
+#Command input {
+   border: none;
+   margin-top: 0.4em;
+   margin-bottom: 0.4em;
+   padding-left: 0.8em;
+}
+
+#Command input:focus {
+   outline: none;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Menus
+*/
+
+#Command menu {
+   border-top: 2px solid #e0e0e0;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
    Menu Items
 */
 
@@ -33,6 +55,7 @@
    display: flex;
    padding-top: 0.3em;
    padding-bottom: 0.3em;
+   padding-left: 0.5em;
 }
 
 #Command i {
@@ -40,9 +63,11 @@
 }
 
 #Command menu h1 {
-   font-size: 1em;
-   font-weight: 600;
-   margin-bottom: 0.5em;
+   padding-left: 0.5em;
+   font-size: 0.9em;
+   color: gray;
+   margin-top: 0.3em;
+   margin-bottom: 0.3em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
