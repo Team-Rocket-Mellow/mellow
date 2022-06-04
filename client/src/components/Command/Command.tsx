@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom"
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
@@ -24,7 +24,7 @@ function CommandPortal() {
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
   return isOpen && createPortal(
-    <Command setOpen={setOpen} isOpen={isOpen} />,
+    <Command setOpen={setOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -65,7 +65,10 @@ function MenuState() {
       items: Object.entries(icons).map(([view, icon]) => ({
         label: view,
         icon,
-        action: () => go(view as TodoView),
+        action: () => {
+          go(view as TodoView)
+          closeCommand(false)
+        },
       })),
     },
   ]
@@ -78,12 +81,12 @@ function MenuState() {
 
 function dataToSections({ section, items }) {
   return (
-    <section key={section}>
-      <h2>{section}</h2>
+    <menu key={section}>
+      <h3>{section}</h3>
       <ul>
         { items.map(itemsToMenu) }
       </ul>
-    </section>
+    </menu>
   )
 }
 
@@ -99,13 +102,13 @@ function itemsToMenu({ label, icon, action }) {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
-function Command({ isOpen, setOpen }) {
+function Command({ setOpen }) {
   const [search, setSearch] = useState("")
-  const Δsearch = (Δ) => setSearch(Δ.target.value)
   const navRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const menu_state = MenuState()
 
+  const Δsearch = (Δ) => setSearch(Δ.target.value)
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
       case "Escape": setOpen(false); break
@@ -123,8 +126,9 @@ function Command({ isOpen, setOpen }) {
   return (
     <nav id="Command" ref={navRef} onKeyDown={keydown}>
       <input value={search} onChange={Δsearch} ref={inputRef} />
-      {
-        menu_state.map(dataToSections)
+      { 
+        menu_state
+          .map(dataToSections) 
       }
     </nav>
   )
