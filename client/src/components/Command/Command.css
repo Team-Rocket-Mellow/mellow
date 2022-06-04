@@ -10,6 +10,7 @@
    padding: 1em;
    z-index: 1000;
    display: flex;
+   flex-direction: column;
 
    /* style */
    animation: entry 0.2s;

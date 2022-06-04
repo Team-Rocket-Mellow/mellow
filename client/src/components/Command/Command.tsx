@@ -32,7 +32,7 @@ function CommandPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
-const icons = {
+const icons: { [key in TodoView]: React.ReactNode } = {
   all:      <Icon>apps</Icon>,
   inbox:    <Icon className="inbox">inbox</Icon>,
   today:    <Icon className="today">today</Icon>,
@@ -48,6 +48,15 @@ function Command({ isOpen, setOpen }) {
   const navRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const views:TodoView[] = ["all", "inbox", "today", "upcoming", "done", "trash"]
+
+  const menu_data = {
+    add: [
+      {
+        label: "Add todo",
+        icon: "add",
+      }
+    ]
+  }
 
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {

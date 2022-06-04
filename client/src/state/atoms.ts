@@ -6,17 +6,13 @@ import { dayMonthYear } from "../utility/time"
 // —————————————————————————————————————————————————————————————————————————————
 // Atom
 
-/**
- * Original list of todos.
- */
+/** Original list of todos. */
 export const todos_list = atom({
    key: "todos_state",
    default: data as Todo[],
 })
 
-/**
- * Current todos view.
- */
+/** Current todos view. */
 export const todos_view = atom({
    key: "todos_view",
    default: "inbox" as TodoView,
@@ -30,17 +26,13 @@ export const user = atom({
    }
 })
 
-/**
- * Set default view.
- */
+/** Set default view. */
 export const home = atom({
    key: "home",
    default: "inbox" as TodoView,
 })
 
-/**
- * Set current date.
- */
+/** Set current date. */
 export const current_date = atom({
    key: "date",
    default: dayMonthYear(new Date()),
