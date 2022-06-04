@@ -10,7 +10,7 @@ import Icon from "../assets/Icon"
 // Component
 
 function LeftMenu() {
-  const [view, setView] = useRecoilState(todos_view)
+  const [view, go] = useRecoilState(todos_view)
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
   const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
@@ -29,7 +29,7 @@ function LeftMenu() {
         views.map((v, i) => (
           <Link
             to={v}
-            onClick={() => setView(v)}
+            onClick={() => go(v)}
             className={v === view ? "item active" : "item"}
             key={i}
             tabIndex={1}

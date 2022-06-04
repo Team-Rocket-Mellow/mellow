@@ -30,11 +30,6 @@ export const user = atom({
    }
 })
 
-export const modal_is_active = atom({
-   key: "modal_state",
-   default: false,
-})
-
 /**
  * Set default view.
  */
@@ -49,4 +44,14 @@ export const home = atom({
 export const current_date = atom({
    key: "date",
    default: dayMonthYear(new Date()),
+})
+
+export const modal_is_active = atom({
+   key: "modal_state",
+   default: false,
+})
+
+export const command_is_active = atom({
+   key: "command_state",
+   default: false,
 })

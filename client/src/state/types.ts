@@ -26,6 +26,9 @@ export type Auth = {
 // —————————————————————————————————————————————————————————————————————————————
 // Derived
 
+/**
+ * Todos but with derived data `overdue`.
+ */
 export type TodoElement = {
    id      : string
    text    : string
