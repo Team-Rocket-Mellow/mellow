@@ -47,14 +47,14 @@ function Command({ isOpen, setOpen }) {
   return (
     <nav>
       <input value={text} onChange={Δtext} />
-      <h1>Add</h1>
       <section>
+        <h1>Add</h1>
         <li>
           <Icon>search</Icon>
           <span>Add todo</span>
         </li>
       </section>
-      <section>
+      <section id="Navigate">
         <h1>Navigate</h1>
         {
           views.map((view, i) => (
