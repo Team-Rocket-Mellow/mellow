@@ -49,7 +49,7 @@
 }
 
 #LeftMenu #overdue {
-   color: red;
+   color: var(--red_light);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -60,7 +60,7 @@
    margin-right: 0.3em;
 }
 
-#LeftMenu i.inbox    { color: var(--blue);   }
+#LeftMenu i.inbox    { color: var(--blue_light);   }
 #LeftMenu i.today    { color: var(--green);  }
 #LeftMenu i.upcoming { color: var(--orange); }
 /* #LeftMenu i.done     { color: var(--brown);  } */

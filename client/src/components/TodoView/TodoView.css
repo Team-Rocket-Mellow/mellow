@@ -20,11 +20,11 @@
    margin-bottom: var(--header-font-size);
 }
 
-/* #inbox h1    { color: var(--blue); } */
-/* #today h1    { color: var(--green); } */
-/* #trash h1    { color: var(--red); } */
+#inbox h1    { color: var(--blue_light); }
+#today h1    { color: var(--green); }
+#upcoming h1 { color: var(--orange); }
 /* #done h1     { color: var(--brown); } */
-/* #upcoming h1 { color: var(--orange); } */
+/* #trash h1    { color: var(--red); } */
 
 /* ----------------------------------------------------------------------------- 
    Today
