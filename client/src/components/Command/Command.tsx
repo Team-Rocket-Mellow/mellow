@@ -4,6 +4,7 @@ import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_list, todos_view, command_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
 import Icon from "../assets/Icon"
+import "./Command.css"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Wrapper
@@ -31,12 +32,28 @@ function CommandPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
+const icons = {
+  all:      <Icon>apps</Icon>,
+  inbox:    <Icon className="inbox">inbox</Icon>,
+  today:    <Icon className="today">today</Icon>,
+  upcoming: <Icon className="upcoming">event_upcoming</Icon>,
+  done:     <Icon className="done">task_alt</Icon>,
+  trash:    <Icon className="trash">delete</Icon>,
+}
+
 function Command({ isOpen, setOpen }) {
   const [text, setText] = useState("")
   const [view, go] = useRecoilState(todos_view)
   const Δtext = (Δ) => setText(Δ.target.value)
   const navRef = useRef<HTMLFormElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const views:TodoView[] = ["all", "inbox", "today", "upcoming", "done", "trash"]
+
+  const keydown = (Δ:React.KeyboardEvent) => {
+    switch (Δ.key) {
+      case "Escape": setOpen(false); break
+    }
+  }
 
   useEffect(() => {
     const click = (Δ) => navRef.current && !navRef.current.contains(Δ.target) && setOpen(false)
@@ -44,27 +61,31 @@ function Command({ isOpen, setOpen }) {
     return () => document.removeEventListener("click", click)
   }, [navRef])
 
+  useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
+
   return (
-    <nav id="Command">
-      <input value={text} onChange={Δtext} />
-      <section id="add_todo">
+    <nav id="Command" ref={navRef} onKeyDown={keydown}>
+      <input value={text} onChange={Δtext} ref={inputRef} />
+      <menu id="todo_add">
         <h1>Add</h1>
         <li>
-          <Icon>search</Icon>
+          <Icon>add</Icon>
           <span>Add todo</span>
         </li>
-      </section>
-      <section id="navigate">
+      </menu>
+      <menu id="navigate">
         <h1>Navigate</h1>
         {
-          views.map((view, i) => (
-            <li key={i} onClick={() => go(view)}>
-              <Icon>{view}</Icon>
-              <span>Go {view}</span>
-            </li>
-          ))
+          views
+            .filter(view => view.includes(text))
+            .map((view, i) => (
+              <li key={i} onClick={() => go(view)}>
+                {icons[view]}
+                <span>Go {view}</span>
+              </li>
+            ))
         }
-      </section>
+      </menu>
     </nav>
   )
 }
