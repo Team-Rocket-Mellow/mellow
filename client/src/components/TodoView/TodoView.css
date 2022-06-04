@@ -26,7 +26,10 @@
 /* #done h1     { color: var(--brown); } */
 /* #upcoming h1 { color: var(--orange); } */
 
-/* today view */
+/* ------------------------------------------- 
+   Today
+*/
+
 #TodoView header h1 {
    display: flex;
    justify-content: space-between;
@@ -50,6 +53,7 @@
 
 #TodoView #Celebration i {
    font-size: 10em;
+   color: rgb(1, 112, 1);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
