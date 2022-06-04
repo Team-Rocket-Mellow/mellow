@@ -38,7 +38,7 @@ export const current_date = atom({
    default: dayMonthYear(new Date()),
 })
 
-export const modal_is_active = atom({
+export const add_is_active = atom({
    key: "modal_state",
    default: false,
 })

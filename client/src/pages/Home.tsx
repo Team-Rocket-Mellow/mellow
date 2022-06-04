@@ -1,7 +1,7 @@
 import TopMenu  from "../components/TopMenu/TopMenu"
 import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TodoView from "../components/TodoView/TodoView"
-import Modal    from "../components/Modal/Modal"
+import AddTodo  from "../components/AddTodo/AddTodo"
 import Command  from "../components/Command/Command"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -17,7 +17,7 @@ function Home() {
       </div>
     </div>
     {/* @ts-ignore */}
-    <Modal />
+    <AddTodo />
     {/* @ts-ignore */}
     <Command />
   </>

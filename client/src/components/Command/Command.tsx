@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
 import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
-import { todos_list, todos_view, command_is_active } from "../../state/atoms"
+import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
 import Icon from "../assets/Icon"
 import "./Command.css"
@@ -30,7 +30,7 @@ function CommandPortal() {
 }
 
 // —————————————————————————————————————————————————————————————————————————————
-// Command
+// Menu Representation
 
 const icons: { [key in TodoView]: React.ReactNode } = {
   all:      <Icon>apps</Icon>,
@@ -41,22 +41,70 @@ const icons: { [key in TodoView]: React.ReactNode } = {
   trash:    <Icon className="trash">delete</Icon>,
 }
 
+function MenuState() {
+  const go = useSetRecoilState(todos_view)
+  const openAddTodo = useSetRecoilState(add_is_active)
+  const closeCommand = useSetRecoilState(command_is_active)
+
+  const menu_data = [
+    {
+      section: "Add",
+      items: [
+        {
+          label: "Add todo",
+          icon: <Icon>add</Icon>,
+          action: () => {
+            openAddTodo(true)
+            closeCommand(false)
+          },
+        },
+      ],
+    },
+    {
+      section: "Navigate",
+      items: Object.entries(icons).map(([view, icon]) => ({
+        label: view,
+        icon,
+        action: () => go(view as TodoView),
+      })),
+    },
+  ]
+
+  return menu_data
+}
+
+// —————————————————————————————————————————————————————————————————————————————
+// Constituents
+
+function dataToSections({ section, items }) {
+  return (
+    <section key={section}>
+      <h2>{section}</h2>
+      <ul>
+        { items.map(itemsToMenu) }
+      </ul>
+    </section>
+  )
+}
+
+function itemsToMenu({ label, icon, action }) {
+  return (
+    <li onClick={action} key={label}>
+      {icon}
+      <span>{label}</span>
+    </li>
+  )
+}
+
+// —————————————————————————————————————————————————————————————————————————————
+// Command
+
 function Command({ isOpen, setOpen }) {
-  const [text, setText] = useState("")
-  const [view, go] = useRecoilState(todos_view)
-  const Δtext = (Δ) => setText(Δ.target.value)
+  const [search, setSearch] = useState("")
+  const Δsearch = (Δ) => setSearch(Δ.target.value)
   const navRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const views:TodoView[] = ["all", "inbox", "today", "upcoming", "done", "trash"]
-
-  const menu_data = {
-    add: [
-      {
-        label: "Add todo",
-        icon: "add",
-      }
-    ]
-  }
+  const menu_state = MenuState()
 
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
@@ -74,27 +122,10 @@ function Command({ isOpen, setOpen }) {
 
   return (
     <nav id="Command" ref={navRef} onKeyDown={keydown}>
-      <input value={text} onChange={Δtext} ref={inputRef} />
-      <menu id="todo_add">
-        <h1>Add</h1>
-        <li>
-          <Icon>add</Icon>
-          <span>Add todo</span>
-        </li>
-      </menu>
-      <menu id="navigate">
-        <h1>Navigate</h1>
-        {
-          views
-            .filter(view => view.includes(text))
-            .map((view, i) => (
-              <li key={i} onClick={() => go(view)}>
-                {icons[view]}
-                <span>Go {view}</span>
-              </li>
-            ))
-        }
-      </menu>
+      <input value={search} onChange={Δsearch} ref={inputRef} />
+      {
+        menu_state.map(dataToSections)
+      }
     </nav>
   )
 }
