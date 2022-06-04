@@ -36,6 +36,10 @@
    background-color: rgb(238, 238, 238);
 }
 
+/* -----------------------------------------------------------------------------
+   Statistics
+*/
+
 #LeftMenu .statistic {
    padding-right: 1em;
    font-size: 0.8em;
