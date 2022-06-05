@@ -32,7 +32,9 @@ function CommandPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Menu Representation
 
-const icons: { [key in TodoView]: React.ReactNode } = {
+type IconMap = { [key in TodoView]: React.ReactNode }
+
+const icons:IconMap = {
   all:      <Icon>apps</Icon>,
   inbox:    <Icon className="inbox">inbox</Icon>,
   today:    <Icon className="today">today</Icon>,
@@ -66,7 +68,7 @@ function MenuState() {
         label: view,
         icon,
         action: () => {
-          go(view as TodoView)
+          go(view)
           closeCommand(false)
         },
       })),
@@ -74,18 +76,6 @@ function MenuState() {
   ]
 
   return menu_data
-}
-
-// —————————————————————————————————————————————————————————————————————————————
-// Constituents
-
-function menuToItems({ label, icon, action }) {
-  return (
-    <li onClick={action} key={label}>
-      {icon}
-      <span>{label}</span>
-    </li>
-  )
 }
 
 // —————————————————————————————————————————————————————————————————————————————
