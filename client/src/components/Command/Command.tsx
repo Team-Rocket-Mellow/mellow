@@ -83,8 +83,8 @@ function MenuState() {
 
 function Command({ setOpen }) {
   const [search, setSearch] = useState("")
-  const navRef = useRef<HTMLFormElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const $nav = useRef<HTMLFormElement>(null)
+  const $input = useRef<HTMLInputElement>(null)
   const menu_state = MenuState()
 
   const Δsearch = (Δ) => setSearch(Δ.target.value)
@@ -95,28 +95,28 @@ function Command({ setOpen }) {
   }
 
   useEffect(() => {
-    const click = (Δ) => navRef.current && !navRef.current.contains(Δ.target) && setOpen(false)
+    const click = (Δ) => $nav.current && !$nav.current.contains(Δ.target) && setOpen(false)
     document.addEventListener("click", click)
     return () => document.removeEventListener("click", click)
-  }, [navRef])
+  }, [$nav])
 
-  useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
+  useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
 
   return (
-    <nav id="Command" ref={navRef} onKeyDown={keydown}>
-      <input placeholder="search" value={search} onChange={Δsearch} ref={inputRef} />
+    <nav id="Command" ref={$nav} onKeyDown={keydown}>
+      <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
       {
         menu_state.map(({ section, items }) => (
           <menu key={section}>
             <h1>{section}</h1>
             <ul>
-              { 
+              {
                 items.map(({ label, icon, action }) => (
                   <li onClick={action} key={label}>
                     {icon}
                     <span>{label}</span>
                   </li>
-                )) 
+                ))
               }
             </ul>
           </menu>
