@@ -68,7 +68,7 @@ function MenuState() {
         label: view,
         icon,
         action: () => {
-          go(view)
+          go(view as TodoView)
           closeCommand(false)
         },
       })),
