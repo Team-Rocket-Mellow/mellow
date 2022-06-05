@@ -79,17 +79,6 @@ function MenuState() {
 // —————————————————————————————————————————————————————————————————————————————
 // Constituents
 
-function dataToMenus({ section, items }) {
-  return (
-    <menu key={section}>
-      <h1>{section}</h1>
-      <ul>
-        { items.map(menuToItems) }
-      </ul>
-    </menu>
-  )
-}
-
 function menuToItems({ label, icon, action }) {
   return (
     <li onClick={action} key={label}>
@@ -132,7 +121,14 @@ function Command({ setOpen }) {
             <menu key={section}>
               <h1>{section}</h1>
               <ul>
-                { items.map(menuToItems) }
+                { 
+                  items.map(({ label, icon, action }) => (
+                    <li onClick={action} key={label}>
+                      {icon}
+                      <span>{label}</span>
+                    </li>
+                  )) 
+                }
               </ul>
             </menu>
           ))
