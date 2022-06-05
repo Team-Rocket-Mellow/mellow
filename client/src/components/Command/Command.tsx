@@ -128,7 +128,14 @@ function Command({ setOpen }) {
       <input placeholder="search" value={search} onChange={Δsearch} ref={inputRef} />
       {
         menu_state
-          .map(dataToMenus)
+          .map(({ section, items }) => (
+            <menu key={section}>
+              <h1>{section}</h1>
+              <ul>
+                { items.map(menuToItems) }
+              </ul>
+            </menu>
+          ))
       }
     </nav>
   )
