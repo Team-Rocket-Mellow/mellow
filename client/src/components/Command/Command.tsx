@@ -116,22 +116,21 @@ function Command({ setOpen }) {
     <nav id="Command" ref={navRef} onKeyDown={keydown}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={inputRef} />
       {
-        menu_state
-          .map(({ section, items }) => (
-            <menu key={section}>
-              <h1>{section}</h1>
-              <ul>
-                { 
-                  items.map(({ label, icon, action }) => (
-                    <li onClick={action} key={label}>
-                      {icon}
-                      <span>{label}</span>
-                    </li>
-                  )) 
-                }
-              </ul>
-            </menu>
-          ))
+        menu_state.map(({ section, items }) => (
+          <menu key={section}>
+            <h1>{section}</h1>
+            <ul>
+              { 
+                items.map(({ label, icon, action }) => (
+                  <li onClick={action} key={label}>
+                    {icon}
+                    <span>{label}</span>
+                  </li>
+                )) 
+              }
+            </ul>
+          </menu>
+        ))
       }
     </nav>
   )
