@@ -31,9 +31,10 @@
 
 #Command input {
    border: none;
-   margin-top: 0.4em;
+   margin-top: 0.5em;
    margin-bottom: 0.4em;
    padding-left: 0.8em;
+   line-height: 2.2em;
 }
 
 #Command input:focus {
@@ -66,9 +67,9 @@
    margin-right: 0.3em;
 }
 
-#Command i.inbox    { color: var(--blue_light);   }
-#Command i.today    { color: var(--green);  }
-#Command i.upcoming { color: var(--orange); }
+#Command i.inbox    { color: var(--blue_light); }
+#Command i.today    { color: var(--green);      }
+#Command i.upcoming { color: var(--orange);     }
 
 #Command li {
    display: flex;
@@ -80,7 +81,7 @@
 
 #Command menu li:hover {
    background-color: #f0f0f0;
-   border-left: 2px solid var(--red);
+   border-left: 2px solid var(--red_light);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
