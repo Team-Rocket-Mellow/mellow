@@ -48,30 +48,30 @@
    border-top: 2px solid #e0e0e0;
 }
 
-/* —————————————————————————————————————————————————————————————————————————————
-   Menu Items
-*/
-
-#Command li {
-   display: flex;
-   padding-top: 0.4em;
-   padding-bottom: 0.4em;
-   padding-left: 0.5em;
-}
-
-#Command i {
-   margin-right: 0.3em;
-}
-
 #Command menu h1 {
    padding-left: 0.5em;
-   border-left: 2px solid transparent;
    
    margin-top: 0.3em;
    margin-bottom: 0.3em;
    
    font-size: 0.9em;
    color: gray;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Menu Items
+*/
+
+#Command i {
+   margin-right: 0.3em;
+}
+
+#Command li {
+   display: flex;
+   padding-top: 0.4em;
+   padding-bottom: 0.4em;
+   padding-left: 0.5em;
+   border-left: 2px solid transparent;
 }
 
 #Command menu li:hover {
