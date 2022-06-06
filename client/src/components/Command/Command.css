@@ -8,6 +8,7 @@
    float: left;
    left: 50%;
    top: 30%;
+   padding-bottom: 0.4em;
    transform: translate(-50%, -50%);
 
    /* dimensions */
@@ -53,8 +54,8 @@
 
 #Command li {
    display: flex;
-   padding-top: 0.3em;
-   padding-bottom: 0.3em;
+   padding-top: 0.4em;
+   padding-bottom: 0.4em;
    padding-left: 0.5em;
 }
 
@@ -64,10 +65,18 @@
 
 #Command menu h1 {
    padding-left: 0.5em;
-   font-size: 0.9em;
-   color: gray;
+   border-left: 2px solid transparent;
+   
    margin-top: 0.3em;
    margin-bottom: 0.3em;
+   
+   font-size: 0.9em;
+   color: gray;
+}
+
+#Command menu li:hover {
+   background-color: #f0f0f0;
+   border-left: 2px solid var(--red);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
