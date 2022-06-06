@@ -81,6 +81,8 @@ function MenuState() {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
+function * naturals() { for (let i = 0; ; i++) yield i }
+
 function Command({ setOpen }) {
   const [search, setSearch] = useState("")
   const $nav = useRef<HTMLFormElement>(null)
@@ -101,6 +103,8 @@ function Command({ setOpen }) {
   }, [$nav])
 
   useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
+
+  const counter = naturals()
 
   return (
     <nav id="Command" ref={$nav} onKeyDown={keydown}>
