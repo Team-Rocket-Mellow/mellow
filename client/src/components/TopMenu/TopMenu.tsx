@@ -1,7 +1,7 @@
 import "./TopMenu.css"
 import { useState } from "react"
 import { useSetRecoilState, useRecoilValue } from "recoil"
-import { modal_is_active, todos_view, home } from "../../state/atoms"
+import { add_is_active, todos_view, home } from "../../state/atoms"
 import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -9,7 +9,7 @@ import Icon from "../assets/Icon"
 
 function TopMenu() {
   const [text, setText] = useState('')
-  const setOpen = useSetRecoilState(modal_is_active)
+  const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
 

@@ -1,4 +1,4 @@
-import "./Modal.css"
+import "./AddTodo.css"
 import { createPortal } from "react-dom"
 import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
