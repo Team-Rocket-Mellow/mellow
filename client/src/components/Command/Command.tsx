@@ -138,27 +138,29 @@ function Command({ setOpen, isOpen }) {
     <nav id="Command" ref={$nav} onKeyDown={Δkey}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
       {
-        menu_state.map(({ section, items }) => (
-          <menu key={section}>
-            <h1>{section}</h1>
-            <ul>
-              {
-                items
-                  .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
-                  .map(({ label, icon, action }) => {
-                    const index = counter.next().value
-                    const isActive = selected === index ? "active" : ""
-                    return (
-                      <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
-                        {icon}
-                        <span>{label}</span>
-                      </li>
-                    )
-                  })
-              }
-            </ul>
-          </menu>
-        ))
+        menu_state
+          .filter(({ items }) => items.some(({ label }) => label.toLowerCase().includes(search.toLowerCase())))
+          .map(({ section, items }) => (
+            <menu key={section}>
+              <h1>{section}</h1>
+              <ul>
+                {
+                  items
+                    .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
+                    .map(({ label, icon, action }) => {
+                      const index = counter.next().value
+                      const isActive = selected === index ? "active" : ""
+                      return (
+                        <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                          {icon}
+                          <span>{label}</span>
+                        </li>
+                      )
+                    })
+                }
+              </ul>
+            </menu>
+          ))
       }
     </nav>
   )
