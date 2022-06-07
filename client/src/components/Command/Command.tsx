@@ -134,33 +134,39 @@ function Command({ setOpen, isOpen }) {
 
   useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
 
+  const filtered_menu = menu_state.filter(
+    (section => section.items.some(({ label }) => label.toLowerCase().includes(search.toLowerCase())))
+  )
+
   return (
     <nav id="Command" ref={$nav} onKeyDown={Δkey}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
       {
-        menu_state
-          .filter(({ items }) => items.some(({ label }) => label.toLowerCase().includes(search.toLowerCase())))
-          .map(({ section, items }) => (
-            <menu key={section}>
-              <h1>{section}</h1>
-              <ul>
-                {
-                  items
-                    .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
-                    .map(({ label, icon, action }) => {
-                      const index = counter.next().value
-                      const isActive = selected === index ? "active" : ""
-                      return (
-                        <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
-                          {icon}
-                          <span>{label}</span>
-                        </li>
-                      )
-                    })
-                }
-              </ul>
+        filtered_menu.length
+          ? filtered_menu.map(({ section, items }) => (
+              <menu key={section}>
+                <h1>{section}</h1>
+                <ul>
+                  {
+                    items
+                      .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
+                      .map(({ label, icon, action }) => {
+                        const index = counter.next().value
+                        const isActive = selected === index ? "active" : ""
+                        return (
+                          <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                            {icon}
+                            <span>{label}</span>
+                          </li>
+                        )
+                      })
+                  }
+                </ul>
+              </menu>
+            ))
+          : <menu>
+              <h1>No results</h1>
             </menu>
-          ))
       }
     </nav>
   )
