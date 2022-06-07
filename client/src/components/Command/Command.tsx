@@ -99,23 +99,28 @@ function Command({ setOpen }) {
   }
   const Δkey = (Δ:React.KeyboardEvent) => {
     const $list = document.querySelectorAll<HTMLElement>("#Command li")
-    Δ.preventDefault()
     switch (Δ.key) {
       case "Escape": 
+        Δ.preventDefault()
         setOpen(false) 
         break
       case "Tab":
+        Δ.preventDefault()
         if (Δ.shiftKey) {
+          Δ.preventDefault()
           setSelected(($list.length + selected - 1) % $list.length)
           break
         }
       case "ArrowDown":
+        Δ.preventDefault()
         setSelected((selected + 1) % $list.length)
         break
       case "ArrowUp":
+        Δ.preventDefault()
         setSelected(($list.length + selected - 1) % $list.length)
         break
       case "Enter":
+        Δ.preventDefault()
         $list[selected].click()
         break
     }
