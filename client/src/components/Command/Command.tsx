@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom"
-import React, { useState, useEffect, useRef, } from "react"
+import React, { useState, useEffect, useRef, createRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
@@ -87,12 +87,22 @@ function Command({ setOpen }) {
   const [search, setSearch] = useState("")
   const $nav = useRef<HTMLFormElement>(null)
   const $input = useRef<HTMLInputElement>(null)
+  const $item = createRef<HTMLElement>()
   const menu_state = MenuState()
+  const counter = naturals()
+  const [selected, setSelected] = useState(0)
 
   const Δsearch = (Δ) => setSearch(Δ.target.value)
+  
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
-      case "Escape": setOpen(false); break
+      case "Escape": 
+      setOpen(false) 
+      break
+      // Navigate modal elements using down and up keys
+      case "ArrowDown":
+        Δ.preventDefault()
+      case "ArrowUp":
     }
   }
 
@@ -104,7 +114,12 @@ function Command({ setOpen }) {
 
   useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
 
-  const counter = naturals()
+  // tab to next/prev item
+  useEffect(() => {
+    const tab = (Δ) => Δ.key === "Tab" && Δ.preventDefault()
+    document.addEventListener("keydown", tab)
+    return () => document.removeEventListener("keydown", tab)
+  }, [])
 
   return (
     <nav id="Command" ref={$nav} onKeyDown={keydown}>
@@ -115,12 +130,16 @@ function Command({ setOpen }) {
             <h1>{section}</h1>
             <ul>
               {
-                items.map(({ label, icon, action }) => (
-                  <li onClick={action} key={label}>
-                    {icon}
-                    <span>{label}</span>
-                  </li>
-                ))
+                items.map(({ label, icon, action }) => {
+                  const index = counter.next().value
+                  const isActive = selected === index
+                  return (
+                    <li onClick={action} key={label} className={isActive ? "active" : ""}>
+                      {icon}
+                      <span>{label}</span>
+                    </li>
+                  )
+                })
               }
             </ul>
           </menu>

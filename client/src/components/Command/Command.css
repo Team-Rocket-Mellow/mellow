@@ -37,7 +37,7 @@
    line-height: 2.2em;
 }
 
-#Command input:focus {
+#Command input {
    outline: none;
 }
 
@@ -77,6 +77,11 @@
    padding-bottom: 0.4em;
    padding-left: 0.5em;
    border-left: 2px solid transparent;
+}
+
+#Command menu li.active {
+   background-color: #f0f0f0;
+   border-left: 2px solid var(--red_light);
 }
 
 #Command menu li:hover {
