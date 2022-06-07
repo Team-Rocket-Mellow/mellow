@@ -81,7 +81,7 @@ function MenuState() {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
-function * naturals() { for (let i = 0; ; i++) yield i }
+function * naturals() { for (let i=0; true; i++) yield i }
 
 function Command({ setOpen }) {
   const [search, setSearch] = useState("")
