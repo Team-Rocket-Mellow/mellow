@@ -84,11 +84,6 @@
    border-left: 2px solid var(--red_light);
 }
 
-#Command menu li:hover {
-   background-color: #f0f0f0;
-   border-left: 2px solid var(--red_light);
-}
-
 /* —————————————————————————————————————————————————————————————————————————————
    Animation
 */

@@ -32,7 +32,6 @@ function LeftMenu() {
             onClick={() => go(v)}
             className={v === view ? "item active" : "item"}
             key={i}
-            tabIndex={1}
           >
             <span className="flex">{icons[v]}{v}</span>
             <span className={"statistic"} id={v === "today" && has_overdue ? "overdue" : ""}>
