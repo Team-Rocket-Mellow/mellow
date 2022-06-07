@@ -144,7 +144,7 @@ function Command({ setOpen }) {
             <ul>
               {
                 items
-                  .filter(({ label }) => label.toLowerCase().includes(search.toLowerCase()))
+                  .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
                   .map(({ label, icon, action }) => {
                     const index = counter.next().value
                     const isActive = selected === index ? "active" : ""
