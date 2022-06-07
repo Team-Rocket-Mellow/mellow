@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom"
-import React, { useState, useEffect, useRef, } from "react"
+import React, { useState, useEffect, useRef, createRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
@@ -32,7 +32,7 @@ function CommandPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Menu Representation
 
-type IconMap = { [key in TodoView]: React.ReactNode }
+type IconMap = { [key in TodoView]: JSX.Element }
 
 const icons:IconMap = {
   all:      <Icon>apps</Icon>,
@@ -81,16 +81,48 @@ function MenuState() {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
+function * naturals() { for (let i = 0; ; i++) yield i }
+
 function Command({ setOpen }) {
   const [search, setSearch] = useState("")
+  const [selected, setSelected] = useState(0)
   const $nav = useRef<HTMLFormElement>(null)
   const $input = useRef<HTMLInputElement>(null)
   const menu_state = MenuState()
+  const counter = naturals()
 
   const Δsearch = (Δ) => setSearch(Δ.target.value)
-  const keydown = (Δ:React.KeyboardEvent) => {
+  const Δmouse = (Δ:React.MouseEvent) => {
+    const $list = document.querySelectorAll("#Command li")
+    const index = Array.from($list).indexOf(Δ.currentTarget)
+    setSelected(index)
+  }
+  const Δkey = (Δ:React.KeyboardEvent) => {
+    const $list = document.querySelectorAll<HTMLElement>("#Command li")
     switch (Δ.key) {
-      case "Escape": setOpen(false); break
+      case "Escape": 
+        Δ.preventDefault()
+        setOpen(false) 
+        break
+      case "Tab":
+        Δ.preventDefault()
+        if (Δ.shiftKey) {
+          Δ.preventDefault()
+          setSelected(($list.length + selected - 1) % $list.length)
+          break
+        }
+      case "ArrowDown":
+        Δ.preventDefault()
+        setSelected((selected + 1) % $list.length)
+        break
+      case "ArrowUp":
+        Δ.preventDefault()
+        setSelected(($list.length + selected - 1) % $list.length)
+        break
+      case "Enter":
+        Δ.preventDefault()
+        $list[selected].click()
+        break
     }
   }
 
@@ -103,7 +135,7 @@ function Command({ setOpen }) {
   useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
 
   return (
-    <nav id="Command" ref={$nav} onKeyDown={keydown}>
+    <nav id="Command" ref={$nav} onKeyDown={Δkey}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
       {
         menu_state.map(({ section, items }) => (
@@ -111,12 +143,18 @@ function Command({ setOpen }) {
             <h1>{section}</h1>
             <ul>
               {
-                items.map(({ label, icon, action }) => (
-                  <li onClick={action} key={label}>
-                    {icon}
-                    <span>{label}</span>
-                  </li>
-                ))
+                items
+                  .filter(({ label }) => label.toLowerCase().includes(search.toLowerCase()))
+                  .map(({ label, icon, action }) => {
+                    const index = counter.next().value
+                    const isActive = selected === index ? "active" : ""
+                    return (
+                      <li className={isActive} onClick={action} key={label} onMouseEnter={Δmouse}>
+                        {icon}
+                        <span>{label}</span>
+                      </li>
+                    )
+                  })
               }
             </ul>
           </menu>
