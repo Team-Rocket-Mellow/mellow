@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 import data from "./data"
 import { Todo, TodoView } from "./types"
-import { dayMonthYear } from "../utility/time"
+import { dayMonthYearString } from "../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Atom
@@ -35,7 +35,7 @@ export const home = atom({
 /** Set current date. */
 export const current_date = atom({
    key: "date",
-   default: dayMonthYear(new Date()),
+   default: dayMonthYearString(new Date()),
 })
 
 export const add_is_active = atom({
