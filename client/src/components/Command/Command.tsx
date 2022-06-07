@@ -24,7 +24,7 @@ function CommandPortal() {
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
   return isOpen && createPortal(
-    <Command setOpen={setOpen} />,
+    <Command setOpen={setOpen} isOpen={isOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -83,7 +83,7 @@ function MenuState() {
 
 function * naturals() { for (let i=0; true; i++) yield i }
 
-function Command({ setOpen }) {
+function Command({ setOpen, isOpen }) {
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useState(0)
   const $nav = useRef<HTMLFormElement>(null)
@@ -100,9 +100,9 @@ function Command({ setOpen }) {
   const Δkey = (Δ:React.KeyboardEvent) => {
     const $list = document.querySelectorAll<HTMLElement>("#Command li")
     switch (Δ.key) {
-      case "Escape": 
+      case "Escape":
         Δ.preventDefault()
-        setOpen(false) 
+        setOpen(false)
         break
       case "Tab":
         Δ.preventDefault()
@@ -165,3 +165,5 @@ function Command({ setOpen }) {
 }
 
 export default CommandPortal
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
