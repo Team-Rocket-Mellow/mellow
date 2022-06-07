@@ -149,7 +149,7 @@ function Command({ setOpen, isOpen }) {
                     const index = counter.next().value
                     const isActive = selected === index ? "active" : ""
                     return (
-                      <li className={isActive} onClick={action} key={label} onMouseEnter={Δmouse}>
+                      <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
                         {icon}
                         <span>{label}</span>
                       </li>
