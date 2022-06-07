@@ -3,8 +3,8 @@ import { useRecoilValue } from "recoil"
 import { todos_list_filtered } from "../../state/selectors"
 import { todos_view } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"
-import { reportMonthAndDay } from "../../utility/time"
 import Icon from "../assets/Icon"
+import { reportMonthAndDay } from "../../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Constituent
