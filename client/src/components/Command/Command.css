@@ -93,7 +93,7 @@
 @keyframes entry {
    from {
       opacity: 0;
-      transform: translate(-50%, -20%);
+      transform: translate(-50%, -45%);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0);
    }
 }
