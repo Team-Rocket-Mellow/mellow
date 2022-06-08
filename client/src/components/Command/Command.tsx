@@ -86,7 +86,7 @@ function * naturals() { for (let i=0; true; i++) yield i }
 
 function Command({ setOpen, isOpen }) {
   const [search, setSearch] = useState("")
-  const [selected, setSelected] = useState(0)
+  const [active, setActive] = useState(0)
   const $nav = useRef<HTMLFormElement>(null)
   const $input = useRef<HTMLInputElement>(null)
   const menu = MenuState().filter(section => section.items.some(
@@ -98,7 +98,7 @@ function Command({ setOpen, isOpen }) {
   const Δmouse = (Δ:React.MouseEvent) => {
     const $list = document.querySelectorAll("#Command li")
     const index = Array.from($list).indexOf(Δ.currentTarget)
-    setSelected(index)
+    setActive(index)
   }
   const Δkey = (Δ:React.KeyboardEvent) => {
     const $list = document.querySelectorAll<HTMLElement>("#Command li")
@@ -111,20 +111,20 @@ function Command({ setOpen, isOpen }) {
         Δ.preventDefault()
         if (Δ.shiftKey) {
           Δ.preventDefault()
-          setSelected(($list.length + selected - 1) % $list.length)
+          setActive(($list.length + active - 1) % $list.length)
           break
         }
       case "ArrowDown":
         Δ.preventDefault()
-        setSelected((selected + 1) % $list.length)
+        setActive((active + 1) % $list.length)
         break
       case "ArrowUp":
         Δ.preventDefault()
-        setSelected(($list.length + selected - 1) % $list.length)
+        setActive(($list.length + active - 1) % $list.length)
         break
       case "Enter":
         Δ.preventDefault()
-        $list[selected].click()
+        $list[active].click()
         break
     }
   }
@@ -151,7 +151,7 @@ function Command({ setOpen, isOpen }) {
                       .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
                       .map(({ label, icon, action }) => {
                         const index = counter.next().value
-                        const isActive = selected === index ? "active" : ""
+                        const isActive = active === index ? "active" : ""
                         return (
                           <Link to={section === "Navigate" ? label : ""}>
                             <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
