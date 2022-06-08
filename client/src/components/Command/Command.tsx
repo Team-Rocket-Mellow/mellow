@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, createRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
+import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
 import "./Command.css"
 
@@ -154,10 +155,12 @@ function Command({ setOpen, isOpen }) {
                         const index = counter.next().value
                         const isActive = selected === index ? "active" : ""
                         return (
-                          <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
-                            {icon}
-                            <span>{label}</span>
-                          </li>
+                          <Link to={section === "Navigate" ? label : ""}>
+                            <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                                {icon}
+                                <span>{label}</span>
+                            </li>
+                          </Link>
                         )
                       })
                   }

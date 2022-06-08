@@ -2,6 +2,7 @@ import "./TopMenu.css"
 import { useState } from "react"
 import { useSetRecoilState, useRecoilValue } from "recoil"
 import { add_is_active, todos_view, home } from "../../state/atoms"
+import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -20,7 +21,9 @@ function TopMenu() {
     <header id='NavBar'>
       <nav>
         <Icon>menu</Icon>
-        <Icon onClick={goInbox}>home</Icon>
+        <Link to={defaultHome} onClick={goInbox}>
+          <Icon>home</Icon>
+        </Link>
       </nav>
       <input
         type='search'
