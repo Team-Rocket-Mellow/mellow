@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom"
-import React, { useState, useEffect, useRef, createRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
