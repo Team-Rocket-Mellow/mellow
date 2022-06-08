@@ -167,9 +167,7 @@ function Command({ setOpen, isOpen }) {
                 </ul>
               </menu>
             ))
-          : <menu>
-              <h1>No results</h1>
-            </menu>
+          : <menu><h1>No results</h1></menu>
       }
     </nav>
   )
