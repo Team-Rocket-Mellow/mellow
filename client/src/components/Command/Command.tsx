@@ -145,10 +145,9 @@ function Command({ setOpen, isOpen }) {
 // SearchResults
 
 function SearchResults({ search, selected, Δmouse }) {
-  const menu_state = MenuState()
-  const menu = menu_state.filter(
-    (section => section.items.some(({ label }) => label.toLowerCase().includes(search.toLowerCase())))
-  )
+  const menu = MenuState().filter(section => section.items.some(
+    ({ label }) => label.toLowerCase().includes(search.toLowerCase())
+  ))
   const counter = naturals()
   return <>
     {
