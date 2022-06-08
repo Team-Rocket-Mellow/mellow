@@ -157,8 +157,8 @@ function Command({ setOpen, isOpen }) {
                         return (
                           <Link to={section === "Navigate" ? label : ""}>
                             <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
-                                {icon}
-                                <span>{label}</span>
+                              {icon}
+                              <span>{label}</span>
                             </li>
                           </Link>
                         )
