@@ -89,6 +89,10 @@ function Command({ setOpen, isOpen }) {
   const [selected, setSelected] = useState(0)
   const $nav = useRef<HTMLFormElement>(null)
   const $input = useRef<HTMLInputElement>(null)
+  const menu = MenuState().filter(section => section.items.some(
+    ({ label }) => label.toLowerCase().includes(search.toLowerCase()))
+  )
+  const counter = naturals()
 
   const Δsearch = (Δ) => setSearch(Δ.target.value)
   const Δmouse = (Δ:React.MouseEvent) => {
@@ -136,48 +140,35 @@ function Command({ setOpen, isOpen }) {
   return (
     <nav id="Command" ref={$nav} onKeyDown={Δkey}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
-      <SearchResults {...{ search, selected, Δmouse }} />
+      {
+        menu.length
+          ? menu.map(({ section, items }) => (
+              <menu key={section}>
+                <h1>{section}</h1>
+                <ul>
+                  {
+                    items
+                      .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
+                      .map(({ label, icon, action }) => {
+                        const index = counter.next().value
+                        const isActive = selected === index ? "active" : ""
+                        return (
+                          <Link to={section === "Navigate" ? label : ""}>
+                            <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                              {icon}
+                              <span>{label}</span>
+                            </li>
+                          </Link>
+                        )
+                      })
+                  }
+                </ul>
+              </menu>
+            ))
+          : <menu><h1>No results</h1></menu>
+      }
     </nav>
   )
-}
-
-// —————————————————————————————————————————————————————————————————————————————
-// SearchResults
-
-function SearchResults({ search, selected, Δmouse }) {
-  const menu = MenuState().filter(section => section.items.some(
-    ({ label }) => label.toLowerCase().includes(search.toLowerCase())
-  ))
-  const counter = naturals()
-  return <>
-    {
-      menu.length
-        ? menu.map(({ section, items }) => (
-            <menu key={section}>
-              <h1>{section}</h1>
-              <ul>
-                {
-                  items
-                    .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
-                    .map(({ label, icon, action }) => {
-                      const index = counter.next().value
-                      const isActive = selected === index ? "active" : ""
-                      return (
-                        <Link to={section === "Navigate" ? label : ""}>
-                          <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
-                            {icon}
-                            <span>{label}</span>
-                          </li>
-                        </Link>
-                      )
-                    })
-                }
-              </ul>
-            </menu>
-          ))
-        : <menu><h1>No results</h1></menu>
-    }
-  </>
 }
 
 // —————————————————————————————————————————————————————————————————————————————
