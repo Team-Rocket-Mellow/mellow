@@ -3,20 +3,18 @@
 */
 
 #Command {
-   /* positioning */
+   /* position */
    position: absolute;
    float: left;
    left: 50%;
    top: 30%;
    padding-bottom: 0.2em;
    transform: translate(-50%, -50%);
-
-   /* dimensions */
+   /* dimension */
    min-width: 25em;
    z-index: 1000;
    display: flex;
    flex-direction: column;
-
    /* style */
    animation: entry 0.2s;
    border-radius: 6px;
@@ -30,10 +28,12 @@
 */
 
 #Command input {
-   border: none;
+   /* position */
    margin-top: 0.5em;
    margin-bottom: 0.4em;
+   /* dimension */
    padding-left: 0.8em;
+   border: none;
    line-height: 2.2em;
 }
 
@@ -50,11 +50,12 @@
 }
 
 #Command menu h1 {
-   padding-left: 0.5em;
-   
+   /* position */
    margin-top: 0.3em;
    margin-bottom: 0.3em;
-   
+   /* dimension */
+   padding-left: 0.5em;
+   /* style */
    font-size: 0.8em;
    color: gray;
 }
@@ -72,11 +73,14 @@
 #Command i.upcoming { color: var(--orange);     }
 
 #Command li {
+   /* position */
    display: flex;
+   /* dimension */
    padding-top: 0.4em;
    padding-bottom: 0.4em;
    padding-left: 0.5em;
    border-left: 2px solid transparent;
+   /* style */
    font-size: 0.9em;
 }
 
