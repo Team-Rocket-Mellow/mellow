@@ -58,8 +58,8 @@ function Modal({ setOpen, isOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
-  const formRef = useRef<HTMLFormElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const $form = useRef<HTMLFormElement>(null)
+  const $input = useRef<HTMLInputElement>(null)
 
   const handleText = (Δ) => setText(Δ.target.value)
   const handleDate = (Δ) => setDate(Δ.target.value)
@@ -72,7 +72,7 @@ function Modal({ setOpen, isOpen }) {
     switch (Δ.key) {
       case "Escape": setOpen(false), Δ.preventDefault(); break
       case "Tab":
-        const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
+        const group = $form.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
         const first = group[0]
         const last = group[group.length - 1]
         if (!Δ.shiftKey && document.activeElement !== first) Δ.preventDefault(), first.focus()
@@ -81,19 +81,19 @@ function Modal({ setOpen, isOpen }) {
   }
 
   useEffect(() => {
-    const click = (Δ) => formRef.current && !formRef.current.contains(Δ.target) && setOpen(false)
+    const click = (Δ) => $form.current && !$form.current.contains(Δ.target) && setOpen(false)
     document.addEventListener("click", click)
     return () => document.removeEventListener("click", click)
-  }, [formRef])
+  }, [$form])
 
-  useEffect(() => {setTimeout(() => inputRef.current!.focus(), 1)}, [])
+  useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
 
   const outro = isOpen ? undefined : { animation: "exit 200ms linear" }
 
   return (
-    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={formRef} style={outro}>
+    <form id="Modal" onSubmit={submit} onKeyDown={keydown} ref={$form} style={outro}>
       <input type="date" value={date} onChange={handleDate} />
-      <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={inputRef} />
+      <input type="text" value={text} onChange={handleText} placeholder="add todo" ref={$input} />
       <Button type="submit" color="gray">submit</Button>
     </form>
   )
