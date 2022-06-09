@@ -75,8 +75,8 @@ function Modal({ setOpen, isOpen }) {
         const group = formRef.current!.querySelectorAll("input[type=text], button") as NodeListOf<HTMLElement>
         const first = group[0]
         const last = group[group.length - 1]
-        if (!Δ.shiftKey && document.activeElement !== first) first.focus(), Δ.preventDefault()
-        else if (Δ.shiftKey && document.activeElement !== last) last.focus(), Δ.preventDefault()
+        if (!Δ.shiftKey && document.activeElement !== first) Δ.preventDefault(), first.focus()
+        else if (Δ.shiftKey && document.activeElement !== last) Δ.preventDefault(), last.focus()
     }
   }
 
