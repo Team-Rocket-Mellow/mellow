@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_list, add_is_active } from "../../state/atoms"
 import { createTodo } from "../../state/actions"
-import { Button } from "../assets/Button"
+import Button from "../assets/Button"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Hook
