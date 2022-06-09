@@ -22,7 +22,7 @@ function TopMenu() {
     <header id='NavBar'>
       <nav>
         <Icon>menu</Icon>
-        <Link to={defaultHome} onClick={goInbox}>
+        <Link to={defaultHome} onClick={goInbox} tabIndex={-1}>
           <Icon>home</Icon>
         </Link>
       </nav>
