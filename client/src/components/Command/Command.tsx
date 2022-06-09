@@ -1,8 +1,9 @@
 import { createPortal } from "react-dom"
-import React, { useState, useEffect, useRef, createRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useSetRecoilState, useRecoilState } from "recoil"
 import { todos_view, command_is_active, add_is_active } from "../../state/atoms"
 import { TodoView } from "../../state/types"
+import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
 import "./Command.css"
 
@@ -24,7 +25,7 @@ function CommandPortal() {
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
   return isOpen && createPortal(
-    <Command setOpen={setOpen} />,
+    <Command setOpen={setOpen} isOpen={isOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -81,47 +82,49 @@ function MenuState() {
 // —————————————————————————————————————————————————————————————————————————————
 // Command
 
-function * naturals() { for (let i = 0; ; i++) yield i }
+function * naturals() { for (let i=0; true; i++) yield i }
 
-function Command({ setOpen }) {
+function Command({ setOpen, isOpen }) {
   const [search, setSearch] = useState("")
-  const [selected, setSelected] = useState(0)
+  const [active, setActive] = useState(0)
   const $nav = useRef<HTMLFormElement>(null)
   const $input = useRef<HTMLInputElement>(null)
-  const menu_state = MenuState()
+  const menu = MenuState().filter(section => section.items.some(
+    ({ label }) => label.toLowerCase().includes(search.toLowerCase()))
+  )
   const counter = naturals()
 
   const Δsearch = (Δ) => setSearch(Δ.target.value)
   const Δmouse = (Δ:React.MouseEvent) => {
     const $list = document.querySelectorAll("#Command li")
     const index = Array.from($list).indexOf(Δ.currentTarget)
-    setSelected(index)
+    setActive(index)
   }
   const Δkey = (Δ:React.KeyboardEvent) => {
     const $list = document.querySelectorAll<HTMLElement>("#Command li")
     switch (Δ.key) {
-      case "Escape": 
+      case "Escape":
         Δ.preventDefault()
-        setOpen(false) 
+        setOpen(false)
         break
       case "Tab":
         Δ.preventDefault()
         if (Δ.shiftKey) {
           Δ.preventDefault()
-          setSelected(($list.length + selected - 1) % $list.length)
+          setActive(($list.length + active - 1) % $list.length)
           break
         }
       case "ArrowDown":
         Δ.preventDefault()
-        setSelected((selected + 1) % $list.length)
+        setActive((active + 1) % $list.length)
         break
       case "ArrowUp":
         Δ.preventDefault()
-        setSelected(($list.length + selected - 1) % $list.length)
+        setActive(($list.length + active - 1) % $list.length)
         break
       case "Enter":
         Δ.preventDefault()
-        $list[selected].click()
+        $list[active].click()
         break
     }
   }
@@ -138,30 +141,39 @@ function Command({ setOpen }) {
     <nav id="Command" ref={$nav} onKeyDown={Δkey}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
       {
-        menu_state.map(({ section, items }) => (
-          <menu key={section}>
-            <h1>{section}</h1>
-            <ul>
-              {
-                items
-                  .filter(({ label }) => label.toLowerCase().includes(search.toLowerCase()))
-                  .map(({ label, icon, action }) => {
-                    const index = counter.next().value
-                    const isActive = selected === index ? "active" : ""
-                    return (
-                      <li className={isActive} onClick={action} key={label} onMouseEnter={Δmouse}>
-                        {icon}
-                        <span>{label}</span>
-                      </li>
-                    )
-                  })
-              }
-            </ul>
-          </menu>
-        ))
+        menu.length
+          ? menu.map(({ section, items }) => (
+              <menu key={section}>
+                <h1>{section}</h1>
+                <ul>
+                  {
+                    items
+                      .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
+                      .map(({ label, icon, action }) => {
+                        const index = counter.next().value
+                        const isActive = active === index ? "active" : ""
+                        return (
+                          <Link to={section === "Navigate" ? label : ""}>
+                            <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                              {icon}
+                              <span>{label}</span>
+                            </li>
+                          </Link>
+                        )
+                      })
+                  }
+                </ul>
+              </menu>
+            ))
+          : <menu><h1>No results</h1></menu>
       }
     </nav>
   )
 }
 
+// —————————————————————————————————————————————————————————————————————————————
+// Export
+
 export default CommandPortal
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView

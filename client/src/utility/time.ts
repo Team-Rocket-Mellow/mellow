@@ -69,8 +69,20 @@ export function numberToMonth(n:number) {
  * @example
  * reportMonthAndDay(new Date()) // "May 15"
  */
-export function reportMonthAndDay(date:Date) {
+export function monthDayString(date:Date) {
    return `${numberToMonth(date.getMonth())} ${date.getDate()}`
+}
+
+/**
+ * Maps `date` to string.
+ * @example
+ * console.log(new Date()) // "15 May 2020"
+ */
+export function dayMonthYearString(date:Date|null) {
+   const day = date?.getDate()
+   const month = numberToMonth(date?.getMonth()!)
+   const year = date?.getFullYear()
+   return date ? `${day} ${month} ${year}` : ""
 }
 
 /**
@@ -79,9 +91,9 @@ export function reportMonthAndDay(date:Date) {
  * const { day, month, year } = dayMonthYear(new Date())
  * console.log(`${month} ${day}, ${year}`) // "May 15, 2020"
  */
-export function dayMonthYear(date:Date|null) {
-   const day = date?.getDate()
-   const month = numberToMonth(date?.getMonth()!)
-   const year = date?.getFullYear()
-   return date ? `${day} ${month} ${year}` : ""
+ export function dayMonthYear(date:Date) {
+   const day = date.getDate()
+   const month = numberToMonth(date.getMonth())
+   const year = date.getFullYear()
+   return { day, month, year, }
 }

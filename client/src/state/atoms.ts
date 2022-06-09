@@ -1,21 +1,21 @@
 import { atom } from 'recoil'
 import data from "./data"
-import { Todo, TodoView } from "./types"
-import { dayMonthYear } from "../utility/time"
+import { Todo, TodoView, Theme } from "./types"
+import { dayMonthYearString } from "../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
-// Atom
+// Data
 
 /** Original list of todos. */
-export const todos_list = atom({
+export const todos_list = atom<Todo[]>({
    key: "todos_state",
-   default: data as Todo[],
+   default: data,
 })
 
 /** Current todos view. */
-export const todos_view = atom({
+export const todos_view = atom<TodoView>({
    key: "todos_view",
-   default: "inbox" as TodoView,
+   default: "inbox",
 })
 
 export const user = atom({
@@ -26,16 +26,24 @@ export const user = atom({
    }
 })
 
-/** Set default view. */
-export const home = atom({
-   key: "home",
-   default: "inbox" as TodoView,
-})
-
 /** Set current date. */
 export const current_date = atom({
    key: "date",
-   default: dayMonthYear(new Date()),
+   default: dayMonthYearString(new Date()),
+})
+
+// —————————————————————————————————————————————————————————————————————————————
+// Interface
+
+/** Set default view. */
+export const home = atom<TodoView>({
+   key: "home",
+   default: "inbox",
+})
+
+export const theme = atom<Theme>({
+   key: "theme",
+   default: "light",
 })
 
 export const add_is_active = atom({

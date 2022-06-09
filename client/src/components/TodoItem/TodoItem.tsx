@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { todos_list, current_date } from "../../state/atoms"
 import { TodoElement } from "../../state/types"
-import { dayMonthYear } from "../../utility/time"
+import { dayMonthYearString } from "../../utility/time"
 import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -28,7 +28,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
         <span className="text">{text}</span>
       </span>
       <span className={overdue ? "overdue" : ""}>
-        { dayMonthYear(due) }
+        { dayMonthYearString(due) }
       </span>
     </div>
   )
