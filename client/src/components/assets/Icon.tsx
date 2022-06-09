@@ -1,4 +1,6 @@
-function Icon({ className, children, ...props }: { children: React.ReactNode; className?:string }) {
+function Icon({ className, children, ...props }: 
+  { className?:string, children: React.ReactNode, [key:string]:any }
+) {
   return (
     <i className={`material-symbols-rounded ${className}`} {...props}>
       {children}
