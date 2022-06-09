@@ -64,9 +64,9 @@ function Modal({ setOpen, isOpen }) {
   const handleText = (Δ) => setText(Δ.target.value)
   const handleDate = (Δ) => setDate(Δ.target.value)
   const submit = (Δ) => {
+    Δ.preventDefault()
     if (text) setTodos(todos => [...todos, createTodo(text, date)])
     setOpen(false)
-    Δ.preventDefault()
   }
   const keydown = (Δ:React.KeyboardEvent) => {
     switch (Δ.key) {
