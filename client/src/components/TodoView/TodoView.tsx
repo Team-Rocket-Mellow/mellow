@@ -59,6 +59,7 @@ function TodoView() {
               }
             </ul>
           </section>
+          { !undone.length && <Celebration /> }
           { !!overdue.length && <TodoSection title="overdue" todos={overdue} /> }
           { !!done.length && <TodoSection title="done" todos={done} /> }
         </main>
