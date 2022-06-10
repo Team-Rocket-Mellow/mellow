@@ -153,8 +153,8 @@ function Command({ setOpen, isOpen }) {
                         const index = counter.next().value
                         const isActive = active === index ? "active" : ""
                         return (
-                          <Link to={section === "Navigate" ? label : ""}>
-                            <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                          <Link to={section === "Navigate" ? label : ""} key={index!}>
+                            <li className={isActive} onClick={action} onMouseEnter={Δmouse}>
                               {icon}
                               <span>{label}</span>
                             </li>
