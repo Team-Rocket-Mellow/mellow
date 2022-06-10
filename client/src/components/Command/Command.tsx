@@ -94,7 +94,7 @@ function Command({ setOpen, isOpen }) {
   )
   const counter = naturals()
 
-  const Δsearch = (Δ) => setSearch(Δ.target.value)
+  const Δsearch = (Δ) => { setSearch(Δ.target.value), setActive(0) }
   const Δmouse = (Δ:React.MouseEvent) => {
     const $list = document.querySelectorAll("#Command li")
     const index = Array.from($list).indexOf(Δ.currentTarget)
@@ -153,8 +153,8 @@ function Command({ setOpen, isOpen }) {
                         const index = counter.next().value
                         const isActive = active === index ? "active" : ""
                         return (
-                          <Link to={section === "Navigate" ? label : ""}>
-                            <li className={isActive} key={label} onClick={action} onMouseEnter={Δmouse}>
+                          <Link to={section === "Navigate" ? label : ""} key={index!}>
+                            <li className={isActive} onClick={action} onMouseEnter={Δmouse}>
                               {icon}
                               <span>{label}</span>
                             </li>
