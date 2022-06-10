@@ -14,7 +14,7 @@ const views:TodoView[] = ["all", "inbox", "today", "upcoming", "done", "trash"]
 // —————————————————————————————————————————————————————————————————————————————
 // Constituent
 
-function Select({ label, options }: { label: string, options: string[] }) {
+function Select({ label, options }: { label:string, options:string[] }) {
    return (
       <label htmlFor={label}>
          {label}
