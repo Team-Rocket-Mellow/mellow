@@ -1,5 +1,5 @@
 import "./TopMenu.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSetRecoilState, useRecoilValue } from "recoil"
 import { add_is_active, todos_view, home } from "../../state/atoms"
 import { Link } from "react-router-dom"
@@ -13,10 +13,34 @@ function TopMenu() {
   const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
-  
+  const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
+
   const goInbox = () => setView(defaultHome)
   const Δtext = (Δ) => setText(Δ.target.value)
   const openModal = () => setOpen(true)
+
+  const Δkey = (Δ:KeyboardEvent) => {
+    switch (Δ.key) {
+      case "/":
+        if (!(document.activeElement instanceof HTMLInputElement)) {
+          Δ.preventDefault()
+          $input?.focus()
+        }
+        break
+      case "Escape":
+        Δ.preventDefault()
+        if (document.activeElement === $input) {
+          setText("")
+          $input?.blur()
+        }
+        break
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", Δkey)
+    return () => document.removeEventListener("keydown", Δkey)
+  }, [])
 
   return (
     <header id='NavBar'>
