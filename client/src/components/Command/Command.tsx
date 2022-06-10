@@ -94,7 +94,7 @@ function Command({ setOpen, isOpen }) {
   )
   const counter = naturals()
 
-  const Δsearch = (Δ) => setSearch(Δ.target.value)
+  const Δsearch = (Δ) => { setSearch(Δ.target.value), setActive(0) }
   const Δmouse = (Δ:React.MouseEvent) => {
     const $list = document.querySelectorAll("#Command li")
     const index = Array.from($list).indexOf(Δ.currentTarget)
