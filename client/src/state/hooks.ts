@@ -1,34 +1,37 @@
 import { useRecoilState } from "recoil"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { left_menu } from "./atoms"
 
-function useTime() {
-   const [time, setTime] = useState(() => new Date())
+// —————————————————————————————————————————————————————————————————————————————
+// Time
 
-   useEffect(() => {
-      const id = setInterval(() => { setTime(new Date()) }, 1000)
-      return () => clearInterval(id)
-   }, [])
+export function useTime() {
+  const [time, setTime] = useState(() => new Date())
 
-   return time
+  useEffect(() => {
+    const id = setInterval(() => { setTime(new Date()) }, 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  return time
 }
 
-function useHotkey() {
-   const [isMenuOn, toggleMenu] = useRecoilState(left_menu)
+// —————————————————————————————————————————————————————————————————————————————
+// Hotkeys
 
-   function Δkey(Δ:KeyboardEvent) {
-      switch(Δ.key) {
-         case "m":
-            if (!(document.activeElement instanceof HTMLInputElement)) toggleMenu(!isMenuOn)
-            break
-         default: break
-      }
-   }
+export function useHotKey() {
+  const [isMenuOn, toggleMenu] = useRecoilState(left_menu)
 
-   useEffect(() => {
-      document.addEventListener("keydown", Δkey)
-      return () => document.removeEventListener("keydown", Δkey)
-   }, [])
+  const Δkey = useCallback((Δ:KeyboardEvent) => {
+    switch(Δ.key) {
+      case "m":
+        !(document.activeElement instanceof HTMLInputElement) && toggleMenu(!isMenuOn)
+        break
+    }
+  }, [isMenuOn])
+
+  useEffect(() => {
+    document.addEventListener("keydown", Δkey)
+    return () => document.removeEventListener("keydown", Δkey)
+  }, [isMenuOn])
 }
-
-export default useTime

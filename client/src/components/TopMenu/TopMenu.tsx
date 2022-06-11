@@ -10,7 +10,7 @@ import Icon from "../assets/Icon"
 
 function TopMenu() {
   const [text, setText] = useState('')
-  const [sideBarState, setSideBar] = useRecoilState(left_menu)
+  const [isMenuOn, toggleMenu] = useRecoilState(left_menu)
   const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
@@ -18,7 +18,7 @@ function TopMenu() {
   const goInbox = () => setView(defaultHome)
   const Δtext = (Δ) => setText(Δ.target.value)
   const openModal = () => setOpen(true)
-  const toggleBar = () => setSideBar(!sideBarState)
+  const toggleBar = () => toggleMenu(!isMenuOn)
 
   const Δkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
@@ -33,16 +33,13 @@ function TopMenu() {
         Δ.preventDefault()
         if (document.activeElement === $input) $input?.blur()
         break
-      case "m":
-        if (!(document.activeElement instanceof HTMLInputElement)) toggleBar()
-        break
     }
   }
 
   useEffect(() => {
     document.addEventListener("keydown", Δkey)
     return () => document.removeEventListener("keydown", Δkey)
-  }, [sideBarState])
+  }, [])
 
   return (
     <header id='NavBar'>
