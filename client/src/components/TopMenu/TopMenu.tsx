@@ -21,7 +21,7 @@ function TopMenu() {
   const Δtext = (Δ) => setText(Δ.target.value)
   const Δmenu = () => toggleMenu(!isMenuOn)
 
-  const keydown = (Δ:KeyboardEvent) => {
+  const hotkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
     switch (Δ.key) {
       case "/":
@@ -38,8 +38,8 @@ function TopMenu() {
   }
 
   useEffect(() => {
-    document.addEventListener("keydown", keydown)
-    return () => document.removeEventListener("keydown", keydown)
+    document.addEventListener("keydown", hotkey)
+    return () => document.removeEventListener("keydown", hotkey)
   }, [])
 
   return (
