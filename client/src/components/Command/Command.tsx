@@ -25,7 +25,7 @@ function CommandPortal() {
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
   return isOpen && createPortal(
-    <Command setOpen={setOpen} isOpen={isOpen} />,
+    <Command setOpen={setOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -84,7 +84,7 @@ function MenuState() {
 
 function * naturals() { for (let i=0; true; i++) yield i }
 
-function Command({ setOpen, isOpen }) {
+function Command({ setOpen }) {
   const [search, setSearch] = useState("")
   const [active, setActive] = useState(0)
   const $nav = useRef<HTMLFormElement>(null)

@@ -37,7 +37,7 @@ function ModalPortal() {
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
     && !(document.activeElement instanceof HTMLInputElement)
-    && Δ.code === "KeyQ"
+    && Δ.key === "q"
     && setOpen(true)
 
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
