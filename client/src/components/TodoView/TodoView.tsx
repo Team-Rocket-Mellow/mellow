@@ -1,10 +1,10 @@
 import "./TodoView.css"
 import { useRecoilValue } from "recoil"
+import { monthDayString } from "../../utility/time"
 import { todos_list_filtered } from "../../state/selectors"
 import { todos_view, left_menu } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"
 import Icon from "../assets/Icon"
-import { monthDayString } from "../../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Constituent
