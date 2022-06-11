@@ -1,6 +1,7 @@
 import "./LeftMenu.css"
+import { useState, useEffect } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
-import { todos_view } from "../../state/atoms"
+import { todos_view, sideBar } from "../../state/atoms"
 import { todos_list_stats, todos_today } from "../../state/selectors"
 import { TodoView } from "../../state/types"
 import { Link } from "react-router-dom"
@@ -13,6 +14,8 @@ function LeftMenu() {
   const [view, go] = useRecoilState(todos_view)
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const stats = useRecoilValue(todos_list_stats)
+  const watchLeftMenu = useRecoilValue(sideBar);
+
   const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
   const icons = {
     all:      <Icon>apps</Icon>,
@@ -23,8 +26,27 @@ function LeftMenu() {
     trash:    <Icon className="trash">delete</Icon>,
   }
 
+  // const SideMenu = () => {
+
+  //   return <>{views.map((v, i) => (
+  //     <Link
+  //       to={v}
+  //       onClick={() => setView(v)}
+  //       className={v === view ? "item active" : "item"}
+  //       key={i}
+  //       tabIndex={1}
+  //     >
+  //       <span className="flex">{icons[v]}{v}</span>
+  //       <span className="statistic">{stats[v] || null}</span>
+  //     </Link>
+  //   ))}</>
+  // };
+
+  
   return (
-    <nav id="LeftMenu">
+    // <nav id="LeftMenu" className={watchLeftMenu ? 'side-bar active' : 'side-bar'}>
+    //   <SideMenu />
+    <nav id="LeftMenu" className={watchLeftMenu ? 'side-bar active' : 'side-bar'}>
       {
         views.map((v, i) => (
           <Link

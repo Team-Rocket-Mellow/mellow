@@ -7,5 +7,11 @@
    "scripts": {
       "client:dev": "npm run dev --workspace=client",
       "dev": "npm run client:dev"
+   },
+   "dependencies": {
+      "react-transition-group": "^4.4.2"
+   },
+   "devDependencies": {
+      "@types/react-transition-group": "^4.4.4"
    }
 }

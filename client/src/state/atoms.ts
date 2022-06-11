@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 import data from "./data"
 import { Todo, TodoView, Theme } from "./types"
-import { dayMonthYearString } from "../utility/time"
+import { dayMonthYear } from "../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Data
@@ -26,11 +26,6 @@ export const user = atom({
    }
 })
 
-/** Set current date. */
-export const current_date = atom({
-   key: "date",
-   default: dayMonthYearString(new Date()),
-})
 
 // —————————————————————————————————————————————————————————————————————————————
 // Interface
@@ -40,6 +35,24 @@ export const home = atom<TodoView>({
    key: "home",
    default: "inbox",
 })
+
+/**
+ * Set current date.
+ */
+export const current_date = atom({
+   key: "date",
+   default: dayMonthYear(new Date()),
+})
+
+/**
+ * toggle LeftMenu
+ */
+
+export const sideBar = atom({
+   key: "side_bar_state",
+   default: false,
+})
+
 
 export const theme = atom<Theme>({
    key: "theme",

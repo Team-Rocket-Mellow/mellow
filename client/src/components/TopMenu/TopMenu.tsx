@@ -1,7 +1,7 @@
 import "./TopMenu.css"
 import { useEffect, useState } from "react"
 import { useSetRecoilState, useRecoilValue } from "recoil"
-import { add_is_active, todos_view, home } from "../../state/atoms"
+import { add_is_active, todos_view, home, sideBar } from "../../state/atoms"
 import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
 
@@ -39,10 +39,15 @@ function TopMenu() {
     return () => document.removeEventListener("keydown", Δkey)
   }, [])
 
+
+  const setSideBar = useSetRecoilState(sideBar)
+  const watchSideBarValue = useRecoilValue(sideBar)
+  const setBar = () => setSideBar(!watchSideBarValue)
+
   return (
     <header id='NavBar'>
       <nav>
-        <Icon>menu</Icon>
+        <Icon onClick={setBar}>menu</Icon>
         <Link to={defaultHome} onClick={goInbox} tabIndex={-1}>
           <Icon>home</Icon>
         </Link>
