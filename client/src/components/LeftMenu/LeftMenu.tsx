@@ -14,6 +14,7 @@ function LeftMenu() {
   const stats = useRecoilValue(todos_list_stats)
   const menuIsOn = useRecoilValue(left_menu);
   const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
+
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const icons = {
     all:      <Icon>apps</Icon>,
@@ -23,7 +24,7 @@ function LeftMenu() {
     done:     <Icon className="done">task_alt</Icon>,
     trash:    <Icon className="trash">delete</Icon>,
   }
-  
+
   return (
     <nav id="LeftMenu" className={menuIsOn ? 'side-bar active' : 'side-bar'}>
       {
