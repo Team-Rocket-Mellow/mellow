@@ -15,12 +15,12 @@ function TopMenu() {
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
 
+  const Δtext = (Δ) => setText(Δ.target.value)
+  const Δmenu = () => toggleMenu(!isMenuOn)
+  
   const goHome = () => setView(defaultHome)
   const openModal = () => setOpen(true)
   const clearText = () => setText("")
-  const Δtext = (Δ) => setText(Δ.target.value)
-  const Δmenu = () => toggleMenu(!isMenuOn)
-
   const hotkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
     switch (Δ.key) {
