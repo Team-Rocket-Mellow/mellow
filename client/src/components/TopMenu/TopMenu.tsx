@@ -14,7 +14,7 @@ function TopMenu() {
   const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
-  
+
   const goInbox = () => setView(defaultHome)
   const Δtext = (Δ) => setText(Δ.target.value)
   const openModal = () => setOpen(true)
@@ -49,13 +49,13 @@ function TopMenu() {
           <Icon>home</Icon>
         </Link>
       </nav>
-      <input 
+      <input
         placeholder='/  to search'
-        type="search" 
-        tabIndex={-1} 
-        value={text} 
-        onChange={Δtext} 
-        onBlur={() => setText("")} 
+        type="search"
+        tabIndex={-1}
+        value={text}
+        onChange={Δtext}
+        onBlur={() => setText("")}
       />
       <nav>
         <Icon onClick={openModal}>add</Icon>

@@ -9,22 +9,6 @@
    --header-font-size: 1.5em;
 }
 
-#TodoView.open {
-   margin-left: 230px;
-   width: 100%;
-
-   --header-font-size: 1.5em;
-   transition: 0.2s linear;
-}
-
-#TodoView.close {
-   margin-left: 0px;
-   width: 100%;
-
-   --header-font-size: 1.5em;
-   transition: 0.2s linear;
-}
-
 #TodoView h1 {
    font-size: var(--header-font-size);
    margin-left: 0.4em;
@@ -41,6 +25,26 @@
 #upcoming h1 { color: var(--orange); }
 /* #done h1     { color: var(--brown); } */
 /* #trash h1    { color: var(--red); } */
+
+/* -----------------------------------------------------------------------------
+   Animation
+*/
+
+#TodoView.open {
+   margin-left: 230px;
+   width: 100%;
+
+   --header-font-size: 1.5em;
+   transition: 0.2s linear;
+}
+
+#TodoView.close {
+   margin-left: 0px;
+   width: 100%;
+
+   --header-font-size: 1.5em;
+   transition: 0.2s linear;
+}
 
 /* -----------------------------------------------------------------------------
    Today
