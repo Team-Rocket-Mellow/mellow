@@ -50,7 +50,7 @@ export const current_date = atom({
 
 export const sideBar = atom({
    key: "side_bar_state",
-   default: false,
+   default: true,
 })
 
 

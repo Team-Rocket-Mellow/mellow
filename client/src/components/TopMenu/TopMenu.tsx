@@ -1,6 +1,6 @@
 import "./TopMenu.css"
 import { useEffect, useState } from "react"
-import { useSetRecoilState, useRecoilValue } from "recoil"
+import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil"
 import { add_is_active, todos_view, home, sideBar } from "../../state/atoms"
 import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
@@ -13,11 +13,13 @@ function TopMenu() {
   const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
+  const [sideBarState, setSideBar] = useRecoilState(sideBar)
   
   const goInbox = () => setView(defaultHome)
   const Δtext = (Δ) => setText(Δ.target.value)
   const openModal = () => setOpen(true)
-  
+  const toggleBar = () => setSideBar(!sideBarState)
+
   const Δkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
     switch (Δ.key) {
@@ -31,23 +33,23 @@ function TopMenu() {
         Δ.preventDefault()
         if (document.activeElement === $input) $input?.blur()
         break
+      case "m":
+        if (!(document.activeElement instanceof HTMLInputElement)) {
+          setSideBar(!sideBarState)
+        }
+        break
     }
   }
 
   useEffect(() => {
     document.addEventListener("keydown", Δkey)
     return () => document.removeEventListener("keydown", Δkey)
-  }, [])
-
-
-  const setSideBar = useSetRecoilState(sideBar)
-  const watchSideBarValue = useRecoilValue(sideBar)
-  const setBar = () => setSideBar(!watchSideBarValue)
+  }, [sideBarState])
 
   return (
     <header id='NavBar'>
       <nav>
-        <Icon onClick={setBar}>menu</Icon>
+        <Icon onClick={toggleBar}>menu</Icon>
         <Link to={defaultHome} onClick={goInbox} tabIndex={-1}>
           <Icon>home</Icon>
         </Link>

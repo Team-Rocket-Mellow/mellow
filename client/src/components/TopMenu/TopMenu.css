@@ -17,6 +17,7 @@
    margin-right: 0.2em;
    padding: 5px;
    border-radius: 3px;
+   user-select: none;
 }
 
 #NavBar i:hover {
