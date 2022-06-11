@@ -12,7 +12,7 @@ import Icon from "../assets/Icon"
 function LeftMenu() {
   const [view, go] = useRecoilState(todos_view)
   const stats = useRecoilValue(todos_list_stats)
-  const menuIsOn = useRecoilValue(left_menu);
+  const menuIsOn = useRecoilValue(left_menu)
   const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
 
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
