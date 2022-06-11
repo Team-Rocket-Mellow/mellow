@@ -32,7 +32,7 @@ function Celebration({ children }: { children?: string }) {
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function MainView() {
+function TodoView() {
   const todos = useRecoilValue(todos_list_filtered)
   const view = useRecoilValue(todos_view)
   const done = todos.filter(t => t.done)
@@ -85,4 +85,4 @@ function MainView() {
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default MainView
+export default TodoView
