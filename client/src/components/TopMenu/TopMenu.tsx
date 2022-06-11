@@ -52,7 +52,14 @@ function TopMenu() {
           <Icon>home</Icon>
         </Link>
       </nav>
-      <input placeholder='/  to search' tabIndex={-1} value={text} onChange={Δtext} onBlur={() => setText("")} />
+      <input 
+        placeholder='/  to search'
+        type="search" 
+        tabIndex={-1} 
+        value={text} 
+        onChange={Δtext} 
+        onBlur={() => setText("")} 
+      />
       <nav>
         <Icon onClick={openModal}>add</Icon>
         <Icon>settings</Icon>
