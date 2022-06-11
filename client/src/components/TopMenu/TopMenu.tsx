@@ -20,8 +20,7 @@ function TopMenu() {
   const clearText = () => setText("")
   const Δtext = (Δ) => setText(Δ.target.value)
   const Δmenu = () => toggleMenu(!isMenuOn)
-
-  const Δkey = (Δ:KeyboardEvent) => {
+  const keydown = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
     switch (Δ.key) {
       case "/":
@@ -38,8 +37,8 @@ function TopMenu() {
   }
 
   useEffect(() => {
-    document.addEventListener("keydown", Δkey)
-    return () => document.removeEventListener("keydown", Δkey)
+    document.addEventListener("keydown", keydown)
+    return () => document.removeEventListener("keydown", keydown)
   }, [])
 
   return (
