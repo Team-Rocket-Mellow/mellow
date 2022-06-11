@@ -1,7 +1,7 @@
 import "./TodoView.css"
 import { useRecoilValue } from "recoil"
 import { todos_list_filtered } from "../../state/selectors"
-import { todos_view, sideBar} from "../../state/atoms"
+import { todos_view, left_menu } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"
 import Icon from "../assets/Icon"
 import { monthDayString } from "../../utility/time"
@@ -39,7 +39,7 @@ function MainView() {
   const view = useRecoilValue(todos_view)
   const done = todos.filter(t => t.done)
   const undone = todos.filter(t => !t.done)
-  const isMenuOn = useRecoilValue(sideBar)
+  const isMenuOn = useRecoilValue(left_menu)
 
   switch (view) {
     case "today":

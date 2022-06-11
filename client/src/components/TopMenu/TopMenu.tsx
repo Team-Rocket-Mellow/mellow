@@ -1,7 +1,7 @@
 import "./TopMenu.css"
 import { useEffect, useState } from "react"
 import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil"
-import { add_is_active, todos_view, home, sideBar } from "../../state/atoms"
+import { add_is_active, todos_view, home, left_menu } from "../../state/atoms"
 import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
 
@@ -10,7 +10,7 @@ import Icon from "../assets/Icon"
 
 function TopMenu() {
   const [text, setText] = useState('')
-  const [sideBarState, setSideBar] = useRecoilState(sideBar)
+  const [sideBarState, setSideBar] = useRecoilState(left_menu)
   const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
