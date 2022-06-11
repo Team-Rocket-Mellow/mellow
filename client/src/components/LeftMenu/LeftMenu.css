@@ -113,12 +113,20 @@
    background-color: rgb(238, 238, 238);
 }
 
+/* -----------------------------------------------------------------------------
+   Statistics
+*/
+
 #LeftMenu .statistic {
    padding-right: 1em;
    font-size: 0.8em;
    color: rgb(147, 142, 142);
    display: flex;
    align-items: center;
+}
+
+#LeftMenu #overdue {
+   color: var(--red_light);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -129,18 +137,8 @@
    margin-right: 0.3em;
 }
 
-#LeftMenu i.inbox {
-   color: var(--blue);
-}
-
-#LeftMenu i.today {
-   color: var(--green);
-}
-
-#LeftMenu i.trash {
-   color: var(--red);
-}
-
-/* —————————————————————————————————————————————————————————————————————————————
-   Transitions
-*/
+#LeftMenu i.inbox    { color: var(--blue_light);   }
+#LeftMenu i.today    { color: var(--green);  }
+#LeftMenu i.upcoming { color: var(--orange); }
+/* #LeftMenu i.done     { color: var(--brown);  } */
+/* #LeftMenu i.trash    { color: var(--red);    } */

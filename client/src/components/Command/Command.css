@@ -1,0 +1,111 @@
+/* —————————————————————————————————————————————————————————————————————————————
+   Command Modal
+*/
+
+#Command {
+   /* position */
+   position: absolute;
+   float: left;
+   left: 50%;
+   top: 30%;
+   padding-bottom: 0.2em;
+   transform: translate(-50%, -50%);
+   /* dimension */
+   min-width: 25em;
+   z-index: 1000;
+   display: flex;
+   flex-direction: column;
+   /* style */
+   animation: entry 0.2s;
+   border-radius: 6px;
+   background-color: white;
+   box-shadow: rgba(0, 0, 0, 0.3)  0px 19px 38px,
+               rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Search
+*/
+
+#Command input {
+   /* position */
+   margin-top: 0.5em;
+   margin-bottom: 0.4em;
+   /* dimension */
+   padding-left: 0.8em;
+   border: none;
+   line-height: 2.2em;
+}
+
+#Command input {
+   outline: none;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Menus
+*/
+
+#Command menu {
+   border-top: 2px solid #e0e0e0;
+}
+
+#Command menu h1 {
+   /* position */
+   margin-top: 0.3em;
+   margin-bottom: 0.3em;
+   /* dimension */
+   padding-left: 0.5em;
+   /* style */
+   font-size: 0.8em;
+   color: gray;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Menu Items
+*/
+
+#Command i {
+   margin-right: 0.3em;
+}
+
+#Command i.inbox    { color: var(--blue_light); }
+#Command i.today    { color: var(--green);      }
+#Command i.upcoming { color: var(--orange);     }
+
+#Command li {
+   /* position */
+   display: flex;
+   /* dimension */
+   padding-top: 0.4em;
+   padding-bottom: 0.4em;
+   padding-left: 0.5em;
+   border-left: 2px solid transparent;
+   /* style */
+   font-size: 0.9em;
+}
+
+#Command menu li.active {
+   background-color: #f0f0f0;
+   border-left: 2px solid var(--red_light);
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Animation
+*/
+
+/* move up + fade in */
+@keyframes entry {
+   from {
+      opacity: 0;
+      transform: translate(-50%, -45%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+   }
+}
+
+@keyframes exit {
+   to {
+      opacity: 0;
+      transform: translate(-50%, -20%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+   }
+}

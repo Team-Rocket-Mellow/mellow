@@ -1,25 +1,21 @@
 import { atom } from 'recoil'
 import data from "./data"
-import { Todo, TodoView } from "./types"
+import { Todo, TodoView, Theme } from "./types"
 import { dayMonthYear } from "../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
-// Atom
+// Data
 
-/**
- * Original list of todos.
- */
-export const todos_list = atom({
+/** Original list of todos. */
+export const todos_list = atom<Todo[]>({
    key: "todos_state",
-   default: data as Todo[],
+   default: data,
 })
 
-/**
- * Current todos view.
- */
-export const todos_view = atom({
+/** Current todos view. */
+export const todos_view = atom<TodoView>({
    key: "todos_view",
-   default: "inbox" as TodoView,
+   default: "inbox",
 })
 
 export const user = atom({
@@ -30,17 +26,14 @@ export const user = atom({
    }
 })
 
-export const modal_is_active = atom({
-   key: "modal_state",
-   default: false,
-})
 
-/**
- * Set default view.
- */
-export const home = atom({
+// —————————————————————————————————————————————————————————————————————————————
+// Interface
+
+/** Set default view. */
+export const home = atom<TodoView>({
    key: "home",
-   default: "inbox" as TodoView,
+   default: "inbox",
 })
 
 /**
@@ -57,5 +50,21 @@ export const current_date = atom({
 
 export const sideBar = atom({
    key: "side_bar_state",
+   default: false,
+})
+
+
+export const theme = atom<Theme>({
+   key: "theme",
+   default: "light",
+})
+
+export const add_is_active = atom({
+   key: "modal_state",
+   default: false,
+})
+
+export const command_is_active = atom({
+   key: "command_state",
    default: false,
 })

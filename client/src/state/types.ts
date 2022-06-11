@@ -23,9 +23,14 @@ export type Auth = {
    expiry : Date
 }
 
+export type Theme = "light" | "dark" | "contrast"
+
 // —————————————————————————————————————————————————————————————————————————————
 // Derived
 
+/**
+ * Todos but with derived data `overdue`.
+ */
 export type TodoElement = {
    id      : string
    text    : string

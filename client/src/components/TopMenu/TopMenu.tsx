@@ -1,7 +1,8 @@
 import "./TopMenu.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSetRecoilState, useRecoilValue } from "recoil"
-import { modal_is_active, todos_view, home, sideBar } from "../../state/atoms"
+import { add_is_active, todos_view, home, sideBar } from "../../state/atoms"
+import { Link } from "react-router-dom"
 import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -9,12 +10,34 @@ import Icon from "../assets/Icon"
 
 function TopMenu() {
   const [text, setText] = useState('')
-  const setOpen = useSetRecoilState(modal_is_active)
+  const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
   
-  const openModal = () => setOpen(true)
   const goInbox = () => setView(defaultHome)
+  const Δtext = (Δ) => setText(Δ.target.value)
+  const openModal = () => setOpen(true)
+  
+  const Δkey = (Δ:KeyboardEvent) => {
+    const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
+    switch (Δ.key) {
+      case "/":
+        if (!(document.activeElement instanceof HTMLInputElement)) {
+          Δ.preventDefault()
+          $input?.focus()
+        }
+        break
+      case "Escape":
+        Δ.preventDefault()
+        if (document.activeElement === $input) $input?.blur()
+        break
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", Δkey)
+    return () => document.removeEventListener("keydown", Δkey)
+  }, [])
 
 
   const setSideBar = useSetRecoilState(sideBar)
@@ -25,15 +48,11 @@ function TopMenu() {
     <header id='NavBar'>
       <nav>
         <Icon onClick={setBar}>menu</Icon>
-        <Icon onClick={goInbox}>home</Icon>
+        <Link to={defaultHome} onClick={goInbox} tabIndex={-1}>
+          <Icon>home</Icon>
+        </Link>
       </nav>
-      <input
-        type='search'
-        placeholder='/  to search'
-        tabIndex={-1}
-        value={text}
-        onChange={e => setText(e.target.value)}
-      />
+      <input placeholder='/  to search' tabIndex={-1} value={text} onChange={Δtext} onBlur={() => setText("")} />
       <nav>
         <Icon onClick={openModal}>add</Icon>
         <Icon>settings</Icon>

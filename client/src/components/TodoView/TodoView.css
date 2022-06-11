@@ -39,33 +39,26 @@
    margin-bottom: var(--header-font-size);
 }
 
-#inbox h1 {
-   color: var(--blue);
-}
+#inbox h1    { color: var(--blue_light); }
+#today h1    { color: var(--green); }
+#upcoming h1 { color: var(--orange); }
+/* #done h1     { color: var(--brown); } */
+/* #trash h1    { color: var(--red); } */
 
-#today h1 {
-   color: var(--green);
-}
+/* ----------------------------------------------------------------------------- 
+   Today
+*/
 
-#trash h1 {
-   color: var(--red);
-}
-
-/* today view */
 #TodoView header h1 {
    display: flex;
    justify-content: space-between;
-}
-
-#TodoView header time {
-   color: var(--green);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
    Celebration
 */
 
-#TodoView section.hooray {
+#TodoView section#Celebration {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -73,8 +66,9 @@
    width: 100%;
 }
 
-#TodoView .hooray i {
+#TodoView #Celebration i {
    font-size: 10em;
+   color: rgb(1, 112, 1);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

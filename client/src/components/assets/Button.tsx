@@ -1,7 +1,11 @@
 import "./Button.css";
 
-export function Button({ children, color, ...props }) {
+function Button({ children, color, ...props }) {
    return (
-      <button className={`Button—${color}`} {...props}>{children}</button>
+      <button className={`Button—${color}`} {...props}>
+         {children}
+      </button>
    )
 }
+
+export default Button
