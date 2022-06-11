@@ -17,6 +17,7 @@ function TopMenu() {
 
   const goInbox = () => setView(defaultHome)
   const openModal = () => setOpen(true)
+  const clearText = () => setText("")
   const Δtext = (Δ) => setText(Δ.target.value)
   const Δmenu = () => toggleMenu(!isMenuOn)
 
@@ -55,7 +56,7 @@ function TopMenu() {
         tabIndex={-1}
         value={text}
         onChange={Δtext}
-        onBlur={() => setText("")}
+        onBlur={clearText}
       />
       <nav>
         <Icon onClick={openModal}>add</Icon>
