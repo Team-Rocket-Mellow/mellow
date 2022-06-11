@@ -20,6 +20,7 @@ function TopMenu() {
   const clearText = () => setText("")
   const Δtext = (Δ) => setText(Δ.target.value)
   const Δmenu = () => toggleMenu(!isMenuOn)
+
   const keydown = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
     switch (Δ.key) {
