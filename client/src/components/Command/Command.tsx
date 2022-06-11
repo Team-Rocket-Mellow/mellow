@@ -19,7 +19,7 @@ function CommandPortal() {
 
   const triggerModal = (Δ:KeyboardEvent) => !isOpen
     && !(document.activeElement instanceof HTMLInputElement)
-    && Δ.code === "KeyK"
+    && Δ.key === "k"
     && setOpen(true)
 
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
