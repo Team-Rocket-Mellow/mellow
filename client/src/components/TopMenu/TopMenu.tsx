@@ -10,10 +10,10 @@ import Icon from "../assets/Icon"
 
 function TopMenu() {
   const [text, setText] = useState('')
+  const [sideBarState, setSideBar] = useRecoilState(sideBar)
   const setOpen = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
-  const [sideBarState, setSideBar] = useRecoilState(sideBar)
   
   const goInbox = () => setView(defaultHome)
   const Δtext = (Δ) => setText(Δ.target.value)
