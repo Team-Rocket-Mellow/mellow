@@ -1,4 +1,4 @@
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { useState, useEffect, useCallback } from "react"
 import { left_menu } from "./atoms"
 
@@ -20,18 +20,18 @@ export function useTime() {
 // Hotkeys
 
 export function useHotKey() {
-  const [isMenuOn, toggleMenu] = useRecoilState(left_menu)
+  const toggleMenu = useSetRecoilState(left_menu)
 
-  const Δkey = useCallback((Δ:KeyboardEvent) => {
+  const Δkey = (Δ:KeyboardEvent) => {
     switch(Δ.key) {
       case "m":
-        !(document.activeElement instanceof HTMLInputElement) && toggleMenu(!isMenuOn)
+        !(document.activeElement instanceof HTMLInputElement) && toggleMenu($ => !$)
         break
     }
-  }, [isMenuOn])
+  }
 
   useEffect(() => {
     document.addEventListener("keydown", Δkey)
     return () => document.removeEventListener("keydown", Δkey)
-  }, [isMenuOn])
+  }, [])
 }
