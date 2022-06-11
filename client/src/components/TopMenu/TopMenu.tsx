@@ -34,9 +34,7 @@ function TopMenu() {
         if (document.activeElement === $input) $input?.blur()
         break
       case "m":
-        if (!(document.activeElement instanceof HTMLInputElement)) {
-          setSideBar(!sideBarState)
-        }
+        if (!(document.activeElement instanceof HTMLInputElement)) toggleBar()
         break
     }
   }
