@@ -71,7 +71,8 @@ function TodoView() {
     )
     case "all":
     case "inbox":
-    case "upcoming": return (
+    case "upcoming": 
+    case "trash": return (
       <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={undone} />
         { !undone.length && <Celebration /> }
