@@ -39,14 +39,14 @@ function MainView() {
   const view = useRecoilValue(todos_view)
   const done = todos.filter(t => t.done)
   const undone = todos.filter(t => !t.done)
-  const watchLeftMenu = useRecoilValue(sideBar); 
+  const isMenuOn = useRecoilValue(sideBar); 
 
   switch (view) {
     case "today": 
       const now = new Date()
       const overdue = undone.filter(t => t.overdue)
       return (
-        <main id="TodoView" className={watchLeftMenu ? 'todo' : 'todoView-closed'}>
+        <main id="TodoView" className={isMenuOn ? 'todo' : 'todoView-closed'}>
           <section id={view}>
             <header>
               <h1>
@@ -66,7 +66,7 @@ function MainView() {
         </main>
       )
     case "done": return (
-      <main id="TodoView" className={watchLeftMenu ? 'todo' : 'todoView-closed'}>
+      <main id="TodoView" className={isMenuOn ? 'todo' : 'todoView-closed'}>
         <TodoSection id={view} title={view} todos={done} />
         { !done.length && <Celebration>Productivity is dangerous.</Celebration> }
       </main>
@@ -75,7 +75,7 @@ function MainView() {
     case "inbox":
     case "upcoming":
     default: return (
-      <main id="TodoView" className={watchLeftMenu ? 'todo' : 'todoView-closed'}>
+      <main id="TodoView" className={isMenuOn ? 'todo' : 'todoView-closed'}>
         <TodoSection id={view} title={view} todos={undone} />
         { !undone.length && <Celebration /> }
         { !!done.length && <TodoSection title="done" todos={done} /> }
