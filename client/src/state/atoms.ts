@@ -50,3 +50,12 @@ export const current_date = atom({
    key: "date",
    default: dayMonthYear(new Date()),
 })
+
+/**
+ * toggle LeftMenu
+ */
+
+export const sideBar = atom({
+   key: "side_bar_state",
+   default: false,
+})

@@ -9,6 +9,25 @@
    --header-font-size: 1.5em;
 }
 
+.todo {
+   margin-left: 230px;
+   padding: 1em;
+   width: 100%;
+
+   --header-font-size: 1.5em;
+   transition: 0.2s linear;
+}
+
+.todoView-closed {
+   margin-left: 0px;
+   padding: 1em;
+   width: 100%;
+
+   --header-font-size: 1.5em;
+   transition: 0.2s linear;
+}
+
+
 #TodoView h1 {
    font-size: var(--header-font-size);
    margin-left: 0.4em;
@@ -62,6 +81,6 @@
    TodoList
 */
 
-.TodoList {
+#TodoList {
    text-align: center;
 }

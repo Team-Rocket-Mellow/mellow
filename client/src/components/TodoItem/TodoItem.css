@@ -39,6 +39,10 @@
    margin-right: 0.3em;
 }
 
+.TodoItem i:hover {
+   cursor: pointer;
+}
+
 .TodoItem .overdue {
    color: rgb(213, 0, 0);
 }
