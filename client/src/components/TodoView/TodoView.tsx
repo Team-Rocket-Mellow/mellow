@@ -1,10 +1,10 @@
 import "./TodoView.css"
 import { useRecoilValue } from "recoil"
+import { monthDayString } from "../../utility/time"
 import { todos_list_filtered } from "../../state/selectors"
-import { todos_view, sideBar} from "../../state/atoms"
+import { todos_view, left_menu } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"
 import Icon from "../assets/Icon"
-import { monthDayString } from "../../utility/time"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Constituent
@@ -14,9 +14,7 @@ function TodoSection({ title, todos, ...props }) {
     <section {...props}>
       <h1>{title}</h1>
       <ul className="TodoList">
-        {
-          todos.map((todo, i) => <TodoItem key={i} {...todo} />)
-        }
+        { todos.map((todo, i) => <TodoItem key={i} {...todo} />) }
       </ul>
     </section>
   )
@@ -34,19 +32,19 @@ function Celebration({ children }: { children?: string }) {
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
-function MainView() {
+function TodoView() {
   const todos = useRecoilValue(todos_list_filtered)
   const view = useRecoilValue(todos_view)
   const done = todos.filter(t => t.done)
   const undone = todos.filter(t => !t.done)
-  const watchLeftMenu = useRecoilValue(sideBar); 
+  const isMenuOn = useRecoilValue(left_menu)
 
   switch (view) {
-    case "today": 
+    case "today":
       const now = new Date()
       const overdue = undone.filter(t => t.overdue)
       return (
-        <main id="TodoView" className={watchLeftMenu ? 'todo' : 'todoView-closed'}>
+        <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
           <section id={view}>
             <header>
               <h1>
@@ -66,25 +64,25 @@ function MainView() {
         </main>
       )
     case "done": return (
-      <main id="TodoView" className={watchLeftMenu ? 'todo' : 'todoView-closed'}>
+      <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={done} />
         { !done.length && <Celebration>Productivity is dangerous.</Celebration> }
       </main>
     )
     case "all":
     case "inbox":
-    case "upcoming":
-    default: return (
-      <main id="TodoView" className={watchLeftMenu ? 'todo' : 'todoView-closed'}>
+    case "upcoming": return (
+      <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={undone} />
         { !undone.length && <Celebration /> }
         { !!done.length && <TodoSection title="done" todos={done} /> }
       </main>
     )
+    default: throw Error(`Bad view: ${view}`)
   }
 }
 
 // —————————————————————————————————————————————————————————————————————————————
 // Export
 
-export default MainView
+export default TodoView

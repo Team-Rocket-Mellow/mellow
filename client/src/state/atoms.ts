@@ -36,23 +36,17 @@ export const home = atom<TodoView>({
    default: "inbox",
 })
 
-/**
- * Set current date.
- */
+/** Set current date. */
 export const current_date = atom({
    key: "date",
    default: dayMonthYear(new Date()),
 })
 
-/**
- * toggle LeftMenu
- */
-
-export const sideBar = atom({
-   key: "side_bar_state",
-   default: false,
+/** toggle LeftMenu */
+export const left_menu = atom({
+   key: "left_menu",
+   default: true,
 })
-
 
 export const theme = atom<Theme>({
    key: "theme",

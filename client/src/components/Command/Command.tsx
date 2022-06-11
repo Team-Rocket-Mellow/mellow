@@ -100,7 +100,8 @@ function Command({ setOpen, isOpen }) {
     const index = Array.from($list).indexOf(Δ.currentTarget)
     setActive(index)
   }
-  const Δkey = (Δ:React.KeyboardEvent) => {
+
+  const hotkey = (Δ:React.KeyboardEvent) => {
     const $list = document.querySelectorAll<HTMLElement>("#Command li")
     switch (Δ.key) {
       case "Escape":
@@ -108,7 +109,6 @@ function Command({ setOpen, isOpen }) {
         setOpen(false)
         break
       case "Tab":
-        Δ.preventDefault()
         if (Δ.shiftKey) {
           Δ.preventDefault()
           setActive(($list.length + active - 1) % $list.length)
@@ -138,7 +138,7 @@ function Command({ setOpen, isOpen }) {
   useEffect(() => {setTimeout(() => $input.current!.focus(), 1)}, [])
 
   return (
-    <nav id="Command" ref={$nav} onKeyDown={Δkey}>
+    <nav id="Command" ref={$nav} onKeyDown={hotkey}>
       <input placeholder="search" value={search} onChange={Δsearch} ref={$input} />
       {
         menu.length

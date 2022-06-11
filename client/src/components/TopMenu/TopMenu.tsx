@@ -1,24 +1,27 @@
 import "./TopMenu.css"
 import { useEffect, useState } from "react"
-import { useSetRecoilState, useRecoilValue } from "recoil"
-import { add_is_active, todos_view, home, sideBar } from "../../state/atoms"
 import { Link } from "react-router-dom"
+import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil"
+import { add_is_active, todos_view, home, left_menu } from "../../state/atoms"
 import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
 
 function TopMenu() {
-  const [text, setText] = useState('')
-  const setOpen = useSetRecoilState(add_is_active)
+  const [text, setText] = useState("")
+  const toggleMenu = useSetRecoilState(left_menu)
+  const toggleAddModal = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
-  
-  const goInbox = () => setView(defaultHome)
+
   const Δtext = (Δ) => setText(Δ.target.value)
-  const openModal = () => setOpen(true)
+  const Δmenu = () => toggleMenu($ => !$)
   
-  const Δkey = (Δ:KeyboardEvent) => {
+  const goHome = () => setView(defaultHome)
+  const openModal = () => toggleAddModal(true)
+  const clearText = () => setText("")
+  const hotkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
     switch (Δ.key) {
       case "/":
@@ -35,24 +38,26 @@ function TopMenu() {
   }
 
   useEffect(() => {
-    document.addEventListener("keydown", Δkey)
-    return () => document.removeEventListener("keydown", Δkey)
+    document.addEventListener("keydown", hotkey)
+    return () => document.removeEventListener("keydown", hotkey)
   }, [])
-
-
-  const setSideBar = useSetRecoilState(sideBar)
-  const watchSideBarValue = useRecoilValue(sideBar)
-  const setBar = () => setSideBar(!watchSideBarValue)
 
   return (
     <header id='NavBar'>
       <nav>
-        <Icon onClick={setBar}>menu</Icon>
-        <Link to={defaultHome} onClick={goInbox} tabIndex={-1}>
+        <Icon onClick={Δmenu}>menu</Icon>
+        <Link to={defaultHome} onClick={goHome} tabIndex={-1}>
           <Icon>home</Icon>
         </Link>
       </nav>
-      <input placeholder='/  to search' tabIndex={-1} value={text} onChange={Δtext} onBlur={() => setText("")} />
+      <input
+        placeholder='/  to search'
+        type='search'
+        tabIndex={-1}
+        value={text}
+        onChange={Δtext}
+        onBlur={clearText}
+      />
       <nav>
         <Icon onClick={openModal}>add</Icon>
         <Icon>settings</Icon>

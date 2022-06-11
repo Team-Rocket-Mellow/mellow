@@ -98,3 +98,5 @@ function Modal({ setOpen, isOpen }) {
 // Export
 
 export default ModalPortal
+
+// https://developer.mozilla.org/en-US/docs/Learn/Forms/Advanced_form_styling
