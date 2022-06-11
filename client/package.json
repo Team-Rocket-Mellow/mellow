@@ -13,7 +13,6 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.4.0-pre.2",
-    "react-transition-group": "^4.4.2",
     "recoil": "github:facebookexperimental/Recoil#nightly",
     "ws": "^8.7.0"
   },
