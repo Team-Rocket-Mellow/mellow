@@ -14,9 +14,7 @@ function TodoSection({ title, todos, ...props }) {
     <section {...props}>
       <h1>{title}</h1>
       <ul className="TodoList">
-        {
-          todos.map((todo, i) => <TodoItem key={i} {...todo} />)
-        }
+        { todos.map((todo, i) => <TodoItem key={i} {...todo} />) }
       </ul>
     </section>
   )
@@ -73,14 +71,14 @@ function MainView() {
     )
     case "all":
     case "inbox":
-    case "upcoming":
-    default: return (
+    case "upcoming": return (
       <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={undone} />
         { !undone.length && <Celebration /> }
         { !!done.length && <TodoSection title="done" todos={done} /> }
       </main>
     )
+    default: throw Error(`Bad view: ${view}`)
   }
 }
 
