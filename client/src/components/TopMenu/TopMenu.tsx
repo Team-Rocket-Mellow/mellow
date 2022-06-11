@@ -16,9 +16,9 @@ function TopMenu() {
   const defaultHome = useRecoilValue(home)
 
   const goInbox = () => setView(defaultHome)
-  const Δtext = (Δ) => setText(Δ.target.value)
   const openModal = () => setOpen(true)
-  const toggleBar = () => toggleMenu(!isMenuOn)
+  const Δtext = (Δ) => setText(Δ.target.value)
+  const Δmenu = () => toggleMenu(!isMenuOn)
 
   const Δkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
@@ -44,7 +44,7 @@ function TopMenu() {
   return (
     <header id='NavBar'>
       <nav>
-        <Icon onClick={toggleBar}>menu</Icon>
+        <Icon onClick={Δmenu}>menu</Icon>
         <Link to={defaultHome} onClick={goInbox} tabIndex={-1}>
           <Icon>home</Icon>
         </Link>
