@@ -9,17 +9,17 @@ import Icon from "../assets/Icon"
 // Component
 
 function TopMenu() {
-  const [text, setText] = useState('')
-  const [isMenuOn, toggleMenu] = useRecoilState(left_menu)
-  const setOpen = useSetRecoilState(add_is_active)
+  const [text, setText] = useState("")
+  const toggleMenu = useSetRecoilState(left_menu)
+  const toggleAddModal = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
 
   const Δtext = (Δ) => setText(Δ.target.value)
-  const Δmenu = () => toggleMenu(!isMenuOn)
+  const Δmenu = () => toggleMenu($ => !$)
   
   const goHome = () => setView(defaultHome)
-  const openModal = () => setOpen(true)
+  const openModal = () => toggleAddModal(true)
   const clearText = () => setText("")
   const hotkey = (Δ:KeyboardEvent) => {
     const $input = document.querySelector<HTMLInputElement>("#NavBar input")!
