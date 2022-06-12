@@ -15,7 +15,7 @@ function TopMenu() {
   const toggleAddModal = useSetRecoilState(add_is_active)
   const setView = useSetRecoilState(todos_view)
   const defaultHome = useRecoilValue(home)
-  const Δmenu = () => toggleMenu($ => !$)  
+  const Δmenu = () => toggleMenu($ => !$)
   const goHome = () => setView(defaultHome)
   const openModal = () => toggleAddModal(true)
 
