@@ -29,6 +29,11 @@ export const user = atom({
 // —————————————————————————————————————————————————————————————————————————————
 // Interface
 
+export const search = atom({
+   key: "search",
+   default: "",
+})
+
 /** Set default view. */
 export const home = atom<TodoView>({
    key: "home",

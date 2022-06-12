@@ -7,15 +7,15 @@ import { TodoElement } from "./types"
 // Small Selectors
 
 /** todos → todos with due date */
-export const todos = selector({
+export const todos = selector<TodoElement[]>({
    key: "todos_with_overdue",
    get: ({ get }) => get(todos_list)
       .map(todo => ({
          ...todo,
-         overdue: todo.due && daysBetween(new Date(), todo.due) <= -1,
+         overdue: !!todo.due && daysBetween(new Date(), todo.due) <= -1,
       }))
       .sort((a, b) => Number(a.due) - Number(b.due)),
-}) as RecoilValueReadOnly<TodoElement[]>
+})
 
 /** todos not in trash */
 const todos_active = selector({
