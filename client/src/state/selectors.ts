@@ -7,7 +7,7 @@ import { TodoElement } from "./types"
 // Small Selectors
 
 /** todos → todos with due date */
-const todos = selector({
+export const todos = selector({
    key: "todos_with_overdue",
    get: ({ get }) => get(todos_list)
       .map(todo => ({
