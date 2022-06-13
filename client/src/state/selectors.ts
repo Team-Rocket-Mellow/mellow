@@ -1,4 +1,4 @@
-import { RecoilValueReadOnly, selector } from "recoil"
+import { selector } from "recoil"
 import { todos_list, todos_view } from "./atoms"
 import { daysBetween } from "../utility/time"
 import { TodoElement } from "./types"
