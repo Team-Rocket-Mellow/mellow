@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom"
 function SearchView() {
    const text = useRecoilValue(search)
    const todos = useRecoilValue(todos_data)
+      .filter(todo => todo.text.includes(text))
+
    return (
       <main>
          <h1>Search</h1>

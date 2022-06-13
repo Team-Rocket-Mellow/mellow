@@ -13,16 +13,15 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const [todos, setTodos] = useRecoilState(todos_list)
   const [isHover, setHover] = useState(false)
   const now = useRecoilValue(current_date)
-  const itemClass = done ? "done left" : "active left"
+
   const flipDone = () => setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
+  const enter = () => setHover(true)
+  const exit = () => setHover(false)
 
   return (
     <div className="TodoItem">
-      <span className={itemClass} onClick={flipDone}>
-        <Icon 
-          onMouseEnter={() => setHover(true)} 
-          onMouseLeave={() => setHover(false)}
-        >
+      <span className={done ? "done left" : "active left"} onClick={flipDone}>
+        <Icon onMouseEnter={enter} onMouseLeave={exit} >
           { done || isHover ? "check_box" : "check_box_outline_blank" }
         </Icon>
         <span className="text">{text}</span>
