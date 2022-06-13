@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil"
 import { add_is_active, todos_view, home, left_menu } from "../../state/atoms"
 import Icon from "../assets/Icon"
+import MenuIcon from "../../icons/menu.svg"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
