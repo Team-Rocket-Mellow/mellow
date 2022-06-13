@@ -6,6 +6,7 @@ import { add_is_active, todos_view, home, left_menu } from "../../state/atoms"
 
 import Icon from "../assets/Icon"
 import SearchInput from "../Search/SearchInput"
+import MenuIcon from "../../icons/menu.svg"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
