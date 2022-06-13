@@ -66,16 +66,14 @@ function TodoView() {
     case "done": return (
       <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={done} />
-        { 
-          !done.length && <Celebration icon="scene" color="rgb(150, 75, 0)">
-            Nothing need be done.
-          </Celebration> 
+        {
+          !done.length && <Celebration icon="scene">Nothing need be done.</Celebration>
         }
       </main>
     )
     case "all":
     case "inbox":
-    case "upcoming": 
+    case "upcoming":
     case "trash": return (
       <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={undone} />
