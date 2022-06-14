@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { Todo } from "./atoms";
+import { Todo } from "./types";
 
 // —————————————————————————————————————————————————————————————————————————————
 // Actions

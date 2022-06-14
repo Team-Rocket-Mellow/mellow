@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
-import data from "./data"
 import { Todo, TodoView, Theme } from "./types"
 import { dayMonthYear } from "../utility/time"
+import data from "./data"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Data
