@@ -1,4 +1,4 @@
-import { useRecoilValue, useRecoilState } from "recoil"
+import { useRecoilValue } from "recoil"
 import { todos as todos_data } from "../../state/selectors"
 import { search } from "../../state/atoms"
 import TodoItem from "../TodoItem/TodoItem"

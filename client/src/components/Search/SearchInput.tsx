@@ -38,14 +38,14 @@ function SearchInput() {
 
    return (
       <input
-         id='SearchInput'
-         placeholder='/  to search'
-         type='search'
-         tabIndex={-1}
-         value={text}
-         onChange={Δtext}
-         onBlur={clearText}
-         onSubmit={submit}
+        id='SearchInput'
+        placeholder='/  to search'
+        type='search'
+        tabIndex={-1}
+        value={text}
+        onChange={Δtext}
+        onBlur={clearText}
+        onSubmit={submit}
       />
    )
 }
