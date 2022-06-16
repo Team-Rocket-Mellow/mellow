@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
-import data from "./data"
 import { Todo, TodoView, Theme } from "./types"
 import { dayMonthYear } from "../utility/time"
+import data from "./data"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Data
@@ -26,9 +26,18 @@ export const user = atom({
    }
 })
 
+export const view = atom({
+   key: "view",
+   default: "inbox" as TodoView | "search",
+})
 
 // —————————————————————————————————————————————————————————————————————————————
 // Interface
+
+export const search = atom({
+   key: "search",
+   default: "",
+})
 
 /** Set default view. */
 export const home = atom<TodoView>({

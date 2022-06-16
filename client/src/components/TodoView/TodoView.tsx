@@ -20,10 +20,10 @@ function TodoSection({ title, todos, ...props }) {
   )
 }
 
-function Celebration({ children }: { children?: string }) {
+function Celebration({ icon, children, color }: { color?:string, icon?:string, children?:string }) {
   return (
     <section id="Celebration">
-      <Icon>done_outline</Icon>
+      <Icon style={{ color }}>{icon ?? "done_outline"}</Icon>
       <p>{children ?? "Hooray you are done!"}</p>
     </section>
   )
@@ -66,12 +66,14 @@ function TodoView() {
     case "done": return (
       <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={done} />
-        { !done.length && <Celebration>Productivity is dangerous.</Celebration> }
+        {
+          !done.length && <Celebration icon="scene">Nothing need be done.</Celebration>
+        }
       </main>
     )
     case "all":
     case "inbox":
-    case "upcoming": 
+    case "upcoming":
     case "trash": return (
       <main id="TodoView" className={isMenuOn ? 'open' : 'close'}>
         <TodoSection id={view} title={view} todos={undone} />

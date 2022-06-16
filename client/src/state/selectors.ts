@@ -1,4 +1,4 @@
-import { RecoilValueReadOnly, selector } from "recoil"
+import { selector } from "recoil"
 import { todos_list, todos_view } from "./atoms"
 import { daysBetween } from "../utility/time"
 import { TodoElement } from "./types"
@@ -7,15 +7,15 @@ import { TodoElement } from "./types"
 // Small Selectors
 
 /** todos → todos with due date */
-const todos = selector({
+export const todos = selector<TodoElement[]>({
    key: "todos_with_overdue",
    get: ({ get }) => get(todos_list)
       .map(todo => ({
          ...todo,
-         overdue: todo.due && daysBetween(new Date(), todo.due) <= -1,
+         overdue: !!todo.due && daysBetween(new Date(), todo.due) <= -1,
       }))
       .sort((a, b) => Number(a.due) - Number(b.due)),
-}) as RecoilValueReadOnly<TodoElement[]>
+})
 
 /** todos not in trash */
 const todos_active = selector({

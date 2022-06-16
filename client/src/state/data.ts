@@ -1,5 +1,4 @@
-import { Todo } from "./atoms"
-import { createTodo } from "./actions"
+import { Todo } from "./types"
 import { nanoid } from "nanoid"
 
 const past: Todo[] = [
