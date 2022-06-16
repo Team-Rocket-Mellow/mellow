@@ -46,3 +46,42 @@
 .TodoItem .overdue {
    color: rgb(213, 0, 0);
 }
+
+/* icon transition */
+
+.icon-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1.6px solid black;
+   border-radius: 2px;
+   height: 17.5px;
+   width: 17.5px;
+   margin-right: 10px;
+}
+
+.check-mark {
+   animation: fade1 0.8s;
+}
+
+
+.material-symbols-rounded.check-mark {
+   width: 17px;
+}
+
+.done-check-mark {
+   animation: none;
+}
+
+.material-symbols-rounded.done-check-mark {
+   width: 17px;
+}
+
+@keyframes fade1 {
+   0% {
+      opacity: 0;
+    }
+    100% {
+     opacity: 1;
+    }
+}

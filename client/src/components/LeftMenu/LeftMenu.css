@@ -40,56 +40,6 @@
    transition: transform 0.2s ease-in;
 }
 
-/* .sidebar-enter {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--sidebar);
-   min-width: 13.5em;
-   height: calc(100vh - 4.3em);
-   padding-left: 5px;
-   padding-top: 30px;
-   padding-right: 10px;
-   transform: translate(-100%);
-}
-
-.sidebar-enter-active {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--sidebar);
-   min-width: 13.5em;
-   height: calc(100vh - 4.3em);
-   padding-left: 5px;
-   padding-top: 30px;
-   padding-right: 10px;
-   transform: translate(0);
-   transition: transform 0.3s ease-in;
-}
-
-.sidebar-exit {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--sidebar);
-   min-width: 13.5em;
-   height: calc(100vh - 4.3em);
-   padding-left: 5px;
-   padding-top: 30px;
-   padding-right: 10px;
-   transform: translate(0);
-}
-
-.sidebar-exit-active {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--sidebar);
-   min-width: 13.5em;
-   height: calc(100vh - 4.3em);
-   padding-left: 5px;
-   padding-top: 30px;
-   padding-right: 10px;
-   transform: translate(-100%);
-   transition: transform 0.3s ease-out;
-} */
-
 /* —————————————————————————————————————————————————————————————————————————————
    Menu Items
 */
@@ -143,3 +93,18 @@
 #LeftMenu i.upcoming { color: var(--orange); }
 /* #LeftMenu i.done     { color: var(--brown);  } */
 /* #LeftMenu i.trash    { color: var(--red);    } */
+
+#LeftMenu .app-sidebar-resize {
+   border: 3px solid red;
+   flex-grow: 0;
+   flex-shrink: 0;
+   flex-basis: 6px;
+   /* align-self: flex-end; */
+   cursor: col-resize;
+   resize: horizontal;
+}
+
+#LeftMenu .app-sidebar-resize:hover {
+   width: 3px;
+   background: #c1c3c5b4;
+}
