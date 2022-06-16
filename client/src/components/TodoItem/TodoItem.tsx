@@ -20,10 +20,14 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
 
   return (
     <div className="TodoItem">
-      <span className={done ? "done left" : "active left"} onClick={flipDone}>
-        <Icon onMouseEnter={enter} onMouseLeave={exit} >
-          { done || isHover ? "check_box" : "check_box_outline_blank" }
-        </Icon>
+      <span className={itemClass} onClick={flipDone}>
+        <div
+          className="icon-container"
+          onMouseEnter={() => setHover(true)} 
+          onMouseLeave={() => setHover(false)}
+        >
+      {done || isHover ? <Icon className="check-mark">{"check_box"}</Icon> : null || done ? <Icon>{"check_box"}</Icon> : ""}
+      </div>
         <span className="text">{text}</span>
       </span>
       <span className={overdue ? "overdue" : ""}>
