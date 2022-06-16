@@ -26,6 +26,11 @@ export const user = atom({
    }
 })
 
+export const view = atom({
+   key: "view",
+   default: "inbox" as TodoView | "search",
+})
+
 // —————————————————————————————————————————————————————————————————————————————
 // Interface
 
