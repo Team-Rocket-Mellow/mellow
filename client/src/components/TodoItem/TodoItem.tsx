@@ -22,7 +22,13 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
     <div className="TodoItem">
       <span className={itemClass} onClick={flipDone}>
         <div className="icon-container" onMouseEnter={enter} onMouseLeave={exit}>
-          {done || isHover ? <Icon className="check-mark">{"check_box"}</Icon> : null || done ? <Icon>{"check_box"}</Icon> : ""}
+          {
+            done || isHover
+              ? <Icon className="check-mark">check_box</Icon>
+              : done
+                ? <Icon>check_box</Icon>
+                : ""
+          }
         </div>
         <span className="text">{text}</span>
       </span>
