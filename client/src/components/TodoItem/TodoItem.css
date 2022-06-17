@@ -61,23 +61,14 @@
 }
 
 .check-mark {
-   animation: fade1 0.8s;
+   animation: checkbox_fade 0.8s;
 }
-
 
 .material-symbols-rounded.check-mark {
    width: 17px;
 }
 
-.done-check-mark {
-   animation: none;
-}
-
-.material-symbols-rounded.done-check-mark {
-   width: 17px;
-}
-
-@keyframes fade1 {
+@keyframes checkbox_fade {
    0% {
       opacity: 0;
     }
