@@ -1,5 +1,4 @@
 import "./TodoItem.css"
-import { useState } from "react"
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { todos_list, current_date } from "../../state/atoms"
 import { TodoElement } from "../../state/types"
@@ -18,7 +17,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
     <div className="TodoItem">
       <span className="left" onClick={flipDone}>
           <Icon>check_box_outline_blank</Icon>
-          <Icon className={`checkbox ${done ? "done" : ""}`}>check_box</Icon>
+          <Icon className={`checkbox ${done && "done"}`}>check_box</Icon>
         <span className="text">{text}</span>
       </span>
       <span className={overdue ? "overdue" : ""}>
