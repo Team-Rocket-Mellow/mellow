@@ -12,7 +12,7 @@ import Icon from "../assets/Icon"
 function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const [isHover, setHover] = useState(false)
   const setTodos = useSetRecoilState(todos_list)
-  const isChecked = done || isHover ? "checked" : ""
+  const isChecked = done || isHover ? "checkbox checked" : "checkbox"
   const isDone = done ? "done" : ""
   const isOverdue = overdue ? "overdue" : ""
 
@@ -22,14 +22,14 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
 
   return (
     <div className={`TodoItem ${isDone}`}>
-      <span 
-        className="left" 
-        onClick={flipDone} 
+      <span
+        className="left"
+        onClick={flipDone}
         onMouseEnter={enter}
         onMouseLeave={exit}
       >
         <Icon>check_box_outline_blank</Icon>
-        <Icon className={`checkbox ${isChecked}`}>check_box</Icon>
+        <Icon className={isChecked}>check_box</Icon>
         <span className="text">{text}</span>
       </span>
       <time className={isOverdue}>
