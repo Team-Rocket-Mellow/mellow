@@ -32,9 +32,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
         <Icon className={isChecked}>check_box</Icon>
         <span className="text">{text}</span>
       </span>
-      <time className={isOverdue}>
-        { dayMonthYearString(due) }
-      </time>
+      <time className={isOverdue}>{ dayMonthYearString(due) }</time>
     </div>
   )
 }
