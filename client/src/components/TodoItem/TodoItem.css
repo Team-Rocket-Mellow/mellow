@@ -31,7 +31,7 @@
    align-items: center;
 }
 
-.TodoItem .overdue {
+.TodoItem time.overdue {
    color: rgb(213, 0, 0);
 }
 

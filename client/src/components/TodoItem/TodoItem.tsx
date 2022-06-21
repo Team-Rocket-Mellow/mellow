@@ -14,7 +14,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const setTodos = useSetRecoilState(todos_list)
   const isChecked = done || isHover ? "checked" : ""
   const isDone = done ? "done" : ""
-  const isOverdue = due ? "overdue" : ""
+  const isOverdue = overdue ? "overdue" : ""
 
   const flipDone = () => setTodos(todos => todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
   const enter = () => setHover(true)
@@ -32,9 +32,9 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
         <Icon className={`checkbox ${isChecked}`}>check_box</Icon>
         <span className="text">{text}</span>
       </span>
-      <span className={isOverdue}>
+      <time className={isOverdue}>
         { dayMonthYearString(due) }
-      </span>
+      </time>
     </div>
   )
 }
