@@ -91,7 +91,7 @@ export function dayMonthYearString(date:Date|null) {
  * const { day, month, year } = dayMonthYear(new Date())
  * console.log(`${month} ${day}, ${year}`) // "May 15, 2020"
  */
- export function dayMonthYear(date:Date) {
+export function dayMonthYear(date:Date) {
    const day = date.getDate()
    const month = numberToMonth(date.getMonth())
    const year = date.getFullYear()
