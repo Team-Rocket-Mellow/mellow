@@ -37,9 +37,6 @@
 
 .TodoItem i {
    margin-right: 0.3em;
-}
-
-.TodoItem i:hover {
    cursor: pointer;
 }
 
@@ -47,24 +44,22 @@
    color: rgb(213, 0, 0);
 }
 
-/* icon transition */
-
-.icon-container {
+.TodoItem .icon-container {
    display: flex;
    justify-content: center;
    align-items: center;
-   border: 1.6px solid black;
+   border: 1.7px solid black;
    border-radius: 2px;
    height: 17.5px;
    width: 17.5px;
    margin-right: 10px;
 }
 
-.check-mark {
+.TodoItem .check-mark {
    animation: checkbox_fade 0.8s;
 }
 
-.material-symbols-rounded.check-mark {
+.TodoItem .material-symbols-rounded.check-mark {
    width: 17px;
 }
 

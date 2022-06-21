@@ -21,16 +21,12 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   return (
     <div className="TodoItem">
       <span className={itemClass} onClick={flipDone}>
-          <Icon
-            className="icon-container"
-            onMouseEnter={enter} 
-            onMouseLeave={exit}
-          >
+          <Icon className="icon-container" onMouseEnter={enter} onMouseLeave={exit}>
           {
-            done 
-              ? "check_box" 
-              : isHover 
-                ? <Icon className="check-mark">check_box</Icon> 
+            done
+              ? "check_box"
+              : isHover
+                ? <Icon className="check-mark">check_box</Icon>
                 : null
           }
           </Icon>
