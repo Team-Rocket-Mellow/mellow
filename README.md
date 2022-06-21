@@ -9,6 +9,7 @@ Mellow is a todo app with a focus on (1) "offline-first" or local persistence,
 | React Router | browser routing       | client          |
 | Node         | server runtime        | server          |
 | Fastify      | http library          | server          |
+| ws           | websocket library     | server          |
 | PostgreSQL   | database              | server          |
 | Vite         | build system & server | client & server |
 | Nanoid       | unique ID generator   | client & server |
