@@ -10,16 +10,18 @@ import Icon from "../assets/Icon"
 // TodoItem
 
 function TodoItem({ id, text, done, due, overdue }: TodoElement) {
-  const setTodos = useSetRecoilState(todos_list)
   const [isHover, setHover] = useState(false)
-  const isChecked = done || isHover ? "done" : ""
+  const setTodos = useSetRecoilState(todos_list)
+  const isChecked = done || isHover ? "checked" : ""
+  const isDone = done ? "done" : ""
+  const isOverdue = due ? "overdue" : ""
 
   const flipDone = () => setTodos(todos => todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
   const enter = () => setHover(true)
   const exit = () => setHover(false)
 
   return (
-    <div className="TodoItem">
+    <div className={`TodoItem ${isDone}`}>
       <span 
         className="left" 
         onClick={flipDone} 
@@ -28,9 +30,9 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
       >
         <Icon>check_box_outline_blank</Icon>
         <Icon className={`checkbox ${isChecked}`}>check_box</Icon>
-        <span className={`text ${done && "done"}`}>{text}</span>
+        <span className="text">{text}</span>
       </span>
-      <span className={overdue ? "overdue" : ""}>
+      <span className={isOverdue}>
         { dayMonthYearString(due) }
       </span>
     </div>

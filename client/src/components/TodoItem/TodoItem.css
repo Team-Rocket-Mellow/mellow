@@ -35,7 +35,7 @@
    color: rgb(213, 0, 0);
 }
 
-.TodoItem .done.text {
+.TodoItem.done .text {
    text-decoration: line-through;
 }
 
@@ -54,17 +54,13 @@
    user-select: none;
 }
 
-.TodoItem .checkbox {
+.TodoItem i.checkbox {
    position: absolute;
    left: 0;
    opacity: 0;
    transition: opacity 0.5s;
 }
 
-.TodoItem .checkbox:hover {
-   opacity: 1;
-}
-
-.TodoItem i.done {
+.TodoItem i.checkbox.checked {
    opacity: 1;
 }
