@@ -35,43 +35,34 @@
    align-items: center;
 }
 
+.TodoItem .overdue {
+   color: rgb(213, 0, 0);
+}
+
 /* —————————————————————————————————————————————————————————————————————————————
    Icon
 */
+
+.TodoItem .left {
+   position: relative;
+}
 
 .TodoItem i {
    margin-right: 0.3em;
    cursor: pointer;
 }
 
-.TodoItem .overdue {
-   color: rgb(213, 0, 0);
+.TodoItem .checkbox {
+   position: absolute;
+   left: 0;
+   opacity: 0;
+   transition: opacity 0.5s;
 }
 
-.TodoItem .icon-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border: 1.7px solid black;
-   border-radius: 2px;
-   height: 17.5px;
-   width: 17.5px;
-   margin-right: 10px;
+.TodoItem .checkbox:hover {
+   opacity: 1;
 }
 
-.TodoItem .check-mark {
-   animation: checkbox_fade 0.8s;
-}
-
-.TodoItem .material-symbols-rounded.check-mark {
-   width: 17px;
-}
-
-@keyframes checkbox_fade {
-   0% {
-      opacity: 0;
-    }
-    100% {
-     opacity: 1;
-    }
+.TodoItem .done {
+   opacity: 1;
 }
