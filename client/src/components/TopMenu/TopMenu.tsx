@@ -6,6 +6,7 @@ import { add_is_active, todos_view, home, left_menu } from "../../state/atoms"
 
 import Icon from "../assets/Icon"
 import SearchInput from "../Search/SearchInput"
+import Tooltip from "../assets/Tooltip"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -22,18 +23,20 @@ function TopMenu() {
   return (
     <header id='NavBar'>
       <nav>
-        <abbr title="m">        
+        <Tooltip title="m">
           <Icon onClick={Δmenu}>menu</Icon>
-        </abbr>
+        </Tooltip>
         <Link to={defaultHome} onClick={goHome} tabIndex={-1}>
-          <abbr title="h">
+          <Tooltip title="h">
             <Icon>home</Icon>
-          </abbr>          
+          </Tooltip>
         </Link>
       </nav>
       <SearchInput />
       <nav>
-        <Icon onClick={openModal}>add</Icon>
+        <Tooltip title="q">
+          <Icon onClick={openModal}>add</Icon>
+        </Tooltip>
         <Icon>settings</Icon>
         <Icon>account_circle</Icon>
       </nav>
