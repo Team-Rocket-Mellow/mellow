@@ -13,7 +13,7 @@ import Icon from "../assets/Icon"
 function LeftMenu() {
   const [view, go] = useRecoilState(todos_view)
   const stats = useRecoilValue(todos_list_stats)
-  const menuIsOn = useRecoilValue(left_menu)
+  const isMenuOn = useRecoilValue(left_menu)
   const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
 
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
@@ -27,7 +27,7 @@ function LeftMenu() {
   }
 
   return (
-    <nav id="LeftMenu" className={menuIsOn ? 'side-bar active' : 'side-bar'}>
+    <nav id="LeftMenu" className={isMenuOn ? 'side-bar active' : 'side-bar'}>
       {
         views.map((v, i) => (
           <Link
