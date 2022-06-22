@@ -31,7 +31,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
         <span className="text">{text}</span>
       </span>
       <time className={isOverdue}>
-        {day} {month && numberToMonth(month)} {today.year === year ? "" : year}
+        {day} {month && numberToMonth(month)} {today.year === year || year}
       </time>
     </div>
   )

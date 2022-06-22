@@ -104,7 +104,7 @@ const future: Todo[] = [
       done: false,
       trash: false,
       start: new Date("2022-01-01"),
-      due: new Date(2022, 11, 10),
+      due: new Date(2023, 11, 10),
       pending: false,
    },
 ]
