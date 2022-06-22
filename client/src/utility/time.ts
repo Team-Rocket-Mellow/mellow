@@ -52,17 +52,17 @@ export function daysBetween(start:Date, end:Date) {
  */
 export function numberToMonth(n:number) {
    return [
-      "Jan", 
-      "Feb", 
-      "Mar", 
-      "Apr", 
-      "May", 
-      "June", 
-      "July", 
-      "Aug", 
-      "Sep", 
-      "Oct", 
-      "Nov", 
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
       "Dec",
    ][n - 1]
 }
@@ -86,8 +86,8 @@ export function dayMonthYearString(date:Date|null) {
    const day = date?.getDate()
    const month = numberToMonth(date?.getMonth()!)
    const year = date?.getFullYear()
-   return date 
-      ? `${month} ${day} ${year !== current.year ? year : ""}` 
+   return date
+      ? `${day} ${month} ${year !== current.year ? year : ""}`
       : ""
 }
 
