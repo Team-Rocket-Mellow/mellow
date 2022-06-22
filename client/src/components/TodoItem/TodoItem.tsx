@@ -18,9 +18,6 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const isDone = done ? "done" : ""
   const isOverdue = overdue ? "overdue" : ""
   const [day, month, year] = [due?.getDate(), due?.getMonth(), due?.getFullYear()]
-  const dueDate = due
-    ? `${day} ${numberToMonth(month!)} ${today.year === year ? "" : year}`
-    : ""
 
   const flipDone = () => setTodos(todos => todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
   const enter = () => setHover(true)
@@ -33,7 +30,9 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
         <Icon className={isChecked}>check_box</Icon>
         <span className="text">{text}</span>
       </span>
-      <time className={isOverdue}>{dueDate}</time>
+      <time className={isOverdue}>
+        {day} {month && numberToMonth(month)} {today.year === year ? "" : year}
+      </time>
     </div>
   )
 }

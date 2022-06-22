@@ -52,18 +52,18 @@ export function daysBetween(start:Date, end:Date) {
  */
 export function numberToMonth(n:number) {
    return [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
+      "Jan" as const,
+      "Feb" as const,
+      "Mar" as const,
+      "Apr" as const,
+      "May" as const,
+      "June" as const,
+      "July" as const,
+      "Aug" as const,
+      "Sep" as const,
+      "Oct" as const,
+      "Nov" as const,
+      "Dec" as const,
    ][n - 1]
 }
 
