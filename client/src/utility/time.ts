@@ -1,3 +1,6 @@
+import { useRecoilState, useRecoilValue } from "recoil"
+import { current_date } from "../state/atoms"
+
 /**
  * Check whether two dates `t1` and `t2` are on the same calendar day.
  * @example
@@ -49,18 +52,18 @@ export function daysBetween(start:Date, end:Date) {
  */
 export function numberToMonth(n:number) {
    return [
-      "Jan", 
-      "Feb", 
-      "Mar", 
-      "Apr", 
-      "May", 
-      "June", 
-      "July", 
-      "Aug", 
-      "Sep", 
-      "Oct", 
-      "Nov", 
-      "Dec",
+      "Jan" as const,
+      "Feb" as const,
+      "Mar" as const,
+      "Apr" as const,
+      "May" as const,
+      "June" as const,
+      "July" as const,
+      "Aug" as const,
+      "Sep" as const,
+      "Oct" as const,
+      "Nov" as const,
+      "Dec" as const,
    ][n - 1]
 }
 
@@ -79,10 +82,13 @@ export function monthDayString(date:Date) {
  * console.log(new Date()) // "15 May 2020"
  */
 export function dayMonthYearString(date:Date|null) {
+   const current = useRecoilValue(current_date)
    const day = date?.getDate()
    const month = numberToMonth(date?.getMonth()!)
    const year = date?.getFullYear()
-   return date ? `${day} ${month} ${year}` : ""
+   return date
+      ? `${day} ${month} ${year !== current.year ? year : ""}`
+      : ""
 }
 
 /**
@@ -91,7 +97,7 @@ export function dayMonthYearString(date:Date|null) {
  * const { day, month, year } = dayMonthYear(new Date())
  * console.log(`${month} ${day}, ${year}`) // "May 15, 2020"
  */
- export function dayMonthYear(date:Date) {
+export function dayMonthYear(date:Date) {
    const day = date.getDate()
    const month = numberToMonth(date.getMonth())
    const year = date.getFullYear()

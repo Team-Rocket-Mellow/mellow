@@ -8,7 +8,7 @@ const past: Todo[] = [
       done: false,
       trash: false,
       start: new Date(),
-      due: new Date("2020-05-16"),
+      due: new Date(2022, 4, 17),
       pending: false,
    },
    {
@@ -16,8 +16,8 @@ const past: Todo[] = [
       text: "Past 2",
       done: false,
       trash: false,
-      start: new Date("2020-01-01"),
-      due: new Date("2020-05-16"),
+      start: new Date("2022-01-01"),
+      due: new Date(2022, 6, 15),
       pending: false,
    },
    {
@@ -25,8 +25,8 @@ const past: Todo[] = [
       text: "Past 3",
       done: false,
       trash: false,
-      start: new Date("2020-01-01"),
-      due: new Date("2020-01-01"),
+      start: new Date("2022-01-01"),
+      due: new Date(2022, 2, 5),
       pending: false,
    },
    {
@@ -34,8 +34,8 @@ const past: Todo[] = [
       text: "Past 4",
       done: false,
       trash: true,
-      start: new Date("2020-01-01"),
-      due: new Date("2020-01-01"),
+      start: new Date("2022-01-01"),
+      due: new Date("2022-02-05"),
       pending: false,
    },
 ]
@@ -77,7 +77,7 @@ const future: Todo[] = [
       done: false,
       trash: false,
       start: new Date(),
-      due: new Date("2025-01-01"),
+      due: new Date("2022-9-01"),
       pending: false,
    },
    {
@@ -86,7 +86,7 @@ const future: Todo[] = [
       done: false,
       trash: false,
       start: new Date("2025-01-01"),
-      due: new Date("2025-01-01"),
+      due: new Date("2022-10-15"),
       pending: false,
    },
    {
@@ -95,7 +95,7 @@ const future: Todo[] = [
       done: false,
       trash: false,
       start: new Date("2025-01-01"),
-      due: new Date("2025-01-01"),
+      due: new Date(2022, 11, 3),
       pending: false,
    },
    {
@@ -103,8 +103,8 @@ const future: Todo[] = [
       text: "Future 4",
       done: false,
       trash: false,
-      start: new Date("2025-01-01"),
-      due: new Date("2025-01-01"),
+      start: new Date("2022-01-01"),
+      due: new Date(2023, 11, 10),
       pending: false,
    },
 ]

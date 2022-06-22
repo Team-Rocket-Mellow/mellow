@@ -1,29 +1,38 @@
 import "./TodoItem.css"
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useState } from "react"
+import { useSetRecoilState, useRecoilValue } from 'recoil'
 import { todos_list, current_date } from "../../state/atoms"
 import { TodoElement } from "../../state/types"
-import { dayMonthYearString } from "../../utility/time"
+import { numberToMonth } from "../../utility/time"
 import Icon from "../assets/Icon"
 
 // —————————————————————————————————————————————————————————————————————————————
 // TodoItem
 
 function TodoItem({ id, text, done, due, overdue }: TodoElement) {
-  const [todos, setTodos] = useRecoilState(todos_list)
-  const now = useRecoilValue(current_date)
-  const flipDone = () => setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
+  const [isHover, setHover] = useState(false)
+  const setTodos = useSetRecoilState(todos_list)
+  const today = useRecoilValue(current_date)
+
+  const isChecked = done || isHover ? "checkbox checked" : "checkbox"
   const isDone = done ? "done" : ""
+  const isOverdue = overdue ? "overdue" : ""
+  const [day, month, year] = [due?.getDate(), due?.getMonth(), due?.getFullYear()]
+
+  const flipDone = () => setTodos(todos => todos.map(t => t.id === id ? { ...t, done: !t.done } : t))
+  const enter = () => setHover(true)
+  const exit = () => setHover(false)
 
   return (
-    <div className="TodoItem">
-      <span className="left" onClick={flipDone}>
-          <Icon>check_box_outline_blank</Icon>
-          <Icon className={`checkbox ${isDone}`}>check_box</Icon>
-        <span className={`text ${isDone}`}>{text}</span>
+    <div className={`TodoItem ${isDone}`}>
+      <span className="left" onClick={flipDone} onMouseEnter={enter} onMouseLeave={exit}>
+        <Icon>check_box_outline_blank</Icon>
+        <Icon className={isChecked}>check_box</Icon>
+        <span className="text">{text}</span>
       </span>
-      <span className={overdue ? "overdue" : ""}>
-        { dayMonthYearString(due) }
-      </span>
+      <time className={isOverdue}>
+        {day} {month && numberToMonth(month)} {today.year === year || year}
+      </time>
     </div>
   )
 }
