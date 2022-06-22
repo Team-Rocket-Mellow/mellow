@@ -150,7 +150,7 @@ function Command({ setOpen }) {
                   {
                     items
                       .filter(item => item.label.toLowerCase().includes(search.toLowerCase()))
-                      .map(({ label, icon, action }) => {
+                      .map(({ label, icon, action, hotkey }) => {
                         const index = counter.next().value
                         const isActive = active === index ? "active" : ""
                         return (
@@ -158,7 +158,7 @@ function Command({ setOpen }) {
                             <li className={isActive} onClick={action} onMouseEnter={Δmouse}>
                               {icon}
                               <span>{label}</span>
-                              <code></code>
+                              {hotkey && <code>{hotkey}</code>}
                             </li>
                           </Link>
                         )
