@@ -60,6 +60,7 @@ function MenuState() {
             openAddTodo(true)
             closeCommand(false)
           },
+          hotkey: "q",
         },
       ],
     },
@@ -157,6 +158,7 @@ function Command({ setOpen }) {
                             <li className={isActive} onClick={action} onMouseEnter={Δmouse}>
                               {icon}
                               <span>{label}</span>
+                              <code></code>
                             </li>
                           </Link>
                         )
