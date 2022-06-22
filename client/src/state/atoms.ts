@@ -12,12 +12,6 @@ export const todos_list = atom<Todo[]>({
    default: data,
 })
 
-/** Current todos view. */
-export const todos_view = atom<TodoView>({
-   key: "todos_view",
-   default: "all",
-})
-
 export const user = atom({
    key: "user",
    default: {
@@ -26,13 +20,19 @@ export const user = atom({
    }
 })
 
-export const view = atom({
-   key: "view",
-   default: "inbox" as TodoView | "search",
+/** Set current date. */
+export const current_date = atom({
+   key: "date",
+   default: dayMonthYear(new Date()),
 })
 
 // —————————————————————————————————————————————————————————————————————————————
 // Interface
+
+export const view = atom({
+   key: "view",
+   default: "inbox" as TodoView | "search",
+})
 
 export const search = atom({
    key: "search",
@@ -45,10 +45,10 @@ export const home = atom<TodoView>({
    default: "all",
 })
 
-/** Set current date. */
-export const current_date = atom({
-   key: "date",
-   default: dayMonthYear(new Date()),
+/** Current todos view. */
+export const todos_view = atom<TodoView>({
+   key: "todos_view",
+   default: home,
 })
 
 /** toggle LeftMenu */
