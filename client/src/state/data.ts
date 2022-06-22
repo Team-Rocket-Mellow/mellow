@@ -35,7 +35,7 @@ const past: Todo[] = [
       done: false,
       trash: true,
       start: new Date("2022-01-01"),
-      due: new Date("2022-02-05"),
+      due: new Date(2022, 3, 21),
       pending: false,
    },
 ]
