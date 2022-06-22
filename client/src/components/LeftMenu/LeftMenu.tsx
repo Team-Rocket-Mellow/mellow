@@ -16,33 +16,6 @@ function LeftMenu() {
   const menuIsOn = useRecoilValue(left_menu)
   const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
 
-  // const sidebarRef = useRef(null);
-  // const [isResizing, setIsResizing] = useState(false);
-  // const [sidebarWidth, setSidebarWidth] = useState(220);
-
-  // const startResizing = useCallback((mouseDownEvent) => {
-  //   setIsResizing(true);
-  // }, []);
-
-  // const stopResizing = useCallback(() => {
-  //   setIsResizing(false);
-  // }, []);
-
-  // const resize = useCallback((mouseMoveEvent) => {
-  //     if (isResizing) {
-  //       setSidebarWidth(mouseMoveEvent.clientX - sidebarRef.current.getBoundingClientRect().left);
-  //     }
-  //   }, [isResizing]);
-
-  // useEffect(() => {
-  //   window.addEventListener("mousemove", resize);
-  //   window.addEventListener("mouseup", stopResizing);
-  //   return () => {
-  //     window.removeEventListener("mousemove", resize);
-  //     window.removeEventListener("mouseup", stopResizing);
-  //   };
-  // }, [resize, stopResizing]);
-
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const icons = {
     all:      <Icon>apps</Icon>,
@@ -54,11 +27,7 @@ function LeftMenu() {
   }
 
   return (
-    <nav id="LeftMenu" className={menuIsOn ? 'side-bar active' : 'side-bar'}
-    // ref={sidebarRef}
-    // style={{ width: sidebarWidth }}
-    // onMouseDown={(e) => e.preventDefault()}
-    >
+    <nav id="LeftMenu" className={menuIsOn ? 'side-bar active' : 'side-bar'}>
       {
         views.map((v, i) => (
           <Link
@@ -74,7 +43,6 @@ function LeftMenu() {
           </Link>
         ))
       }
-      {/* <div className="app-sidebar-resize" onMouseDown={startResizing}></div> */}
     </nav>
   )
 }
