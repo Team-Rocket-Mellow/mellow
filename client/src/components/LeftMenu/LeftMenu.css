@@ -13,7 +13,7 @@
    padding-right: 10px;
 }
 
-.side-bar {
+.sidebar {
    display: flex;
    flex-direction: column;
    background-color: var(--sidebar);
@@ -27,7 +27,7 @@
    position: absolute;
 }
 
-.side-bar.active {
+.sidebar.active {
    display: flex;
    flex-direction: column;
    background-color: var(--sidebar);
