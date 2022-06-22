@@ -75,6 +75,7 @@
 #Command li {
    /* position */
    display: flex;
+   align-items: center;
    /* dimension */
    padding-top: 0.4em;
    padding-bottom: 0.4em;
