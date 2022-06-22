@@ -1,9 +1,12 @@
-function Tooltip({ children, ...props }) {
+import "./Tooltip.css"
+
+function Tooltip({ children, content, ...props }) {
    return (
-      <abbr {...props}>
+      <div id="Tooltip" {...props}>
          {children}
-      </abbr>
+         <div className="bottom">{content}</div>
+      </div>
    )
 }
 
-export default Tooltip;
+export default Tooltip

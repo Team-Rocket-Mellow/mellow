@@ -1,0 +1,17 @@
+#Tooltip {
+   --text-color: white;
+   --background-color: black;
+   --tooltip-margin: 5em;
+
+   display: inline-block;
+   position: relative;
+}
+
+#Tooltip .bottom {
+   bottom: calc(var(--tooltip-margin) * -1);
+}
+
+#Tooltip .bottom::before {
+   bottom: 100%;
+   border-bottom-color: var(--tooltip-background-color);
+}
