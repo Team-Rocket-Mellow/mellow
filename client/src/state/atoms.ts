@@ -15,7 +15,7 @@ export const todos_list = atom<Todo[]>({
 /** Current todos view. */
 export const todos_view = atom<TodoView>({
    key: "todos_view",
-   default: "inbox",
+   default: "all",
 })
 
 export const user = atom({
@@ -42,7 +42,7 @@ export const search = atom({
 /** Set default view. */
 export const home = atom<TodoView>({
    key: "home",
-   default: "inbox",
+   default: "all",
 })
 
 /** Set current date. */
