@@ -23,18 +23,18 @@ function TopMenu() {
   return (
     <header id='NavBar'>
       <nav>
-        <Tooltip content="Menu" hotkey="m">
+        <Tooltip content="menu" hotkey="m">
           <Icon onClick={Δmenu}>menu</Icon>
         </Tooltip>
         <Link to={defaultHome} onClick={goHome} tabIndex={-1}>
-          <Tooltip content="Home" hotkey="h">
+          <Tooltip content="home" hotkey="h">
             <Icon>home</Icon>
           </Tooltip>
         </Link>
       </nav>
       <SearchInput />
       <nav>
-        <Tooltip content="Add Todo" hotkey="q">
+        <Tooltip content="add todo" hotkey="q">
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon>settings</Icon>
