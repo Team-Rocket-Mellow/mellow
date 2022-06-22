@@ -75,6 +75,7 @@
 #Command li {
    /* position */
    display: flex;
+   align-items: center;
    /* dimension */
    padding-top: 0.4em;
    padding-bottom: 0.4em;
@@ -87,6 +88,19 @@
 #Command menu li.active {
    background-color: #f0f0f0;
    border-left: 2px solid var(--red_light);
+}
+
+#Command menu li code {
+   /* position */
+   margin-left: auto;
+   margin-right: 1em;
+   /* dimension */
+   padding-left: 0.5em;
+   padding-right: 0.5em;
+   /* style */
+   background-color: rgb(227, 225, 225);
+   border-radius: 15%;
+   font-family: Menlo, monospace;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
