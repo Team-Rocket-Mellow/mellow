@@ -1,4 +1,5 @@
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { current_date } from "../state/atoms"
 
 /**
  * Check whether two dates `t1` and `t2` are on the same calendar day.
@@ -81,10 +82,13 @@ export function monthDayString(date:Date) {
  * console.log(new Date()) // "15 May 2020"
  */
 export function dayMonthYearString(date:Date|null) {
+   const current = useRecoilValue(current_date)
    const day = date?.getDate()
    const month = numberToMonth(date?.getMonth()!)
    const year = date?.getFullYear()
-   return date ? `${day} ${month} ${year}` : ""
+   return date 
+      ? `${month} ${day} ${year !== current.year ? year : ""}` 
+      : ""
 }
 
 /**
