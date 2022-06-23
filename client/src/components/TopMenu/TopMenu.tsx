@@ -23,13 +23,9 @@ function TopMenu() {
   return (
     <header id='NavBar'>
       <nav>
-        <Tooltip content="menu" hotkey="m">
-          <Icon onClick={Δmenu}>menu</Icon>
-        </Tooltip>
+        <Icon onClick={Δmenu}>menu</Icon>
         <Link to={defaultHome} onClick={goHome} tabIndex={-1}>
-          <Tooltip content="home" hotkey="h">
-            <Icon>home</Icon>
-          </Tooltip>
+        <Icon>home</Icon>
         </Link>
       </nav>
       <SearchInput />
