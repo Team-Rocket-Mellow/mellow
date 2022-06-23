@@ -11,12 +11,12 @@ function Tooltip({ children, content, hotkey, ...props }) {
   return (
     <div id="Tooltip" onMouseEnter={enter} onMouseLeave={leave} {...props}>
       {children}
-      { 
+      {
         isOpen && (
           <div className="bottom">
             {content} <code className="hokey">{hotkey}</code>
           </div>
-        ) 
+        )
       }
     </div>
   )
