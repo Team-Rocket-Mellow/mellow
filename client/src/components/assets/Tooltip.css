@@ -1,0 +1,41 @@
+#Tooltip {
+   --text-color: white;
+   --background-color: rgb(53, 53, 53);
+   --tooltip-margin: 5em;
+
+   display: inline-block;
+   position: relative;
+   z-index: 1000;
+}
+
+#Tooltip .bottom {
+   /* position */
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   /* dimension */
+   padding: 6px;
+   line-height: 1;
+   /* style */
+   border-radius: 4px;
+   color: var(--text-color);
+   background: var(--background-color);
+   font-size: 0.9em;
+   font-family: sans-serif;
+   white-space: nowrap;
+}
+
+#Tooltip .bottom code {
+   /* position */
+   margin-left: 0.3em;
+   /* dimension */
+   padding-left: 0.3em;
+   padding-right: 0.3em;
+   padding-top: 0.1em;
+   padding-bottom: 0.1em;
+   /* style */
+   background-color: rgb(94, 94, 94);
+   border-radius: 4px;
+   font-size: 0.8em;
+   font-family: Menlo, monospace;
+}

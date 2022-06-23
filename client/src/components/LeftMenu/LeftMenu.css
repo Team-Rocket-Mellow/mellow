@@ -3,39 +3,26 @@
 */
 
 #LeftMenu {
+   /* position */
    display: flex;
    flex-direction: column;
-   background-color: var(--sidebar);
+   /* dimension */
    min-width: 13.5em;
    height: calc(100vh - 4.3em);
    padding-left: 5px;
    padding-top: 30px;
    padding-right: 10px;
+   /* style */
+   background-color: var(--sidebar);
 }
 
-.side-bar {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--sidebar);
-   min-width: 13.5em;
-   height: calc(100vh - 4.3em);
-   padding-left: 5px;
-   padding-top: 30px;
-   padding-right: 10px;
+#LeftMenu.sidebar {
    transform: translate(-100%);
    transition: transform 0.2s ease-out;
    position: absolute;
 }
 
-.side-bar.active {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--sidebar);
-   min-width: 13.5em;
-   height: calc(100vh - 4.3em);
-   padding-left: 5px;
-   padding-top: 30px;
-   padding-right: 10px;
+#LeftMenu.sidebar.active {
    transform: translate(0);
    transition: transform 0.2s ease-in;
 }
@@ -45,11 +32,14 @@
 */
 
 #LeftMenu .item {
+   /* position */
    display: flex;
    justify-content: space-between;
+   /* dimension */
    padding-top: 5px;
    padding-bottom: 5px;
    padding-left: 10px;
+   /* style */
    font-size: 14px;
    border-radius: 4px;
    user-select: none;
@@ -80,7 +70,7 @@
    color: var(--red_light);
 }
 
-/* —————————————————————————————————————————————————————————————————————————————
+/* -----------------------------------------------------------------------------
    Icons
 */
 
@@ -93,18 +83,3 @@
 #LeftMenu i.upcoming { color: var(--orange); }
 /* #LeftMenu i.done     { color: var(--brown);  } */
 /* #LeftMenu i.trash    { color: var(--red);    } */
-
-#LeftMenu .app-sidebar-resize {
-   border: 3px solid red;
-   flex-grow: 0;
-   flex-shrink: 0;
-   flex-basis: 6px;
-   /* align-self: flex-end; */
-   cursor: col-resize;
-   resize: horizontal;
-}
-
-#LeftMenu .app-sidebar-resize:hover {
-   width: 3px;
-   background: #c1c3c5b4;
-}

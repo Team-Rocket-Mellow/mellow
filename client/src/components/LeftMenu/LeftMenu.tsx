@@ -13,35 +13,8 @@ import Icon from "../assets/Icon"
 function LeftMenu() {
   const [view, go] = useRecoilState(todos_view)
   const stats = useRecoilValue(todos_list_stats)
-  const menuIsOn = useRecoilValue(left_menu)
-  const has_overdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
-
-  // const sidebarRef = useRef(null);
-  // const [isResizing, setIsResizing] = useState(false);
-  // const [sidebarWidth, setSidebarWidth] = useState(220);
-
-  // const startResizing = useCallback((mouseDownEvent) => {
-  //   setIsResizing(true);
-  // }, []);
-
-  // const stopResizing = useCallback(() => {
-  //   setIsResizing(false);
-  // }, []);
-
-  // const resize = useCallback((mouseMoveEvent) => {
-  //     if (isResizing) {
-  //       setSidebarWidth(mouseMoveEvent.clientX - sidebarRef.current.getBoundingClientRect().left);
-  //     }
-  //   }, [isResizing]);
-
-  // useEffect(() => {
-  //   window.addEventListener("mousemove", resize);
-  //   window.addEventListener("mouseup", stopResizing);
-  //   return () => {
-  //     window.removeEventListener("mousemove", resize);
-  //     window.removeEventListener("mouseup", stopResizing);
-  //   };
-  // }, [resize, stopResizing]);
+  const isMenuOn = useRecoilValue(left_menu)
+  const isOverdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
 
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
   const icons = {
@@ -54,11 +27,7 @@ function LeftMenu() {
   }
 
   return (
-    <nav id="LeftMenu" className={menuIsOn ? 'side-bar active' : 'side-bar'}
-    // ref={sidebarRef}
-    // style={{ width: sidebarWidth }}
-    // onMouseDown={(e) => e.preventDefault()}
-    >
+    <nav id="LeftMenu" className={`sidebar ${isMenuOn && "active"}`}>
       {
         views.map((v, i) => (
           <Link
@@ -68,13 +37,12 @@ function LeftMenu() {
             key={i}
           >
             <span className="flex">{icons[v]}{v}</span>
-            <span className={"statistic"} id={v === "today" && has_overdue ? "overdue" : ""}>
+            <span className="statistic" id={v === "today" && isOverdue ? "overdue" : ""}>
               {stats[v] || null}
             </span>
           </Link>
         ))
       }
-      {/* <div className="app-sidebar-resize" onMouseDown={startResizing}></div> */}
     </nav>
   )
 }
