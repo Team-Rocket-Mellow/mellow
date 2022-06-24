@@ -34,10 +34,22 @@ function connectionHandler(ws:WebSocket) {
 type Peers = { [username:string]: string }
 type Clock = { [id:string]: number }
 
-type Action = {
-   type  : "ADD" | "REMOVE"
+// -----------------------------------------------------------------------------
+// Actions
+
+type Actions = Remove | Initial
+
+type Remove = {
+   type  : "REMOVE"
    clock : Clock
    id    : string
+}
+
+type Add = {
+   type  : "ADD"
+   clock : Clock
+   id    : string
+   value : string
 }
 
 type Initial = {
@@ -45,8 +57,6 @@ type Initial = {
    clock : Clock
    id    : string
 }
-
-type Message = Initial | Action
 
 /**
 
