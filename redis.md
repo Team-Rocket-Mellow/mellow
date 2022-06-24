@@ -95,6 +95,7 @@ hexists collection_name key # bool true
 ```bash
 xadd stream_name * k1 v1 k2 v2 k3 v3
 ```
+
  - `stream_name` is the arbitrary name of the stream
  - `*` the second argument is for a unique id, but with `*` we leave the
    autogeneration up to Redis.

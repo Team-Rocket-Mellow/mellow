@@ -16,7 +16,7 @@ CREATE TABLE users (
   updated_at  TIMESTAMP     NOT NULL,
   notif       BOOLEAN       TRUE,
   sid         VARCHAR(32)   UNIQUE NOT NULL,
-  photo       URL           
+  photo       URL
 );
 
 CREATE TABLE tickets (
@@ -47,9 +47,9 @@ CREATE TABLE sessions (
 -- —————————————————————————————————————————————————————————————————————————————
 -- Constraints
 
-ALTER TABLE tickets ADD FOREIGN KEY (user) REFERENCES users (id);
+ALTER TABLE tickets       ADD FOREIGN KEY (user)   REFERENCES users (id);
 ALTER TABLE notifications ADD FOREIGN KEY (ticket) REFERENCES tickets (id);
-ALTER TABLE sessions ADD FOREIGN KEY (sid) REFERENCES users (sid);
+ALTER TABLE sessions      ADD FOREIGN KEY (sid)    REFERENCES users (sid);
 
 -- —————————————————————————————————————————————————————————————————————————————
 -- Indices

@@ -1,32 +1,6 @@
 import WebSocket from "ws"
-import { nanoid } from "nanoid"
 import SyncSet from "./crdt"
-
-// —————————————————————————————————————————————————————————————————————————————
-// Websocket Server
-
-const server = new WebSocket.Server({ port: 8080 })
-const clients = new Map()
-const set = new SyncSet()
-
-server.on("connection", connectionHandler)
-
-function connectionHandler(ws:WebSocket) {
-   const id = nanoid(36)
-   clients.set(id, ws)
-
-   ws.on("message", (message:string) => {
-      const data = JSON.parse(message)
-      console.log(data)
-      clients.forEach((client) => {
-         client.send(message)
-      })
-   })
-
-   ws.on("close", () => {
-      clients.delete(id)
-   })
-}
+import { nanoid } from "nanoid"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Types
@@ -58,8 +32,32 @@ type Initial = {
    id    : string
 }
 
-/**
+// —————————————————————————————————————————————————————————————————————————————
+// Persistence
 
-1. User registration means a row entry in the database.
+const clients = new Map()
+const set = new SyncSet()
 
- */
+// —————————————————————————————————————————————————————————————————————————————
+// Websocket Server
+
+const server = new WebSocket.Server({ port: 8080 })
+
+server.on("connection", onConnect)
+
+function onConnect(ws:WebSocket) {
+   const id = nanoid(36)
+   clients.set(id, ws)
+
+   ws.on("message", (message:string) => {
+      const data = JSON.parse(message)
+      console.log(data)
+      clients.forEach(client => {
+         client.send(message)
+      })
+   })
+
+   ws.on("close", () => {
+      clients.delete(id)
+   })
+}
