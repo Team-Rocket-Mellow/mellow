@@ -1,5 +1,5 @@
 import WebSocket from "ws"
-import SyncSet from "./crdt"
+import SyncSet from "../crdt/set"
 import { nanoid } from "nanoid"
 
 // —————————————————————————————————————————————————————————————————————————————
