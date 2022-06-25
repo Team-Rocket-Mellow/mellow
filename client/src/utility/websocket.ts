@@ -9,6 +9,11 @@ type Clock = { [id:string]: number }
 // -----------------------------------------------------------------------------
 // Actions
 
+const ADD     = "ADD"     as const
+const REMOVE  = "REMOVE"  as const
+const ACK     = "ACK"     as const
+const INITIAL = "INITIAL" as const
+
 type Action = Add | Remove | Initial
 
 type Remove = {
@@ -43,9 +48,11 @@ const { log, error } = console
 
 class Client {
    ws: WebSocket | null = null
+   crdt:SyncSet<any>
+   lastSync:Clock
    #onMessage:(event:MessageEvent) => void
 
-   constructor(onMessage: (M:MessageEvent) => void) {
+   constructor(crdt:SyncSet<any>, onMessage: (M:MessageEvent) => void) {
       this.#onMessage = onMessage.bind(this)
    }
 
@@ -55,7 +62,7 @@ class Client {
          log("WebSocket connected: ", event)
          this.ws = ws
          ws.send(JSON.stringify({
-            type: "INITIAL",
+            type: INITIAL,
             clock: set.clock,
             id: set.id
          } as Initial))
