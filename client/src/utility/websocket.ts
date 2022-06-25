@@ -30,10 +30,11 @@ type Initial = {
    id    : string
 }
 
-// —————————————————————————————————————————————————————————————————————————————
-// Persistence
-
-const set = new SyncSet<string>()
+type Ack = {
+   type  : "ACK"
+   clock0 : Clock
+   clockF : Clock
+}
 
 // —————————————————————————————————————————————————————————————————————————————
 // Websocket
@@ -90,5 +91,16 @@ class Client {
       this.ws!.close(code, reason)
    }
 }
+
+// —————————————————————————————————————————————————————————————————————————————
+// Persistence
+
+const set = new SyncSet<string>()
+const ws = new Client(msg => {
+   const action = JSON.parse(msg.data)
+   switch (action.type) {
+
+   }
+})
 
 export default {}
