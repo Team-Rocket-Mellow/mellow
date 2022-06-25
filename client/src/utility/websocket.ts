@@ -42,6 +42,11 @@ type Ack = {
    clockF : Clock
 }
 
+interface Message {
+   type: "ADD" | "REMOVE" | "ACK" | "INITIAL"
+   id: string
+}
+
 // —————————————————————————————————————————————————————————————————————————————
 // Websocket
 
@@ -49,10 +54,9 @@ const { log, error } = console
 
 class Client {
    ws: WebSocket | null = null
-   crdt:SyncSet<any>
-   lastSync:Clock
+   onMessage:(event:MessageEvent) => void
 
-   constructor(crdt:SyncSet<any>) { this.crdt = crdt }
+   constructor(onMessage:(msg:MessageEvent) => void) { this.onMessage = onMessage }
 
    connect() {
       const ws = new WebSocket(`ws://${window.location.host}/ws`)
@@ -60,10 +64,6 @@ class Client {
          log("WebSocket connected: ", event)
          this.ws = ws
          ws.send(JSON.stringify({ type: INITIAL, clock: set.clock, id: set.id, } as Initial))
-      }
-
-      ws.onmessage = (event) => {
-         
       }
 
       ws.onerror = (err) => {
@@ -98,12 +98,10 @@ class Client {
 // —————————————————————————————————————————————————————————————————————————————
 // Persistence
 
+function onMessage(event:MessageEvent) {
+   const msg = JSON.parse(event.data)
+}
+
 const set = new SyncSet<any>()
-const ws = new Client(set, (msg) => {
-   const action = JSON.parse(msg.data)
-   switch (action.type) {
-      
-   }
-})
 
 export default {}
