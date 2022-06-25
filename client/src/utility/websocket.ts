@@ -9,7 +9,7 @@ type Clock = { [id:string]: number }
 // -----------------------------------------------------------------------------
 // Actions
 
-type Actions = Remove | Initial
+type Action = Add | Remove | Initial
 
 type Remove = {
    type  : "REMOVE"
@@ -40,37 +40,16 @@ const set = new SyncSet<string>()
 
 const { log, error } = console
 
-function connect() {
-   const ws = new WebSocket(`ws://${window.location.host}/ws`)
-
-   ws.onopen = function() {
-      ws.send(JSON.stringify({
-         type: "INITIAL",
-         clock: set.clock,
-         id: set.id
-      } as Initial))
-   }
-
-   ws.onerror = function(err) {
-      console.error(err)
-      ws.close()
-   }
-
-   ws.onclose = function() {
-
-   }
-}
-
-
-
 class Client {
    ws: WebSocket | null = null
-   constructor() {
-      this.connect()
+   #onMessage:(event:MessageEvent) => void
+
+   constructor(onMessage: (M:MessageEvent) => void) {
+      this.#onMessage = onMessage.bind(this)
    }
 
    connect() {
-      let ws = new WebSocket(`ws://${window.location.host}/ws`)
+      const ws = new WebSocket(`ws://${window.location.host}/ws`)
       ws.onopen = (event) => {
          log("WebSocket connected: ", event)
          this.ws = ws
@@ -81,21 +60,34 @@ class Client {
          } as Initial))
       }
 
+      ws.onmessage = this.#onMessage
+
       ws.onerror = (err) => {
          error("WebSocket connection error: ", err)
-         this.ws?.close()
+         this.ws?.close(1006, "Connection error.")
       }
 
       ws.onclose = (event) => {
+         this.ws = null
          if (event.wasClean) {
             log("WebSocket cleanly closed.")
             log("Event Code: ", event.code)
             log("Event Reason: ", event.reason)
-            this.ws = null
             return
          }
-         setTimeout(() => { this.connect() }, 5000, this)
+         error("WebSocket closed: ", event)
+         setTimeout(() => this.connect(), 5000)
       }
+   }
+   
+   send(action:Action) {
+      if (!this.ws) throw Error("WebSocket not connected.")
+      this.ws!.send(JSON.stringify(action))
+      console.log("WebSocket sent: ", action)
+   }
+
+   close(reason:string, code=1000) {
+      this.ws!.close(code, reason)
    }
 }
 
