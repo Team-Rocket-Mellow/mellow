@@ -51,11 +51,8 @@ class Client {
    ws: WebSocket | null = null
    crdt:SyncSet<any>
    lastSync:Clock
-   #onMessage:(event:MessageEvent) => void
 
-   constructor(crdt:SyncSet<any>, onMessage: (M:MessageEvent) => void) {
-      this.#onMessage = onMessage.bind(this)
-   }
+   constructor(crdt:SyncSet<any>) { this.crdt = crdt }
 
    connect() {
       const ws = new WebSocket(`ws://${window.location.host}/ws`)
@@ -65,7 +62,9 @@ class Client {
          ws.send(JSON.stringify({ type: INITIAL, clock: set.clock, id: set.id, } as Initial))
       }
 
-      ws.onmessage = this.#onMessage
+      ws.onmessage = (event) => {
+         
+      }
 
       ws.onerror = (err) => {
          error("WebSocket connection error: ", err)
