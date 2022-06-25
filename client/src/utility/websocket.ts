@@ -18,25 +18,26 @@ type Action = Add | Remove | Initial
 
 type Remove = {
    type  : "REMOVE"
-   clock : Clock
    id    : string
+   clock : Clock
 }
 
 type Add = {
    type  : "ADD"
-   clock : Clock
    id    : string
+   clock : Clock
    value : string
 }
 
 type Initial = {
    type  : "INITIAL"
-   clock : Clock
    id    : string
+   clock : Clock
 }
 
 type Ack = {
    type  : "ACK"
+   id    : string
    clock0 : Clock
    clockF : Clock
 }
@@ -61,11 +62,7 @@ class Client {
       ws.onopen = (event) => {
          log("WebSocket connected: ", event)
          this.ws = ws
-         ws.send(JSON.stringify({
-            type: INITIAL,
-            clock: set.clock,
-            id: set.id
-         } as Initial))
+         ws.send(JSON.stringify({ type: INITIAL, clock: set.clock, id: set.id, } as Initial))
       }
 
       ws.onmessage = this.#onMessage
@@ -102,11 +99,11 @@ class Client {
 // —————————————————————————————————————————————————————————————————————————————
 // Persistence
 
-const set = new SyncSet<string>()
-const ws = new Client(msg => {
+const set = new SyncSet<any>()
+const ws = new Client(set, (msg) => {
    const action = JSON.parse(msg.data)
    switch (action.type) {
-
+      
    }
 })
 
