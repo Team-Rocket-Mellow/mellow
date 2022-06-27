@@ -1,57 +1,78 @@
+// —————————————————————————————————————————————————————————————————————————————
+// Environment
+
 type onMessage = (event:MessageEvent) => void
 
+const { log } = console
+
+function * backoff(ms=1000) {
+   while (true) {
+      yield ms
+      if (ms < 32_000) ms *= 2
+   }
+}
+
+// —————————————————————————————————————————————————————————————————————————————
+// WebSocket Client
+
 class WSClient {
-   ws:WebSocket|null
+   ws:WebSocket|null = null
    server:string
-   onMessage: onMessage
-   #backoff:number
+   onMessage:onMessage
+   #backoff = 1000
 
    constructor(onMessage:onMessage, server="localhost") {
       this.server = server
       this.onMessage = onMessage
    }
 
+   get backOff() {
+      return this.#backoff < 32_000
+         ? this.#backoff *= 2
+         : this.#backoff
+   }
+
    connect() {
       const ws = new WebSocket(this.server)
       ws.onopen = () => {
-         console.log(`WebSocket connection: ${this.server}.`)
+         log(`WebSocket connection: ${this.server}.`)
          this.ws = ws
       }
       ws.onclose = ({ code, reason, wasClean }) => {
-         console.log(`WebSocket connection closed.`)
-         console.log(`Code: ${code}.`)
-         console.log(`Reason: ${reason}.`)
+         log(`WebSocket connection closed. Code: ${code}. Reason: ${reason}.`)
          this.ws = null
          if (!wasClean) {
-            console.log(`WebSocket terminatedly poorly. Reconnecting soon.`)
-            setTimeout(() => this.connect(), 3000)
+            log("WebSocket terminatedly poorly.")
+            log(`Reconnecting in ${this.backOff} ms.`)
+            setTimeout(() => this.connect(), this.backOff)
          }
       }
       ws.onerror = (error) => {
-         console.log("WebSocket error :", error)
-         console.log(`Reconnecting in ${this.#backoff}`)
-         setTimeout(() => this.connect(), 3000)
+         this.ws = null
+         log("WebSocket error :", error)
+         log(`Reconnecting in ${this.backOff} ms.`)
+         setTimeout(() => this.connect(), this.backOff)
       }
       ws.onmessage = this.onMessage
    }
 
    close(reason, code=1000) {
       if (this.ws === null) {
-         console.log("WebSocket connection is null.")
+         log("WebSocket connection is null.")
          return
       }
       switch (this.ws.readyState) {
          case WebSocket.OPEN:
-            console.log("WebSocket closing.")
-            console.log(`Code: ${code}.`)
-            console.log(`Reason: ${reason}.`)
+            log("WebSocket closing.")
+            log(`Code: ${code}.`)
+            log(`Reason: ${reason}.`)
             this.ws.close(code, reason)
             this.ws = null
             break
          case WebSocket.CLOSING:
          case WebSocket.CLOSED:
          case WebSocket.CONNECTING:
-            console.log(`WebSocket cannot close. WebSocket state: ${this.ws.readyState}.`)
+            log(`WebSocket cannot close. WebSocket state: ${this.ws.readyState}.`)
       }
    }
 
