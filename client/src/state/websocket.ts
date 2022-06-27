@@ -8,33 +8,7 @@ const { log } = console
 // —————————————————————————————————————————————————————————————————————————————
 // Types
 
-type Closing = {
-   type: "CLOSING"
-   reason: string
-   code: number
-}
-
-type Closed = {
-   type: "CLOSED"
-   reason: string
-   code: number
-}
-
-type Opened = {
-   type: "OPENED"
-}
-
-type Message = {
-   type: "MESSAGE"
-   data: string
-}
-
-type Error = {
-   type: "ERROR"
-   error: Error
-}
-
-type State = "CLOSING" | "CLOSED" | "OPENED" | "MESSAGE" | "ERROR"
+type State =  "OPENING" | "OPEN" | "CLOSING" | "CLOSED"
 
 // —————————————————————————————————————————————————————————————————————————————
 // WebSocket Client
@@ -44,7 +18,6 @@ class WebSocketClient {
    server:string
    onMessage:onMessage
    #backoff = 1000
-   subscribe:(event:string) => any
 
    constructor(onMessage:onMessage, server="localhost") {
       this.server = server
