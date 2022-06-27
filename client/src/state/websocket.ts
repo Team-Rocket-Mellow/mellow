@@ -6,6 +6,37 @@ type onMessage = (event:MessageEvent) => void
 const { log } = console
 
 // —————————————————————————————————————————————————————————————————————————————
+// Types
+
+type Closing = {
+   type: "CLOSING"
+   reason: string
+   code: number
+}
+
+type Closed = {
+   type: "CLOSED"
+   reason: string
+   code: number
+}
+
+type Opened = {
+   type: "OPENED"
+}
+
+type Message = {
+   type: "MESSAGE"
+   data: string
+}
+
+type Error = {
+   type: "ERROR"
+   error: Error
+}
+
+type State = "CLOSING" | "CLOSED" | "OPENED" | "MESSAGE" | "ERROR"
+
+// —————————————————————————————————————————————————————————————————————————————
 // WebSocket Client
 
 class WebSocketClient {
@@ -13,6 +44,7 @@ class WebSocketClient {
    server:string
    onMessage:onMessage
    #backoff = 1000
+   subscribe:(event:string) => any
 
    constructor(onMessage:onMessage, server="localhost") {
       this.server = server
@@ -58,9 +90,7 @@ class WebSocketClient {
       }
       switch (this.ws.readyState) {
          case WebSocket.OPEN:
-            log("WebSocket closing.")
-            log(`Code: ${code}.`)
-            log(`Reason: ${reason}.`)
+            log(`WebSocket connection closed. Code: ${code}. Reason: ${reason}.`)
             this.ws.close(code, reason)
             this.ws = null
             return
@@ -69,7 +99,7 @@ class WebSocketClient {
             log(`WebSocket already closing or closed. WebSocket state: ${this.ws.readyState}.`)
             return
          case WebSocket.CONNECTING:
-            const delayedClose = () => {
+            function delayedClose() {
                this.ws!.removeEventListener("open", delayedClose)
                this.close("Fulfilling delayed WebSocket close request.", 1000)
             }
