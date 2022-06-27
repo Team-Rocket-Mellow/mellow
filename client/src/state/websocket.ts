@@ -25,6 +25,7 @@ class WSClient {
          : this.#backoff
    }
 
+   /** Attempts WebSocket connection. */
    connect() {
       const ws = new WebSocket(this.server)
       ws.onopen = () => {
@@ -49,7 +50,8 @@ class WSClient {
       ws.onmessage = this.onMessage
    }
 
-   close(reason, code=1000) {
+   /** Closes WebSocket connection if exists. */
+   close(reason:string, code=1000) {
       if (this.ws === null) {
          log("WebSocket connection is null.")
          return
