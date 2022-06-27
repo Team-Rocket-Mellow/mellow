@@ -5,13 +5,6 @@ type onMessage = (event:MessageEvent) => void
 
 const { log } = console
 
-function * backoff(ms=1000) {
-   while (true) {
-      yield ms
-      if (ms < 32_000) ms *= 2
-   }
-}
-
 // —————————————————————————————————————————————————————————————————————————————
 // WebSocket Client
 
