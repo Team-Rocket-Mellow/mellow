@@ -8,7 +8,7 @@ const { log } = console
 // —————————————————————————————————————————————————————————————————————————————
 // WebSocket Client
 
-class WSClient {
+class WebSocketClient {
    ws:WebSocket|null = null
    server:string
    onMessage:onMessage
@@ -63,19 +63,28 @@ class WSClient {
             log(`Reason: ${reason}.`)
             this.ws.close(code, reason)
             this.ws = null
-            break
+            return
          case WebSocket.CLOSING:
          case WebSocket.CLOSED:
+            log(`WebSocket already closing or closed. WebSocket state: ${this.ws.readyState}.`)
+            return
          case WebSocket.CONNECTING:
-            log(`WebSocket cannot close. WebSocket state: ${this.ws.readyState}.`)
+            const delayedClose = () => {
+               this.ws!.removeEventListener("open", delayedClose)
+               this.close("Fulfilling delayed WebSocket close request.", 1000)
+            }
+            this.ws.addEventListener("open", delayedClose)
+            return
       }
    }
 
    send(msg:string) {
-      if (this.ws?.readyState === WebSocket.OPEN) {
-         this.ws.send(msg)
+      if (this.ws?.readyState !== WebSocket.OPEN) {
+         log("WebSocket is not open.")
+         return
       }
+      this.ws.send(msg)
    }
 }
 
-export default WSClient
+export default WebSocketClient
