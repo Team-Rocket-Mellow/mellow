@@ -41,7 +41,6 @@ class WebSocketClient {
          log(`WebSocket connection closed. Code: ${code}. Reason: ${reason}.`)
          this.ws = null
          if (!wasClean) {
-            log("WebSocket terminatedly poorly.")
             log(`Reconnecting in ${this.backOff} ms.`)
             setTimeout(() => this.connect(), this.backOff)
          }
