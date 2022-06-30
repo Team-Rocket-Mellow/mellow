@@ -17,17 +17,15 @@ class WebSocketClient {
    ws:WebSocket|null = null
    server:string
    onMessage:onMessage
-   #backoff = 1000
+   #backoff = 3000
 
-   constructor(onMessage:onMessage, server="localhost") {
+   constructor(onMessage:onMessage, server="ws://localhost") {
       this.server = server
       this.onMessage = onMessage
    }
 
    get backOff() {
-      return this.#backoff < 32_000
-         ? this.#backoff *= 2
-         : this.#backoff
+      return (this.#backoff < 32_000 ? this.#backoff *= 2 : this.#backoff) + Math.random() * 3000
    }
 
    /** Attempts WebSocket connection. */
@@ -48,8 +46,6 @@ class WebSocketClient {
       ws.onerror = (error) => {
          this.ws = null
          log("WebSocket error :", error)
-         log(`Reconnecting in ${this.backOff} ms.`)
-         setTimeout(() => this.connect(), this.backOff)
       }
       ws.onmessage = this.onMessage
    }
