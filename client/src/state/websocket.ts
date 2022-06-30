@@ -25,7 +25,7 @@ class WebSocketClient {
    }
 
    get backOff() {
-      return (this.#backoff < 32_000 ? this.#backoff *= 2 : this.#backoff) + Math.random() * 3000
+      return (this.#backoff < 32_000 ? this.#backoff *= 2 : this.#backoff) + Math.floor(Math.random() * 3000)
    }
 
    /** Attempts WebSocket connection. */
@@ -40,12 +40,12 @@ class WebSocketClient {
          log(`WebSocket connection closed. Code: ${code}. Reason: ${reason}.`)
          this.ws = null
          if (!wasClean) {
-            log(`Reconnecting in ${this.backOff} ms.`)
-            setTimeout(() => this.connect(), this.backOff)
+            const delay = this.backOff
+            log(`Reconnecting in ${delay} ms.`)
+            setTimeout(() => this.connect(), delay)
          }
       }
       ws.onerror = (error) => {
-         this.ws = null
          log("WebSocket error :", error)
       }
       ws.onmessage = this.onMessage
