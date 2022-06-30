@@ -17,7 +17,7 @@ class WebSocketClient {
    ws:WebSocket|null = null
    server:string
    onMessage:onMessage
-   #backoff = 3000
+   #backoff = 1000
 
    constructor(onMessage:onMessage, server="ws://localhost") {
       this.server = server
@@ -34,6 +34,7 @@ class WebSocketClient {
       ws.onopen = () => {
          log(`WebSocket connection: ${this.server}.`)
          this.ws = ws
+         this.#backoff = 1000
       }
       ws.onclose = ({ code, reason, wasClean }) => {
          log(`WebSocket connection closed. Code: ${code}. Reason: ${reason}.`)
