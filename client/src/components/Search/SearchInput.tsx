@@ -1,14 +1,46 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect, useRef } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import "./SearchInput.css"
 
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { search } from "../../state/atoms"
+import { todos_list } from "../../state/atoms"
 
 function SearchInput() {
    const [text, setText] = useRecoilState(search)
-   const go = useNavigate()
+   const go = useNavigate();
+   const todos = useRecoilValue(todos_list);
+   const [filteredData, setFilteredData] = useState([]);
 
-   const Δtext = (Δ) => setText(Δ.target.value)
+   const Δtext = (Δ) => {
+    setText(Δ.target.value);
+    let query = Δ.target.value;
+    const newFilter = todos.filter((value) => {
+        return value.text.toLowerCase().includes(query.toLowerCase());
+    });
+
+    if (query === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+   };
+
+   let menuRef = useRef();
+
+   useEffect (() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setFilteredData([]);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+   });
+
    const clearText = () => setText("")
    const submit = (Δ:React.FormEvent<HTMLInputElement>) => {
       Δ.preventDefault()
@@ -37,8 +69,9 @@ function SearchInput() {
     }, [])
 
    return (
+    <>
       <input
-        id='SearchInput'
+        className="SearchInput"
         placeholder='/  to search'
         type='search'
         tabIndex={-1}
@@ -46,8 +79,24 @@ function SearchInput() {
         onChange={Δtext}
         onBlur={clearText}
         onSubmit={submit}
+        onKeyPress={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            setText(event.target.value);
+            submit
+            console.log('this is entered value', event.target.value);
+          }
+        }}
       />
-   )
+      {filteredData.length != 0 && (
+          <div ref={menuRef} className="dataResult">
+            {filteredData.map((value, key) => {
+              return <div className="dataItem" key={key}> <p>{value.text}</p></div>
+            })}
+          </div>
+          )}
+    </>
+    )
 }
 
 export default SearchInput

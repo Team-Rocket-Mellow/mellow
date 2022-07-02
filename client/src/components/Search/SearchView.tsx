@@ -10,7 +10,7 @@ function SearchView() {
 
    return (
       <main>
-         <h1>Search: {query}</h1>
+         <h2>Results for "{query}"</h2>
          {
             todos.map((t, i) => <TodoItem key={i} {...t} />)
          }
