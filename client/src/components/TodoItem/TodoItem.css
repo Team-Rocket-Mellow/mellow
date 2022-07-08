@@ -2,24 +2,25 @@
    TodoItem
 */
 
+.TodoItem {
+   /* position */
+   display         : flex;
+   justify-content : space-between;
+   align-items     : center;
+   z-index: 1;
+   /* dimension */
+   padding         : 0.5em;
+   border-bottom   : 1px solid #ccc;
+   /* style */
+   font-size       : 0.85em;
+}
+
 .TodoItem:first-of-type {
    border-top: 2px solid #ccc;
 }
 
 .TodoItem:last-of-type {
    border-bottom: 2px solid #ccc;
-}
-
-.TodoItem {
-   /* position */
-   display         : flex;
-   justify-content : space-between;
-   align-items     : center;
-   /* dimension */
-   padding         : 0.5em;
-   border-bottom   : 1px solid #ccc;
-   /* style */
-   font-size       : 0.85em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

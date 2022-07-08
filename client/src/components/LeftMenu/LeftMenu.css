@@ -13,7 +13,7 @@
    padding-right: 10px;
    /* style */
    background-color: var(--sidebar);
-   position: absolute;
+   position: fixed;
    overflow-x: hidden;
    overflow-y: hidden;
 }

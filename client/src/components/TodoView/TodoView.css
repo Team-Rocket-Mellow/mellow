@@ -23,8 +23,6 @@
 #inbox h1    { color: var(--blue_light); }
 #today h1    { color: var(--green); }
 #upcoming h1 { color: var(--orange); }
-/* #done h1     { color: var(--brown); } */
-/* #trash h1    { color: var(--red); } */
 
 /* -----------------------------------------------------------------------------
    Animation
