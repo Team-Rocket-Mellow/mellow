@@ -23,13 +23,13 @@
    Animation
 */
 
+#LeftMenu.on {
+   width: 16em;
+}
+
 #LeftMenu.off {
    width: 0em;
    padding-right: 0em;
-}
-
-#LeftMenu.on {
-   width: 16em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
