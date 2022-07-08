@@ -25,32 +25,6 @@
 #inbox h1    { color: var(--blue_light); }
 #today h1    { color: var(--green); }
 #upcoming h1 { color: var(--orange); }
-/* #done h1     { color: var(--brown); } */
-/* #trash h1    { color: var(--red); } */
-
-/* -----------------------------------------------------------------------------
-   Animation
-*/
-
-#TodoView.open {
-   /* position */
-   position: relative;
-   /* z-index: -1; */
-   margin-left: 230px;
-   /* dimension */
-   width: 100%;
-   /* animation */
-   transition: 0.2s linear;
-}
-
-#TodoView.close {
-   position: relative;
-   /* z-index: -1; */
-   margin-left: 0px;
-   width: 100%;
-
-   transition: 0.2s linear;
-}
 
 /* -----------------------------------------------------------------------------
    Today
