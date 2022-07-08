@@ -13,7 +13,7 @@ import Icon from "../assets/Icon"
 function LeftMenu() {
   const [view, go] = useRecoilState(todos_view)
   const stats = useRecoilValue(todos_list_stats)
-  const isMenuOn = useRecoilValue(left_menu)
+  const isMenuOn = useRecoilValue(left_menu) ? "on" : "off"
   const isOverdue = useRecoilValue(todos_today).filter(t => !t.done).some(t => t.overdue)
 
   const views:TodoView[] = [ "all", "inbox", "today", "upcoming", "done", "trash", ]
@@ -27,7 +27,7 @@ function LeftMenu() {
   }
 
   return (
-    <nav id="LeftMenu" className={`sidebar ${isMenuOn && "active"}`}>
+    <nav id="LeftMenu" className={isMenuOn}>
       {
         views.map((v, i) => (
           <Link
@@ -35,6 +35,7 @@ function LeftMenu() {
             onClick={() => go(v)}
             className={v === view ? "item active" : "item"}
             key={i}
+            tabIndex={-1}
           >
             <span className="flex">{icons[v]}{v}</span>
             <span className="statistic" id={v === "today" && isOverdue ? "overdue" : ""}>
