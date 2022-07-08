@@ -14,6 +14,8 @@
    /* style */
    background-color: var(--sidebar);
    position: absolute;
+   overflow-x: hidden;
+   overflow-y: hidden;
 }
 
 /* -----------------------------------------------------------------------------
