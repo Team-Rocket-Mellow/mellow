@@ -7,8 +7,6 @@
    display         : flex;
    justify-content : space-between;
    align-items     : center;
-   position: relative;
-   /* z-index: -1; */
    /* dimension */
    padding         : 0.5em;
    border-bottom   : 1px solid #ccc;
@@ -48,12 +46,9 @@
 /** container for icon **/
 .TodoItem .left {
    position: relative;
-   /* z-index: -1; */
 }
 
 .TodoItem i {
-   position: relative;
-   /* z-index: -1; */
    margin-right: 0.3em;
    cursor: pointer;
    user-select: none;
@@ -61,7 +56,6 @@
 
 .TodoItem i.checkbox {
    position: absolute;
-   /* z-index: -1; */
    left: 0;
    opacity: 0;
    transition: opacity 0.5s;

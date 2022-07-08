@@ -32,27 +32,27 @@
    Search
 */
 
-/* #NavBar .SearchInput {
-   positioning
+#NavBar input {
+   /* positioning */
    margin-right: auto;
-   dimensions
+   /* dimensions */
    padding: 0.2em 0.9em;
    font-size: 1em;
    line-height: 1.5em;
    border: none;
    width: 25%;
-   styling
+   /* styling */
    border-radius: 5px;
    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-} */
+}
 
-/* #NavBar .SearchInput::placeholder {
+#NavBar input::placeholder {
    font-size: 0.95em;
-} */
+}
 
-/* #NavBar .SearchInput:focus {
+#NavBar input:focus {
    width: 40%;
-} */
+}
 
 /* —————————————————————————————————————————————————————————————————————————————
    Signup Menubar

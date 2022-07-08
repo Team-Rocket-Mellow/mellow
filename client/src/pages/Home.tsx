@@ -3,9 +3,7 @@ import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TodoView from "../components/TodoView/TodoView"
 import AddTodo  from "../components/AddTodo/AddTodo"
 import Command  from "../components/Command/Command"
-import SearchView from "../components/Search/SearchView"
 import { useHotKey } from "../state/hooks"
-import { Routes, Route } from 'react-router-dom'
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -17,19 +15,8 @@ function Home() {
       <TopMenu />
       <div className="flex">
         <LeftMenu />
-      <Routes>
-        <Route path="/" element={<TodoView />} />
-        <Route path="/inbox" element={<TodoView />} />
-        <Route path="/all" element={<TodoView />} />
-        <Route path="/today" element={<TodoView />} />
-        <Route path="/upcoming" element={<TodoView />} />
-        <Route path="/done" element={<TodoView />} />
-        <Route path="/trash" element={<TodoView />} />
-      </Routes>
+        <TodoView />
       </div>
-      <Routes>
-      <Route path="/search/:query" element={<SearchView />} />
-      </Routes>
     </div>
     {/* @ts-ignore */}
     <AddTodo />
