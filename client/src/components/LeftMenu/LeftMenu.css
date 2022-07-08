@@ -6,6 +6,8 @@
    /* position */
    display: flex;
    flex-direction: column;
+   position: absolute;
+   /* z-index: -1; */
    /* dimension */
    height: calc(100vh - 4.3em);
    padding-top: 30px;
@@ -40,6 +42,8 @@
    /* position */
    display: flex;
    justify-content: space-between;
+   position: relative;
+   z-index: -1;
    /* dimension */
    padding-top: 5px;
    padding-bottom: 5px;
@@ -55,6 +59,8 @@
 }
 
 #LeftMenu .active {
+   position: relative;
+   z-index: -1;
    font-weight: 600;
    background-color: rgb(238, 238, 238);
 }
@@ -80,6 +86,8 @@
 */
 
 #LeftMenu i {
+   position: relative;
+   z-index: -1;
    margin-right: 0.3em;
 }
 
