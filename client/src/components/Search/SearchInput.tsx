@@ -7,19 +7,20 @@ import { search } from "../../state/atoms"
 import { todos_list } from "../../state/atoms"
 
 function SearchInput() {
+  const [query, setQuery] = useState("");
    const [text, setText] = useRecoilState(search)
    const go = useNavigate();
    const todos = useRecoilValue(todos_list);
    const [filteredData, setFilteredData] = useState([]);
 
    const Δtext = (Δ) => {
-    setText(Δ.target.value);
-    let query = Δ.target.value;
+    setQuery(Δ.target.value);
+    let searchWord = Δ.target.value;
     const newFilter = todos.filter((value) => {
-        return value.text.toLowerCase().includes(query.toLowerCase());
+        return value.text.toLowerCase().includes(searchWord.toLowerCase());
     });
 
-    if (query === "") {
+    if (searchWord === "") {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
@@ -41,7 +42,7 @@ function SearchInput() {
     };
    });
 
-   const clearText = () => setText("")
+   const clearText = () => setQuery("")
    const submit = (Δ:React.FormEvent<HTMLInputElement>) => {
       Δ.preventDefault()
       if (text) go(`/search/${text}`)
@@ -67,6 +68,7 @@ function SearchInput() {
       document.addEventListener("keydown", hotkey)
       return () => document.removeEventListener("keydown", hotkey)
     }, [])
+  
 
    return (
     <>
@@ -75,16 +77,17 @@ function SearchInput() {
         placeholder='/  to search'
         type='search'
         tabIndex={-1}
-        value={text}
+        value={query}
         onChange={Δtext}
         onBlur={clearText}
         onSubmit={submit}
         onKeyPress={(event) => {
           if (event.key === "Enter") {
             event.preventDefault();
+            setQuery("")
+            setFilteredData([]);
             setText(event.target.value);
-            submit
-            console.log('this is entered value', event.target.value);
+            go(`/search/${query}`)
           }
         }}
       />

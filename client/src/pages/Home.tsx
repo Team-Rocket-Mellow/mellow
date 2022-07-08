@@ -16,17 +16,25 @@ function Home() {
     <div id="Home">
       <TopMenu />
       <div className="flex">
-        {/* <LeftMenu /> */}
-        {/* <TodoView /> */}
+        <LeftMenu />
+      <Routes>
+        <Route path="/" element={<TodoView />} />
+        <Route path="/inbox" element={<TodoView />} />
+        <Route path="/all" element={<TodoView />} />
+        <Route path="/today" element={<TodoView />} />
+        <Route path="/upcoming" element={<TodoView />} />
+        <Route path="/done" element={<TodoView />} />
+        <Route path="/trash" element={<TodoView />} />
+      </Routes>
       </div>
+      <Routes>
+      <Route path="/search/:query" element={<SearchView />} />
+      </Routes>
     </div>
     {/* @ts-ignore */}
     <AddTodo />
     {/* @ts-ignore */}
     <Command />
-  <Routes>
-    <Route path="/search/:query" element={<SearchView />} />
-  </Routes>
   </>
 }
 
