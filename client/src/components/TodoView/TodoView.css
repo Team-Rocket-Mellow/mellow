@@ -25,20 +25,6 @@
 #upcoming h1 { color: var(--orange); }
 
 /* -----------------------------------------------------------------------------
-   Animation
-*/
-
-#TodoView.open {
-   margin-left: 13.5em;
-   transition: 0.2s linear;
-}
-
-#TodoView.close {
-   margin-left: 0em;
-   transition: 0.2s linear;
-}
-
-/* -----------------------------------------------------------------------------
    Today
 */
 

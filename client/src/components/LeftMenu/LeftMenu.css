@@ -8,14 +8,15 @@
    flex-direction: column;
    /* dimension */
    height: calc(100vh - 4.3em);
-   padding-left: 5px;
    padding-top: 30px;
+   padding-left: 5px;
    padding-right: 10px;
    /* style */
    background-color: var(--sidebar);
-   position: fixed;
    overflow-x: hidden;
    overflow-y: hidden;
+   /* animation */
+   transition: width 0.2s linear;
 }
 
 /* -----------------------------------------------------------------------------
@@ -23,14 +24,12 @@
 */
 
 #LeftMenu.off {
-   transform: translate(-100%);
-   transition: transform 0.2s ease-out;
+   width: 0em;
+   padding-right: 0em;
 }
 
 #LeftMenu.on {
-   width: 13.5em;
-   transform: translate(0);
-   transition: transform 0.2s ease-in;
+   width: 16em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

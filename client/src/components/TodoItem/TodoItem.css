@@ -7,7 +7,6 @@
    display         : flex;
    justify-content : space-between;
    align-items     : center;
-   z-index: 1;
    /* dimension */
    padding         : 0.5em;
    border-bottom   : 1px solid #ccc;
