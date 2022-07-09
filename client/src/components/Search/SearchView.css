@@ -1,3 +1,7 @@
+#results-view {
+  margin-top: 15px;
+}
+
 #results-view.open {
   /* position */
   /* position: relative; */
