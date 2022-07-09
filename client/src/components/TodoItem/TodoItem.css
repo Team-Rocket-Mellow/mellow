@@ -7,7 +7,7 @@
    display         : flex;
    justify-content : space-between;
    align-items     : center;
-   position: relative;
+   /* position: relative; */
    /* z-index: -1; */
    /* dimension */
    padding         : 0.5em;
@@ -31,6 +31,7 @@
 .TodoItem span {
    display: flex;
    align-items: center;
+   /* border: 1px solid red; */
 }
 
 .TodoItem time.overdue {
@@ -47,12 +48,13 @@
 
 /** container for icon **/
 .TodoItem .left {
-   position: relative;
+   /* position: relative; */
+   /* border: 1px solid blue; */
    /* z-index: -1; */
 }
 
 .TodoItem i {
-   position: relative;
+   /* position: relative; */
    /* z-index: -1; */
    margin-right: 0.3em;
    cursor: pointer;
@@ -62,11 +64,13 @@
 .TodoItem i.checkbox {
    position: absolute;
    /* z-index: -1; */
-   left: 0;
+   /* left: 0; */
    opacity: 0;
    transition: opacity 0.5s;
 }
 
 .TodoItem i.checkbox.checked {
+   position: absolute;
+   z-index: -1;
    opacity: 1;
 }

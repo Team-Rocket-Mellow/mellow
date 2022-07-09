@@ -22,12 +22,12 @@
 
 .dataResult {
   /* position: absolute; */
-  margin-top: 240px;
-  height: 200px;
-  width: 40%;
   position: relative;
   z-index: 100;
   left: -648px;
+  margin-top: 240px;
+  height: 200px;
+  width: 40%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;

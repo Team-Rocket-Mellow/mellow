@@ -25,11 +25,9 @@ function Home() {
         <Route path="/upcoming" element={<TodoView />} />
         <Route path="/done" element={<TodoView />} />
         <Route path="/trash" element={<TodoView />} />
+        <Route path="/search/:query" element={<SearchView />} />
       </Routes>
       </div>
-      <Routes>
-      <Route path="/search/:query" element={<SearchView />} />
-      </Routes>
     </div>
     {/* @ts-ignore */}
     <AddTodo />
