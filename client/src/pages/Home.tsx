@@ -3,6 +3,7 @@ import LeftMenu from "../components/LeftMenu/LeftMenu"
 import TodoView from "../components/TodoView/TodoView"
 import AddTodo  from "../components/AddTodo/AddTodo"
 import Command  from "../components/Command/Command"
+import Settings from "../components/Settings/Settings"
 import { useHotKey } from "../state/hooks"
 
 // —————————————————————————————————————————————————————————————————————————————
@@ -22,6 +23,8 @@ function Home() {
     <AddTodo />
     {/* @ts-ignore */}
     <Command />
+    {/* @ts-ignore */}
+    <Settings />
   </>
 }
 
