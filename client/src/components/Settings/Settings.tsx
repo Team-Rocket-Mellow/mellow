@@ -55,13 +55,14 @@ function Settings() {
   return (
     <form id='Settings'>
       {
-        settings.map(({ label, options, value, onChange }) => <label>
+        settings.map(({ label, options, value, onChange }) => (
+          <label>
             <span className="label">{label}</span>
             <select name={label} onChange={onChange} value={value}>
               { options.map(o => <option value={o} key={o}>{o}</option>) }
             </select>
           </label>
-        )
+        ))
       }
     </form>
   )
