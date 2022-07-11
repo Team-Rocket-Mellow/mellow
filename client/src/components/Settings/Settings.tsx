@@ -1,9 +1,13 @@
 import "./Settings.css"
-import { TodoView, Theme, } from "../../state/types"
-import { setting_is_active, theme, home } from "../../state/atoms"
-import { useRecoilState } from "recoil"
 import { useEffect, } from "react"
 import { createPortal } from "react-dom"
+import { TodoView, Theme, } from "../../state/types"
+import { 
+  setting_is_active, 
+  theme as $theme, 
+  home as $home 
+} from "../../state/atoms"
+import { useRecoilState } from "recoil"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Environment
@@ -36,20 +40,20 @@ function SettingsPortal() {
 // Settings
 
 function Settings() {
-  const [currTheme, setTheme] = useRecoilState(theme)
-  const [currHome, setHome] = useRecoilState(home)
+  const [theme, setTheme] = useRecoilState($theme)
+  const [home, setHome] = useRecoilState($home)
   const settings = [
     {
       label: "Theme",
       options: themes,
-      value: currTheme,
+      value: theme,
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setTheme(e.target.value as Theme)
     },
     {
       label: "Home",
       about: "The default view.",
       options: views,
-      value: currHome,
+      value: home,
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setHome(e.target.value as TodoView)
     },
   ]
