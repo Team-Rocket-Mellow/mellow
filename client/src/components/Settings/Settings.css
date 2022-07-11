@@ -10,7 +10,7 @@
    flex-direction: column;
    row-gap: 0.5em;
    /* dimension */
-   padding-top: 0.5em;
+   /* padding-top: 0.5em; */
    padding-bottom: 0.5em;
    padding-left: 0.5em;
    padding-right: 0.5em;
@@ -27,7 +27,9 @@
    Contents
 */
 
-#Settings label {
+#Settings h2 {
+   font-size: 1.4em;
+   border-bottom: 1px solid #ccc;
 }
 
 #Settings fieldset {
@@ -35,9 +37,11 @@
 }
 
 #Settings label {
-   flex: 1
+   flex: 1;
 }
 
 #Settings select {
    flex: 1;
+   border: 1px solid #ccc;
+   border-radius: 2px;
 }
