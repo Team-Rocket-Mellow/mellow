@@ -47,7 +47,7 @@ function SettingsPortal() {
 function Settings({ setOpen, isOpen }) {
   const [theme, setTheme] = useRecoilState($theme)
   const [home, setHome] = useRecoilState($home)
-  const $Settings = useRef<HTMLDivElement>(null)
+  const $Settings = useRef<HTMLFormElement>(null)
   const settings = [
     {
       name: "Theme",
@@ -85,19 +85,21 @@ function Settings({ setOpen, isOpen }) {
   })
 
   return (
-    <div ref={$Settings} id="Settings" className={isOpen ? "enter" : "exit"}>
-      <h2>Settings</h2>
-      {
-        settings.map(({ name, about, options, value, onChange }, i) => (
-          <fieldset key={i}>
-            <label htmlFor={name}>{name}</label>
-            <select {...{name, onChange, value}}>
-              { options.map((o, i) => <option value={o} key={i}>{o}</option>) }
-            </select>
-          </fieldset>
-        ))
-      }
-      <Button color="gray">Save</Button>
+    <div id="ModalBackground">
+      <form ref={$Settings} id="Settings" className={isOpen ? "enter" : "exit"}>
+        <h2>Settings</h2>
+        {
+          settings.map(({ name, about, options, value, onChange }, i) => (
+            <fieldset key={i}>
+              <label htmlFor={name}>{name}</label>
+              <select {...{name, onChange, value}}>
+                { options.map((o, i) => <option value={o} key={i}>{o}</option>) }
+              </select>
+            </fieldset>
+          ))
+        }
+        <Button color="gray">Save</Button>
+      </form>
     </div>
   )
 }

@@ -53,6 +53,15 @@
    Animation
 */
 
+#ModalBackground {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0, 0, 0, 0.5)
+}
+
 #Settings.enter { animation: enter 0.2s; }
 #Settings.exit  { animation: exit  0.2s; }
 
