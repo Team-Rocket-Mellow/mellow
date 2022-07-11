@@ -63,7 +63,7 @@ function Settings() {
       {
         settings.map(({ name, about, options, value, onChange }) => (
           <fieldset>
-            <label>{name}</label>
+            <label htmlFor={name}>{name}</label>
             <select {...{name, onChange, value}}>
               { options.map(o => <option value={o} key={o}>{o}</option>) }
             </select>
