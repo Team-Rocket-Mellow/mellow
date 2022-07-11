@@ -47,16 +47,17 @@ function Settings() {
     },
     {
       label: "Home",
+      about: "The default view.",
       options: views,
       value: currHome,
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setHome(e.target.value as TodoView)
     },
   ]
   return (
-    <form id='Settings'>
+    <form id="Settings">
       {
-        settings.map(({ label, options, value, onChange }) => (
-          <label>
+        settings.map(({ label, about, options, value, onChange }) => (
+          <label className="SelectMenu">
             <span className="label">{label}</span>
             <select name={label} onChange={onChange} value={value}>
               { options.map(o => <option value={o} key={o}>{o}</option>) }
