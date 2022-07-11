@@ -2,10 +2,10 @@ import "./Settings.css"
 import { useEffect, } from "react"
 import { createPortal } from "react-dom"
 import { TodoView, Theme, } from "../../state/types"
-import { 
-  setting_is_active, 
-  theme as $theme, 
-  home as $home 
+import {
+  setting_is_active,
+  theme as $theme,
+  home as $home
 } from "../../state/atoms"
 import { useRecoilState } from "recoil"
 
@@ -61,12 +61,12 @@ function Settings() {
     <form id="Settings">
       {
         settings.map(({ label, about, options, value, onChange }) => (
-          <label className="SelectMenu">
-            <span className="label">{label}</span>
+          <fieldset>
+            <label>{label}</label>
             <select name={label} onChange={onChange} value={value}>
               { options.map(o => <option value={o} key={o}>{o}</option>) }
             </select>
-          </label>
+          </fieldset>
         ))
       }
     </form>
