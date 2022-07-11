@@ -10,10 +10,11 @@
    flex-direction: column;
    row-gap: 0.5em;
    /* dimension */
-   padding-top: 0.2em;
-   padding-bottom: 0.2em;
+   padding-top: 0.5em;
+   padding-bottom: 0.5em;
    padding-left: 0.5em;
-   min-width: 20em;
+   padding-right: 0.5em;
+   min-width: 15em;
    /* style */
    animation: entry 0.2s;
    border-radius: 6px;
@@ -22,8 +23,11 @@
                rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
+/* —————————————————————————————————————————————————————————————————————————————
+   Contents
+*/
+
 #Settings label {
-   margin-right: 1.5em;
 }
 
 #Settings fieldset {

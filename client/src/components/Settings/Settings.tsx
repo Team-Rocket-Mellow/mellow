@@ -44,13 +44,13 @@ function Settings() {
   const [home, setHome] = useRecoilState($home)
   const settings = [
     {
-      label: "Theme",
+      name: "Theme",
       options: themes,
       value: theme,
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setTheme(e.target.value as Theme)
     },
     {
-      label: "Home",
+      name: "Home",
       about: "The default view.",
       options: views,
       value: home,
@@ -59,11 +59,12 @@ function Settings() {
   ]
   return (
     <form id="Settings">
+      <h2>Settings</h2>
       {
-        settings.map(({ label, about, options, value, onChange }) => (
+        settings.map(({ name, about, options, value, onChange }) => (
           <fieldset>
-            <label>{label}</label>
-            <select name={label} onChange={onChange} value={value}>
+            <label>{name}</label>
+            <select {...{name, onChange, value}}>
               { options.map(o => <option value={o} key={o}>{o}</option>) }
             </select>
           </fieldset>
