@@ -49,6 +49,10 @@
    border-radius: 2px;
 }
 
+#Settings button {
+   margin-top: 0.5em;
+}
+
 /* —————————————————————————————————————————————————————————————————————————————
    Animation
 */
@@ -59,7 +63,7 @@
    left: 0;
    width: 100vw;
    height: 100vh;
-   background: rgba(0, 0, 0, 0.5)
+   background: rgba(190, 189, 189, 0.5)
 }
 
 #Settings.enter { animation: enter 0.2s; }
