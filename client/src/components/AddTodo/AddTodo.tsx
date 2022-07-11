@@ -43,7 +43,7 @@ function ModalPortal() {
   useEffect(() => document.addEventListener("keydown", triggerModal), [])
 
   return shouldRenderChild && createPortal(
-    <Modal setOpen={setOpen} isOpen={isOpen} />,
+    <AddTodo setOpen={setOpen} isOpen={isOpen} />,
     document.getElementById("portal")!
   )
 }
@@ -51,7 +51,7 @@ function ModalPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Modal
 
-function Modal({ setOpen, isOpen }) {
+function AddTodo({ setOpen, isOpen }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
   const setTodos = useSetRecoilState(todos_list)
