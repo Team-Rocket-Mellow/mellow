@@ -8,14 +8,7 @@ import {
   home as $home
 } from "../../state/atoms"
 import { useRecoilState } from "recoil"
-
-// —————————————————————————————————————————————————————————————————————————————
-// Environment
-
-type Settings = {
-  theme: Theme
-  home: TodoView
-}
+import Button from "../assets/Button"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Hook
@@ -43,7 +36,7 @@ function SettingsPortal() {
   const shouldRenderChild = useDelayUnmount(isOpen, 199)
 
   return shouldRenderChild && createPortal(
-    <Settings setOpen={setOpen} />,
+    <Settings {...{setOpen, isOpen}} />,
     document.getElementById("portal")!
   )
 }
@@ -51,10 +44,10 @@ function SettingsPortal() {
 // —————————————————————————————————————————————————————————————————————————————
 // Settings
 
-function Settings({ setOpen }) {
+function Settings({ setOpen, isOpen }) {
   const [theme, setTheme] = useRecoilState($theme)
   const [home, setHome] = useRecoilState($home)
-  const $form = useRef<HTMLFormElement>(null)
+  const $Settings = useRef<HTMLDivElement>(null)
   const settings = [
     {
       name: "Theme",
@@ -71,14 +64,7 @@ function Settings({ setOpen }) {
     },
   ]
 
-  useEffect(() => {
-    const click = (Δ) => !$form.current?.contains(Δ.target) && setOpen(false)
-    document.addEventListener("click", click)
-    return () => document.removeEventListener("click", click)
-  }, [$form])
-
-  const hotkey = (Δ:React.KeyboardEvent) => {
-    console.log(Δ.key)
+  const hotkey = (Δ:KeyboardEvent) => {
     switch (Δ.key) {
       case "Escape":
         Δ.preventDefault()
@@ -87,8 +73,19 @@ function Settings({ setOpen }) {
     }
   }
 
+  useEffect(() => {
+    const click = (Δ) => !$Settings.current?.contains(Δ.target) && setOpen(false)
+    document.addEventListener("click", click)
+    return () => document.removeEventListener("click", click)
+  }, [$Settings])
+
+  useEffect(() => {
+    document.addEventListener("keydown", hotkey)
+    return () => document.removeEventListener("keydown", hotkey)
+  })
+
   return (
-    <form id="Settings" ref={$form} onKeyDown={hotkey}>
+    <div ref={$Settings} id="Settings" className={isOpen ? "enter" : "exit"}>
       <h2>Settings</h2>
       {
         settings.map(({ name, about, options, value, onChange }, i) => (
@@ -100,7 +97,8 @@ function Settings({ setOpen }) {
           </fieldset>
         ))
       }
-    </form>
+      <Button color="gray">Save</Button>
+    </div>
   )
 }
 

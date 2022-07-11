@@ -1,3 +1,7 @@
+/* —————————————————————————————————————————————————————————————————————————————
+   Settings
+*/
+
 #Settings {
    /* position */
    position: absolute;
@@ -16,7 +20,6 @@
    padding-right: 0.5em;
    min-width: 15em;
    /* style */
-   animation: entry 0.2s;
    border-radius: 6px;
    background-color: white;
    box-shadow: rgba(0, 0, 0, 0.3)  0px 19px 38px,
@@ -44,4 +47,28 @@
    flex: 1;
    border: 1px solid #ccc;
    border-radius: 2px;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Animation
+*/
+
+#Settings.enter { animation: enter 0.2s; }
+#Settings.exit  { animation: exit  0.2s; }
+
+/* move up + fade in */
+@keyframes enter {
+   from {
+      opacity: 0;
+      transform: translate(-50%, -20%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+   }
+}
+
+@keyframes exit {
+   to {
+      opacity: 0;
+      transform: translate(-50%, -20%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+   }
 }
