@@ -18,9 +18,6 @@
                rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-#Modal.enter { animation: enter 0.2s; }
-#Modal.exit  { animation: exit  0.2s; }
-
 #Modal input[type="text"] {
    /* position */
    margin-left   : 0.6em;
@@ -37,7 +34,13 @@
    padding-right : 0.5em;
 }
 
-/* move up + fade in */
+/* —————————————————————————————————————————————————————————————————————————————
+   Animation
+*/
+
+#Modal.enter { animation: enter 0.2s; }
+#Modal.exit  { animation: exit  0.2s; }
+
 @keyframes enter {
    from {
       opacity: 0;

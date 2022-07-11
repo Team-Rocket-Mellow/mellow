@@ -1,0 +1,87 @@
+/* —————————————————————————————————————————————————————————————————————————————
+   Settings
+*/
+
+#Settings {
+   /* position */
+   position: absolute;
+   left: 50%;
+   top: 30%;
+   transform: translate(-50%, -50%);
+   z-index: 1000;
+   /* internal layout */
+   display: flex;
+   flex-direction: column;
+   row-gap: 0.5em;
+   /* dimension */
+   /* padding-top: 0.5em; */
+   padding-bottom: 0.5em;
+   padding-left: 0.5em;
+   padding-right: 0.5em;
+   min-width: 15em;
+   /* style */
+   border-radius: 6px;
+   background-color: white;
+   box-shadow: rgba(0, 0, 0, 0.3)  0px 19px 38px,
+               rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Contents
+*/
+
+#Settings h2 {
+   font-size: 1.4em;
+   border-bottom: 2px solid #ccc;
+}
+
+#Settings fieldset {
+   display: flex;
+}
+
+#Settings label {
+   flex: 1;
+}
+
+#Settings select {
+   flex: 1;
+   border: 1px solid #ccc;
+   border-radius: 2px;
+}
+
+#Settings button {
+   margin-top: 0.5em;
+}
+
+/* —————————————————————————————————————————————————————————————————————————————
+   Animation
+*/
+
+#ModalBackground {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(190, 189, 189, 0.5)
+}
+
+#Settings.enter { animation: enter 0.2s; }
+#Settings.exit  { animation: exit  0.2s; }
+
+/* move up + fade in */
+@keyframes enter {
+   from {
+      opacity: 0;
+      transform: translate(-50%, -20%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+   }
+}
+
+@keyframes exit {
+   to {
+      opacity: 0;
+      transform: translate(-50%, -20%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+   }
+}

@@ -62,6 +62,9 @@ export const theme = atom<Theme>({
    default: "light",
 })
 
+// —————————————————————————————————————————————————————————————————————————————
+// Modals
+
 export const add_is_active = atom({
    key: "modal_state",
    default: false,
@@ -70,4 +73,9 @@ export const add_is_active = atom({
 export const command_is_active = atom({
    key: "command_state",
    default: false,
+})
+
+export const setting_is_active = atom({
+   key: "setting_state",
+   default: true,
 })
