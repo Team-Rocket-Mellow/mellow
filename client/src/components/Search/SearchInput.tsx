@@ -31,7 +31,7 @@ function SearchInput() {
 
    useEffect (() => {
     let handler = (event) => {
-      if (!menuRef.current.contains(event.target)) {
+      if (!menuRef.current?.contains(event.target)) {
         setFilteredData([]);
       }
     };

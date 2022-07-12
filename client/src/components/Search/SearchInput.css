@@ -21,10 +21,9 @@
 }
 
 .dataResult {
-  /* position: absolute; */
-  position: relative;
-  z-index: 100;
-  left: -648px;
+  position: absolute;
+  z-index: 1000;
+  /* left: -648px; */
   margin-top: 240px;
   height: 200px;
   width: 40%;

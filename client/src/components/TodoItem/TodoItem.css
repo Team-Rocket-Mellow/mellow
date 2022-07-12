@@ -51,13 +51,13 @@
    /* position: relative; */
    /* border: 1px solid blue; */
    /* z-index: -1; */
+   cursor: pointer;
 }
 
 .TodoItem i {
-   /* position: relative; */
-   /* z-index: -1; */
+   position: relative;
+   z-index: -1;
    margin-right: 0.3em;
-   cursor: pointer;
    user-select: none;
 }
 
