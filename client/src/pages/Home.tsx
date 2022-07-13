@@ -4,6 +4,7 @@ import TodoView from "../components/TodoView/TodoView"
 import AddTodo  from "../components/AddTodo/AddTodo"
 import Command  from "../components/Command/Command"
 import SearchView from "../components/Search/SearchView"
+import Settings from "../components/Settings/Settings"
 import { useHotKey } from "../state/hooks"
 import { Routes, Route } from 'react-router-dom'
 
@@ -33,6 +34,8 @@ function Home() {
     <AddTodo />
     {/* @ts-ignore */}
     <Command />
+    {/* @ts-ignore */}
+    <Settings />
   </>
 }
 
