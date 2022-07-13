@@ -23,10 +23,10 @@
 .dataResult {
   position: absolute;
   z-index: 1000;
-  /* left: -648px; */
+  left: 5.85em;
   margin-top: 240px;
   height: 200px;
-  width: 40%;
+  width: 39%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
@@ -47,7 +47,7 @@
 }
 
 p {
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: none;
 }
 
