@@ -1,0 +1,21 @@
+#results-view {
+  margin-top: 15px;
+}
+
+#results-view.open {
+  /* position */
+  margin-left: 25px;
+  /* dimension */
+  width: 100%;
+  /* animation */
+  transition: 0.2s linear;
+}
+
+#results-view.close {
+  /* position: relative; */
+   /* z-index: -1; */
+  margin-left: 20px;
+  width: 100%;
+  /* animation */
+  transition: 0.2s linear;
+}

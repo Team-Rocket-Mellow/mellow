@@ -1,15 +1,48 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect, useRef } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import "./SearchInput.css"
 
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { search } from "../../state/atoms"
+import { todos_list } from "../../state/atoms"
 
 function SearchInput() {
+  const [query, setQuery] = useState("");
    const [text, setText] = useRecoilState(search)
-   const go = useNavigate()
+   const go = useNavigate();
+   const todos = useRecoilValue(todos_list);
+   const [filteredData, setFilteredData] = useState([]);
 
-   const Δtext = (Δ) => setText(Δ.target.value)
-   const clearText = () => setText("")
+   const Δtext = (Δ) => {
+    setQuery(Δ.target.value);
+    let searchWord = Δ.target.value;
+    const newFilter = todos.filter((value) => {
+        return value.text.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+   };
+
+   let menuRef = useRef();
+
+   useEffect (() => {
+    let handler = (event) => {
+      if (!menuRef.current?.contains(event.target)) {
+        setFilteredData([]);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+   });
+
+   const clearText = () => setQuery("")
    const submit = (Δ:React.FormEvent<HTMLInputElement>) => {
       Δ.preventDefault()
       if (text) go(`/search/${text}`)
@@ -35,19 +68,38 @@ function SearchInput() {
       document.addEventListener("keydown", hotkey)
       return () => document.removeEventListener("keydown", hotkey)
     }, [])
+  
 
    return (
+    <>
       <input
-        id='SearchInput'
+        className="SearchInput"
         placeholder='/  to search'
         type='search'
         tabIndex={-1}
-        value={text}
+        value={query}
         onChange={Δtext}
         onBlur={clearText}
         onSubmit={submit}
+        onKeyPress={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            setQuery("")
+            setFilteredData([]);
+            setText(event.target.value);
+            go(`/search/${query}`)
+          }
+        }}
       />
-   )
+      {filteredData.length != 0 && (
+          <div ref={menuRef} className="dataResult">
+            {filteredData.map((value, key) => {
+              return <div className="dataItem" key={key}> <p>{value.text}</p></div>
+            })}
+          </div>
+          )}
+    </>
+    )
 }
 
 export default SearchInput
