@@ -1,11 +1,10 @@
 import "./Profile.css"
 import { useState, useEffect, useRef } from "react"
-import { useRecoilState, useRecoilValue } from "recoil"
-// import { profile_is_active } from "../../state/atoms"
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil"
+import { profile_is_active } from "../../state/atoms"
 import Icon from "../assets/Icon"
 
 function Profile() {
-
   return (
     <div id="profile-container">
       <div className="user-container">

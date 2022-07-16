@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 
 import { useSetRecoilState, useRecoilValue } from "recoil"
-import { add_is_active, todos_view, home, left_menu, setting_is_active } from "../../state/atoms"
+import { add_is_active, todos_view, home, left_menu, setting_is_active, profile_is_active } from "../../state/atoms"
 
 import Icon from "../assets/Icon"
 import SearchInput from "../Search/SearchInput"
@@ -25,13 +25,17 @@ function TopMenu() {
   const openModal = () => toggleAddModal(true)
   const openSettings = () => toggleSettings($ => !$)
 
-  const [profileClicked, setProfileClicked] = useState(false);
-  const openProfile = () => setProfileClicked(!profileClicked);
+  // const watchProfile = useRecoilValue(profile_is_active);
+  // const toggleProfile = useSetRecoilState(profile_is_active);
+  // const openProfile = () => toggleProfile(!watchProfile);
 
-  let profileRef = useRef();
+  const [profileClicked, setProfileClicked] = useState(false);
+  const openProfile = () => setProfileClicked($ => !$);
+
+  const profileRef = useRef<HTMLDivElement>();
 
   useEffect (() => {
-    let handler = (event) => {
+    const handler = (event) => {
       if (!profileRef.current?.contains(event.target)) {
         setProfileClicked(false);
       }
@@ -41,9 +45,10 @@ function TopMenu() {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-   });
+  });
 
-   
+  console.log('this is profile', profileClicked);
+
   return (
     <header id='NavBar'>
       <nav>
@@ -62,8 +67,8 @@ function TopMenu() {
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon onClick={openSettings}>settings</Icon>
-        <span ref={profileRef}> <Icon onClick={openProfile}>account_circle</Icon></span>
-        {profileClicked ? <Profile /> : null}
+        <Icon onClick={openProfile}>account_circle</Icon>
+        <div ref={profileRef}>{profileClicked ? <Profile /> : null}</div>
       </nav>
     </header>
   )

@@ -79,3 +79,8 @@ export const setting_is_active = atom({
    key: "setting_state",
    default: true,
 })
+
+export const profile_is_active = atom({
+   key: "profile_state",
+   default: false,
+})

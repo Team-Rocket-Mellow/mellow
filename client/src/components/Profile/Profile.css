@@ -6,9 +6,9 @@
   justify-content: space-around;
   position: absolute;
   z-index: 1000;
-  top: -12.2em;
-  left: 74em;
-  margin-top: 15em;
+  /* top: 9em; */
+  left: 75em;
+  /* margin-top: 18em; */
   /* height: 22em; */
   border-radius: 5px;
   width: 14%;
@@ -26,12 +26,11 @@
 .user-container {
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 100%;
   border-bottom: 1px solid #ccc;
   padding-bottom: 1em;
   padding-top: 1em;
-  padding-right: 0.5em;
+  padding-left: 0.5em;
 }
 
 .user-container:hover {
