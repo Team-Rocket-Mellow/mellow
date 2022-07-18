@@ -1,10 +1,18 @@
 #results-view {
-  margin-top: 15px;
+  /* margin-top: 15px; */
+  padding-top: 15px;
+  background-color: var(--search_view_background);
+  color: var(--search_view_color);
 }
+
+/* #results-view i{
+  border-bottom: 0.8px solid green;
+} */
 
 #results-view.open {
   /* position */
-  margin-left: 25px;
+  /* margin-left: 25px; */
+  padding-left: 25px;
   /* dimension */
   width: 100%;
   /* animation */
@@ -14,7 +22,8 @@
 #results-view.close {
   /* position: relative; */
    /* z-index: -1; */
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  padding-left: 20px;
   width: 100%;
   /* animation */
   transition: 0.2s linear;

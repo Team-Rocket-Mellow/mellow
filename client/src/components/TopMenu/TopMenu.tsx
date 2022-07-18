@@ -1,5 +1,5 @@
 import "./TopMenu.css"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, ChangeEventHandler } from "react"
 import { Link } from "react-router-dom"
 
 import { useSetRecoilState, useRecoilValue } from "recoil"
@@ -25,29 +25,38 @@ function TopMenu() {
   const openModal = () => toggleAddModal(true)
   const openSettings = () => toggleSettings($ => !$)
 
-  // const watchProfile = useRecoilValue(profile_is_active);
-  // const toggleProfile = useSetRecoilState(profile_is_active);
-  // const openProfile = () => toggleProfile(!watchProfile);
 
-  const [profileClicked, setProfileClicked] = useState(false);
-  const openProfile = () => setProfileClicked($ => !$);
+  // DARK MODE
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
-  const profileRef = useRef<HTMLDivElement>();
+  const setDark = () => {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  };
 
-  useEffect (() => {
-    const handler = (event) => {
-      if (!profileRef.current?.contains(event.target)) {
-        setProfileClicked(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
+  const setLight = () => {
+    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+  };
 
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  console.log('this is profile', profileClicked);
+  const defaultDark = storedTheme === "dark" || (storedTheme === null && prefersDark);
+
+  if (defaultDark) {
+    setDark();
+  };
+
+  const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (e.target.checked) {
+      setDark();
+    } else {
+      setLight();
+    }
+  };
 
   return (
     <header id='NavBar'>
@@ -57,18 +66,23 @@ function TopMenu() {
         </Tooltip>
         <Tooltip content="home" hotkey="h">
           <Link to={defaultHome} onClick={goHome} tabIndex={-1}>
-            <Icon>home</Icon>
+            <Icon className="home-icon">home</Icon>
           </Link>
         </Tooltip>
       </nav>
       <SearchInput />
-      <nav>
+      <nav className="right-items">
+      <input
+          type="checkbox"
+          id="checkbox"
+          onChange={toggleTheme}
+          defaultChecked={defaultDark}
+          />
         <Tooltip content="add todo" hotkey="q">
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon onClick={openSettings}>settings</Icon>
-        <Icon onClick={openProfile}>account_circle</Icon>
-        <div ref={profileRef}>{profileClicked ? <Profile /> : null}</div>
+        <Icon>account_circle</Icon>
       </nav>
     </header>
   )

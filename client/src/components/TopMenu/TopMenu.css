@@ -11,8 +11,8 @@
    padding-left: 15px;
    padding-right: 15px;
    /* style */
-   background: rgb(247, 247, 247);
-   color: var(--black);
+   background-color: var(--top_background);
+   color: var(--top_color);
    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.1));
    user-select: none;
 }
@@ -24,8 +24,12 @@
 }
 
 #NavBar i:hover {
-   background-color: rgb(222, 222, 222);
+   background-color: var(--top_hover);
    cursor: pointer;
+}
+
+.home-icon {
+   color: var(--top_color);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -84,4 +88,19 @@
 .navbar-sign-up h4 {
    cursor: pointer;
    font-weight: 200;
+}
+
+/* .right-items {
+   position: absolute;
+   left: 90%;
+} */
+
+.profile {
+   /* position: absolute; */
+   /* top: 30em; */
+   /* left: 75em; */
+}
+
+.dark-theme {
+   cursor: pointer;
 }

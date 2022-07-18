@@ -5,6 +5,31 @@ import { profile_is_active } from "../../state/atoms"
 import Icon from "../assets/Icon"
 
 function Profile() {
+
+   // PROFILE DROPDOWN
+  // const watchProfile = useRecoilValue(profile_is_active);
+  // const toggleProfile = useSetRecoilState(profile_is_active);
+  // const openProfile = () => toggleProfile(!watchProfile);
+
+  // const [profileClicked, setProfileClicked] = useState(false);
+  // const openProfile = () => setProfileClicked($ => !$);
+
+  // const profileRef = useRef<HTMLDivElement>();
+  
+  // useEffect (() => {
+  //   const handler = (event) => {
+  //     if (!profileRef.current?.contains(event.target)) {
+  //       setProfileClicked(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handler);
+    
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler);
+  //   };
+  // });
+
+  
   return (
     <div id="profile-container">
       <div className="user-container">

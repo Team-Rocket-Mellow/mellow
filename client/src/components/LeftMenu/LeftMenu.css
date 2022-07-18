@@ -48,15 +48,16 @@
    font-size: 14px;
    border-radius: 4px;
    user-select: none;
+   color: var(--sidebar_color);
 }
 
 #LeftMenu .item:hover {
-   background-color: rgb(238, 238, 238);
+   background-color: var(--sidebar_hover);
 }
 
 #LeftMenu .active {
    font-weight: 600;
-   background-color: rgb(238, 238, 238);
+   background-color: var(--sidebar_hover);
 }
 
 /* -----------------------------------------------------------------------------
