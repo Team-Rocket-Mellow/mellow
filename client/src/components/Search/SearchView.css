@@ -5,6 +5,10 @@
   color: var(--search_view_color);
 }
 
+#results-view h2{
+  color: var(--search_view_headers);
+}
+
 /* #results-view i{
   border-bottom: 0.8px solid green;
 } */

@@ -21,7 +21,7 @@
    min-width: 15em;
    /* style */
    border-radius: 6px;
-   background-color: white;
+   background-color: var(--settings_modal_background);
    box-shadow: rgba(0, 0, 0, 0.3)  0px 19px 38px,
                rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
@@ -31,6 +31,7 @@
 */
 
 #Settings h2 {
+   color: var(--settings_header);
    font-size: 1.4em;
    border-bottom: 2px solid #ccc;
 }
@@ -41,6 +42,7 @@
 
 #Settings label {
    flex: 1;
+   color: var(--settings_label);
 }
 
 #Settings select {
@@ -51,6 +53,8 @@
 
 #Settings button {
    margin-top: 0.5em;
+   color: white;
+   background-color: rgb(235, 77, 61);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————

@@ -34,7 +34,7 @@
 }
 
 .TodoItem time.overdue {
-   color: rgb(213, 0, 0);
+   color: var(--overdue_color);
 }
 
 .TodoItem.done .text {

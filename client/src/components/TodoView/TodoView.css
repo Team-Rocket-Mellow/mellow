@@ -17,6 +17,7 @@
    margin-left: 0.4em;
    margin-right: 0.25em;
    margin-bottom: 0.2em;
+   color: var(--todo_headers);
 }
 
 #TodoView section {
