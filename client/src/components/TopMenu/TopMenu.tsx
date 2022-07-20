@@ -27,8 +27,8 @@ function TopMenu() {
 
 
   // DARK MODE
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+  // const [darkMode, setDarkMode] = useState(false);
+  // const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const setDark = () => {
     localStorage.setItem("theme", "dark");

@@ -5,8 +5,6 @@
 #TodoView {
    padding: 1em;
    width: 100%;
-   position: relative;
-   z-index: -1;
    background-color: var(--todo_view_background);
    --header-font-size: 1.5em;
    color: var(--todo_text);

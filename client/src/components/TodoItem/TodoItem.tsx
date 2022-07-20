@@ -28,6 +28,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
       <span className="left" onClick={flipDone} onMouseEnter={enter} onMouseLeave={exit}>
         <Icon>check_box_outline_blank</Icon>
         <Icon className={isChecked}>check_box</Icon>
+        {/* {done || isHover ? <Icon className="checkbox checked">check_box</Icon> : <Icon className="checkbox">check_box_outline_blank</Icon>} */}
         <span className="text">{text}</span>
       </span>
       <time className={isOverdue}>

@@ -7,8 +7,6 @@
    display         : flex;
    justify-content : space-between;
    align-items     : center;
-   /* position: relative; */
-   /* z-index: -1; */
    /* dimension */
    padding         : 0.5em;
    border-bottom   : 0.8px solid var(--todo_item_lines);
@@ -42,36 +40,34 @@
    text-decoration: line-through;
 }
 
+.text{
+   margin-left: 0.5em;
+}
+
 /* —————————————————————————————————————————————————————————————————————————————
    Icon
 */
 
 /** container for icon **/
 .TodoItem .left {
-   /* position: relative; */
-   /* border: 1px solid blue; */
-   /* z-index: -1; */
    cursor: pointer;
 }
 
 .TodoItem i {
-   position: relative;
-   /* z-index: -1; */
-   margin-right: 0.3em;
    user-select: none;
    color: var(--check_icons);
 }
 
+
 .TodoItem i.checkbox {
    position: absolute;
-   /* z-index: -1; */
-   /* left: 0; */
+   z-index: -1;
    opacity: 0;
    transition: opacity 0.5s;
 }
 
 .TodoItem i.checkbox.checked {
    position: absolute;
-   /* z-index: -1; */
+   z-index: 0;
    opacity: 1;
 }

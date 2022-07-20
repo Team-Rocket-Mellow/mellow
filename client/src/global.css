@@ -3,9 +3,9 @@
 */
 
 /* Box sizing rules */
-*, *::before, *::after {
+/* *, *::before, *::after {
   box-sizing: border-box;
-}
+} */
 
 /* Remove default margin */
 html, body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, menu {
