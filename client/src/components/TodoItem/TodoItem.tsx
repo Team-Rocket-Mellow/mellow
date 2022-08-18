@@ -14,7 +14,7 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   const setTodos = useSetRecoilState(todos_list)
   const today = useRecoilValue(current_date)
 
-  const isChecked = done || isHover ? "checkbox checked" : "checkbox"
+  const isChecked = isHover ? "checkbox checked" : "checkbox"
   const isDone = done ? "done" : ""
   const isOverdue = overdue ? "overdue" : ""
   const [day, month, year] = [due?.getDate(), due?.getMonth(), due?.getFullYear()]
@@ -26,9 +26,9 @@ function TodoItem({ id, text, done, due, overdue }: TodoElement) {
   return (
     <div className={`TodoItem ${isDone}`}>
       <span className="left" onClick={flipDone} onMouseEnter={enter} onMouseLeave={exit}>
-        <Icon>check_box_outline_blank</Icon>
+        <Icon>{done ? null : "check_box_outline_blank"}</Icon>
+        <Icon className="done_boxes">{done ? "check_box" : null}</Icon>
         <Icon className={isChecked}>check_box</Icon>
-        {/* {done || isHover ? <Icon className="checkbox checked">check_box</Icon> : <Icon className="checkbox">check_box_outline_blank</Icon>} */}
         <span className="text">{text}</span>
       </span>
       <time className={isOverdue}>

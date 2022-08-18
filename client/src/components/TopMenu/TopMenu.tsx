@@ -25,11 +25,33 @@ function TopMenu() {
   const openModal = () => toggleAddModal(true)
   const openSettings = () => toggleSettings($ => !$)
 
+  // PROFILE DROPDOWN
+  const watchProfile = useRecoilValue(profile_is_active);
+  const toggleProfile = useSetRecoilState(profile_is_active);
+  const openProfile = () => toggleProfile(!watchProfile);
+
+  console.log('toggle', watchProfile);
+  
+  // const [profileClicked, setProfileClicked] = useState(false);
+  // const openProfile = () => setProfileClicked($ => !$);
+  
+  // const profileRef = useRef<HTMLDivElement>();
+  const profileRef = useRef();
+    
+  useEffect (() => {
+    const handler = (event) => {
+      if (!profileRef.current?.contains(event.target)) {
+        toggleProfile(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+      
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   // DARK MODE
-  // const [darkMode, setDarkMode] = useState(false);
-  // const toggleDarkMode = () => setDarkMode(!darkMode);
-
   const setDark = () => {
     localStorage.setItem("theme", "dark");
     document.documentElement.setAttribute("data-theme", "dark");
@@ -82,7 +104,8 @@ function TopMenu() {
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon onClick={openSettings}>settings</Icon>
-        <Icon>account_circle</Icon>
+        <Icon onClick={openProfile}>account_circle</Icon>
+        {watchProfile ? <div ref={profileRef}><Profile /></div> : null}
       </nav>
     </header>
   )
