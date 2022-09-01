@@ -7,21 +7,19 @@
    display         : flex;
    justify-content : space-between;
    align-items     : center;
-   /* position: relative; */
-   /* z-index: -1; */
    /* dimension */
    padding         : 0.5em;
-   border-bottom   : 1px solid #ccc;
+   border-bottom   : 0.8px solid var(--todo_item_lines);
    /* style */
    font-size       : 0.85em;
 }
 
 .TodoItem:first-of-type {
-   border-top: 2px solid #ccc;
+   border-top: 1.5px solid var(--todo_item_lines);
 }
 
 .TodoItem:last-of-type {
-   border-bottom: 2px solid #ccc;
+   border-bottom: 1.5px solid var(--todo_item_lines);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -31,15 +29,24 @@
 .TodoItem span {
    display: flex;
    align-items: center;
-   /* border: 1px solid red; */
 }
 
 .TodoItem time.overdue {
-   color: rgb(213, 0, 0);
+   color: var(--overdue_color);
+}
+
+.TodoItem.done i{
+   /* position: absolute; */
+   /* z-index: 0; */
 }
 
 .TodoItem.done .text {
+   color: var(--line_through);
    text-decoration: line-through;
+}
+
+.text{
+   margin-left: 0.5em;
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -48,29 +55,28 @@
 
 /** container for icon **/
 .TodoItem .left {
-   /* position: relative; */
-   /* border: 1px solid blue; */
-   /* z-index: -1; */
    cursor: pointer;
 }
 
 .TodoItem i {
-   position: relative;
-   z-index: -1;
-   margin-right: 0.3em;
+   /* position: relative; */
+   /* z-index: -1; */
    user-select: none;
+   color: var(--check_icons);
 }
 
 .TodoItem i.checkbox {
    position: absolute;
-   /* z-index: -1; */
-   /* left: 0; */
+   z-index: -1;
    opacity: 0;
    transition: opacity 0.5s;
 }
 
 .TodoItem i.checkbox.checked {
    position: absolute;
-   z-index: -1;
+   z-index: 0;
    opacity: 1;
+}
+
+.done_boxes {
 }

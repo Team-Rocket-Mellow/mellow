@@ -5,8 +5,9 @@
 #TodoView {
    padding: 1em;
    width: 100%;
-
+   background-color: var(--todo_view_background);
    --header-font-size: 1.5em;
+   color: var(--todo_text);
 }
 
 #TodoView h1 {
@@ -14,6 +15,7 @@
    margin-left: 0.4em;
    margin-right: 0.25em;
    margin-bottom: 0.2em;
+   color: var(--todo_headers);
 }
 
 #TodoView section {

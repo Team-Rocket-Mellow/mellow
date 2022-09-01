@@ -5,6 +5,7 @@ import AddTodo  from "../components/AddTodo/AddTodo"
 import Command  from "../components/Command/Command"
 import SearchView from "../components/Search/SearchView"
 import Settings from "../components/Settings/Settings"
+import Profile from "../components/Profile/Profile"
 import { useHotKey } from "../state/hooks"
 import { Routes, Route } from 'react-router-dom'
 

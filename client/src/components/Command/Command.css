@@ -18,7 +18,8 @@
    /* style */
    animation: entry 0.2s;
    border-radius: 6px;
-   background-color: white;
+   background-color: var(--command_modal_background);
+   border: 0.5px solid var(--command_modal_border);
    box-shadow: rgba(0, 0, 0, 0.3)  0px 19px 38px,
                rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
@@ -29,15 +30,19 @@
 
 #Command input {
    /* position */
-   margin-top: 0.5em;
-   margin-bottom: 0.4em;
+   padding-top: 0.5em;
+   padding-bottom: 0.4em;
    /* dimension */
+   border-radius: 3px;
    padding-left: 0.8em;
    border: none;
    line-height: 2.2em;
+   /* style */
+   background-color: var(--command_input_background);
 }
 
 #Command input {
+   color: var(--command_input_text);
    outline: none;
 }
 
@@ -46,7 +51,7 @@
 */
 
 #Command menu {
-   border-top: 2px solid #e0e0e0;
+   border-top: 1.8px solid var(--command_menu_border);
 }
 
 #Command menu h1 {
@@ -57,7 +62,7 @@
    padding-left: 0.5em;
    /* style */
    font-size: 0.8em;
-   color: gray;
+   color: var(--command_modal_headers);
 }
 
 /* —————————————————————————————————————————————————————————————————————————————
@@ -83,10 +88,11 @@
    border-left: 2px solid transparent;
    /* style */
    font-size: 0.9em;
+   color: var(--command_modal_text);
 }
 
 #Command menu li.active {
-   background-color: #f0f0f0;
+   background-color: var(--command_modal_hover);
    border-left: 2px solid var(--red_light);
 }
 
@@ -98,7 +104,8 @@
    padding-left: 0.5em;
    padding-right: 0.5em;
    /* style */
-   background-color: rgb(227, 225, 225);
+   background-color: var(--command_q_icon);
+   color: black;
    border-radius: 15%;
    font-family: Menlo, monospace;
 }

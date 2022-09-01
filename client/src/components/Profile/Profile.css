@@ -1,0 +1,169 @@
+/* profile drop down */
+#profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  top: 3em;
+  left: -4em;
+  width: 140%;
+  border-radius: 5px;
+  background-color: var(--profile_background);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+#profile-container i:hover {
+  background-color: var(--profile_hover);
+}
+
+/* user contents */
+.user-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
+
+.user-container:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+  width: 100%;
+}
+
+.profile-name {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+.email-profile {
+  font-size: 0.65em;
+}
+
+/* notifications content */
+.first-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.notifications-contents {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+  padding-bottom: 0.2em;
+}
+
+.notifications-contents:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+}
+
+.notifications {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* integrations contents */
+.integrations-contents {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+  padding-bottom: 0.2em;
+}
+
+.integrations-contents:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+}
+
+.integrations {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* activity contents */
+.activity-contents {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+  padding-bottom: 0.2em;
+}
+
+.activity-contents:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+}
+
+.activity {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* privacy contents */
+.privacy-contents {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+  padding-bottom: 0.2em;
+}
+
+.privacy-contents:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+}
+
+.privacy {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* billing contents */
+.second-container {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.billing-contents {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+}
+
+.billing-contents:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+}
+
+.billing {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* log out contents */
+.logout-container {
+  width: 100%;
+}
+
+.logout-container:hover {
+  cursor: pointer;
+  background-color: var(--profile_hover);
+  width: 100%;
+}
+
+.logout-contents {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+}
+
+.logout-profile {
+  font-size: 0.8em;
+  text-decoration: none;
+}
