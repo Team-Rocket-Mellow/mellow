@@ -30,11 +30,6 @@ function TopMenu() {
   const toggleProfile = useSetRecoilState(profile_is_active);
   const openProfile = () => toggleProfile(!watchProfile);
 
-  console.log('toggle', watchProfile);
-  
-  // const [profileClicked, setProfileClicked] = useState(false);
-  // const openProfile = () => setProfileClicked($ => !$);
-  
   // const profileRef = useRef<HTMLDivElement>();
   const profileRef = useRef();
     
@@ -93,10 +88,9 @@ function TopMenu() {
         </Tooltip>
       </nav>
       <SearchInput />
-      <nav className="right-items">
+      <nav className="right_nav_items">
       <input
           type="checkbox"
-          id="checkbox"
           onChange={toggleTheme}
           defaultChecked={defaultDark}
           />
@@ -104,8 +98,10 @@ function TopMenu() {
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon onClick={openSettings}>settings</Icon>
+        <div ref={profileRef}>
         <Icon onClick={openProfile}>account_circle</Icon>
-        {watchProfile ? <div ref={profileRef}><Profile /></div> : null}
+        {watchProfile ? <Profile /> : null}
+        </div>
       </nav>
     </header>
   )

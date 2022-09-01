@@ -90,15 +90,9 @@
    font-weight: 200;
 }
 
-/* .right-items {
-   position: absolute;
-   left: 90%;
-} */
-
-.profile {
-   /* position: absolute; */
-   /* top: 30em; */
-   /* left: 75em; */
+.right_nav_items {
+   display: flex;
+   position: relative;
 }
 
 .dark-theme {

@@ -4,15 +4,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  position: relative;
-  z-index: 1000;
-  top: 10.3em;
-  left: -2em;
-  /* left: 75.5em; */
-  /* margin-top: 18em; */
-  /* height: 22em; */
+  position: absolute;
+  top: 3em;
+  left: -4em;
+  width: 140%;
   border-radius: 5px;
-  width: 106%;
   background-color: var(--profile_background);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
