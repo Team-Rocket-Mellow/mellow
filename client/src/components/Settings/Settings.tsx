@@ -64,6 +64,11 @@ function Settings({ setOpen, isOpen }) {
     },
   ]
 
+  const onSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setOpen(false)
+  }
+
   const hotkey = (Δ:KeyboardEvent) => {
     switch (Δ.key) {
       case "Escape":
@@ -98,7 +103,7 @@ function Settings({ setOpen, isOpen }) {
             </fieldset>
           ))
         }
-        <Button color="gray">Save</Button>
+        <Button color="gray" onClick={onSubmit}>Save</Button>
       </form>
     </div>
   )
