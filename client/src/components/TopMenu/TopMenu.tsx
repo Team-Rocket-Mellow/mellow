@@ -1,5 +1,5 @@
 import "./TopMenu.css"
-import { useEffect, useRef, ChangeEventHandler } from "react"
+import { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 
 import { useSetRecoilState, useRecoilValue } from "recoil"
@@ -31,7 +31,6 @@ function TopMenu() {
   const openModal = () => toggleAddModal(true)
   const openSettings = () => toggleSettings($ => !$)
 
-  // PROFILE DROPDOWN
   const watchProfile = useRecoilValue(profile_is_active);
   const toggleProfile = useSetRecoilState(profile_is_active);
   const $profile = useRef<HTMLDivElement>()
@@ -44,14 +43,10 @@ function TopMenu() {
     return () => document.removeEventListener("mousedown", handler)
   })
 
-  const setDark = () => {
-    localStorage.setItem("theme", "dark")
-    document.documentElement.setAttribute("data-theme", "dark")
-  }
-
-  const setLight = () => {
-    localStorage.setItem("theme", "light")
-    document.documentElement.setAttribute("data-theme", "light")
+  const setTheme = (light=true) => {
+    const theme = light ? "light" : "dark"
+    localStorage.setItem("theme", theme)
+    document.documentElement.setAttribute("data-theme", theme)
   }
 
   const storedTheme = localStorage.getItem("theme")
@@ -60,9 +55,9 @@ function TopMenu() {
 
   const defaultDark = storedTheme === "dark" || (storedTheme === null && prefersDark)
 
-  if (defaultDark) { setDark() }
+  if (defaultDark) { setTheme(false) }
 
-  const toggleTheme = (e) => e.target.checked ? setDark() : setLight()
+  const toggleTheme = (e) => setTheme(e.target.checked)
 
   return (
     <header id='NavBar'>
@@ -78,18 +73,14 @@ function TopMenu() {
       </nav>
       <SearchInput />
       <nav className="right_nav_items">
-      <input
-          type="checkbox"
-          onChange={toggleTheme}
-          defaultChecked={defaultDark}
-          />
+        <input type="checkbox" onChange={toggleTheme} defaultChecked={defaultDark} />
         <Tooltip content="add todo" hotkey="q">
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon onClick={openSettings}>settings</Icon>
         <div ref={$profile}>
-        <Icon onClick={openProfile}>account_circle</Icon>
-        {watchProfile ? <Profile /> : null}
+          <Icon onClick={openProfile}>account_circle</Icon>
+          { watchProfile && <Profile /> }
         </div>
       </nav>
     </header>
