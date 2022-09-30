@@ -77,7 +77,7 @@ export const command_is_active = atom({
 
 export const setting_is_active = atom({
    key: "setting_state",
-   default: true,
+   default: false,
 })
 
 export const profile_is_active = atom({

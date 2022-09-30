@@ -1,15 +1,21 @@
 import "./TopMenu.css"
-import { useState, useEffect, useRef, ChangeEventHandler } from "react"
+import { useEffect, useRef, ChangeEventHandler } from "react"
 import { Link } from "react-router-dom"
 
 import { useSetRecoilState, useRecoilValue } from "recoil"
-import { add_is_active, todos_view, home, left_menu, setting_is_active, profile_is_active } from "../../state/atoms"
+import { 
+  add_is_active, 
+  todos_view, 
+  home, 
+  left_menu, 
+  setting_is_active, 
+  profile_is_active 
+} from "../../state/atoms"
 
 import Icon from "../assets/Icon"
 import SearchInput from "../Search/SearchInput"
 import Tooltip from "../assets/Tooltip"
 import Profile from "../Profile/Profile"
-import React from "react"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Component
@@ -28,52 +34,35 @@ function TopMenu() {
   // PROFILE DROPDOWN
   const watchProfile = useRecoilValue(profile_is_active);
   const toggleProfile = useSetRecoilState(profile_is_active);
+  const $profile = useRef<HTMLDivElement>()
   const openProfile = () => toggleProfile(!watchProfile);
 
-  // const profileRef = useRef<HTMLDivElement>();
-  const profileRef = useRef();
-    
   useEffect (() => {
-    const handler = (event) => {
-      if (!profileRef.current?.contains(event.target)) {
-        toggleProfile(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-      
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+    const handler = (event) => !$profile.current?.contains(event.target) && toggleProfile(false)
+    document.addEventListener("mousedown", handler)
 
-  // DARK MODE
+    return () => document.removeEventListener("mousedown", handler)
+  })
+
   const setDark = () => {
-    localStorage.setItem("theme", "dark");
-    document.documentElement.setAttribute("data-theme", "dark");
-  };
+    localStorage.setItem("theme", "dark")
+    document.documentElement.setAttribute("data-theme", "dark")
+  }
 
   const setLight = () => {
-    localStorage.setItem("theme", "light");
-    document.documentElement.setAttribute("data-theme", "light");
-  };
+    localStorage.setItem("theme", "light")
+    document.documentElement.setAttribute("data-theme", "light")
+  }
 
-  const storedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const storedTheme = localStorage.getItem("theme")
+  const prefersDark = window.matchMedia 
+    && window.matchMedia("(prefers-color-scheme: dark)").matches
 
-  const defaultDark = storedTheme === "dark" || (storedTheme === null && prefersDark);
+  const defaultDark = storedTheme === "dark" || (storedTheme === null && prefersDark)
 
-  if (defaultDark) {
-    setDark();
-  };
+  if (defaultDark) { setDark() }
 
-  const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
-    if (e.target.checked) {
-      setDark();
-    } else {
-      setLight();
-    }
-  };
+  const toggleTheme = (e) => e.target.checked ? setDark() : setLight()
 
   return (
     <header id='NavBar'>
@@ -98,7 +87,7 @@ function TopMenu() {
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>
         <Icon onClick={openSettings}>settings</Icon>
-        <div ref={profileRef}>
+        <div ref={$profile}>
         <Icon onClick={openProfile}>account_circle</Icon>
         {watchProfile ? <Profile /> : null}
         </div>
