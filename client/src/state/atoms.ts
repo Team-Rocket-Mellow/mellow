@@ -1,5 +1,5 @@
 import { atom } from 'recoil'
-import { Todo, TodoView, Theme } from "./types"
+import type { Todo, TodoView, Theme } from "./types"
 import { dayMonthYear } from "../utility/time"
 import data from "./data"
 
@@ -77,7 +77,7 @@ export const command_is_active = atom({
 
 export const setting_is_active = atom({
    key: "setting_state",
-   default: true,
+   default: false,
 })
 
 export const profile_is_active = atom({

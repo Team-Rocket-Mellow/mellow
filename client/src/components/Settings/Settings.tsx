@@ -51,7 +51,7 @@ function Settings({ setOpen, isOpen }) {
   const settings = [
     {
       name: "Theme",
-      options: ["auto", "light", "dark", "contrast"] as Theme[],
+      options: ["light", "dark"] as Theme[],
       value: theme,
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setTheme(e.target.value as Theme)
     },
@@ -63,6 +63,11 @@ function Settings({ setOpen, isOpen }) {
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setHome(e.target.value as TodoView)
     },
   ]
+
+  const onSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setOpen(false)
+  }
 
   const hotkey = (Δ:KeyboardEvent) => {
     switch (Δ.key) {
@@ -98,7 +103,7 @@ function Settings({ setOpen, isOpen }) {
             </fieldset>
           ))
         }
-        <Button color="gray">Save</Button>
+        <Button color="gray" onClick={onSubmit}>Save</Button>
       </form>
     </div>
   )

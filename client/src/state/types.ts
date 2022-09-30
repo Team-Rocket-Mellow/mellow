@@ -23,7 +23,7 @@ export type Auth = {
    expiry : Date
 }
 
-export type Theme = "auto" | "light" | "dark" | "contrast"
+export type Theme = "light" | "dark"
 
 // —————————————————————————————————————————————————————————————————————————————
 // Derived
