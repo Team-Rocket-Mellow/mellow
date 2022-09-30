@@ -51,7 +51,7 @@ function Settings({ setOpen, isOpen }) {
   const settings = [
     {
       name: "Theme",
-      options: ["auto", "light", "dark", "contrast"] as Theme[],
+      options: ["light", "dark"] as Theme[],
       value: theme,
       onChange: (e:React.ChangeEvent<HTMLSelectElement>) => setTheme(e.target.value as Theme)
     },

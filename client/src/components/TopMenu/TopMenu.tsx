@@ -9,7 +9,7 @@ import {
   home, 
   left_menu, 
   setting_is_active, 
-  profile_is_active 
+  profile_is_active, 
 } from "../../state/atoms"
 
 import Icon from "../assets/Icon"
@@ -43,22 +43,6 @@ function TopMenu() {
     return () => document.removeEventListener("mousedown", handler)
   })
 
-  const setTheme = (light=true) => {
-    const theme = light ? "light" : "dark"
-    localStorage.setItem("theme", theme)
-    document.documentElement.setAttribute("data-theme", theme)
-  }
-
-  const storedTheme = localStorage.getItem("theme")
-  const prefersDark = window.matchMedia 
-    && window.matchMedia("(prefers-color-scheme: dark)").matches
-
-  const defaultDark = storedTheme === "dark" || (storedTheme === null && prefersDark)
-
-  if (defaultDark) { setTheme(false) }
-
-  const toggleTheme = (e) => setTheme(e.target.checked)
-
   return (
     <header id='NavBar'>
       <nav>
@@ -73,7 +57,6 @@ function TopMenu() {
       </nav>
       <SearchInput />
       <nav className="right_nav_items">
-        <input type="checkbox" onChange={toggleTheme} defaultChecked={defaultDark} />
         <Tooltip content="add todo" hotkey="q">
           <Icon onClick={openModal}>add</Icon>
         </Tooltip>

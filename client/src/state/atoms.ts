@@ -1,5 +1,5 @@
 import { atom } from 'recoil'
-import { Todo, TodoView, Theme } from "./types"
+import type { Todo, TodoView, Theme } from "./types"
 import { dayMonthYear } from "../utility/time"
 import data from "./data"
 
